@@ -1,0 +1,19 @@
+#!/bin/bash
+
+options=" Lock| Logout| Shutdown| Reboot"
+ROFI_CMD="$(rofi -sep "|" -dmenu -i -p 'Power' -width 9 -hide-scrollbar -line-padding 4 -padding 20 -lines 4 <<< "$options")"
+
+            case "$ROFI_CMD" in
+                *Lock)
+                            "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"/lock-screen
+                            ;;
+                *Logout)
+                            i3-msg exit
+                            ;;
+                *Shutdown)
+                           shutdown now
+                            ;;
+                *Reboot)
+                            reboot
+                            ;;
+            esac

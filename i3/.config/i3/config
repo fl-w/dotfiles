@@ -87,11 +87,14 @@ bindsym $mod+Return exec $term
 bindsym $mod+space exec  rofi -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg" -show combi
 bindsym $mod+Control+space exec "bash $config/rofi/menu/SEARCH2"
 
-# Power
-bindsym $mod+Escape exec $bin/power.sh
+# Power menu
+bindsym $mod+Escape exec $bin/powermenu
 
-bindsym $mod+Print exec $bin/screenshot.sh
-bindsym $mod+Shift+Print exec $bin/screenshot.sh -s
+# Lock
+bindsym $mod+Lock exec $bin/lock-screen
+
+bindsym $mod+Print exec $bin/screenshot
+bindsym $mod+Shift+Print exec $bin/screenshot -s
 
 #
 # Workspace Navigation
@@ -287,8 +290,8 @@ mode "$mode_gaps_outer" {
 exec --no-startup-id start-pulseaudio-x11 & echo "Started pulseaudio"
 exec --no-startup-id nm-applet
 exec --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-exec --no-startup-id $bin/alternating_layouts.py
 exec --no-startup-id $bin/tab.sh
+exec_always --no-startup-id $bin/alternate-i3-layout
 exec_always --no-startup-id $HOME/.screenlayout
 exec_always --no-startup-id $config/picom/lanuch.sh
 exec_always --no-startup-id $config/dunst/launch.sh
