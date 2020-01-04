@@ -1,0 +1,1 @@
+/home/fola/.fzf/shell/key-bindings.fish
