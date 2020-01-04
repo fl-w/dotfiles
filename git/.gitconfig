@@ -1,3 +1,36 @@
 [user]
-	email = yes@iamfolarin.com
 	name = Fola Bosun
+	email = yes@iamfolarin.com
+[core]
+	editor = nvim
+	excludesfile = ~/.gitexcludes
+[color]
+	ui = true
+[push]
+	default = simple
+[include]
+	path = ~/.gitconfig_local
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = true
+	keepBackup = false
+[mergetool "vimdiff"]
+	cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[alias]
+	s = status -sb
+	sw = switch
+	b = branch
+	c = commit -v
+	a = add
+	re = restore
+	l = pull
+	p = push
+	f = fetch
+	mt = mergetool
+	m = merge
+	r = rebase
+	lg = log --stat
+	d = diff
+[commit]
+	gpgsign = true
