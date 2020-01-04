@@ -1,16 +1,17 @@
 #!/bin/bash
 
-LOCKDIR="/tmp/tab-page-lock"
 TABDIR="$HOME/src/tab"
+LOCKDIR="$TABDIR/tab-page-lock"
 
 function pull_lastest {
     if [ ! -d $TABDIR ]; then
         echo 'Cloning repo into ' $TABDIR && \
         git clone https://github.com/KorySchneider/tab $TABDIR
     else
-        if [ $(git log ..origin/master --oneline | wc -l) -gt 2 ]; then
+        if [ $(git -C $TABDIR log ..origin/master --oneline | wc -l) -gt 2 ]; then
             echo 'Pulling latest changes from remote' && \
-            git pull -C $TABDIR
+            git -C "$TABDIR" pull || return 1
+
         fi
     fi
 }
@@ -38,15 +39,13 @@ pull_lastest || {
 if mkdir $LOCKDIR; then
     #Ensure that if we "grabbed a lock", we release it
     #Works for SIGTERM and SIGINT(Ctrl-C)
-    trap "cleanup" EXIT
+    trap "remove_lock" EXIT
 
     echo "Acquired lock"
 
     # Serve $HOME/sbin/tab/index.html
     python -m http.server $PORT -d $TABDIR > /dev/null 2>&1 || \
     echo -e "Failed to start python http server..."
-
-    remove_lock
 else
     echo "Could not create lock directory '$LOCKDIR'"
     exit 1
