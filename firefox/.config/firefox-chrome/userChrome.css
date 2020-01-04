@@ -1,0 +1,480 @@
+@import url('file:///home/fola/.cache/wal/colors.css');
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+window#main-window {
+	/* *******************************************************************
+	* colors
+	*/
+	--color-fg   : var(--foreground);
+	--color-bg   : var(--background);
+	--color-0    : var(--color0);
+	--color-1    : var(--color1);
+	--color-2    : var(--color2);
+	--color-3    : var(--color3);
+	--color-4    : var(--color4);
+	--color-5    : var(--color5);
+
+	--color-tab-active-end       : var(--color-2);
+	--color-tab-active-start     : var(--color-fg);
+	--color-tab-hover-end        : var(--color-5);
+	--color-tab-hover-start      : var(--color-1);
+	--color-tab-normal-end       : var(--color-bg);
+	--color-tab-normal-start     : var(--color-bg);
+	--color-tab-pinned-active    : var(--color-bg);
+	--color-tab-pinned-normal    : var(--color-bg);
+	--color-urlbar-buttons-bg    : #fc6b89;
+	--color-urlbar-text          : var(--color-5);
+
+
+	/* Easy way to tweak most params */
+
+	--gap-between-tabs                   : 4px;
+	--margin-around-urlbar               : 2px;
+	--margin-before-back-button          : 9px;
+	--padding-around-searchengine-opts   : 10px;
+	--pinned-tab-favicon-dim             : 5px;
+	--tab-height                         : 23px;
+	--tabs-container-height              : 105px;
+	--tab-text-font                      : "Hasklug Nerd Font", sans-serif;
+	--tab-text-font-size                 : 9pt;
+	--margin-before-tab-list             : 12px;
+	--margin-after-tab-list              : -17px;
+	--urlbar-text-font                   : "mononoki Nerd Font", sans-serif;
+	--urlbar-text-size                   : 10pt;
+	--urlbar-text-weight                 : 600;
+	--urlbar-list-width                  : 60%;
+	--urlbar-container-margin            : 12px;
+	--left-arrow-scale            		   : 0.8;
+	--right-arrow-scale            		   : var(--left-arrow-scale);
+	--tabs-autohide-delay                : 3s;
+  --tabs-autohide-duration             : .5s;
+	/* ******************************************************************* */
+
+	--arrowpanel-background: var(--color-bg) !important;
+	--arrowpanel-border-color: var(--color-bg) !important;
+	--arrowpanel-color: var(--color-fg) !important;
+	--arrowpanel-dimmed-even-further: rgba(249, 249, 250, .2);
+	--arrowpanel-dimmed-further: rgba(249, 249, 250, .15);
+	--arrowpanel-dimmed: rgba(249, 249, 250, .1);
+
+	--autocomplete-popup-background: var(--color-bg) !important;
+	--autocomplete-popup-color: var(--color-fg) !important;
+	--autocomplete-popup-highlight-background: var(--color-bg) !important;
+
+	--backbutton-active-background: var(--color-fg) !important;
+	--backbutton-background: var(--color-fg) !important;
+	--backbutton-border-color: var(--color-bg) !important;
+	--backbutton-hover-background: var(--color-fg) !important;
+
+	--chrome-content-separator-color: var(--color-bg) !important;
+	--chrome-content-separator-color: var(--color-bg) !important;
+
+	--downloads-item-details-opacity: 0.6;
+	--downloads-item-font-size-factor: 0.9;
+	--downloads-item-height: 5.5em;
+
+	--drag-drop-transition-duration: .3s;
+
+	--in-content-button-background-active: var(--color-bg) !important;
+	--in-content-button-background-hover: var(--color-bg) !important;
+	--lwt-accent-color: var(--color-fg) !important;
+	--lwt-text-color: var(--color-fg) !important;
+	--lwt-toolbar-field-background-color: var(--color-bg) !important;
+	--lwt-toolbar-field-color: var(--color-bg) !important;
+	--lwt-toolbar-field-color: var(--color-fg) !important;
+	--lwt-toolbarbutton-icon-fill: var(--color-5) !important;
+
+	--panel-disabled-color: var(--color-0) !important;
+	--panel-separator-color: var(--color-bg) !important;
+
+	--tab-min-height: 33px;
+	--tab-max-height: 0;
+	--tabs-top-border-width: 1px;
+
+	--toolbar-bgcolor: var(--color-bg) !important;
+	--toolbar-bgimage: none;
+	--toolbar-color: var(--color-fg) !important;
+	--toolbar-non-lwt-bgimage: var(--color-bg) !important;
+	--toolbarbutton-active-background: var(--color-bg) !important;
+	--toolbarbutton-focus-outline: var(--color-bg) !important;
+	--toolbarbutton-height: 0;
+	--toolbarbutton-hover-background: var(--color-bg) !important;
+	--toolbarbutton-hover-transition-duration: 150ms;
+	--toolbarbutton-icon-fill-opacity: 1;
+	--toolbarbutton-inner-padding: 12px !important;
+	--toolbarbutton-outer-padding: 4px !important;
+
+	--urlbar-popup-action-color: var(--color-fg) !important;
+	--urlbar-popup-url-color: var(--color-fg) !important;
+	--urlbar-separator-color: var(--color-bg) !important;
+	--urlbar-separator-color: var(--color-bg) !important;
+      }
+window#bookmarksPanel {
+	--lwt-sidebar-background-color: var(--color-bg) !important;
+}
+
+window#history-panel {
+	--lwt-sidebar-background-color: var(--color-bg) !important;
+	--lwt-sidebar-text-color: var(--color-fg) !important;
+}
+
+
+
+
+/*
+======================================================================
+* Rules for side bar stuff
+======================================================================
+*/
+
+vbox#sidebar-box {
+	--sidebar-background-color: var(--color-bg) !important;
+	--sidebar-text-color: var(--color-fg) !important;
+}
+
+hbox#browser {
+	--sidebar-border-color: var(--color-bg) !important;
+}
+
+.sidebar-splitter {
+	display: none !important;
+}
+
+/*
+======================================================================
+* Rules for urlbar + navbar buttons etc
+======================================================================
+*/
+
+#urlbar-container {
+	margin: var(--urlbar-container-margin) !important;
+
+}
+.toolbarbutton-1 {
+	color: inherit !important;
+	fill: var(--color-fg) !important;
+	fill-opacity: 1 !important;
+}
+#nav-bar-customization-target {
+	background-color: var(--color-bg) !important;
+}
+
+/* This positions the tabs under the navaigator container */
+#titlebar {
+	-moz-box-ordinal-group: 3 !important;
+}
+
+#back-button {
+	list-style-image: url("left-arrow.svg") !important;
+	margin-left: var(--margin-before-back-button) !important;
+	transform: scale(var(--left-arrow-scale));
+	opacity: 1 !important;
+}
+
+#back-button:hover {
+	transform:scale(1);
+}
+
+#forward-button {
+	list-style-image: url("right-arrow.svg") !important;
+	transform: scale(var(--right-arrow-scale));
+	opacity: 1 !important;
+}
+
+#forward-button:hover {
+	transform:scale(var(--right-arrow-scale) * 5);
+}
+
+#navigator-toolbox {
+	--tabs-border-color: var(--color-bg) !important;
+	background-color: var(--color-bg) !important;
+	border: none !important;
+	box-shadow: none !important;
+/* 	--toolbox-height = calc(var(--tabs-container-height) - var(--tab-height)); */
+}
+
+:root:not([uidensity="compact"]):not([chromehidden~="toolbar"]) #PanelUI-button {
+	border-image-slice: 0 !important;
+}
+
+.titlebar-spacer {
+	display: none !important;
+}
+
+/* Hacky way to make the url input bar centered */
+input#urlbar-input {
+	caret-color: transparent !important;
+	width: 99999px !important;
+	text-align: center !important;
+	font-weight: var(--urlbar-text-weight) !important;
+	font-family: var(--urlbar-text-font) !important;
+	font-size: var(--urlbar-text-size) !important;
+}
+
+hbox#urlbar[focused=true] {
+	color: var(--color-urlbar-text) !important;
+}
+
+#urlbar:not(.megabar),
+#urlbar.megabar > #urlbar-background,
+#searchbar {
+	border: none !important;
+	box-shadow: none !important;
+}
+
+.urlbar-history-dropmarker,
+#star-button,
+#identity-box {
+	display: none !important;
+}
+
+#urlbar {
+	background-color: var(--color-fg);
+	background: none !important;
+	border: none !important;
+	margin: var(--margin-around-urlbar) !important;
+}
+
+.urlbar-one-offs-header-label {
+	color: var(--color-fg) !important;
+}
+
+.search-one-offs {
+	padding: var(--padding-around-searchengine-opts) !important;
+}
+
+.chromeclass-location {
+	border: none !important;
+	box-shadow: none !important;
+	background-image: none !important;
+}
+
+/* This centers and reduces the width of the urlbar list */
+.urlbarView:not(.megabar) {
+	box-shadow: none !important;
+	background-color: var(--color-bg) !important;
+	width: var(--0-width) !important;
+/* 	right: calc(var(--urlbar-list-width) / 4) !important; */
+	margin-left: calc(var(--urlbar-list-width) / 2) !important;
+	border-radius: 0 8px 8px !important;
+	box-shadow: 0px 0px 40px rgba(0, 0, 0, 25%) !important;
+}
+
+.urlbarView-favicon {
+	display: none !important;
+}
+
+.urlbarView-row {
+	text-align: center !important;
+}
+
+.urlbarView-row[selected] {
+	background: var(--color-5) !important;
+	color: var(--color-bg) !important;
+	fill-opacity: 1 !important;
+}
+
+.panel-arrowbox {
+	margin: 0 !important;
+	display: none !important;
+}
+
+.panel-arrowcontent {
+	margin: 0 !important;
+}
+
+:root:not([uidensity="compact"]) #back-button > .toolbarbutton-icon {
+	background-color: var(--color-bg) !important;
+}
+
+
+/*
+======================================================================
+* Rules for auto-hiding tabs.
+======================================================================
+*/
+
+:root[uidensity=compact] #navigator-toolbox {
+  --nav-bar-height: 33px;
+  --tab-min-height: 29px;
+}
+
+:root[uidensity=compact][extradragspace]:not([sizemode="normal"]) #navigator-toolbox {
+  --nav-bar-height: 33px;
+  --tab-min-height: 21px;
+}
+
+:root:not([uidensity]) #navigator-toolbox {
+  --nav-bar-height: 39px;
+  --tab-min-height: 33px;
+}
+
+:root:not([uidensity])[extradragspace]:not([sizemode="normal"]) #navigator-toolbox {
+  --nav-bar-height: 39px;
+  --tab-min-height: 25px;
+}
+
+#TabsToolbar, #navigator-toolbox{
+  --trigger-area-height: 5px;
+	z-index: 1;
+}
+
+:root[chromehidden~="toolbar"] #TabsToolbar {
+  --navbar-height: 0.1px;
+}
+
+#PersonalToolbar {
+	/* Otherwise spacers will not count as hover-able areas */
+    -moz-window-dragging: default;
+}
+
+:root:not([customizing]) #TabsToolbar {
+  min-height:0 !important;
+  padding-top:0 !important;
+  padding-bottom:0 !important;
+  opacity: 0;
+  transform: translateY(-50%);
+  transition: all var(--tabs-autohide-duration) ease-out var(--tabs-autohide-delay);
+	max-height: 0;
+}
+
+#navigator-toolbox {
+	position: absolute;
+	top: 0;
+	z-index: 10;
+}
+
+#navigator-toolbox:hover >
+#titlebar > #TabsToolbar:not([customizing]) {
+  transform: translateY(0);
+	transition: all var(--tabs-autohide-duration) ease-in 0s;
+  opacity: 1;
+	max-height: 99999px;
+}
+/*
+======================================================================
+* Rules for Tabs
+======================================================================
+*/
+.tab-line,
+.tab-background,
+.tabbrowser-tab::before,
+.tabbrowser-tab::after,
+.tabbrowser-tab .tab-icon-image,
+.tabbrowser-tab .close-icon {
+	display: none !important;
+}
+
+#TabsToolbar {
+ -moz-box-ordinal-group: 1000 !important;
+}
+
+#TabsToolbar #window-controls {
+ display: none !important;
+}
+
+#navigator-toolbox {
+	margin: 0 !important;
+}
+
+.tab-loading-burst {
+	border-radius: var(--tab-height) !important;
+}
+
+.tabbrowser-tab {
+	margin-inline-end: var(--gap-between-tabs) !important;
+	--tab-line-color: none !important;
+	background-color: var(--color-bg) !important;
+	background-image: linear-gradient(to left, var(--color-tab-normal-start), var(--color-tab-normal-end)) !important;
+	border-radius: var(--tab-height) !important;
+	max-height: var(--tab-height) !important;
+	min-height: var(--tab-height) !important;
+	transition: opacity 0.25, background-image 0.25 !important;
+}
+
+.tabbrowser-tab[pinned=true] {
+	background-image: linear-gradient(
+		to left,
+		var(--color-tab-pinned-normal),
+		var(--color-tab-pinned-normal)
+	) !important;
+}
+
+.tab-content {
+	text-align: center;
+	font-family: var(--tab-text-font) !important;
+	font-size: var(--tab-text-font-size) !important;
+}
+
+.tabbrowser-tab:hover {
+	background-image: linear-gradient(77deg, var(--color-tab-hover-start), var(--color-tab-hover-end)) !important;
+	border-radius: var(--tab-height) !important;
+}
+
+/* Pinned tabs */
+/* TODO: Find a way to add spacing between the pinned tabs when tab list scrolling is triggered. Adding a margin just screws everything up */
+.tabbrowser-tab:hover[pinned="true"] {
+	background-image: linear-gradient(to left, var(--color-tab-hover-start), var(--color-tab-hover-end)) !important;
+}
+
+.tabbrowser-tab[pinned="true"] {
+	color: #1d1d1d !important;
+	min-width: var(--tab-height) !important;
+	max-width: var(--tab-height) !important;
+}
+
+.tabbrowser-tab[selected="true"] {
+	background-image: linear-gradient(77deg, var(--color-tab-active-start), var(--color-tab-active-end)) !important;
+	border: none !important;
+	border-radius: var(--tab-height);
+}
+
+/* The round pinned tab favicon */
+.tabbrowser-tab[pinned="true"] .tab-icon-image {
+	display: inline-block !important;
+	align-items: center !important;
+	min-width: var(--pinned-tab-favicon-dim) !important;
+	min-height: var(--pinned-tab-favicon-dim) !important;
+}
+
+.tabbrowser-tab[pinned="true"] .tab-label-container {
+	display: none !important;
+}
+
+.tabbrowser-tab[pinned="true"][selected="true"] {
+	background-image: linear-gradient(
+		to left,
+		var(--color-tab-pinned-active),
+		var(--color-tab-pinned-active)
+	) !important;
+}
+
+#tabs-newtab-button {
+	background-image: none !important;
+	display: none;
+}
+
+#tabs-newtab-button:hover {
+	background: none !important;
+	background-image: none !important;
+	border-radius: 50%;
+}
+
+.tab-close-button {
+/* 	opacity: 0; */
+	transition: opacity 0.25s;
+/* 	display: none; */
+}
+
+.tab-stack {
+	display: flex !important;
+	justify-content: center !important;
+}
+
+/* Modify these values to tweak the start point of the tab list */
+.tabbrowser-arrowscrollbox {
+	margin-inline-start: var(--margin-before-tab-list) !important;
+	margin-inline-end: var(--margin-after-tab-list) !important;
+	margin-block-end: 0px !import;
+}
+
