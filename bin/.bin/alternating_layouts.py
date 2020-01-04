@@ -6,7 +6,7 @@ import subprocess
 import getopt
 import sys
 import os
-
+import socket
 
 def find_parent(window_id):
     """
@@ -60,6 +60,16 @@ def print_help():
     print("    -p path/to/pid.file   Saves the PID for this program in the filename specified")
     print("")
 
+def get_lock(process_name):
+    # Without holding a reference to our socket somewhere it gets garbage
+    # collected when the function exits
+    get_lock._lock_socket = socket.socket(socket.AF_UNIX, socket.SOCK_DGRAM)
+
+    try:
+        get_lock._lock_socket.bind('\0' + process_name)
+    except socket.error:
+        print("Cannot obtain lock, process already running.")
+        sys.exit()
 
 def main():
     """
@@ -76,10 +86,12 @@ def main():
         if opt[0] == "-p":
             pid_file = opt[1]
 
+
     if pid_file:
         with open(pid_file, 'w') as f:
             f.write(str(os.getpid()))
 
+    get_lock(sys.argv[0])
 
     process = subprocess.Popen(
         ['xprop', '-root', '-spy'],

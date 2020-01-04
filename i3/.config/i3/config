@@ -17,7 +17,7 @@ set $term                 kitty
 set $primary_monitor      HDMI-1
 set $secondary_monitor    DP-1
 set $config               $HOME/.config
-set $scripts              $HOME/.config/scripts
+set $bin                  $HOME/.bin
 
 #   __   _____ ___ _   _  _   _
 #   \ \ / /_ _/ __| | | |/_\ | |
@@ -87,11 +87,11 @@ bindsym $mod+Return exec $term
 bindsym $mod+space exec  rofi -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg" -show combi
 bindsym $mod+Control+space exec "bash $config/rofi/menu/SEARCH2"
 
-# Power menu
-bindsym $mod+Shift+Escape exec bash $config/rofi/menu/system
+# Power
+bindsym $mod+Escape exec $bin/power.sh
 
-bindsym $mod+print exec scrot ~/Pictures/Screenshots/
-bindsym $mod+shift+print exec scrot ~/Pictures/Screenshots/
+bindsym $mod+Print exec $bin/screenshot.sh
+bindsym $mod+Shift+Print exec $bin/screenshot.sh -s
 
 #
 # Workspace Navigation
@@ -230,9 +230,6 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #i
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
-# Power
-bindsym $mod+escape exec rofi -show Power -modi Power:$config/bin/power
-
 # workspaces and monitors
 workspace $ws1 output $primary_monitor
 workspace $ws2 output $primary_monitor
@@ -289,9 +286,9 @@ mode "$mode_gaps_outer" {
 
 exec --no-startup-id start-pulseaudio-x11 & echo "Started pulseaudio"
 exec --no-startup-id nm-applet
-exex --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-exex --no-startup-id $scripts/alternating_layouts.py
-exex --no-startup-id $scripts/tab.sh
+exec --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+exec --no-startup-id $bin/alternating_layouts.py
+exec --no-startup-id $bin/tab.sh
 exec_always --no-startup-id $HOME/.screenlayout
 exec_always --no-startup-id $config/picom/lanuch.sh
 exec_always --no-startup-id $config/dunst/launch.sh
