@@ -15,9 +15,9 @@ if (has("nvim"))
 endif
 
 "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-if has('nvim') || has('termguicolors')
-  set termguicolors
-endif
+"if has('nvim') || has('termguicolors')
+"  set termguicolors
+"endif
 
 " Map caps lock to escape when in vim
 " au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
@@ -39,7 +39,7 @@ filetype plugin on
 map <leader>f :NERDTreeFind<cr>
 
 " Colorscheme
-colorscheme ayu
+colorscheme wal
 let g:palenight_terminal_italics = 1
 
 set mouse=a

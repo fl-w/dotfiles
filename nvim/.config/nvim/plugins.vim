@@ -11,6 +11,7 @@ endif
 call plug#begin()
 " Visuals
 "
+Plug 'dylanaraps/wal.vim'
 Plug 'ayu-theme/ayu-vim'                " Modern theme for vim
 Plug 'manasthakur/vim-commentor'        " Easy comment toggle
 Plug 'tpope/vim-sensible'               " Some sensible settings
