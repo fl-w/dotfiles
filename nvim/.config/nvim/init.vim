@@ -27,7 +27,7 @@ endif
 autocmd! filetype *commit*,markdown setlocal spell         " Spell Check
 autocmd! filetype *commit*,markdown setlocal textwidth=72  " Looks good
 autocmd! filetype make setlocal noexpandtab                " In Makefiles DO NOT use spaces instead of tabs
-
+:autocmd BufRead,BufNewFile kitty.conf setf dosini       " Syntax highlighting for .conf
 autocmd BufWritePre * call TrimWhitespace() " Remove trailing whitespace when saving
 autocmd! BufReadPost * call SetCursorPosition()
 autocmd! BufWritePost * Neomake
