@@ -1,4 +1,4 @@
-set LS_COLORS dxfxcxdxbxegedabagacad
+# set LS_COLORS dxfxcxdxbxegedabagacad
 
 alias df 'df -m'
 alias j jobs
