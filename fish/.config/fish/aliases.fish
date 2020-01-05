@@ -1,29 +1,32 @@
 # set LS_COLORS dxfxcxdxbxegedabagacad
 
 alias df 'df -m'
-alias j jobs
-alias l ls
-alias ll 'ls -la'
-alias ls 'ls -FG'
+alias l 'ls'
+alias ll 'ls -gaG'
+alias ls 'ls -FG --color=auto'
 alias su 'su -m'
 
-alias ei ei3
-alias ei3 'nvim ~/.config/i3'
-alias ef 'nvim ~/.config/fish'
-alias ev 'nvim ~/.config/nvim'
-alias ep 'nvim ~/.config/polybar'
+abbr ei 'nvim ~/.config/i3'
+abbr ei3 'nvim ~/.config/i3'
+abbr ef 'nvim ~/.config/fish'
+abbr ev 'nvim ~/.config/nvim'
+abbr ep 'nvim ~/.config/polybar'
 
-alias g git
-alias c clear
-alias v nvim
+abbr j jobs
+abbr g git
+abbr c clear
+abbr v nvim
 
-alias cd.. 'cd ..'
-alias .. 'cd ..'
-alias ... 'cd ../..'
-alias .... 'cd ../../..'
-alias ..... 'cd ../../../..'
+abbr cd.. 'cd ..'
+abbr .. 'cd ..'
+abbr ... 'cd ../..'
+abbr .... 'cd ../../..'
+abbr ..... 'cd ../../../..'
 
-alias home 'cd $HOME'
+abbr home 'cd $HOME'
 
-alias cx 'chmod +x'
-alias 'c-x' 'chmod -x'
+abbr cx 'chmod +x'
+abbr 'c-x' 'chmod -x'
+
+abbr se 'sudoedit'
+
