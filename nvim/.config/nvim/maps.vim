@@ -46,8 +46,7 @@ noremap <c-/> :<Plug>CommentorLine
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
-inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
-inoremap <S-Tab> <C-n>
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Map <leader> + f to toggle nerd tree
 noremap <silent> <leader>f :NERDTreeToggleVCS<cr>

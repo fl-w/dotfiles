@@ -1,33 +1,44 @@
-" set t_ut=
-" let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-" let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-
 let mapleader="," " Change <leader> to ,
 
 source $HOME/.config/nvim/functions.vim
 source $HOME/.config/nvim/plugins.vim
 source $HOME/.config/nvim/maps.vim
 
+"
+" Colorscheme
+"
+
+" stop theme from setting bg color
+autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+colorscheme palenight
+highlight LineNr guibg=NONE gui=NONE
+
+" set t_ut=
+" let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+"
 "Use 24-bit (true-color) mode in Vim/Neovim
 if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
-filetype plugin on
 
-" Colorscheme
-colorscheme seoul256
-highlight LineNr guibg=NONE gui=NONE
+"
+" General configuration
+"
+
+filetype plugin on
 
 set termguicolors
 set ff=unix
+set encoding=UTF-8
 set mouse=a
-set cursorline!                 " Highlight the current line
+set cursorline                  " Highlight the current line
 set lazyredraw                  " Faster scrolling
 set number                      " Show line number
 set relativenumber              " Show relative line number
 set showcmd                     " Show current command
-set cc=140                      " Show linecolumn
+" set cc=140                      " Show linecolumn
 set showmode                    " Show current mode
 set autochdir                   " Change working directory to open file
 set wildmode=longest:list,full  " Autocomplete
@@ -70,5 +81,7 @@ autocmd! filetype make setlocal noexpandtab                " In Makefiles DO NOT
 :autocmd BufRead,BufNewFile kitty.conf setf dosini       " Syntax highlighting for .conf
 autocmd BufWritePre * call TrimWhitespace() " Remove trailing whitespace when saving
 autocmd! BufReadPost * call SetCursorPosition()
-autocmd! BufWritePost * Neomake
-
+augroup vimrc
+    au!
+    autocmd BufWritePost _vim,.vimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END

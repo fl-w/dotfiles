@@ -150,10 +150,14 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
+# change focus in fullscreen
+bindsym $mod+Tab fullscreen disable, focus right, fullscreen
+bindsym $mod+Shift+Tab fullscreen disable, focus left, fullscreen
+
 # move windows around
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+jp move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
