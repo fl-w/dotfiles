@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TABDIR="$HOME/src/tab"
-LOCKDIR="$TABDIR/tab-page-lock"
+LOCKDIR="/tmp/tab-page-lock"
 
 function pull_lastest {
     if [ ! -d $TABDIR ]; then
