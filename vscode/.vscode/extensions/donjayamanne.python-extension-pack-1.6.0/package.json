@@ -1,0 +1,49 @@
+{
+	"name": "python-extension-pack",
+	"displayName": "Python Extension Pack",
+	"description": "Popular Visual Studio Code extensions for Python",
+	"version": "1.6.0",
+	"publisher": "donjayamanne",
+	"author": {
+		"name": "Don Jayamanne",
+		"email": "don.jayamanne@yahoo.com"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/DonJayamanne/python-extension-pack"
+	},
+	"bugs": {
+		"url": "https://github.com/DonJayamanne/python-extension-pack/issues"
+	},
+	"icon": "icon.png",
+	"galleryBanner": {
+		"color": "#1e415e",
+		"theme": "dark"
+	},
+	"engines": {
+		"vscode": "^1.25.0"
+	},
+	"keywords": [
+		"python",
+		"django",
+		"debugger",
+		"unittest",
+		"jinja"
+	],
+	"categories": [
+		"Extension Packs"
+	],
+	"extensionPack": [
+		"magicstack.MagicPython",
+		"ms-python.python",
+		"wholroyd.jinja",
+		"batisteo.vscode-django",
+		"VisualStudioExptTeam.vscodeintellicode"
+	],
+	"__metadata": {
+		"id": "f5188937-53e0-45bb-a16d-61231003fa3b",
+		"publisherId": "1ba8bd00-2ad1-4be0-a007-5b4b954c1ee7",
+		"publisherDisplayName": "Don Jayamanne"
+	}
+}

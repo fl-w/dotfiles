@@ -1,0 +1,101 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "child-process-promise@^1.1.0",
+        "scope": null,
+        "escapedName": "child-process-promise",
+        "name": "child-process-promise",
+        "rawSpec": "^1.1.0",
+        "spec": ">=1.1.0 <2.0.0",
+        "type": "range"
+      },
+      "C:\\Users\\Austi\\Documents\\Workspace\\code-gnu-global"
+    ]
+  ],
+  "_from": "child-process-promise@>=1.1.0 <2.0.0",
+  "_id": "child-process-promise@1.1.0",
+  "_inCache": true,
+  "_location": "/child-process-promise",
+  "_npmUser": {
+    "name": "pnidem",
+    "email": "pnidem@gmail.com"
+  },
+  "_npmVersion": "1.4.28",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "child-process-promise@^1.1.0",
+    "scope": null,
+    "escapedName": "child-process-promise",
+    "name": "child-process-promise",
+    "rawSpec": "^1.1.0",
+    "spec": ">=1.1.0 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/child-process-promise/-/child-process-promise-1.1.0.tgz",
+  "_shasum": "131e01a705f15ed4a05d554dd5e032e52612cf30",
+  "_shrinkwrap": null,
+  "_spec": "child-process-promise@^1.1.0",
+  "_where": "C:\\Users\\Austi\\Documents\\Workspace\\code-gnu-global",
+  "author": {
+    "name": "Patrick Steele-Idem",
+    "email": "pnidem@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/patrick-steele-idem/child-process-promise/issues"
+  },
+  "dependencies": {
+    "q": "^1.1.2"
+  },
+  "description": "Simple wrapper around the \"child_process\" module that makes use of promises",
+  "devDependencies": {
+    "eslint": "^0.10.2"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "131e01a705f15ed4a05d554dd5e032e52612cf30",
+    "tarball": "https://registry.npmjs.org/child-process-promise/-/child-process-promise-1.1.0.tgz"
+  },
+  "files": [
+    "lib",
+    "Readme.md"
+  ],
+  "gitHead": "5037236af17eadccfb7120b6eb2669ed8cb5a339",
+  "homepage": "https://github.com/patrick-steele-idem/child-process-promise",
+  "keywords": [
+    "child",
+    "process",
+    "promises"
+  ],
+  "license": "BSD",
+  "main": "lib/index.js",
+  "maintainers": [
+    {
+      "name": "psteeleidem",
+      "email": "psteeleidem@ebay.com"
+    },
+    {
+      "name": "pnidem",
+      "email": "pnidem@gmail.com"
+    }
+  ],
+  "name": "child-process-promise",
+  "optionalDependencies": {},
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
+  },
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrick-steele-idem/child-process-promise.git"
+  },
+  "scripts": {
+    "lint": "eslint lib/*js test/*js",
+    "pretest": "npm run lint",
+    "test": "node test/test.js"
+  },
+  "version": "1.1.0"
+}

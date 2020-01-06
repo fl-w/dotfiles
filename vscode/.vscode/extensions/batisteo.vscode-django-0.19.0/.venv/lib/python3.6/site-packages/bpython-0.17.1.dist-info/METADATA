@@ -1,0 +1,28 @@
+Metadata-Version: 2.0
+Name: bpython
+Version: 0.17.1
+Summary: Fancy Interface to the Python Interpreter
+Home-page: http://www.bpython-interpreter.org/
+Author: Bob Farrell, Andreas Stuehrk et al.
+Author-email: robertanthonyfarrell@gmail.com
+License: MIT/X
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: pygments
+Requires-Dist: requests
+Requires-Dist: curtsies (>=0.1.18)
+Requires-Dist: greenlet
+Requires-Dist: six (>=1.5)
+Requires-Dist: pyOpenSSL; python_full_version == "2.7.0" or python_full_version == "2.7.1" or python_full_version == "2.7.2" or python_full_version == "2.7.3" or python_full_version == "2.7.4" or python_full_version == "2.7.5" or python_full_version == "2.7.6"
+Requires-Dist: pyasn1; python_full_version == "2.7.0" or python_full_version == "2.7.1" or python_full_version == "2.7.2" or python_full_version == "2.7.3" or python_full_version == "2.7.4" or python_full_version == "2.7.5" or python_full_version == "2.7.6"
+Requires-Dist: ndg-httpsclient; python_full_version == "2.7.0" or python_full_version == "2.7.1" or python_full_version == "2.7.2" or python_full_version == "2.7.3" or python_full_version == "2.7.4" or python_full_version == "2.7.5" or python_full_version == "2.7.6"
+Provides-Extra: jedi
+Requires-Dist: jedi; extra == 'jedi'
+Provides-Extra: urwid
+Requires-Dist: urwid; extra == 'urwid'
+Provides-Extra: watch
+Requires-Dist: watchdog; extra == 'watch'
+
+bpython is a fancy interface to the Python
+interpreter for Unix-like operating systems.
+

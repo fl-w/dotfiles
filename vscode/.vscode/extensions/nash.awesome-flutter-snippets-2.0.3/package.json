@@ -1,0 +1,45 @@
+{
+	"name": "awesome-flutter-snippets",
+	"displayName": "Awesome Flutter Snippets",
+	"description": "Awesome Flutter Snippets is a collection snippets and shortcuts for commonly used Flutter functions and classes",
+	"version": "2.0.3",
+	"icon": "logo.png",
+	"publisher": "Nash",
+	"engines": {
+		"vscode": "^1.39.0"
+	},
+	"keywords": [
+		"Flutter",
+		"Dart",
+		"Snippets"
+	],
+	"galleryBanner": {
+		"color": "#272631",
+		"theme": "dark"
+	},
+	"homepage": "https://github.com/Neevash/awesome-flutter-snippets",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Neevash/awesome-flutter-snippets.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Neevash/awesome-flutter-snippets/issues",
+		"email": "ramdialnash@outlook.com"
+	},
+	"categories": [
+		"Snippets"
+	],
+	"contributes": {
+		"snippets": [
+			{
+				"language": "dart",
+				"path": "./snippets/snippets.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "5619a084-6632-4221-9def-b94bdc42e23a",
+		"publisherId": "43e9737b-abe3-4f1b-bde9-999c319a0c5c",
+		"publisherDisplayName": "Nash Ramdial"
+	}
+}

@@ -1,0 +1,31 @@
+image: node:10
+
+stages:
+  - test
+  - release
+
+before_script:
+  - npm ci
+  - npm run postinstall
+  - npm run build
+
+lint:
+  stage: test
+  script:
+    - npm run lint
+  except:
+    - tags
+
+test:
+  stage: test
+  script:
+    - npm test
+  except:
+    - tags
+
+release:
+  stage: release
+  script:
+    - npx semantic-release
+  only:
+    - master

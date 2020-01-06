@@ -1,0 +1,8 @@
+README.md
+setup.py
+src/vscode_django/__init__.py
+src/vscode_django.egg-info/PKG-INFO
+src/vscode_django.egg-info/SOURCES.txt
+src/vscode_django.egg-info/dependency_links.txt
+src/vscode_django.egg-info/entry_points.txt
+src/vscode_django.egg-info/top_level.txt

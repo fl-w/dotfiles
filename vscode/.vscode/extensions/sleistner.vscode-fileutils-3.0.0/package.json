@@ -1,0 +1,217 @@
+{
+	"name": "vscode-fileutils",
+	"displayName": "File Utils",
+	"description": "A convenient way of creating, duplicating, moving, renaming and deleting files and directories.",
+	"version": "3.0.0",
+	"private": true,
+	"license": "MIT",
+	"publisher": "sleistner",
+	"engines": {
+		"vscode": "^1.37.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"utils",
+		"files",
+		"move",
+		"duplicate",
+		"rename"
+	],
+	"icon": "images/icon.png",
+	"galleryBanner": {
+		"color": "#1c2237",
+		"theme": "dark"
+	},
+	"bugs": {
+		"url": "https://github.com/sleistner/vscode-fileutils/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/sleistner/vscode-fileutils.git"
+	},
+	"homepage": "https://github.com/sleistner/vscode-fileutils/blob/master/README.md",
+	"activationEvents": [
+		"onCommand:fileutils.renameFile",
+		"onCommand:fileutils.moveFile",
+		"onCommand:fileutils.duplicateFile",
+		"onCommand:fileutils.removeFile",
+		"onCommand:fileutils.newFile",
+		"onCommand:fileutils.newFileAtRoot",
+		"onCommand:fileutils.newFolder",
+		"onCommand:fileutils.newFolderAtRoot",
+		"onCommand:fileutils.copyFileName"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "fileutils.renameFile",
+				"category": "File",
+				"title": "Rename"
+			},
+			{
+				"command": "fileutils.moveFile",
+				"category": "File",
+				"title": "Move"
+			},
+			{
+				"command": "fileutils.duplicateFile",
+				"category": "File",
+				"title": "Duplicate"
+			},
+			{
+				"command": "fileutils.removeFile",
+				"category": "File",
+				"title": "Delete"
+			},
+			{
+				"command": "fileutils.newFile",
+				"category": "File",
+				"title": "New File Relative to Current View"
+			},
+			{
+				"command": "fileutils.newFileAtRoot",
+				"category": "File",
+				"title": "New File Relative to Project Root"
+			},
+			{
+				"command": "fileutils.newFolder",
+				"category": "File",
+				"title": "New Folder Relative to Current View"
+			},
+			{
+				"command": "fileutils.newFolderAtRoot",
+				"category": "File",
+				"title": "New Folder Relative to Project Root"
+			},
+			{
+				"command": "fileutils.copyFileName",
+				"category": "File",
+				"title": "Copy Name"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "fileutils.moveFile",
+					"group": "7_modification"
+				},
+				{
+					"command": "fileutils.duplicateFile",
+					"group": "7_modification"
+				},
+				{
+					"command": "fileutils.newFileAtRoot",
+					"group": "2_workspace"
+				},
+				{
+					"command": "fileutils.newFolderAtRoot",
+					"group": "2_workspace"
+				},
+				{
+					"command": "fileutils.copyFileName",
+					"group": "6_copypath"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "fileutils.moveFile",
+					"group": "1_modification"
+				},
+				{
+					"command": "fileutils.duplicateFile",
+					"group": "1_modification"
+				},
+				{
+					"command": "fileutils.renameFile",
+					"group": "1_modification"
+				}
+			],
+			"editor/title/context": [
+				{
+					"command": "fileutils.copyFileName",
+					"group": "1_copypath"
+				}
+			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "Fileutils configuration",
+			"properties": {
+				"fileutils.delete.useTrash": {
+					"type": "boolean",
+					"default": false,
+					"description": "Move file to the recycle bin instead of deleting it permanently."
+				},
+				"fileutils.delete.confirm": {
+					"type": "boolean",
+					"default": true,
+					"description": "Controls if it should ask for confirmation when deleting a file."
+				},
+				"fileutils.rename.closeOldTab": {
+					"type": "boolean",
+					"default": true,
+					"description": "Controls whether to close the tab of the renamed file (Will work only if 'Close On File Delete' setting is disabled)"
+				},
+				"fileutils.move.closeOldTab": {
+					"type": "boolean",
+					"default": true,
+					"description": "Controls whether to close the tab of the moved file (Will work only if 'Close On File Delete' setting is disabled)"
+				},
+				"fileutils.typeahead.enabled": {
+					"type": "boolean",
+					"default": true,
+					"description": "Controls if directory selector should be shown."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "yarn run compile",
+		"test": "node ./out/test/runTest.js",
+		"lint": "tslint -e './node_modules/**/*.ts' -e './typings/**/*.ts' './**/*.ts'",
+		"semantic-release": "semantic-release",
+		"validate": "npm ls"
+	},
+	"devDependencies": {
+		"@semantic-release/changelog": "^3.0.4",
+		"@semantic-release/git": "^7.0.16",
+		"@semantic-release/npm": "^5.1.13",
+		"@types/bluebird": "^3.5.20",
+		"@types/bluebird-retry": "0.11.4",
+		"@types/chai": "^4.2.0",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/sinon": "^7.0.3",
+		"@types/sinon-chai": "^3.2.0",
+		"@types/vscode": "^1.37.0",
+		"bluebird": "^3.5.1",
+		"bluebird-retry": "^0.11.0",
+		"chai": "^4.2.0",
+		"mocha": "^6.2.0",
+		"precommit-hook-eslint": "^3.0.0",
+		"semantic-release": "^15.13.0",
+		"semantic-release-vsce": "^2.2.8",
+		"sinon": "^7.4.1",
+		"sinon-chai": "^3.3.0",
+		"tslint": "^5.19.0",
+		"tslint-no-unused-expression-chai": "^0.1.4",
+		"typescript": "^3.5.3",
+		"vscode-test": "^1.2.0"
+	},
+	"dependencies": {},
+	"pre-commit": [
+		"lint",
+		"test"
+	],
+	"__metadata": {
+		"id": "d637104e-1fd7-4063-98fc-8afe46012c9b",
+		"publisherId": "99ce6203-6065-4d93-983f-c3a097ebbfe2",
+		"publisherDisplayName": "Steffen Leistner"
+	}
+}

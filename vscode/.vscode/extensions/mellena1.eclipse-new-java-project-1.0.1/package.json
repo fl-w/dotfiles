@@ -1,0 +1,67 @@
+{
+	"name": "eclipse-new-java-project",
+	"displayName": "Eclipse New Java Project",
+	"description": "Emulates the new project button in eclipse to setup a Java project (including the classpath and .project files).",
+	"version": "1.0.1",
+	"publisher": "mellena1",
+	"author": {
+		"name": "Andrew Mellen"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"engines": {
+		"vscode": "^1.22.1"
+	},
+	"icon": "images/icon.png",
+	"homepage": "https://github.com/mellena1/vscode-eclipse-new-java-project",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mellena1/vscode-eclipse-new-java-project.git"
+	},
+	"bugs": {
+		"url": "https://github.com/mellena1/vscode-eclipse-new-java-project/issues"
+	},
+	"keywords": [
+		"java",
+		"eclipse"
+	],
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.NewJavaProject"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.NewJavaProject",
+				"title": "New Java Project"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^7.10.9",
+		"@types/rimraf": "^2.0.3",
+		"@types/xmlbuilder": "0.0.32",
+		"rimraf": "^2.7.1",
+		"tslint": "^5.20.1",
+		"typescript": "^2.9.2",
+		"vscode": "^1.1.36"
+	},
+	"dependencies": {
+		"xmlbuilder": "^10.1.1"
+	},
+	"__metadata": {
+		"id": "d2856d68-6ac4-4245-9399-3131a5d9ea1c",
+		"publisherId": "85baea97-d825-4b68-b6bc-3670c09da931",
+		"publisherDisplayName": "Andrew Mellen"
+	}
+}

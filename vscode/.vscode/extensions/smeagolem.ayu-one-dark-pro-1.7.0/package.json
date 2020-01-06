@@ -1,0 +1,56 @@
+{
+	"name": "ayu-one-dark-pro",
+	"displayName": "Ayu One Dark Pro",
+	"description": "Ayu Dark/Mirage with One Dark Pro",
+	"version": "1.7.0",
+	"icon": "images/icon.png",
+	"publisher": "smeagolem",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/smeagolem/ayu-one-dark-pro"
+	},
+	"engines": {
+		"vscode": "^1.30.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Ayu One Dark Pro | Mirage",
+				"uiTheme": "vs-dark",
+				"path": "./themes/ayu-one-dark-pro-mirage-color-theme.json"
+			},
+			{
+				"label": "Ayu One Dark Pro | Mirage Bordered",
+				"uiTheme": "vs-dark",
+				"path": "./themes/ayu-one-dark-pro-mirage-bordered-color-theme.json"
+			},
+			{
+				"label": "Ayu One Dark Pro | Dark",
+				"uiTheme": "vs-dark",
+				"path": "./themes/ayu-one-dark-pro-dark-color-theme.json"
+			},
+			{
+				"label": "Ayu One Dark Pro | Dark Bordered",
+				"uiTheme": "vs-dark",
+				"path": "./themes/ayu-one-dark-pro-dark-bordered-color-theme.json"
+			}
+		]
+	},
+	"scripts": {
+		"build": "node ./build.js",
+		"package": "vsce package"
+	},
+	"devDependencies": {
+		"Material-theme": "Binaryify/OneDark-Pro",
+		"ayu": "ayu-theme/vscode-ayu",
+		"vsce": "^1.55.0"
+	},
+	"__metadata": {
+		"id": "b159cb2d-8521-45d8-949a-c51cb6d31a1f",
+		"publisherId": "42bd8f9b-2c71-4e14-9a24-0a2c184e7ada",
+		"publisherDisplayName": "smeagolem"
+	}
+}

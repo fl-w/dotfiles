@@ -1,0 +1,11 @@
+Metadata-Version: 1.2
+Name: vscode-django
+Version: 1.0.0
+Summary: CLI helpers for the vscode extension
+Home-page: UNKNOWN
+Author: Baptiste Darthenay
+Author-email: baptiste.darthenay@gmail.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.4

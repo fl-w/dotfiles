@@ -1,0 +1,157 @@
+{
+	"name": "vscode-django",
+	"displayName": "Django",
+	"description": "Beautiful syntax and scoped snippets for perfectionists with deadlines",
+	"version": "0.19.0",
+	"publisher": "batisteo",
+	"license": "MIT",
+	"preview": true,
+	"icon": "images/vscode-django-icon.png",
+	"galleryBanner": {
+		"color": "#0c4b33",
+		"theme": "dark"
+	},
+	"engines": {
+		"vscode": "^1.28.0"
+	},
+	"recommendations": [
+		"ms-python.python"
+	],
+	"keywords": [
+		"python",
+		"django",
+		"web"
+	],
+	"categories": [
+		"Programming Languages",
+		"Snippets"
+	],
+	"homepage": "https://github.com/vscode-django/vscode-django",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vscode-django/vscode-django"
+	},
+	"bugs": {
+		"url": "https://github.com/vscode-django/vscode-django/issues"
+	},
+	"activationEvents": [
+		"onLanguage:django-html",
+		"onLanguage:django-txt",
+		"onLanguage:python"
+	],
+	"main": "./out/extension",
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"dependencies": {
+		"path": "^0.12.7",
+		"toml": "^2.3.3"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.48",
+		"@types/node": "^7.0.66",
+		"tslint": "^5.12",
+		"typescript": "^3.3",
+		"vscode": "1.1.28"
+	},
+	"contributes": {
+		"languages": [
+			{
+				"id": "django-html",
+				"aliases": [
+					"Django HTML",
+					"django"
+				],
+				"extensions": [
+					".html"
+				],
+				"firstLine": "{%",
+				"configuration": "./language-configuration.json"
+			},
+			{
+				"id": "django-txt",
+				"aliases": [
+					"Django txt",
+					"django"
+				],
+				"extensions": [
+					".txt"
+				],
+				"firstLine": "{%",
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "django-html",
+				"scopeName": "text.html.django",
+				"path": "./syntaxes/django-html.tmLanguage.json"
+			},
+			{
+				"language": "django-txt",
+				"scopeName": "text.django",
+				"path": "./syntaxes/django-txt.tmLanguage.json"
+			}
+		],
+		"snippets": [
+			{
+				"language": "django-html",
+				"path": "./snippets/templates/tags.json"
+			},
+			{
+				"language": "django-html",
+				"path": "./snippets/templates/filters.json"
+			},
+			{
+				"language": "django-txt",
+				"path": "./snippets/templates/tags.json"
+			},
+			{
+				"language": "django-txt",
+				"path": "./snippets/templates/filters.json"
+			}
+		],
+		"configurationDefaults": {
+			"[django-html]": {
+				"editor.quickSuggestions": {
+					"other": true,
+					"comments": true,
+					"strings": true
+				}
+			}
+		},
+		"configuration": {
+			"type": "object",
+			"title": "Django configuration",
+			"properties": {
+				"django.snippets.use": {
+					"type": "boolean",
+					"default": true,
+					"description": "Activates the Python snippets"
+				},
+				"django.snippets.exclude": {
+					"type": "array",
+					"default": [
+						"cms",
+						"wagtail"
+					],
+					"description": "Exclude Python snippets by their file name. Can be 'import', 'postgres'..."
+				},
+				"django.i18n": {
+					"type": "boolean",
+					"default": true,
+					"description": "Activates the i18n features for snippets (eg.: _(\"\"))"
+				}
+			}
+		}
+	},
+	"__metadata": {
+		"id": "4b41a5a8-170e-4156-b2c0-10efb270abbc",
+		"publisherId": "f87b3a80-eb31-405d-a27d-a2d02be8cc0f",
+		"publisherDisplayName": "Baptiste Darthenay"
+	}
+}

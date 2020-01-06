@@ -1,0 +1,79 @@
+{
+	"name": "MagicPython",
+	"version": "1.1.0",
+	"engines": {
+		"atom": "*",
+		"node": "*",
+		"vscode": "*"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MagicStack/MagicPython.git"
+	},
+	"bugs": {
+		"url": "https://github.com/MagicStack/MagicPython/issues"
+	},
+	"description": "Syntax highlighter for cutting edge Python.",
+	"license": "MIT",
+	"publisher": "magicstack",
+	"categories": [
+		"Languages"
+	],
+	"keywords": [
+		"python",
+		"highlighter",
+		"syntax",
+		"python3"
+	],
+	"icon": "icon.png",
+	"galleryBanner": {
+		"color": "#2c2c2c",
+		"theme": "dark"
+	},
+	"contributes": {
+		"//": [
+			"This section is for VSCode.",
+			"NOTE: remember to update grammar/src/MagicPython.syntax.yaml, too."
+		],
+		"languages": [
+			{
+				"id": "python",
+				"aliases": [
+					"MagicPython",
+					"python"
+				],
+				"extensions": [
+					".py",
+					".py3",
+					".rpy",
+					".pyw",
+					".cpy",
+					".pyi",
+					".SConstruct",
+					".Sconstruct",
+					".sconstruct",
+					".SConscript",
+					".gyp",
+					".gypi",
+					".wsgi"
+				]
+			}
+		],
+		"grammars": [
+			{
+				"language": "python",
+				"scopeName": "source.python",
+				"path": "./grammars/MagicPython.tmLanguage"
+			}
+		]
+	},
+	"devDependencies": {
+		"oniguruma": "^7.0.0",
+		"syntaxdev": "0.0.16"
+	},
+	"__metadata": {
+		"id": "1f5eb737-5496-44a3-a8a1-36a85eee4979",
+		"publisherId": "0f082869-2c63-4c83-b0e2-780d8e645f86",
+		"publisherDisplayName": "MagicStack Inc."
+	}
+}

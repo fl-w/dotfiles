@@ -1,0 +1,91 @@
+{
+	"name": "pubspec-assist",
+	"displayName": "Pubspec Assist",
+	"description": "Easily add dependencies to your Dart / Flutter project.",
+	"version": "0.3.6",
+	"publisher": "jeroen-meijer",
+	"author": {
+		"name": "Jeroen Meijer",
+		"url": "http://ikmaak.software/",
+		"email": "jeroenfkmeijer@gmail.com"
+	},
+	"engines": {
+		"vscode": "^1.27.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"pubspec assist",
+		"dart",
+		"flutter",
+		"dependency",
+		"package"
+	],
+	"icon": "images/logo.png",
+	"galleryBanner": {
+		"color": "#282c34",
+		"theme": "dark"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jeroen-meijer/pubspec-assist"
+	},
+	"homepage": "https://github.com/jeroen-meijer/pubspec-assist/blob/master/README.md",
+	"bugs": {
+		"url": "https://github.com/jeroen-meijer/pubspec-assist/issues",
+		"email": "jeroenfkmeijer@gmail.com"
+	},
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "pubspec-assist.openInput",
+				"title": "Add dependency",
+				"category": "Pubspec Assist"
+			}
+		],
+		"configuration": [
+			{
+				"type": "object",
+				"title": "Pubspec Assist configuration",
+				"properties": {
+					"pubspec-assist.autoAddPackage": {
+						"type": "boolean",
+						"default": true,
+						"description": "If a package with a very close match to your search is found, add it to the pubspec file automatically."
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^8.10.49",
+		"tslint": "^5.18.0",
+		"typescript": "^2.9.2",
+		"vscode": "^1.1.34"
+	},
+	"dependencies": {
+		"@types/js-yaml": "^3.12.1",
+		"fuse-js-latest": "^3.1.0",
+		"js-yaml": "^3.13.1",
+		"openurl": "^1.1.1",
+		"typed-rest-client": "^1.5.0"
+	},
+	"__metadata": {
+		"id": "91c5dadd-29e8-4ced-8d0b-6c4bf5901ee1",
+		"publisherId": "5c492341-d810-438f-97b4-d6613ee8361d",
+		"publisherDisplayName": "Jeroen Meijer"
+	}
+}

@@ -1,0 +1,47 @@
+{
+	"name": "i3",
+	"displayName": "i3",
+	"description": "Syntax definition for the i3wm configuration file",
+	"version": "0.0.1",
+	"publisher": "dcasella",
+	"engines": {
+		"vscode": "^1.19.0"
+	},
+	"categories": [
+		"Languages"
+	],
+	"keywords": [
+		"i3",
+		"i3wm"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "i3",
+				"aliases": [
+					"i3"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "i3",
+				"scopeName": "source.i3",
+				"path": "./syntaxes/i3.tmLanguage"
+			}
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/dcasella/i3wm-syntax.git"
+	},
+	"bugs": {
+		"url": "https://github.com/dcasella/i3wm-syntax/issues"
+	},
+	"__metadata": {
+		"id": "8cc39c3c-c7cc-4e34-9fd4-03ae7d38aa79",
+		"publisherId": "eed09e74-38d6-41c9-a32b-3b8526f88fee",
+		"publisherDisplayName": "Davide Casella"
+	}
+}

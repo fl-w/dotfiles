@@ -1,0 +1,19 @@
+{
+    "name": "jinja-yaml",
+    "scopeName": "text.yaml.jinja",
+    "comment": "Jinja Template Engine in YAML",
+    "fileTypes": [
+        "j2",
+        "yml",
+        "yaml"
+    ],
+    "firstLineMatch": "^{% extends [\"'][^\"']+[\"'] %}",
+    "patterns": [
+        {
+            "include": "source.jinja"
+        },
+        {
+            "include": "source.yaml"
+        }
+    ]
+}

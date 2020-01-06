@@ -1,0 +1,2897 @@
+{
+    "bx-accessibility": {
+        "body": "<${1:i} className=\"bx bx-accessibility$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-accessibility"
+    },
+    "bx-add-to-queue": {
+        "body": "<${1:i} className=\"bx bx-add-to-queue$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-add-to-queue"
+    },
+    "bx-adjust": {
+        "body": "<${1:i} className=\"bx bx-adjust$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-adjust"
+    },
+    "bx-alarm": {
+        "body": "<${1:i} className=\"bx bx-alarm$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-alarm"
+    },
+    "bx-alarm-add": {
+        "body": "<${1:i} className=\"bx bx-alarm-add$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-alarm-add"
+    },
+    "bx-alarm-off": {
+        "body": "<${1:i} className=\"bx bx-alarm-off$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-alarm-off"
+    },
+    "bx-album": {
+        "body": "<${1:i} className=\"bx bx-album$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-album"
+    },
+    "bx-align-justify": {
+        "body": "<${1:i} className=\"bx bx-align-justify$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-align-justify"
+    },
+    "bx-align-left": {
+        "body": "<${1:i} className=\"bx bx-align-left$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-align-left"
+    },
+    "bx-align-middle": {
+        "body": "<${1:i} className=\"bx bx-align-middle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-align-middle"
+    },
+    "bx-align-right": {
+        "body": "<${1:i} className=\"bx bx-align-right$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-align-right"
+    },
+    "bx-analyse": {
+        "body": "<${1:i} className=\"bx bx-analyse$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-analyse"
+    },
+    "bx-anchor": {
+        "body": "<${1:i} className=\"bx bx-anchor$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-anchor"
+    },
+    "bx-angry": {
+        "body": "<${1:i} className=\"bx bx-angry$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-angry"
+    },
+    "bx-aperture": {
+        "body": "<${1:i} className=\"bx bx-aperture$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-aperture"
+    },
+    "bx-archive": {
+        "body": "<${1:i} className=\"bx bx-archive$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-archive"
+    },
+    "bx-archive-in": {
+        "body": "<${1:i} className=\"bx bx-archive-in$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-archive-in"
+    },
+    "bx-archive-out": {
+        "body": "<${1:i} className=\"bx bx-archive-out$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-archive-out"
+    },
+    "bx-area": {
+        "body": "<${1:i} className=\"bx bx-area$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-area"
+    },
+    "bx-arrow-back": {
+        "body": "<${1:i} className=\"bx bx-arrow-back$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-arrow-back"
+    },
+    "bx-at": {
+        "body": "<${1:i} className=\"bx bx-at$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-at"
+    },
+    "bx-award": {
+        "body": "<${1:i} className=\"bx bx-award$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-award"
+    },
+    "bx-badge": {
+        "body": "<${1:i} className=\"bx bx-badge$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-badge"
+    },
+    "bx-badge-check": {
+        "body": "<${1:i} className=\"bx bx-badge-check$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-badge-check"
+    },
+    "bx-ball": {
+        "body": "<${1:i} className=\"bx bx-ball$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-ball"
+    },
+    "bx-band-aid": {
+        "body": "<${1:i} className=\"bx bx-band-aid$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-band-aid"
+    },
+    "bx-bar-chart": {
+        "body": "<${1:i} className=\"bx bx-bar-chart$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bar-chart"
+    },
+    "bx-bar-chart-alt": {
+        "body": "<${1:i} className=\"bx bx-bar-chart-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bar-chart-alt"
+    },
+    "bx-bar-chart-alt-2": {
+        "body": "<${1:i} className=\"bx bx-bar-chart-alt-2$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bar-chart-alt-2"
+    },
+    "bx-bar-chart-square": {
+        "body": "<${1:i} className=\"bx bx-bar-chart-square$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bar-chart-square"
+    },
+    "bx-barcode": {
+        "body": "<${1:i} className=\"bx bx-barcode$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-barcode"
+    },
+    "bx-basket": {
+        "body": "<${1:i} className=\"bx bx-basket$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-basket"
+    },
+    "bx-basketball": {
+        "body": "<${1:i} className=\"bx bx-basketball$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-basketball"
+    },
+    "bx-bath": {
+        "body": "<${1:i} className=\"bx bx-bath$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bath"
+    },
+    "bx-battery": {
+        "body": "<${1:i} className=\"bx bx-battery$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-battery"
+    },
+    "bx-bed": {
+        "body": "<${1:i} className=\"bx bx-bed$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bed"
+    },
+    "bx-bell": {
+        "body": "<${1:i} className=\"bx bx-bell$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bell"
+    },
+    "bx-bell-minus": {
+        "body": "<${1:i} className=\"bx bx-bell-minus$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bell-minus"
+    },
+    "bx-bell-off": {
+        "body": "<${1:i} className=\"bx bx-bell-off$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bell-off"
+    },
+    "bx-bell-plus": {
+        "body": "<${1:i} className=\"bx bx-bell-plus$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bell-plus"
+    },
+    "bx-bitcoin": {
+        "body": "<${1:i} className=\"bx bx-bitcoin$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bitcoin"
+    },
+    "bx-block": {
+        "body": "<${1:i} className=\"bx bx-block$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-block"
+    },
+    "bx-bluetooth": {
+        "body": "<${1:i} className=\"bx bx-bluetooth$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bluetooth"
+    },
+    "bx-body": {
+        "body": "<${1:i} className=\"bx bx-body$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-body"
+    },
+    "bx-bold": {
+        "body": "<${1:i} className=\"bx bx-bold$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bold"
+    },
+    "bx-bolt-circle": {
+        "body": "<${1:i} className=\"bx bx-bolt-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bolt-circle"
+    },
+    "bx-book": {
+        "body": "<${1:i} className=\"bx bx-book$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-book"
+    },
+    "bx-book-bookmark": {
+        "body": "<${1:i} className=\"bx bx-book-bookmark$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-book-bookmark"
+    },
+    "bx-book-content": {
+        "body": "<${1:i} className=\"bx bx-book-content$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-book-content"
+    },
+    "bx-bookmark": {
+        "body": "<${1:i} className=\"bx bx-bookmark$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bookmark"
+    },
+    "bx-bookmark-minus": {
+        "body": "<${1:i} className=\"bx bx-bookmark-minus$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bookmark-minus"
+    },
+    "bx-bookmark-plus": {
+        "body": "<${1:i} className=\"bx bx-bookmark-plus$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bookmark-plus"
+    },
+    "bx-bookmarks": {
+        "body": "<${1:i} className=\"bx bx-bookmarks$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bookmarks"
+    },
+    "bx-book-open": {
+        "body": "<${1:i} className=\"bx bx-book-open$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-book-open"
+    },
+    "bx-border-all": {
+        "body": "<${1:i} className=\"bx bx-border-all$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-border-all"
+    },
+    "bx-border-bottom": {
+        "body": "<${1:i} className=\"bx bx-border-bottom$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-border-bottom"
+    },
+    "bx-border-left": {
+        "body": "<${1:i} className=\"bx bx-border-left$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-border-left"
+    },
+    "bx-border-radius": {
+        "body": "<${1:i} className=\"bx bx-border-radius$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-border-radius"
+    },
+    "bx-border-right": {
+        "body": "<${1:i} className=\"bx bx-border-right$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-border-right"
+    },
+    "bx-border-top": {
+        "body": "<${1:i} className=\"bx bx-border-top$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-border-top"
+    },
+    "bx-bot": {
+        "body": "<${1:i} className=\"bx bx-bot$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bot"
+    },
+    "bx-bowling-ball": {
+        "body": "<${1:i} className=\"bx bx-bowling-ball$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bowling-ball"
+    },
+    "bx-box": {
+        "body": "<${1:i} className=\"bx bx-box$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-box"
+    },
+    "bx-briefcase": {
+        "body": "<${1:i} className=\"bx bx-briefcase$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-briefcase"
+    },
+    "bx-briefcase-alt": {
+        "body": "<${1:i} className=\"bx bx-briefcase-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-briefcase-alt"
+    },
+    "bx-briefcase-alt-2": {
+        "body": "<${1:i} className=\"bx bx-briefcase-alt-2$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-briefcase-alt-2"
+    },
+    "bx-brightness": {
+        "body": "<${1:i} className=\"bx bx-brightness$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-brightness"
+    },
+    "bx-brightness-half": {
+        "body": "<${1:i} className=\"bx bx-brightness-half$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-brightness-half"
+    },
+    "bx-broadcast": {
+        "body": "<${1:i} className=\"bx bx-broadcast$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-broadcast"
+    },
+    "bx-brush": {
+        "body": "<${1:i} className=\"bx bx-brush$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-brush"
+    },
+    "bx-brush-alt": {
+        "body": "<${1:i} className=\"bx bx-brush-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-brush-alt"
+    },
+    "bx-bug": {
+        "body": "<${1:i} className=\"bx bx-bug$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bug"
+    },
+    "bx-bug-alt": {
+        "body": "<${1:i} className=\"bx bx-bug-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bug-alt"
+    },
+    "bx-building": {
+        "body": "<${1:i} className=\"bx bx-building$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-building"
+    },
+    "bx-building-house": {
+        "body": "<${1:i} className=\"bx bx-building-house$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-building-house"
+    },
+    "bx-buildings": {
+        "body": "<${1:i} className=\"bx bx-buildings$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-buildings"
+    },
+    "bx-bulb": {
+        "body": "<${1:i} className=\"bx bx-bulb$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bulb"
+    },
+    "bx-bullseye": {
+        "body": "<${1:i} className=\"bx bx-bullseye$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bullseye"
+    },
+    "bx-buoy": {
+        "body": "<${1:i} className=\"bx bx-buoy$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-buoy"
+    },
+    "bx-bus": {
+        "body": "<${1:i} className=\"bx bx-bus$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-bus"
+    },
+    "bx-cake": {
+        "body": "<${1:i} className=\"bx bx-cake$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cake"
+    },
+    "bx-calculator": {
+        "body": "<${1:i} className=\"bx bx-calculator$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-calculator"
+    },
+    "bx-calendar": {
+        "body": "<${1:i} className=\"bx bx-calendar$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-calendar"
+    },
+    "bx-calendar-alt": {
+        "body": "<${1:i} className=\"bx bx-calendar-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-calendar-alt"
+    },
+    "bx-calendar-check": {
+        "body": "<${1:i} className=\"bx bx-calendar-check$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-calendar-check"
+    },
+    "bx-calendar-event": {
+        "body": "<${1:i} className=\"bx bx-calendar-event$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-calendar-event"
+    },
+    "bx-calendar-minus": {
+        "body": "<${1:i} className=\"bx bx-calendar-minus$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-calendar-minus"
+    },
+    "bx-calendar-plus": {
+        "body": "<${1:i} className=\"bx bx-calendar-plus$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-calendar-plus"
+    },
+    "bx-calendar-x": {
+        "body": "<${1:i} className=\"bx bx-calendar-x$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-calendar-x"
+    },
+    "bx-camera": {
+        "body": "<${1:i} className=\"bx bx-camera$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-camera"
+    },
+    "bx-camera-off": {
+        "body": "<${1:i} className=\"bx bx-camera-off$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-camera-off"
+    },
+    "bx-captions": {
+        "body": "<${1:i} className=\"bx bx-captions$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-captions"
+    },
+    "bx-car": {
+        "body": "<${1:i} className=\"bx bx-car$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-car"
+    },
+    "bx-card": {
+        "body": "<${1:i} className=\"bx bx-card$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-card"
+    },
+    "bx-caret-down": {
+        "body": "<${1:i} className=\"bx bx-caret-down$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-caret-down"
+    },
+    "bx-caret-left": {
+        "body": "<${1:i} className=\"bx bx-caret-left$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-caret-left"
+    },
+    "bx-caret-right": {
+        "body": "<${1:i} className=\"bx bx-caret-right$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-caret-right"
+    },
+    "bx-caret-up": {
+        "body": "<${1:i} className=\"bx bx-caret-up$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-caret-up"
+    },
+    "bx-carousel": {
+        "body": "<${1:i} className=\"bx bx-carousel$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-carousel"
+    },
+    "bx-cart": {
+        "body": "<${1:i} className=\"bx bx-cart$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cart"
+    },
+    "bx-cart-alt": {
+        "body": "<${1:i} className=\"bx bx-cart-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cart-alt"
+    },
+    "bx-cast": {
+        "body": "<${1:i} className=\"bx bx-cast$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cast"
+    },
+    "bx-certification": {
+        "body": "<${1:i} className=\"bx bx-certification$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-certification"
+    },
+    "bx-chalkboard": {
+        "body": "<${1:i} className=\"bx bx-chalkboard$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-chalkboard"
+    },
+    "bx-chart": {
+        "body": "<${1:i} className=\"bx bx-chart$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-chart"
+    },
+    "bx-chat": {
+        "body": "<${1:i} className=\"bx bx-chat$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-chat"
+    },
+    "bx-check": {
+        "body": "<${1:i} className=\"bx bx-check$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-check"
+    },
+    "bx-checkbox": {
+        "body": "<${1:i} className=\"bx bx-checkbox$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-checkbox"
+    },
+    "bx-checkbox-checked": {
+        "body": "<${1:i} className=\"bx bx-checkbox-checked$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-checkbox-checked"
+    },
+    "bx-checkbox-square": {
+        "body": "<${1:i} className=\"bx bx-checkbox-square$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-checkbox-square"
+    },
+    "bx-check-circle": {
+        "body": "<${1:i} className=\"bx bx-check-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-check-circle"
+    },
+    "bx-check-double": {
+        "body": "<${1:i} className=\"bx bx-check-double$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-check-double"
+    },
+    "bx-check-shield": {
+        "body": "<${1:i} className=\"bx bx-check-shield$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-check-shield"
+    },
+    "bx-check-square": {
+        "body": "<${1:i} className=\"bx bx-check-square$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-check-square"
+    },
+    "bx-chevron-down": {
+        "body": "<${1:i} className=\"bx bx-chevron-down$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-chevron-down"
+    },
+    "bx-chevron-left": {
+        "body": "<${1:i} className=\"bx bx-chevron-left$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-chevron-left"
+    },
+    "bx-chevron-right": {
+        "body": "<${1:i} className=\"bx bx-chevron-right$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-chevron-right"
+    },
+    "bx-chevrons-down": {
+        "body": "<${1:i} className=\"bx bx-chevrons-down$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-chevrons-down"
+    },
+    "bx-chevrons-left": {
+        "body": "<${1:i} className=\"bx bx-chevrons-left$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-chevrons-left"
+    },
+    "bx-chevrons-right": {
+        "body": "<${1:i} className=\"bx bx-chevrons-right$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-chevrons-right"
+    },
+    "bx-chevrons-up": {
+        "body": "<${1:i} className=\"bx bx-chevrons-up$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-chevrons-up"
+    },
+    "bx-chevron-up": {
+        "body": "<${1:i} className=\"bx bx-chevron-up$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-chevron-up"
+    },
+    "bx-chip": {
+        "body": "<${1:i} className=\"bx bx-chip$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-chip"
+    },
+    "bx-circle": {
+        "body": "<${1:i} className=\"bx bx-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-circle"
+    },
+    "bx-clinic": {
+        "body": "<${1:i} className=\"bx bx-clinic$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-clinic"
+    },
+    "bx-clipboard": {
+        "body": "<${1:i} className=\"bx bx-clipboard$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-clipboard"
+    },
+    "bx-closet": {
+        "body": "<${1:i} className=\"bx bx-closet$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-closet"
+    },
+    "bx-cloud": {
+        "body": "<${1:i} className=\"bx bx-cloud$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cloud"
+    },
+    "bx-cloud-download": {
+        "body": "<${1:i} className=\"bx bx-cloud-download$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cloud-download"
+    },
+    "bx-cloud-drizzle": {
+        "body": "<${1:i} className=\"bx bx-cloud-drizzle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cloud-drizzle"
+    },
+    "bx-cloud-lightning": {
+        "body": "<${1:i} className=\"bx bx-cloud-lightning$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cloud-lightning"
+    },
+    "bx-cloud-light-rain": {
+        "body": "<${1:i} className=\"bx bx-cloud-light-rain$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cloud-light-rain"
+    },
+    "bx-cloud-rain": {
+        "body": "<${1:i} className=\"bx bx-cloud-rain$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cloud-rain"
+    },
+    "bx-cloud-snow": {
+        "body": "<${1:i} className=\"bx bx-cloud-snow$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cloud-snow"
+    },
+    "bx-cloud-upload": {
+        "body": "<${1:i} className=\"bx bx-cloud-upload$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cloud-upload"
+    },
+    "bx-code": {
+        "body": "<${1:i} className=\"bx bx-code$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-code"
+    },
+    "bx-code-alt": {
+        "body": "<${1:i} className=\"bx bx-code-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-code-alt"
+    },
+    "bx-code-block": {
+        "body": "<${1:i} className=\"bx bx-code-block$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-code-block"
+    },
+    "bx-code-curly": {
+        "body": "<${1:i} className=\"bx bx-code-curly$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-code-curly"
+    },
+    "bx-coffee": {
+        "body": "<${1:i} className=\"bx bx-coffee$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-coffee"
+    },
+    "bx-cog": {
+        "body": "<${1:i} className=\"bx bx-cog$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cog"
+    },
+    "bx-collapse": {
+        "body": "<${1:i} className=\"bx bx-collapse$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-collapse"
+    },
+    "bx-collection": {
+        "body": "<${1:i} className=\"bx bx-collection$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-collection"
+    },
+    "bx-columns": {
+        "body": "<${1:i} className=\"bx bx-columns$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-columns"
+    },
+    "bx-command": {
+        "body": "<${1:i} className=\"bx bx-command$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-command"
+    },
+    "bx-comment": {
+        "body": "<${1:i} className=\"bx bx-comment$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-comment"
+    },
+    "bx-comment-dots": {
+        "body": "<${1:i} className=\"bx bx-comment-dots$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-comment-dots"
+    },
+    "bx-compass": {
+        "body": "<${1:i} className=\"bx bx-compass$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-compass"
+    },
+    "bx-confused": {
+        "body": "<${1:i} className=\"bx bx-confused$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-confused"
+    },
+    "bx-conversation": {
+        "body": "<${1:i} className=\"bx bx-conversation$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-conversation"
+    },
+    "bx-cool": {
+        "body": "<${1:i} className=\"bx bx-cool$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cool"
+    },
+    "bx-copy": {
+        "body": "<${1:i} className=\"bx bx-copy$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-copy"
+    },
+    "bx-copy-alt": {
+        "body": "<${1:i} className=\"bx bx-copy-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-copy-alt"
+    },
+    "bx-copyright": {
+        "body": "<${1:i} className=\"bx bx-copyright$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-copyright"
+    },
+    "bx-credit-card": {
+        "body": "<${1:i} className=\"bx bx-credit-card$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-credit-card"
+    },
+    "bx-credit-card-alt": {
+        "body": "<${1:i} className=\"bx bx-credit-card-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-credit-card-alt"
+    },
+    "bx-crop": {
+        "body": "<${1:i} className=\"bx bx-crop$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-crop"
+    },
+    "bx-crosshair": {
+        "body": "<${1:i} className=\"bx bx-crosshair$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-crosshair"
+    },
+    "bx-crown": {
+        "body": "<${1:i} className=\"bx bx-crown$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-crown"
+    },
+    "bx-cube": {
+        "body": "<${1:i} className=\"bx bx-cube$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cube"
+    },
+    "bx-cube-alt": {
+        "body": "<${1:i} className=\"bx bx-cube-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cube-alt"
+    },
+    "bx-cuboid": {
+        "body": "<${1:i} className=\"bx bx-cuboid$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cuboid"
+    },
+    "bx-customize": {
+        "body": "<${1:i} className=\"bx bx-customize$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-customize"
+    },
+    "bx-cut": {
+        "body": "<${1:i} className=\"bx bx-cut$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cut"
+    },
+    "bx-cycling": {
+        "body": "<${1:i} className=\"bx bx-cycling$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cycling"
+    },
+    "bx-cylinder": {
+        "body": "<${1:i} className=\"bx bx-cylinder$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-cylinder"
+    },
+    "bx-data": {
+        "body": "<${1:i} className=\"bx bx-data$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-data"
+    },
+    "bx-desktop": {
+        "body": "<${1:i} className=\"bx bx-desktop$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-desktop"
+    },
+    "bx-detail": {
+        "body": "<${1:i} className=\"bx bx-detail$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-detail"
+    },
+    "bx-devices": {
+        "body": "<${1:i} className=\"bx bx-devices$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-devices"
+    },
+    "bx-dialpad": {
+        "body": "<${1:i} className=\"bx bx-dialpad$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dialpad"
+    },
+    "bx-dialpad-alt": {
+        "body": "<${1:i} className=\"bx bx-dialpad-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dialpad-alt"
+    },
+    "bx-diamond": {
+        "body": "<${1:i} className=\"bx bx-diamond$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-diamond"
+    },
+    "bx-directions": {
+        "body": "<${1:i} className=\"bx bx-directions$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-directions"
+    },
+    "bx-disc": {
+        "body": "<${1:i} className=\"bx bx-disc$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-disc"
+    },
+    "bx-dish": {
+        "body": "<${1:i} className=\"bx bx-dish$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dish"
+    },
+    "bx-dislike": {
+        "body": "<${1:i} className=\"bx bx-dislike$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dislike"
+    },
+    "bx-dizzy": {
+        "body": "<${1:i} className=\"bx bx-dizzy$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dizzy"
+    },
+    "bx-dna": {
+        "body": "<${1:i} className=\"bx bx-dna$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dna"
+    },
+    "bx-dock-bottom": {
+        "body": "<${1:i} className=\"bx bx-dock-bottom$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dock-bottom"
+    },
+    "bx-dock-left": {
+        "body": "<${1:i} className=\"bx bx-dock-left$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dock-left"
+    },
+    "bx-dock-right": {
+        "body": "<${1:i} className=\"bx bx-dock-right$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dock-right"
+    },
+    "bx-dock-top": {
+        "body": "<${1:i} className=\"bx bx-dock-top$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dock-top"
+    },
+    "bx-dollar": {
+        "body": "<${1:i} className=\"bx bx-dollar$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dollar"
+    },
+    "bx-dollar-circle": {
+        "body": "<${1:i} className=\"bx bx-dollar-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dollar-circle"
+    },
+    "bx-dots-horizontal": {
+        "body": "<${1:i} className=\"bx bx-dots-horizontal$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dots-horizontal"
+    },
+    "bx-dots-horizontal-rounded": {
+        "body": "<${1:i} className=\"bx bx-dots-horizontal-rounded$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dots-horizontal-rounded"
+    },
+    "bx-dots-vertical": {
+        "body": "<${1:i} className=\"bx bx-dots-vertical$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dots-vertical"
+    },
+    "bx-dots-vertical-rounded": {
+        "body": "<${1:i} className=\"bx bx-dots-vertical-rounded$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dots-vertical-rounded"
+    },
+    "bx-doughnut-chart": {
+        "body": "<${1:i} className=\"bx bx-doughnut-chart$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-doughnut-chart"
+    },
+    "bx-down-arrow": {
+        "body": "<${1:i} className=\"bx bx-down-arrow$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-down-arrow"
+    },
+    "bx-down-arrow-alt": {
+        "body": "<${1:i} className=\"bx bx-down-arrow-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-down-arrow-alt"
+    },
+    "bx-down-arrow-circle": {
+        "body": "<${1:i} className=\"bx bx-down-arrow-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-down-arrow-circle"
+    },
+    "bx-download": {
+        "body": "<${1:i} className=\"bx bx-download$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-download"
+    },
+    "bx-downvote": {
+        "body": "<${1:i} className=\"bx bx-downvote$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-downvote"
+    },
+    "bx-droplet": {
+        "body": "<${1:i} className=\"bx bx-droplet$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-droplet"
+    },
+    "bx-dumbbell": {
+        "body": "<${1:i} className=\"bx bx-dumbbell$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-dumbbell"
+    },
+    "bx-duplicate": {
+        "body": "<${1:i} className=\"bx bx-duplicate$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-duplicate"
+    },
+    "bx-edit": {
+        "body": "<${1:i} className=\"bx bx-edit$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-edit"
+    },
+    "bx-edit-alt": {
+        "body": "<${1:i} className=\"bx bx-edit-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-edit-alt"
+    },
+    "bx-envelope": {
+        "body": "<${1:i} className=\"bx bx-envelope$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-envelope"
+    },
+    "bx-equalizer": {
+        "body": "<${1:i} className=\"bx bx-equalizer$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-equalizer"
+    },
+    "bx-error": {
+        "body": "<${1:i} className=\"bx bx-error$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-error"
+    },
+    "bx-error-alt": {
+        "body": "<${1:i} className=\"bx bx-error-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-error-alt"
+    },
+    "bx-error-circle": {
+        "body": "<${1:i} className=\"bx bx-error-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-error-circle"
+    },
+    "bx-euro": {
+        "body": "<${1:i} className=\"bx bx-euro$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-euro"
+    },
+    "bx-exit": {
+        "body": "<${1:i} className=\"bx bx-exit$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-exit"
+    },
+    "bx-exit-fullscreen": {
+        "body": "<${1:i} className=\"bx bx-exit-fullscreen$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-exit-fullscreen"
+    },
+    "bx-expand": {
+        "body": "<${1:i} className=\"bx bx-expand$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-expand"
+    },
+    "bx-export": {
+        "body": "<${1:i} className=\"bx bx-export$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-export"
+    },
+    "bx-extension": {
+        "body": "<${1:i} className=\"bx bx-extension$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-extension"
+    },
+    "bx-face": {
+        "body": "<${1:i} className=\"bx bx-face$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-face"
+    },
+    "bx-fast-forward": {
+        "body": "<${1:i} className=\"bx bx-fast-forward$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-fast-forward"
+    },
+    "bx-fast-forward-circle": {
+        "body": "<${1:i} className=\"bx bx-fast-forward-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-fast-forward-circle"
+    },
+    "bx-female": {
+        "body": "<${1:i} className=\"bx bx-female$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-female"
+    },
+    "bx-female-sign": {
+        "body": "<${1:i} className=\"bx bx-female-sign$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-female-sign"
+    },
+    "bx-file": {
+        "body": "<${1:i} className=\"bx bx-file$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-file"
+    },
+    "bx-file-blank": {
+        "body": "<${1:i} className=\"bx bx-file-blank$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-file-blank"
+    },
+    "bx-file-find": {
+        "body": "<${1:i} className=\"bx bx-file-find$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-file-find"
+    },
+    "bx-film": {
+        "body": "<${1:i} className=\"bx bx-film$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-film"
+    },
+    "bx-filter": {
+        "body": "<${1:i} className=\"bx bx-filter$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-filter"
+    },
+    "bx-filter-alt": {
+        "body": "<${1:i} className=\"bx bx-filter-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-filter-alt"
+    },
+    "bx-fingerprint": {
+        "body": "<${1:i} className=\"bx bx-fingerprint$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-fingerprint"
+    },
+    "bx-first-aid": {
+        "body": "<${1:i} className=\"bx bx-first-aid$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-first-aid"
+    },
+    "bx-first-page": {
+        "body": "<${1:i} className=\"bx bx-first-page$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-first-page"
+    },
+    "bx-flag": {
+        "body": "<${1:i} className=\"bx bx-flag$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-flag"
+    },
+    "bx-folder": {
+        "body": "<${1:i} className=\"bx bx-folder$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-folder"
+    },
+    "bx-folder-minus": {
+        "body": "<${1:i} className=\"bx bx-folder-minus$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-folder-minus"
+    },
+    "bx-folder-open": {
+        "body": "<${1:i} className=\"bx bx-folder-open$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-folder-open"
+    },
+    "bx-folder-plus": {
+        "body": "<${1:i} className=\"bx bx-folder-plus$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-folder-plus"
+    },
+    "bx-font": {
+        "body": "<${1:i} className=\"bx bx-font$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-font"
+    },
+    "bx-font-color": {
+        "body": "<${1:i} className=\"bx bx-font-color$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-font-color"
+    },
+    "bx-font-family": {
+        "body": "<${1:i} className=\"bx bx-font-family$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-font-family"
+    },
+    "bx-font-size": {
+        "body": "<${1:i} className=\"bx bx-font-size$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-font-size"
+    },
+    "bx-food-menu": {
+        "body": "<${1:i} className=\"bx bx-food-menu$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-food-menu"
+    },
+    "bx-food-tag": {
+        "body": "<${1:i} className=\"bx bx-food-tag$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-food-tag"
+    },
+    "bx-football": {
+        "body": "<${1:i} className=\"bx bx-football$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-football"
+    },
+    "bx-fridge": {
+        "body": "<${1:i} className=\"bx bx-fridge$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-fridge"
+    },
+    "bx-fullscreen": {
+        "body": "<${1:i} className=\"bx bx-fullscreen$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-fullscreen"
+    },
+    "bx-gas-pump": {
+        "body": "<${1:i} className=\"bx bx-gas-pump$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-gas-pump"
+    },
+    "bx-ghost": {
+        "body": "<${1:i} className=\"bx bx-ghost$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-ghost"
+    },
+    "bx-gift": {
+        "body": "<${1:i} className=\"bx bx-gift$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-gift"
+    },
+    "bx-git-branch": {
+        "body": "<${1:i} className=\"bx bx-git-branch$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-git-branch"
+    },
+    "bx-git-commit": {
+        "body": "<${1:i} className=\"bx bx-git-commit$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-git-commit"
+    },
+    "bx-git-compare": {
+        "body": "<${1:i} className=\"bx bx-git-compare$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-git-compare"
+    },
+    "bx-git-merge": {
+        "body": "<${1:i} className=\"bx bx-git-merge$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-git-merge"
+    },
+    "bx-git-pull-request": {
+        "body": "<${1:i} className=\"bx bx-git-pull-request$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-git-pull-request"
+    },
+    "bx-git-repo-forked": {
+        "body": "<${1:i} className=\"bx bx-git-repo-forked$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-git-repo-forked"
+    },
+    "bx-globe": {
+        "body": "<${1:i} className=\"bx bx-globe$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-globe"
+    },
+    "bx-globe-alt": {
+        "body": "<${1:i} className=\"bx bx-globe-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-globe-alt"
+    },
+    "bx-grid": {
+        "body": "<${1:i} className=\"bx bx-grid$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-grid"
+    },
+    "bx-grid-alt": {
+        "body": "<${1:i} className=\"bx bx-grid-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-grid-alt"
+    },
+    "bx-grid-horizontal": {
+        "body": "<${1:i} className=\"bx bx-grid-horizontal$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-grid-horizontal"
+    },
+    "bx-grid-small": {
+        "body": "<${1:i} className=\"bx bx-grid-small$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-grid-small"
+    },
+    "bx-grid-vertical": {
+        "body": "<${1:i} className=\"bx bx-grid-vertical$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-grid-vertical"
+    },
+    "bx-group": {
+        "body": "<${1:i} className=\"bx bx-group$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-group"
+    },
+    "bx-handicap": {
+        "body": "<${1:i} className=\"bx bx-handicap$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-handicap"
+    },
+    "bx-happy": {
+        "body": "<${1:i} className=\"bx bx-happy$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-happy"
+    },
+    "bx-happy-alt": {
+        "body": "<${1:i} className=\"bx bx-happy-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-happy-alt"
+    },
+    "bx-happy-beaming": {
+        "body": "<${1:i} className=\"bx bx-happy-beaming$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-happy-beaming"
+    },
+    "bx-happy-heart-eyes": {
+        "body": "<${1:i} className=\"bx bx-happy-heart-eyes$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-happy-heart-eyes"
+    },
+    "bx-hash": {
+        "body": "<${1:i} className=\"bx bx-hash$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-hash"
+    },
+    "bx-hdd": {
+        "body": "<${1:i} className=\"bx bx-hdd$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-hdd"
+    },
+    "bx-heading": {
+        "body": "<${1:i} className=\"bx bx-heading$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-heading"
+    },
+    "bx-headphone": {
+        "body": "<${1:i} className=\"bx bx-headphone$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-headphone"
+    },
+    "bx-health": {
+        "body": "<${1:i} className=\"bx bx-health$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-health"
+    },
+    "bx-heart": {
+        "body": "<${1:i} className=\"bx bx-heart$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-heart"
+    },
+    "bx-help-circle": {
+        "body": "<${1:i} className=\"bx bx-help-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-help-circle"
+    },
+    "bx-hide": {
+        "body": "<${1:i} className=\"bx bx-hide$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-hide"
+    },
+    "bx-highlight": {
+        "body": "<${1:i} className=\"bx bx-highlight$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-highlight"
+    },
+    "bx-history": {
+        "body": "<${1:i} className=\"bx bx-history$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-history"
+    },
+    "bx-hive": {
+        "body": "<${1:i} className=\"bx bx-hive$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-hive"
+    },
+    "bx-home": {
+        "body": "<${1:i} className=\"bx bx-home$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-home"
+    },
+    "bx-home-alt": {
+        "body": "<${1:i} className=\"bx bx-home-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-home-alt"
+    },
+    "bx-home-circle": {
+        "body": "<${1:i} className=\"bx bx-home-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-home-circle"
+    },
+    "bx-horizontal-center": {
+        "body": "<${1:i} className=\"bx bx-horizontal-center$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-horizontal-center"
+    },
+    "bx-hotel": {
+        "body": "<${1:i} className=\"bx bx-hotel$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-hotel"
+    },
+    "bx-hourglass": {
+        "body": "<${1:i} className=\"bx bx-hourglass$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-hourglass"
+    },
+    "bx-id-card": {
+        "body": "<${1:i} className=\"bx bx-id-card$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-id-card"
+    },
+    "bx-image": {
+        "body": "<${1:i} className=\"bx bx-image$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-image"
+    },
+    "bx-image-add": {
+        "body": "<${1:i} className=\"bx bx-image-add$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-image-add"
+    },
+    "bx-image-alt": {
+        "body": "<${1:i} className=\"bx bx-image-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-image-alt"
+    },
+    "bx-images": {
+        "body": "<${1:i} className=\"bx bx-images$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-images"
+    },
+    "bx-import": {
+        "body": "<${1:i} className=\"bx bx-import$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-import"
+    },
+    "bx-infinite": {
+        "body": "<${1:i} className=\"bx bx-infinite$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-infinite"
+    },
+    "bx-info-circle": {
+        "body": "<${1:i} className=\"bx bx-info-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-info-circle"
+    },
+    "bx-italic": {
+        "body": "<${1:i} className=\"bx bx-italic$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-italic"
+    },
+    "bx-joystick": {
+        "body": "<${1:i} className=\"bx bx-joystick$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-joystick"
+    },
+    "bx-joystick-alt": {
+        "body": "<${1:i} className=\"bx bx-joystick-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-joystick-alt"
+    },
+    "bx-joystick-button": {
+        "body": "<${1:i} className=\"bx bx-joystick-button$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-joystick-button"
+    },
+    "bx-key": {
+        "body": "<${1:i} className=\"bx bx-key$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-key"
+    },
+    "bx-label": {
+        "body": "<${1:i} className=\"bx bx-label$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-label"
+    },
+    "bx-landscape": {
+        "body": "<${1:i} className=\"bx bx-landscape$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-landscape"
+    },
+    "bx-laptop": {
+        "body": "<${1:i} className=\"bx bx-laptop$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-laptop"
+    },
+    "bx-last-page": {
+        "body": "<${1:i} className=\"bx bx-last-page$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-last-page"
+    },
+    "bx-laugh": {
+        "body": "<${1:i} className=\"bx bx-laugh$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-laugh"
+    },
+    "bx-layer": {
+        "body": "<${1:i} className=\"bx bx-layer$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-layer"
+    },
+    "bx-layout": {
+        "body": "<${1:i} className=\"bx bx-layout$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-layout"
+    },
+    "bx-left-arrow": {
+        "body": "<${1:i} className=\"bx bx-left-arrow$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-left-arrow"
+    },
+    "bx-left-arrow-alt": {
+        "body": "<${1:i} className=\"bx bx-left-arrow-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-left-arrow-alt"
+    },
+    "bx-left-arrow-circle": {
+        "body": "<${1:i} className=\"bx bx-left-arrow-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-left-arrow-circle"
+    },
+    "bx-left-down-arrow-circle": {
+        "body": "<${1:i} className=\"bx bx-left-down-arrow-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-left-down-arrow-circle"
+    },
+    "bx-left-indent": {
+        "body": "<${1:i} className=\"bx bx-left-indent$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-left-indent"
+    },
+    "bx-left-top-arrow-circle": {
+        "body": "<${1:i} className=\"bx bx-left-top-arrow-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-left-top-arrow-circle"
+    },
+    "bx-like": {
+        "body": "<${1:i} className=\"bx bx-like$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-like"
+    },
+    "bx-line-chart": {
+        "body": "<${1:i} className=\"bx bx-line-chart$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-line-chart"
+    },
+    "bx-link": {
+        "body": "<${1:i} className=\"bx bx-link$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-link"
+    },
+    "bx-link-alt": {
+        "body": "<${1:i} className=\"bx bx-link-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-link-alt"
+    },
+    "bx-link-external": {
+        "body": "<${1:i} className=\"bx bx-link-external$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-link-external"
+    },
+    "bx-lira": {
+        "body": "<${1:i} className=\"bx bx-lira$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-lira"
+    },
+    "bx-list-check": {
+        "body": "<${1:i} className=\"bx bx-list-check$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-list-check"
+    },
+    "bx-list-minus": {
+        "body": "<${1:i} className=\"bx bx-list-minus$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-list-minus"
+    },
+    "bx-list-ol": {
+        "body": "<${1:i} className=\"bx bx-list-ol$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-list-ol"
+    },
+    "bx-list-plus": {
+        "body": "<${1:i} className=\"bx bx-list-plus$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-list-plus"
+    },
+    "bx-list-ul": {
+        "body": "<${1:i} className=\"bx bx-list-ul$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-list-ul"
+    },
+    "bx-loader": {
+        "body": "<${1:i} className=\"bx bx-loader$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-loader"
+    },
+    "bx-loader-alt": {
+        "body": "<${1:i} className=\"bx bx-loader-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-loader-alt"
+    },
+    "bx-loader-circle": {
+        "body": "<${1:i} className=\"bx bx-loader-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-loader-circle"
+    },
+    "bx-lock": {
+        "body": "<${1:i} className=\"bx bx-lock$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-lock"
+    },
+    "bx-lock-alt": {
+        "body": "<${1:i} className=\"bx bx-lock-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-lock-alt"
+    },
+    "bx-lock-open": {
+        "body": "<${1:i} className=\"bx bx-lock-open$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-lock-open"
+    },
+    "bx-lock-open-alt": {
+        "body": "<${1:i} className=\"bx bx-lock-open-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-lock-open-alt"
+    },
+    "bx-log-in": {
+        "body": "<${1:i} className=\"bx bx-log-in$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-log-in"
+    },
+    "bx-log-in-circle": {
+        "body": "<${1:i} className=\"bx bx-log-in-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-log-in-circle"
+    },
+    "bx-log-out": {
+        "body": "<${1:i} className=\"bx bx-log-out$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-log-out"
+    },
+    "bx-log-out-circle": {
+        "body": "<${1:i} className=\"bx bx-log-out-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-log-out-circle"
+    },
+    "bx-magnet": {
+        "body": "<${1:i} className=\"bx bx-magnet$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-magnet"
+    },
+    "bx-mail-send": {
+        "body": "<${1:i} className=\"bx bx-mail-send$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-mail-send"
+    },
+    "bx-male": {
+        "body": "<${1:i} className=\"bx bx-male$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-male"
+    },
+    "bx-male-sign": {
+        "body": "<${1:i} className=\"bx bx-male-sign$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-male-sign"
+    },
+    "bx-map": {
+        "body": "<${1:i} className=\"bx bx-map$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-map"
+    },
+    "bx-map-alt": {
+        "body": "<${1:i} className=\"bx bx-map-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-map-alt"
+    },
+    "bx-map-pin": {
+        "body": "<${1:i} className=\"bx bx-map-pin$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-map-pin"
+    },
+    "bx-meh": {
+        "body": "<${1:i} className=\"bx bx-meh$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-meh"
+    },
+    "bx-meh-alt": {
+        "body": "<${1:i} className=\"bx bx-meh-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-meh-alt"
+    },
+    "bx-meh-blank": {
+        "body": "<${1:i} className=\"bx bx-meh-blank$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-meh-blank"
+    },
+    "bx-memory-card": {
+        "body": "<${1:i} className=\"bx bx-memory-card$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-memory-card"
+    },
+    "bx-menu": {
+        "body": "<${1:i} className=\"bx bx-menu$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-menu"
+    },
+    "bx-menu-alt-left": {
+        "body": "<${1:i} className=\"bx bx-menu-alt-left$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-menu-alt-left"
+    },
+    "bx-menu-alt-right": {
+        "body": "<${1:i} className=\"bx bx-menu-alt-right$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-menu-alt-right"
+    },
+    "bx-message": {
+        "body": "<${1:i} className=\"bx bx-message$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-message"
+    },
+    "bx-message-alt": {
+        "body": "<${1:i} className=\"bx bx-message-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-message-alt"
+    },
+    "bx-message-alt-dots": {
+        "body": "<${1:i} className=\"bx bx-message-alt-dots$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-message-alt-dots"
+    },
+    "bx-message-dots": {
+        "body": "<${1:i} className=\"bx bx-message-dots$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-message-dots"
+    },
+    "bx-message-rounded": {
+        "body": "<${1:i} className=\"bx bx-message-rounded$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-message-rounded"
+    },
+    "bx-message-rounded-dots": {
+        "body": "<${1:i} className=\"bx bx-message-rounded-dots$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-message-rounded-dots"
+    },
+    "bx-message-square": {
+        "body": "<${1:i} className=\"bx bx-message-square$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-message-square"
+    },
+    "bx-message-square-dots": {
+        "body": "<${1:i} className=\"bx bx-message-square-dots$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-message-square-dots"
+    },
+    "bx-microphone": {
+        "body": "<${1:i} className=\"bx bx-microphone$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-microphone"
+    },
+    "bx-microphone-off": {
+        "body": "<${1:i} className=\"bx bx-microphone-off$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-microphone-off"
+    },
+    "bx-minus": {
+        "body": "<${1:i} className=\"bx bx-minus$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-minus"
+    },
+    "bx-minus-circle": {
+        "body": "<${1:i} className=\"bx bx-minus-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-minus-circle"
+    },
+    "bx-mobile": {
+        "body": "<${1:i} className=\"bx bx-mobile$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-mobile"
+    },
+    "bx-mobile-alt": {
+        "body": "<${1:i} className=\"bx bx-mobile-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-mobile-alt"
+    },
+    "bx-mobile-landscape": {
+        "body": "<${1:i} className=\"bx bx-mobile-landscape$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-mobile-landscape"
+    },
+    "bx-mobile-vibration": {
+        "body": "<${1:i} className=\"bx bx-mobile-vibration$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-mobile-vibration"
+    },
+    "bx-money": {
+        "body": "<${1:i} className=\"bx bx-money$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-money"
+    },
+    "bx-moon": {
+        "body": "<${1:i} className=\"bx bx-moon$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-moon"
+    },
+    "bx-mouse": {
+        "body": "<${1:i} className=\"bx bx-mouse$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-mouse"
+    },
+    "bx-mouse-alt": {
+        "body": "<${1:i} className=\"bx bx-mouse-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-mouse-alt"
+    },
+    "bx-move": {
+        "body": "<${1:i} className=\"bx bx-move$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-move"
+    },
+    "bx-move-horizontal": {
+        "body": "<${1:i} className=\"bx bx-move-horizontal$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-move-horizontal"
+    },
+    "bx-move-vertical": {
+        "body": "<${1:i} className=\"bx bx-move-vertical$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-move-vertical"
+    },
+    "bx-movie": {
+        "body": "<${1:i} className=\"bx bx-movie$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-movie"
+    },
+    "bx-music": {
+        "body": "<${1:i} className=\"bx bx-music$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-music"
+    },
+    "bx-navigation": {
+        "body": "<${1:i} className=\"bx bx-navigation$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-navigation"
+    },
+    "bx-news": {
+        "body": "<${1:i} className=\"bx bx-news$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-news"
+    },
+    "bx-no-entry": {
+        "body": "<${1:i} className=\"bx bx-no-entry$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-no-entry"
+    },
+    "bx-note": {
+        "body": "<${1:i} className=\"bx bx-note$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-note"
+    },
+    "bx-notepad": {
+        "body": "<${1:i} className=\"bx bx-notepad$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-notepad"
+    },
+    "bx-notification": {
+        "body": "<${1:i} className=\"bx bx-notification$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-notification"
+    },
+    "bx-notification-off": {
+        "body": "<${1:i} className=\"bx bx-notification-off$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-notification-off"
+    },
+    "bx-package": {
+        "body": "<${1:i} className=\"bx bx-package$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-package"
+    },
+    "bx-paint": {
+        "body": "<${1:i} className=\"bx bx-paint$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-paint"
+    },
+    "bx-paint-roll": {
+        "body": "<${1:i} className=\"bx bx-paint-roll$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-paint-roll"
+    },
+    "bx-palette": {
+        "body": "<${1:i} className=\"bx bx-palette$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-palette"
+    },
+    "bx-paperclip": {
+        "body": "<${1:i} className=\"bx bx-paperclip$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-paperclip"
+    },
+    "bx-paper-plane": {
+        "body": "<${1:i} className=\"bx bx-paper-plane$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-paper-plane"
+    },
+    "bx-paragraph": {
+        "body": "<${1:i} className=\"bx bx-paragraph$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-paragraph"
+    },
+    "bx-paste": {
+        "body": "<${1:i} className=\"bx bx-paste$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-paste"
+    },
+    "bx-pause": {
+        "body": "<${1:i} className=\"bx bx-pause$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-pause"
+    },
+    "bx-pause-circle": {
+        "body": "<${1:i} className=\"bx bx-pause-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-pause-circle"
+    },
+    "bx-pen": {
+        "body": "<${1:i} className=\"bx bx-pen$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-pen"
+    },
+    "bx-pencil": {
+        "body": "<${1:i} className=\"bx bx-pencil$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-pencil"
+    },
+    "bx-phone": {
+        "body": "<${1:i} className=\"bx bx-phone$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-phone"
+    },
+    "bx-phone-call": {
+        "body": "<${1:i} className=\"bx bx-phone-call$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-phone-call"
+    },
+    "bx-phone-incoming": {
+        "body": "<${1:i} className=\"bx bx-phone-incoming$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-phone-incoming"
+    },
+    "bx-phone-outgoing": {
+        "body": "<${1:i} className=\"bx bx-phone-outgoing$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-phone-outgoing"
+    },
+    "bx-photo-album": {
+        "body": "<${1:i} className=\"bx bx-photo-album$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-photo-album"
+    },
+    "bx-pie-chart": {
+        "body": "<${1:i} className=\"bx bx-pie-chart$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-pie-chart"
+    },
+    "bx-pie-chart-alt": {
+        "body": "<${1:i} className=\"bx bx-pie-chart-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-pie-chart-alt"
+    },
+    "bx-pie-chart-alt-2": {
+        "body": "<${1:i} className=\"bx bx-pie-chart-alt-2$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-pie-chart-alt-2"
+    },
+    "bx-pin": {
+        "body": "<${1:i} className=\"bx bx-pin$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-pin"
+    },
+    "bx-planet": {
+        "body": "<${1:i} className=\"bx bx-planet$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-planet"
+    },
+    "bx-play": {
+        "body": "<${1:i} className=\"bx bx-play$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-play"
+    },
+    "bx-play-circle": {
+        "body": "<${1:i} className=\"bx bx-play-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-play-circle"
+    },
+    "bx-plug": {
+        "body": "<${1:i} className=\"bx bx-plug$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-plug"
+    },
+    "bx-plus": {
+        "body": "<${1:i} className=\"bx bx-plus$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-plus"
+    },
+    "bx-plus-circle": {
+        "body": "<${1:i} className=\"bx bx-plus-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-plus-circle"
+    },
+    "bx-plus-medical": {
+        "body": "<${1:i} className=\"bx bx-plus-medical$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-plus-medical"
+    },
+    "bx-poll": {
+        "body": "<${1:i} className=\"bx bx-poll$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-poll"
+    },
+    "bx-polygon": {
+        "body": "<${1:i} className=\"bx bx-polygon$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-polygon"
+    },
+    "bx-pound": {
+        "body": "<${1:i} className=\"bx bx-pound$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-pound"
+    },
+    "bx-power-off": {
+        "body": "<${1:i} className=\"bx bx-power-off$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-power-off"
+    },
+    "bx-printer": {
+        "body": "<${1:i} className=\"bx bx-printer$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-printer"
+    },
+    "bx-pulse": {
+        "body": "<${1:i} className=\"bx bx-pulse$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-pulse"
+    },
+    "bx-purchase-tag": {
+        "body": "<${1:i} className=\"bx bx-purchase-tag$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-purchase-tag"
+    },
+    "bx-purchase-tag-alt": {
+        "body": "<${1:i} className=\"bx bx-purchase-tag-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-purchase-tag-alt"
+    },
+    "bx-pyramid": {
+        "body": "<${1:i} className=\"bx bx-pyramid$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-pyramid"
+    },
+    "bx-question-mark": {
+        "body": "<${1:i} className=\"bx bx-question-mark$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-question-mark"
+    },
+    "bx-radar": {
+        "body": "<${1:i} className=\"bx bx-radar$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-radar"
+    },
+    "bx-radio": {
+        "body": "<${1:i} className=\"bx bx-radio$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-radio"
+    },
+    "bx-radio-circle": {
+        "body": "<${1:i} className=\"bx bx-radio-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-radio-circle"
+    },
+    "bx-radio-circle-marked": {
+        "body": "<${1:i} className=\"bx bx-radio-circle-marked$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-radio-circle-marked"
+    },
+    "bx-receipt": {
+        "body": "<${1:i} className=\"bx bx-receipt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-receipt"
+    },
+    "bx-rectangle": {
+        "body": "<${1:i} className=\"bx bx-rectangle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-rectangle"
+    },
+    "bx-redo": {
+        "body": "<${1:i} className=\"bx bx-redo$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-redo"
+    },
+    "bx-rename": {
+        "body": "<${1:i} className=\"bx bx-rename$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-rename"
+    },
+    "bx-repeat": {
+        "body": "<${1:i} className=\"bx bx-repeat$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-repeat"
+    },
+    "bx-reply": {
+        "body": "<${1:i} className=\"bx bx-reply$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-reply"
+    },
+    "bx-reply-all": {
+        "body": "<${1:i} className=\"bx bx-reply-all$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-reply-all"
+    },
+    "bx-repost": {
+        "body": "<${1:i} className=\"bx bx-repost$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-repost"
+    },
+    "bx-reset": {
+        "body": "<${1:i} className=\"bx bx-reset$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-reset"
+    },
+    "bx-restaurant": {
+        "body": "<${1:i} className=\"bx bx-restaurant$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-restaurant"
+    },
+    "bx-revision": {
+        "body": "<${1:i} className=\"bx bx-revision$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-revision"
+    },
+    "bx-rewind": {
+        "body": "<${1:i} className=\"bx bx-rewind$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-rewind"
+    },
+    "bx-rewind-circle": {
+        "body": "<${1:i} className=\"bx bx-rewind-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-rewind-circle"
+    },
+    "bx-right-arrow": {
+        "body": "<${1:i} className=\"bx bx-right-arrow$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-right-arrow"
+    },
+    "bx-right-arrow-alt": {
+        "body": "<${1:i} className=\"bx bx-right-arrow-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-right-arrow-alt"
+    },
+    "bx-right-arrow-circle": {
+        "body": "<${1:i} className=\"bx bx-right-arrow-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-right-arrow-circle"
+    },
+    "bx-right-down-arrow-circle": {
+        "body": "<${1:i} className=\"bx bx-right-down-arrow-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-right-down-arrow-circle"
+    },
+    "bx-right-indent": {
+        "body": "<${1:i} className=\"bx bx-right-indent$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-right-indent"
+    },
+    "bx-right-top-arrow-circle": {
+        "body": "<${1:i} className=\"bx bx-right-top-arrow-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-right-top-arrow-circle"
+    },
+    "bx-rocket": {
+        "body": "<${1:i} className=\"bx bx-rocket$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-rocket"
+    },
+    "bx-rotate-left": {
+        "body": "<${1:i} className=\"bx bx-rotate-left$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-rotate-left"
+    },
+    "bx-rotate-right": {
+        "body": "<${1:i} className=\"bx bx-rotate-right$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-rotate-right"
+    },
+    "bx-rss": {
+        "body": "<${1:i} className=\"bx bx-rss$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-rss"
+    },
+    "bx-ruble": {
+        "body": "<${1:i} className=\"bx bx-ruble$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-ruble"
+    },
+    "bx-ruler": {
+        "body": "<${1:i} className=\"bx bx-ruler$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-ruler"
+    },
+    "bx-run": {
+        "body": "<${1:i} className=\"bx bx-run$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-run"
+    },
+    "bx-rupee": {
+        "body": "<${1:i} className=\"bx bx-rupee$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-rupee"
+    },
+    "bx-sad": {
+        "body": "<${1:i} className=\"bx bx-sad$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-sad"
+    },
+    "bx-save": {
+        "body": "<${1:i} className=\"bx bx-save$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-save"
+    },
+    "bx-screenshot": {
+        "body": "<${1:i} className=\"bx bx-screenshot$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-screenshot"
+    },
+    "bx-search": {
+        "body": "<${1:i} className=\"bx bx-search$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-search"
+    },
+    "bx-search-alt": {
+        "body": "<${1:i} className=\"bx bx-search-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-search-alt"
+    },
+    "bx-search-alt-2": {
+        "body": "<${1:i} className=\"bx bx-search-alt-2$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-search-alt-2"
+    },
+    "bx-selection": {
+        "body": "<${1:i} className=\"bx bx-selection$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-selection"
+    },
+    "bx-select-multiple": {
+        "body": "<${1:i} className=\"bx bx-select-multiple$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-select-multiple"
+    },
+    "bx-send": {
+        "body": "<${1:i} className=\"bx bx-send$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-send"
+    },
+    "bx-server": {
+        "body": "<${1:i} className=\"bx bx-server$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-server"
+    },
+    "bx-shape-circle": {
+        "body": "<${1:i} className=\"bx bx-shape-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-shape-circle"
+    },
+    "bx-shape-square": {
+        "body": "<${1:i} className=\"bx bx-shape-square$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-shape-square"
+    },
+    "bx-shape-triangle": {
+        "body": "<${1:i} className=\"bx bx-shape-triangle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-shape-triangle"
+    },
+    "bx-share": {
+        "body": "<${1:i} className=\"bx bx-share$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-share"
+    },
+    "bx-share-alt": {
+        "body": "<${1:i} className=\"bx bx-share-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-share-alt"
+    },
+    "bx-shekel": {
+        "body": "<${1:i} className=\"bx bx-shekel$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-shekel"
+    },
+    "bx-shield": {
+        "body": "<${1:i} className=\"bx bx-shield$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-shield"
+    },
+    "bx-shield-alt": {
+        "body": "<${1:i} className=\"bx bx-shield-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-shield-alt"
+    },
+    "bx-shield-alt-2": {
+        "body": "<${1:i} className=\"bx bx-shield-alt-2$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-shield-alt-2"
+    },
+    "bx-shield-quarter": {
+        "body": "<${1:i} className=\"bx bx-shield-quarter$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-shield-quarter"
+    },
+    "bx-shocked": {
+        "body": "<${1:i} className=\"bx bx-shocked$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-shocked"
+    },
+    "bx-shopping-bag": {
+        "body": "<${1:i} className=\"bx bx-shopping-bag$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-shopping-bag"
+    },
+    "bx-show": {
+        "body": "<${1:i} className=\"bx bx-show$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-show"
+    },
+    "bx-show-alt": {
+        "body": "<${1:i} className=\"bx bx-show-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-show-alt"
+    },
+    "bx-shuffle": {
+        "body": "<${1:i} className=\"bx bx-shuffle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-shuffle"
+    },
+    "bx-sidebar": {
+        "body": "<${1:i} className=\"bx bx-sidebar$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-sidebar"
+    },
+    "bx-sitemap": {
+        "body": "<${1:i} className=\"bx bx-sitemap$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-sitemap"
+    },
+    "bx-skip-next": {
+        "body": "<${1:i} className=\"bx bx-skip-next$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-skip-next"
+    },
+    "bx-skip-next-circle": {
+        "body": "<${1:i} className=\"bx bx-skip-next-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-skip-next-circle"
+    },
+    "bx-skip-previous": {
+        "body": "<${1:i} className=\"bx bx-skip-previous$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-skip-previous"
+    },
+    "bx-skip-previous-circle": {
+        "body": "<${1:i} className=\"bx bx-skip-previous-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-skip-previous-circle"
+    },
+    "bx-sleepy": {
+        "body": "<${1:i} className=\"bx bx-sleepy$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-sleepy"
+    },
+    "bx-slider": {
+        "body": "<${1:i} className=\"bx bx-slider$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-slider"
+    },
+    "bx-slider-alt": {
+        "body": "<${1:i} className=\"bx bx-slider-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-slider-alt"
+    },
+    "bx-slideshow": {
+        "body": "<${1:i} className=\"bx bx-slideshow$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-slideshow"
+    },
+    "bx-smile": {
+        "body": "<${1:i} className=\"bx bx-smile$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-smile"
+    },
+    "bx-sort": {
+        "body": "<${1:i} className=\"bx bx-sort$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-sort"
+    },
+    "bx-sort-a-z": {
+        "body": "<${1:i} className=\"bx bx-sort-a-z$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-sort-a-z"
+    },
+    "bx-sort-down": {
+        "body": "<${1:i} className=\"bx bx-sort-down$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-sort-down"
+    },
+    "bx-sort-up": {
+        "body": "<${1:i} className=\"bx bx-sort-up$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-sort-up"
+    },
+    "bx-sort-z-a": {
+        "body": "<${1:i} className=\"bx bx-sort-z-a$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-sort-z-a"
+    },
+    "bx-spa": {
+        "body": "<${1:i} className=\"bx bx-spa$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-spa"
+    },
+    "bx-space-bar": {
+        "body": "<${1:i} className=\"bx bx-space-bar$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-space-bar"
+    },
+    "bx-spreadsheet": {
+        "body": "<${1:i} className=\"bx bx-spreadsheet$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-spreadsheet"
+    },
+    "bx-square": {
+        "body": "<${1:i} className=\"bx bx-square$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-square"
+    },
+    "bx-square-rounded": {
+        "body": "<${1:i} className=\"bx bx-square-rounded$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-square-rounded"
+    },
+    "bx-star": {
+        "body": "<${1:i} className=\"bx bx-star$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-star"
+    },
+    "bx-station": {
+        "body": "<${1:i} className=\"bx bx-station$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-station"
+    },
+    "bx-stats": {
+        "body": "<${1:i} className=\"bx bx-stats$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-stats"
+    },
+    "bx-sticker": {
+        "body": "<${1:i} className=\"bx bx-sticker$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-sticker"
+    },
+    "bx-stop": {
+        "body": "<${1:i} className=\"bx bx-stop$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-stop"
+    },
+    "bx-stop-circle": {
+        "body": "<${1:i} className=\"bx bx-stop-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-stop-circle"
+    },
+    "bx-stopwatch": {
+        "body": "<${1:i} className=\"bx bx-stopwatch$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-stopwatch"
+    },
+    "bx-store": {
+        "body": "<${1:i} className=\"bx bx-store$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-store"
+    },
+    "bx-store-alt": {
+        "body": "<${1:i} className=\"bx bx-store-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-store-alt"
+    },
+    "bx-street-view": {
+        "body": "<${1:i} className=\"bx bx-street-view$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-street-view"
+    },
+    "bx-strikethrough": {
+        "body": "<${1:i} className=\"bx bx-strikethrough$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-strikethrough"
+    },
+    "bx-subdirectory-left": {
+        "body": "<${1:i} className=\"bx bx-subdirectory-left$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-subdirectory-left"
+    },
+    "bx-subdirectory-right": {
+        "body": "<${1:i} className=\"bx bx-subdirectory-right$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-subdirectory-right"
+    },
+    "bx-sun": {
+        "body": "<${1:i} className=\"bx bx-sun$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-sun"
+    },
+    "bx-support": {
+        "body": "<${1:i} className=\"bx bx-support$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-support"
+    },
+    "bx-swim": {
+        "body": "<${1:i} className=\"bx bx-swim$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-swim"
+    },
+    "bx-sync": {
+        "body": "<${1:i} className=\"bx bx-sync$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-sync"
+    },
+    "bx-tab": {
+        "body": "<${1:i} className=\"bx bx-tab$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-tab"
+    },
+    "bx-table": {
+        "body": "<${1:i} className=\"bx bx-table$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-table"
+    },
+    "bx-tag": {
+        "body": "<${1:i} className=\"bx bx-tag$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-tag"
+    },
+    "bx-target-lock": {
+        "body": "<${1:i} className=\"bx bx-target-lock$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-target-lock"
+    },
+    "bx-task": {
+        "body": "<${1:i} className=\"bx bx-task$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-task"
+    },
+    "bx-taxi": {
+        "body": "<${1:i} className=\"bx bx-taxi$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-taxi"
+    },
+    "bx-tennis-ball": {
+        "body": "<${1:i} className=\"bx bx-tennis-ball$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-tennis-ball"
+    },
+    "bx-terminal": {
+        "body": "<${1:i} className=\"bx bx-terminal$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-terminal"
+    },
+    "bx-test-tube": {
+        "body": "<${1:i} className=\"bx bx-test-tube$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-test-tube"
+    },
+    "bx-text": {
+        "body": "<${1:i} className=\"bx bx-text$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-text"
+    },
+    "bx-time": {
+        "body": "<${1:i} className=\"bx bx-time$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-time"
+    },
+    "bx-time-five": {
+        "body": "<${1:i} className=\"bx bx-time-five$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-time-five"
+    },
+    "bx-timer": {
+        "body": "<${1:i} className=\"bx bx-timer$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-timer"
+    },
+    "bx-tired": {
+        "body": "<${1:i} className=\"bx bx-tired$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-tired"
+    },
+    "bx-toggle-left": {
+        "body": "<${1:i} className=\"bx bx-toggle-left$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-toggle-left"
+    },
+    "bx-toggle-right": {
+        "body": "<${1:i} className=\"bx bx-toggle-right$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-toggle-right"
+    },
+    "bx-tone": {
+        "body": "<${1:i} className=\"bx bx-tone$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-tone"
+    },
+    "bx-train": {
+        "body": "<${1:i} className=\"bx bx-train$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-train"
+    },
+    "bx-transfer": {
+        "body": "<${1:i} className=\"bx bx-transfer$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-transfer"
+    },
+    "bx-transfer-alt": {
+        "body": "<${1:i} className=\"bx bx-transfer-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-transfer-alt"
+    },
+    "bx-trash": {
+        "body": "<${1:i} className=\"bx bx-trash$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-trash"
+    },
+    "bx-trash-alt": {
+        "body": "<${1:i} className=\"bx bx-trash-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-trash-alt"
+    },
+    "bx-trending-down": {
+        "body": "<${1:i} className=\"bx bx-trending-down$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-trending-down"
+    },
+    "bx-trending-up": {
+        "body": "<${1:i} className=\"bx bx-trending-up$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-trending-up"
+    },
+    "bx-trophy": {
+        "body": "<${1:i} className=\"bx bx-trophy$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-trophy"
+    },
+    "bx-tv": {
+        "body": "<${1:i} className=\"bx bx-tv$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-tv"
+    },
+    "bx-underline": {
+        "body": "<${1:i} className=\"bx bx-underline$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-underline"
+    },
+    "bx-undo": {
+        "body": "<${1:i} className=\"bx bx-undo$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-undo"
+    },
+    "bx-unlink": {
+        "body": "<${1:i} className=\"bx bx-unlink$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-unlink"
+    },
+    "bx-up-arrow": {
+        "body": "<${1:i} className=\"bx bx-up-arrow$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-up-arrow"
+    },
+    "bx-up-arrow-alt": {
+        "body": "<${1:i} className=\"bx bx-up-arrow-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-up-arrow-alt"
+    },
+    "bx-up-arrow-circle": {
+        "body": "<${1:i} className=\"bx bx-up-arrow-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-up-arrow-circle"
+    },
+    "bx-upload": {
+        "body": "<${1:i} className=\"bx bx-upload$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-upload"
+    },
+    "bx-upside-down": {
+        "body": "<${1:i} className=\"bx bx-upside-down$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-upside-down"
+    },
+    "bx-upvote": {
+        "body": "<${1:i} className=\"bx bx-upvote$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-upvote"
+    },
+    "bx-usb": {
+        "body": "<${1:i} className=\"bx bx-usb$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-usb"
+    },
+    "bx-user": {
+        "body": "<${1:i} className=\"bx bx-user$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-user"
+    },
+    "bx-user-check": {
+        "body": "<${1:i} className=\"bx bx-user-check$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-user-check"
+    },
+    "bx-user-circle": {
+        "body": "<${1:i} className=\"bx bx-user-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-user-circle"
+    },
+    "bx-user-minus": {
+        "body": "<${1:i} className=\"bx bx-user-minus$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-user-minus"
+    },
+    "bx-user-pin": {
+        "body": "<${1:i} className=\"bx bx-user-pin$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-user-pin"
+    },
+    "bx-user-plus": {
+        "body": "<${1:i} className=\"bx bx-user-plus$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-user-plus"
+    },
+    "bx-user-voice": {
+        "body": "<${1:i} className=\"bx bx-user-voice$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-user-voice"
+    },
+    "bx-user-x": {
+        "body": "<${1:i} className=\"bx bx-user-x$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-user-x"
+    },
+    "bx-vertical-center": {
+        "body": "<${1:i} className=\"bx bx-vertical-center$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-vertical-center"
+    },
+    "bx-video": {
+        "body": "<${1:i} className=\"bx bx-video$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-video"
+    },
+    "bx-video-off": {
+        "body": "<${1:i} className=\"bx bx-video-off$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-video-off"
+    },
+    "bx-video-plus": {
+        "body": "<${1:i} className=\"bx bx-video-plus$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-video-plus"
+    },
+    "bx-video-recording": {
+        "body": "<${1:i} className=\"bx bx-video-recording$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-video-recording"
+    },
+    "bx-voicemail": {
+        "body": "<${1:i} className=\"bx bx-voicemail$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-voicemail"
+    },
+    "bx-volume": {
+        "body": "<${1:i} className=\"bx bx-volume$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-volume"
+    },
+    "bx-volume-full": {
+        "body": "<${1:i} className=\"bx bx-volume-full$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-volume-full"
+    },
+    "bx-volume-low": {
+        "body": "<${1:i} className=\"bx bx-volume-low$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-volume-low"
+    },
+    "bx-volume-mute": {
+        "body": "<${1:i} className=\"bx bx-volume-mute$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-volume-mute"
+    },
+    "bx-walk": {
+        "body": "<${1:i} className=\"bx bx-walk$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-walk"
+    },
+    "bx-wallet": {
+        "body": "<${1:i} className=\"bx bx-wallet$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-wallet"
+    },
+    "bx-wallet-alt": {
+        "body": "<${1:i} className=\"bx bx-wallet-alt$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-wallet-alt"
+    },
+    "bx-water": {
+        "body": "<${1:i} className=\"bx bx-water$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-water"
+    },
+    "bx-wifi": {
+        "body": "<${1:i} className=\"bx bx-wifi$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-wifi"
+    },
+    "bx-wifi-off": {
+        "body": "<${1:i} className=\"bx bx-wifi-off$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-wifi-off"
+    },
+    "bx-wind": {
+        "body": "<${1:i} className=\"bx bx-wind$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-wind"
+    },
+    "bx-window": {
+        "body": "<${1:i} className=\"bx bx-window$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-window"
+    },
+    "bx-window-close": {
+        "body": "<${1:i} className=\"bx bx-window-close$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-window-close"
+    },
+    "bx-window-open": {
+        "body": "<${1:i} className=\"bx bx-window-open$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-window-open"
+    },
+    "bx-windows": {
+        "body": "<${1:i} className=\"bx bx-windows$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-windows"
+    },
+    "bx-wink-smile": {
+        "body": "<${1:i} className=\"bx bx-wink-smile$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-wink-smile"
+    },
+    "bx-wink-tongue": {
+        "body": "<${1:i} className=\"bx bx-wink-tongue$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-wink-tongue"
+    },
+    "bx-won": {
+        "body": "<${1:i} className=\"bx bx-won$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-won"
+    },
+    "bx-world": {
+        "body": "<${1:i} className=\"bx bx-world$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-world"
+    },
+    "bx-wrench": {
+        "body": "<${1:i} className=\"bx bx-wrench$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-wrench"
+    },
+    "bx-x": {
+        "body": "<${1:i} className=\"bx bx-x$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-x"
+    },
+    "bx-x-circle": {
+        "body": "<${1:i} className=\"bx bx-x-circle$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-x-circle"
+    },
+    "bx-yen": {
+        "body": "<${1:i} className=\"bx bx-yen$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-yen"
+    },
+    "bx-zoom-in": {
+        "body": "<${1:i} className=\"bx bx-zoom-in$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-zoom-in"
+    },
+    "bx-zoom-out": {
+        "body": "<${1:i} className=\"bx bx-zoom-out$2\"></${1:i}>$0",
+        "description": "<i>",
+        "prefix": "bx-zoom-out"
+    }
+}

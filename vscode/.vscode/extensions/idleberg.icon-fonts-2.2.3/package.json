@@ -1,0 +1,777 @@
+{
+	"name": "icon-fonts",
+	"displayName": "Icon Fonts",
+	"description": "Snippets for popular icon fonts such as Font Awesome, Ionicons, Glyphicons, Octicons, Material Design Icons and many more!",
+	"version": "2.2.3",
+	"publisher": "idleberg",
+	"license": "MIT",
+	"author": {
+		"name": "Jan T. Sott",
+		"url": "http://github.com/idleberg"
+	},
+	"scripts": {
+		"build": "gulp && cd tools && yarn",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"postpublish": "rimraf tools/node_modules && vsce package && gulp push --tags",
+		"test": "vscode-linter",
+		"vscode:prepublish": "gulp"
+	},
+	"keywords": [
+		"icon font",
+		"icon fonts",
+		"font awesome",
+		"octicons",
+		"ionicons"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/idleberg/vscode-icon-fonts"
+	},
+	"homepage": "https://github.com/idleberg/vscode-icon-fonts#readme",
+	"bugs": {
+		"url": "https://github.com/idleberg/vscode-icon-fonts/issues"
+	},
+	"icon": "images/logo.png",
+	"galleryBanner": {
+		"color": "#303030",
+		"theme": "dark"
+	},
+	"engines": {
+		"vscode": "^1.0.0"
+	},
+	"categories": [
+		"Snippets"
+	],
+	"contributes": {
+		"snippets": [
+			{
+				"language": "css",
+				"path": "./snippets/css/ai.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/cc.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/dashicons.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/devicons.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/el.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/fab.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/far.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/fas.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/fi.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/fl.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/glyphicon.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/ion.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/mdi.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/mfg.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/mfizz.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/oi.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/openwebicons.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/pf.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/st.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/typcn.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/wi.json"
+			},
+			{
+				"language": "css",
+				"path": "./snippets/css/zmdi.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/ai.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/cc.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/dashicons.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/devicons.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/el.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/fa-helpers.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/fab.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/far.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/fas.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/fi.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/fl.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/glyphicon.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/icono.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/ion.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/mdi.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/mfg.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/mfizz.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/mio.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/octicon.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/oi.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/openwebicons.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/pf.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/st.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/typcn.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/wi.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html/zmdi.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/ai.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/cc.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/dashicons.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/devicons.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/el.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/fab.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/far.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/fas.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/fi.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/fl.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/glyphicon.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/ion.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/mdi.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/mfg.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/mfizz.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/oi.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/openwebicons.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/pf.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/st.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/typcn.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/wi.json"
+			},
+			{
+				"language": "less",
+				"path": "./snippets/css/zmdi.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/__cdnjs.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/__jsdelivr.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/ai.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/cc.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/dashicons.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/devicons.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/el.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/fa-helpers.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/fab.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/far.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/far.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/fi.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/fl.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/glyphicon.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/icono.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/ion.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/mdi.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/mfg.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/mfizz.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/mio.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/octicon.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/oi.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/openwebicons.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/pf.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/st.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/typcn.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/wi.json"
+			},
+			{
+				"language": "blade",
+				"path": "./snippets/html/zmdi.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/ai.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/cc.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/dashicons.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/devicons.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/el.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/fab.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/far.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/fas.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/fi.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/fl.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/glyphicon.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/ion.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/mdi.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/mfg.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/mfizz.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/oi.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/openwebicons.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/pf.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/st.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/typcn.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/wi.json"
+			},
+			{
+				"language": "scss",
+				"path": "./snippets/css/zmdi.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/html/__cdnjs.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/html/__jsdelivr.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/ai.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/cc.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/dashicons.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/devicons.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/el.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/fa-helpers.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/fab.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/far.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/fas.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/fi.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/fl.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/geomicon.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/glyphicon.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/icono.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/ion.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/mdi.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/mfg.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/mfizz.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/mio.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/octicon.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/oi.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/openwebicons.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/pf.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/st.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/typcn.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/wi.json"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./snippets/jsx/zmdi.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/__cdnjs.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/__jsdelivr.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/ai.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/cc.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/dashicons.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/devicons.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/el.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/jsx/fa-helpers.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/fab.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/far.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/fas.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/fi.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/fl.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/glyphicon.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/icono.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/ion.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/mdi.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/mfg.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/mfizz.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/mio.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/octicon.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/oi.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/openwebicons.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/pf.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/st.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/typcn.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/wi.json"
+			},
+			{
+				"language": "vue-html",
+				"path": "./snippets/html/zmdi.json"
+			}
+		]
+	},
+	"devDependencies": {
+		"gulp": "^4.0.2",
+		"gulp-raster": "^0.2.0",
+		"gulp-rename": "^1.4.0",
+		"husky": "^3.0.3",
+		"rimraf": "^3.0.0",
+		"vsce": "^1.57.0",
+		"vscode": "^1.1.29",
+		"vscode-linter": "^0.2.1"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm run test"
+		}
+	},
+	"__metadata": {
+		"id": "17a873c7-491e-4797-9172-186de70f5e98",
+		"publisherId": "d142cf02-af52-4395-9363-148909445cb3",
+		"publisherDisplayName": "idleberg"
+	}
+}
