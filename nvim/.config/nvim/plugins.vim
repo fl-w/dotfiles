@@ -10,12 +10,15 @@ endif
 call plug#begin()
 " Visuals
 "
-Plug 'dylanaraps/wal.vim'
+Plug 'dylanaraps/wal.vim'               " Pywal for vim
 Plug 'ayu-theme/ayu-vim'                " Modern theme for vim
+Plug 'junegunn/seoul256.vim'            " Hyperfocus-writing in Vim
+Plug 'nightsense/cosmic_latte'          " Theme that's easy on the eyes
 Plug 'manasthakur/vim-commentor'        " Easy comment toggle
 Plug 'godlygeek/tabular' |
-Plug 'godlygeek/vim-markdown'           " Syntax highlighting for markdown (depends: tabular)
+    Plug 'godlygeek/vim-markdown'       " Syntax highlighting for markdown (depends: tabular)
 Plug 'tpope/vim-sensible'               " Some sensible settings
+Plug 'junegunn/goyo.vim'                " Distraction-free writing in Vim
 Plug 'tpope/vim-sleuth'                 " Autodetect file spacing
 Plug 'scrooloose/nerdcommenter'         " Awesome Commenting
 Plug 'vim-scripts/auto-pairs-gentle'    " Add brackets automatically
@@ -43,6 +46,8 @@ Plug 'deoplete-plugins/deoplete-jedi'   " Python auto completion
 Plug 'davidhalter/jedi-vim'
 Plug 'SirVer/ultisnips'                 " Snippets engine
 Plug 'honza/vim-snippets'               " Snippets
+
+
 call plug#end()
 
 "
@@ -100,9 +105,7 @@ let NERDTreeIgnore = ['node_modules', 'tmp', 'bower_components']
 " Don't want to see the extra text
 let NERDTreeMinimalUI = 1
 " Close NERDTree after reading file
-"autocmd BufReadPre,FileReadPre * :NERDTreeClose
-map <silent> <leader>n :NERDTreeToggle<CR>
-map <C-e> :NERDTreeIgnore<CR>
+" autocmd BufReadPre,FileReadPre * :NERDTreeClose
 let g:NERDTreeHijackNetrw = 1
 au VimEnter NERD_tree_1 enew | execute 'NERDTree '.argv()[0]
 " Get colors from color scheme
@@ -146,3 +149,7 @@ let g:lightline = {
       \ },
       \ }
 
+""" Goyo configuration
+let g:goyo_width = 88
+let g:goyo_linenr = 1
+autocmd! User GoyoLeave nested :highlight LineNr guibg=NONE gui=NONE

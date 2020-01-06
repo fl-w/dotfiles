@@ -16,7 +16,8 @@ endif
 filetype plugin on
 
 " Colorscheme
-colorscheme ayu
+colorscheme seoul256
+highlight LineNr guibg=NONE gui=NONE
 
 set termguicolors
 set ff=unix

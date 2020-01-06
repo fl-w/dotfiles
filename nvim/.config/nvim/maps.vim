@@ -40,9 +40,6 @@ nnoremap <c-p> :Files<cr>
 " Map Ctrl + s to save file
 noremap <c-s> <esc>:w!<cr>
 
-" Map <leader> + f to toggle nerd tree
-noremap <leader>f :NERDTreeToggleVCS<cr>
-
 " Map Ctrl + / to toggle line comments
 noremap <c-/> :<Plug>CommentorLine
 
@@ -51,3 +48,10 @@ noremap <c-/> :<Plug>CommentorLine
 " will use completion if not at beginning
 inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
 inoremap <S-Tab> <C-n>
+
+" Map <leader> + f to toggle nerd tree
+noremap <silent> <leader>f :NERDTreeToggleVCS<cr>
+
+" Map <leader> + z to toggle zen mode
+noremap <silent> <leader>z :Goyo<cr>
+
