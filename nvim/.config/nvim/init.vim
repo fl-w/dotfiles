@@ -1,12 +1,11 @@
-set t_ut=
-let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+" set t_ut=
+" let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 
 let mapleader="," " Change <leader> to ,
 
 source $HOME/.config/nvim/functions.vim
 source $HOME/.config/nvim/plugins.vim
-source $HOME/.config/nvim/plugin-config.vim
 source $HOME/.config/nvim/maps.vim
 
 "Use 24-bit (true-color) mode in Vim/Neovim
@@ -14,41 +13,22 @@ if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
-"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-"if has('nvim') || has('termguicolors')
-"  set termguicolors
-"endif
-
-" Map caps lock to escape when in vim
-" au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-" au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
-
-" Filetype specific settings
-autocmd! filetype *commit*,markdown setlocal spell         " Spell Check
-autocmd! filetype *commit*,markdown setlocal textwidth=72  " Looks good
-autocmd! filetype make setlocal noexpandtab                " In Makefiles DO NOT use spaces instead of tabs
-:autocmd BufRead,BufNewFile kitty.conf setf dosini       " Syntax highlighting for .conf
-autocmd BufWritePre * call TrimWhitespace() " Remove trailing whitespace when saving
-autocmd! BufReadPost * call SetCursorPosition()
-autocmd! BufWritePost * Neomake
-
-set ff=unix
 filetype plugin on
 
-" Open NERDTree in the current buffer
-map <leader>f :NERDTreeFind<cr>
-
 " Colorscheme
-colorscheme wal
-let g:palenight_terminal_italics = 1
+colorscheme ayu
 
+set termguicolors
+set ff=unix
 set mouse=a
-set cursorline                  " Highlight the current line
+set cursorline!                 " Highlight the current line
 set lazyredraw                  " Faster scrolling
 set number                      " Show line number
 set relativenumber              " Show relative line number
 set showcmd                     " Show current command
+set cc=140                      " Show linecolumn
 set showmode                    " Show current mode
+set autochdir                   " Change working directory to open file
 set wildmode=longest:list,full  " Autocomplete
 set wildignore=*.o,*.obj,*~     " Ignore file
 set showmatch                   " highlight matching braces
@@ -81,3 +61,13 @@ set undoreload=10000 "max number lines to save for undo on buffer reload
 
 " syntax sync minlines=256  " Makes big files slow
 " set synmaxcol=2048        " Also long lines are slow
+
+" Filetype specific settings
+autocmd! filetype *commit*,markdown setlocal spell         " Spell Check
+autocmd! filetype *commit*,markdown setlocal textwidth=72  " Looks good
+autocmd! filetype make setlocal noexpandtab                " In Makefiles DO NOT use spaces instead of tabs
+:autocmd BufRead,BufNewFile kitty.conf setf dosini       " Syntax highlighting for .conf
+autocmd BufWritePre * call TrimWhitespace() " Remove trailing whitespace when saving
+autocmd! BufReadPost * call SetCursorPosition()
+autocmd! BufWritePost * Neomake
+
