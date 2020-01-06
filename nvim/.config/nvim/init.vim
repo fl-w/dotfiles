@@ -33,6 +33,7 @@ set termguicolors
 set ff=unix
 set encoding=UTF-8
 set mouse=a
+set hidden                      " if hidden is not set, TextEdit might fail.
 set cursorline                  " Highlight the current line
 set lazyredraw                  " Faster scrolling
 set number                      " Show line number
@@ -53,6 +54,10 @@ set laststatus=2                " Always show statusbar
 set scrolloff=5                 " Minimum space on bottom/top of window
 set sidescrolloff=7             " Minimum space on side
 set sidescroll=1
+set shortmess+=c                " don't give \|ins-completion-menu\| messages.
+set tabstop=2                   " 2 spaces
+set shiftwidth=2                " 2 2 CHAINZ
+set cmdheight=2                 " Better display for messages
 set list                        " Display hidden chars as defined below
 set listchars=tab:▷⋅,trail:⋅,nbsp:+,extends:»,precedes:«
 set splitright                  " Open vsp on right and bottom
@@ -60,8 +65,6 @@ set splitbelow                  " which feels more natural
 set pastetoggle=<F2>
 set noshowmode                  " Hide mode (lightline shows mode)
 set expandtab                   " Spaces > tabs
-set tabstop=2                   " 2 spaces
-set shiftwidth=2                " 2 2 CHAINZ
 set nofoldenable                " Disable folding
 set clipboard+=unnamedplus      " Use system clipboard
 
@@ -85,3 +88,10 @@ augroup vimrc
     au!
     autocmd BufWritePost _vim,.vimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end

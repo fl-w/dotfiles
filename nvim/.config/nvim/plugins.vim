@@ -23,7 +23,8 @@ Plug 'junegunn/goyo.vim'                " Distraction-free writing in Vim
 "  helpers
 "
 Plug 'dense-analysis/ale'               " Async Lint Engine
-Plug 'maximbaz/lightline-ale'                    " ALE indicator for lightline
+Plug 'maximbaz/lightline-ale'           " ALE indicator for lightline
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Keyword completion
 Plug 'tpope/vim-sensible'               " Some sensible settings
 Plug 'tpope/vim-sleuth'                 " Autodetect file spacing
 Plug 'scrooloose/nerdcommenter'         " Awesome Commenting
@@ -35,7 +36,6 @@ Plug 'itchyny/lightline.vim'            " Awesome status bar
 Plug 'junegunn/fzf', { 'dir': '~/.local/lib/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'editorconfig/editorconfig-vim'    " .editorconfig support
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Keyword completion
 Plug 'tpope/vim-surround'               " Change your surroundings
 Plug 'terryma/vim-multiple-cursors'     " Multiple cursors
 Plug 'Yggdroot/indentLine'              " Indent guides
@@ -48,8 +48,6 @@ Plug 'airblade/vim-gitgutter'           " Git gutter
 Plug 'junegunn/vim-easy-align'          " Align things
 Plug 'mhinz/vim-startify'               " Lovely, informative start screen
 Plug 'majutsushi/tagbar'
-Plug 'deoplete-plugins/deoplete-jedi'   " Python auto completion
-Plug 'davidhalter/jedi-vim'
 Plug 'SirVer/ultisnips'                 " Snippets engine
 Plug 'honza/vim-snippets'               " Snippets
 
@@ -72,7 +70,6 @@ let g:ale_linters = {'python': ['flake8', 'mypy', 'pylint']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_tsserver_autoimport = 1
 let g:ale_set_ballons = 1
-let g:ale_lint_on_text_changed = 1
 let g:ale_sign_column_always = 1
 let g:ale_change_sign_column_color = 1
 let g:ale_close_preview_on_insert = 1
@@ -97,13 +94,13 @@ nnoremap <silent> <leader>t :Files<CR>
 """ Indent guides
 let g:indentLine_char = '┆'
 
-""" deoplete configuration
-let g:deoplete#enable_at_startup = 1
-" Improve ultisnips and deoplete integration
-call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
-call deoplete#custom#option('sources', {
-      \ '_' : ['ale'],
-\})
+""" COC configuration
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+
 
 """ vim-easy-align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -189,6 +186,6 @@ autocmd! User GoyoLeave nested :highlight LineNr guibg=NONE gui=NONE
 
 
 """ UtilSnips configuration
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<space>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
