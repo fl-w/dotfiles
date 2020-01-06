@@ -289,9 +289,9 @@ exec --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 exec --no-startup-id $bin/run-tabpage
 exec_always --no-startup-id $bin/alternate-i3-layout
 exec_always --no-startup-id $HOME/.screenlayout
-exec_always --no-startup-id $config/polybar/launch.sh
-exec_always --no-startup-id $config/picom/lanuch.sh
-exec_always --no-startup-id $config/dunst/launch.sh
 exec_always --no-startup-id wal -b '#1b1d1e' --iterative -i $HOME/.wallpapers
+exec_always --no-startup-id $config/polybar/launch.sh
+exec_always --no-startup-id $config/picom/launch.sh
+exec_always --no-startup-id $config/dunst/launch.sh
 exec_always --no-startup-id spicetify apply
 exec_always --no-startup-id flashfocus
