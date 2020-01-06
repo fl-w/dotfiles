@@ -90,8 +90,8 @@ bindsym $mod+Escape exec $bin/powermenu
 # Lock
 bindsym $mod+l exec $bin/lock-screen
 
-bindsym $mod+Print exec $bin/screenshot
-bindsym $mod+Shift+Print exec $bin/screenshot -s
+bindsym Print exec $bin/screenshot
+bindsym Shift+Print exec $bin/screenshot -s
 
 #
 # Workspace Navigation
