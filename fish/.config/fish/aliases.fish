@@ -17,7 +17,9 @@ abbr c clear
 abbr cl clear
 abbr v nvim
 abbr g git
+
 abbr gs git status
+abbr gp git push
 
 abbr cd.. 'cd ..'
 abbr .. 'cd ..'
@@ -31,4 +33,3 @@ abbr cx 'chmod +x'
 abbr 'c-x' 'chmod -x'
 
 abbr se 'sudoedit'
-
