@@ -15,6 +15,7 @@ SETUVAR _fish_abbr__2E_2E_2E_2E_2E_:cd\x20\x2e\x2e/\x2e\x2e/\x2e\x2e/\x2e\x2e
 SETUVAR _fish_abbr_c:clear
 SETUVAR _fish_abbr_c_2D_x:chmod\x20\x2dx
 SETUVAR _fish_abbr_cd_2E_2E_:cd\x20\x2e\x2e
+SETUVAR _fish_abbr_cl:clear
 SETUVAR _fish_abbr_cx:chmod\x20\x2bx
 SETUVAR _fish_abbr_ef:nvim\x20\x7e/\x2econfig/fish
 SETUVAR _fish_abbr_ei:nvim\x20\x7e/\x2econfig/i3
@@ -22,6 +23,7 @@ SETUVAR _fish_abbr_ei3:nvim\x20\x7e/\x2econfig/i3
 SETUVAR _fish_abbr_ep:nvim\x20\x7e/\x2econfig/polybar
 SETUVAR _fish_abbr_ev:nvim\x20\x7e/\x2econfig/nvim
 SETUVAR _fish_abbr_g:git
+SETUVAR _fish_abbr_gs:git\x20status
 SETUVAR _fish_abbr_home:cd\x20\x24HOME
 SETUVAR _fish_abbr_j:jobs
 SETUVAR _fish_abbr_se:sudoedit

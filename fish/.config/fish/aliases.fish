@@ -13,9 +13,11 @@ abbr ev 'nvim ~/.config/nvim'
 abbr ep 'nvim ~/.config/polybar'
 
 abbr j jobs
-abbr g git
 abbr c clear
+abbr cl clear
 abbr v nvim
+abbr g git
+abbr gs git status
 
 abbr cd.. 'cd ..'
 abbr .. 'cd ..'
