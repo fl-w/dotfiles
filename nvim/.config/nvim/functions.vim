@@ -48,6 +48,33 @@ function! InsertTabWrapper()
 ·   endif
 endfunction
 
+""" COC helper functions
+function! Check_back_space()
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+
+""" incsearch.vim x fuzzy x vim-easymotion
+
+function! Config_easyfuzzymotion(...)
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzy#converter()],
+  \   'modules': [incsearch#config#easymotion#module()],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+
 function! s:line_handler(l)
   let keys = split(a:l, ':\t')
   exec 'buf' keys[0]
@@ -69,17 +96,3 @@ command! FZFLines call fzf#run({
 \   'options': '--extended --nth=3..',
 \   'down':    '60%'
 \})
-
-""" COC helper functions
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction

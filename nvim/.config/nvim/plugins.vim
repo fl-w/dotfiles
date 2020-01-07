@@ -15,7 +15,7 @@ call plug#begin()
 Plug 'ayu-theme/ayu-vim'                " Modern theme for vim
 Plug 'drewtempelmeyer/palenight.vim'    " Fantastic colors
 Plug 'nightsense/cosmic_latte'          " Theme that's easy on the eyes
-Plug 'manasthakur/vim-commentor'        " Easy comment toggle
+Plug 'dominikduda/vim_current_word'     " Highlighting word under cursor
 Plug 'godlygeek/tabular' |
     Plug 'godlygeek/vim-markdown'       " Syntax highlighting for markdown (depends: tabular)
 Plug 'junegunn/goyo.vim'                " Distraction-free writing in Vim
@@ -26,9 +26,14 @@ Plug 'dense-analysis/ale'               " Async Lint Engine
 Plug 'maximbaz/lightline-ale'           " ALE indicator for lightline
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Keyword completion
 Plug 'tpope/vim-sensible'               " Some sensible settings
+
+Plug 'haya14busa/incsearch.vim'         " Incremental searching
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
+
 Plug 'tpope/vim-sleuth'                 " Autodetect file spacing
 Plug 'scrooloose/nerdcommenter'         " Awesome Commenting
-Plug 'vim-scripts/auto-pairs-gentle'    " Add brackets automatically
+" Plug 'vim-scripts/auto-pairs-gentle'    " Add brackets automatically
 Plug 'vim-scripts/autoswap.vim'         " Handle swap files intelligently
 Plug 'sheerun/vim-polyglot'             " Mega language support pack
 Plug 'tpope/vim-fugitive'               " Git wrapper
@@ -85,7 +90,7 @@ let g:javascript_plugin_jsdoc = 1    " Highlight JSDoc
 
 
 """ editorconfig
-let g:EditorConfig_core_mode = 'external_command'
+" let g:EditorConfig_core_mode = 'external_command'
 
 
 """ fzf config
@@ -95,6 +100,8 @@ nnoremap <silent> <leader>t :Files<CR>
 let g:indentLine_char = '┆'
 
 """ COC configuration
+let g:coc_node_path = '/home/folws/.nvm/versions/node/v10.17.0/bin/node'
+
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
@@ -116,6 +123,15 @@ let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
+
 
 """ NERDTree
 let NERDTreeIgnore = ['node_modules', 'tmp', 'bower_components']
@@ -180,12 +196,12 @@ let g:lightline.component_type = {
       \ }
 
 """ Goyo configuration
-let g:goyo_width = 88
+let g:goyo_width = 100
 " let g:goyo_linenr = 1
 autocmd! User GoyoLeave nested :highlight LineNr guibg=NONE gui=NONE
 
 
 """ UtilSnips configuration
-let g:UltiSnipsExpandTrigger="<space>"
+let g:UltiSnipsExpandTrigger="<c-b>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
