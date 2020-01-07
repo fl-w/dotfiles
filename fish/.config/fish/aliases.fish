@@ -18,7 +18,7 @@ abbr cl clear
 abbr v nvim
 abbr g git
 
-abbr gs git status
+abbr gs git s
 abbr gp git push
 
 abbr cd.. 'cd ..'
