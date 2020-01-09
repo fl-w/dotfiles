@@ -83,7 +83,7 @@ nnoremap <leader>e :call LocationNext()<cr>
 
 
 " Ayu configuration
-let ayucolor="mirage"
+let ayucolor="dark"
 
 """ Custom Javascript configuration
 let g:javascript_plugin_jsdoc = 1    " Highlight JSDoc
