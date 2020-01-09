@@ -20,6 +20,7 @@ abbr g git
 
 abbr gs git s
 abbr gp git push
+abbr gd git diff
 
 abbr cd.. 'cd ..'
 abbr .. 'cd ..'

@@ -4,6 +4,9 @@
 # Disable fish greeting
 set -gx fish_greeting ''
 
+# Set fish colors
+set -Ux LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
+
 # Set default editor to nvim
 set -Ux EDITOR /usr/bin/nvim
 
