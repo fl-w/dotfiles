@@ -41,7 +41,7 @@ nnoremap <c-p> :Files<cr>
 noremap <c-s> <esc>:w!<cr>
 
 " Map Ctrl + / to toggle line comments
-noremap <c-/> :<Plug>CommentorLine
+" noremap <c-/> :<Plug>CommentorLine
 
 " Tab completion
 " will insert tab at beginning of line,
@@ -58,6 +58,8 @@ noremap <silent> <leader>f :NERDTreeToggleVCS<cr>
 " Map <leader> + z to toggle zen mode
 noremap <silent> <leader>z :Goyo<cr>
 
+" Map <leader> + h to toggle keyword hl
+noremap <silent> <leader>h :VimCurrentWordToggle<cr>
 
 """ COC completion
 
@@ -81,7 +83,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call Show_documentation()<CR>
 
 
 """ IncSearch

@@ -93,9 +93,6 @@ let g:javascript_plugin_jsdoc = 1    " Highlight JSDoc
 " let g:EditorConfig_core_mode = 'external_command'
 
 
-""" fzf config
-nnoremap <silent> <leader>t :Files<CR>
-
 """ Indent guides
 let g:indentLine_char = '┆'
 
@@ -139,17 +136,18 @@ let NERDTreeIgnore = ['node_modules', 'tmp', 'bower_components']
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let g:NERDTreeHijackNetrw = 1
-" let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeQuitOnOpen = 1
 
 au VimEnter NERD_tree_1 enew | execute 'NERDTree '.argv()[0]
+
 " Get colors from color scheme
 let s:colors = palenight#GetColors()
-
 " NERDTres File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
   exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
   exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
+
 call NERDTreeHighlightFile('md', 'blue', 'none', s:colors.blue.gui, 'none')
 call NERDTreeHighlightFile('yml', 'magenta', 'none', s:colors.purple.gui, 'none')
 call NERDTreeHighlightFile('json', 'yellow', 'none', s:colors.yellow.gui, 'none')
