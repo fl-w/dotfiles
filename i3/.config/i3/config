@@ -77,6 +77,7 @@ for_window [title="^.*"] border pixel 0
 
 # applications in floating (+ sticky) mode
 for_window [class   = "rofi"] floating enable sticky enable
+for_window [class   = "Pavucontrol"] floating enable, sticky enable
 
 set_from_resource $fg color7 #f0f0f0
 set_from_resource $bg color0 #000000
@@ -308,4 +309,4 @@ exec_always --no-startup-id $config/picom/launch.sh
 exec_always --no-startup-id $config/dunst/launch.sh
 exec_always --no-startup-id $config/polybar/launch.sh
 exec_always --no-startup-id spicetify apply
-exec_always --no-startup-id flashfocus
+exec_always --no-startup-id flashfocus >/dev/null 2>&1
