@@ -124,7 +124,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+space exec  rofi -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg" -show combi
 
 # Power menu
-bindsym $mod+Escape exec $bin/powermenu
+bindsym $mod+shift+l exec $bin/powermenu
 
 # Lock
 bindsym $mod+l exec $bin/lock-screen
@@ -197,7 +197,7 @@ bindsym $mod+Shift+Tab fullscreen disable, focus left, fullscreen
 # move windows around
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+jp move up
+bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
@@ -231,9 +231,6 @@ set $ws0 "0"
 # 7
 # 8
 # 9
-# for_window [class       = "Org.gnome.Nautilus"] move window to workspace $ws3
-# for_window [class       ^= "Firefox"] move window to workspace $ws1
-# for_window [class       ^= "Brave"] move window to workspace $ws1
 # for_window [class="firefox"] move to workspace $ws1
 for_window [class="code"] move to workspace $ws2
 # for_window [class="Alacritty"] move to workspace $ws3
@@ -274,7 +271,7 @@ workspace $ws6 output $secondary_monitor
 workspace $ws7 output $secondary_monitor
 workspace $ws8 output $secondary_monitor
 
-workspace $ws9 gaps outer 60
+workspace $ws9 gaps outer 150
 workspace $ws0 gaps outer 60
 
 # change container layout (stacked, tabbed, toggle split)
@@ -300,7 +297,6 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 #
 
 exec --no-startup-id start-pulseaudio-x11 & echo "Started pulseaudio"
-exec --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 exec --no-startup-id $bin/run-tabpage
 exec_always --no-startup-id $bin/alternate-i3-layout
 exec_always --no-startup-id $HOME/.screenlayout
