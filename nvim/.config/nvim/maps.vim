@@ -1,3 +1,5 @@
+let mapleader="\<Space>"
+
 " Move lines up(-) or down(_)
 noremap - ddp
 noremap _ ddkP

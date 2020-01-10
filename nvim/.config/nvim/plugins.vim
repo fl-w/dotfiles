@@ -31,6 +31,7 @@ Plug 'haya14busa/incsearch.vim'         " Incremental searching
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 
+Plug 'majutsushi/tagbar'                " Display tags in a window by scope.
 Plug 'tpope/vim-sleuth'                 " Autodetect file spacing
 Plug 'scrooloose/nerdcommenter'         " Awesome Commenting
 " Plug 'vim-scripts/auto-pairs-gentle'    " Add brackets automatically
