@@ -1,6 +1,7 @@
 [user]
-	name = Fola Bosun
-	email = yes@iamfolarin.com
+	name = Fol Bosun
+	email = 30976147+folws@users.noreply.github.com
+	sigingkey = 4C83FF3C3BEB57B4
 [core]
 	editor = nvim
 	excludesfile = ~/.gitexcludes
@@ -34,3 +35,5 @@
 	d = diff
 [commit]
 	gpgsign = true
+[gpg]
+	program = gpg2
