@@ -16,19 +16,19 @@ imap ;; <Esc>
 nnoremap <esc> :noh<return><esc>
 
 " Use (Ctrl/Alt)+H,J,K,L to navigate (panes/tabs)
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-noremap <M-h> <C-w>h
-noremap <M-j> <C-w>j
-noremap <M-k> <C-w>k
-noremap <M-l> <C-w>l
-noremap <M-Left> :tabp<cr>
-noremap <M-Up> :tabfirst<cr>
-noremap <M-Down> :tablast<cr>
-noremap <M-Right> :tabn<cr>
-
+noremap <C-h>      <C-w>h
+noremap <C-j>      <C-w>j
+noremap <C-k>      <C-w>k
+noremap <C-l>      <C-w>l
+noremap <M-h>      <C-w>h
+noremap <M-j>      <C-w>j
+noremap <M-k>      <C-w>k
+noremap <M-l>      <C-w>l
+noremap <M-Left>   :tabp<cr>
+noremap <M-Up>     :tabfirst<cr>
+noremap <M-Down>   :tablast<cr>
+noremap <M-Right>  :tabn<cr>
+command! -nargs=1 -range TabFirst exec <line1> . ',' . <line2> . 'Tabularize /^[^' . escape(<q-args>, '\^$.[?*~') . ']*\zs' . escape(<q-args>, '\^$.[?*~')
 " Get off my lawn
 " TODO: uncomment (wayyy to annoying 19.12.19)
 nnoremap <Left> :echoe "Use h"<CR>
@@ -48,20 +48,20 @@ noremap <c-s> <esc>:w!<cr>
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
-inoremap <silent><expr> <TAB>
+inoremap <silent><expr>  <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ Check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " Map <leader> + f to toggle nerd tree
-noremap <silent> <leader>f :NERDTreeToggleVCS<cr>
+noremap <silent><leader>f :NERDTreeToggleVCS<cr>
 
 " Map <leader> + z to toggle zen mode
-noremap <silent> <leader>z :Goyo<cr>
+noremap <silent><leader>z :Goyo<cr>
 
 " Map <leader> + h to toggle keyword hl
-noremap <silent> <leader>h :VimCurrentWordToggle<cr>
+noremap <silent><leader>h :VimCurrentWordToggle<cr>
 
 """ COC completion
 
