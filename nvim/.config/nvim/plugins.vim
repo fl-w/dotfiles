@@ -98,7 +98,7 @@ let g:javascript_plugin_jsdoc = 1    " Highlight JSDoc
 let g:indentLine_char = '┆'
 
 """ COC configuration
-let g:coc_node_path = '/home/folws/.nvm/versions/node/v10.17.0/bin/node'
+" let g:coc_node_path = '~/.nvm/versions/node/v10.17.0/bin/node'
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
