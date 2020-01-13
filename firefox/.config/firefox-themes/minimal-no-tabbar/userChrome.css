@@ -3,47 +3,47 @@
 
 window#main-window {
 
-	--color-fg   : var(--foreground);
-	--color-bg   : var(--background);
-	--color-0    : var(--color0);
-	--color-1    : var(--color1);
-	--color-2    : var(--color2);
-	--color-3    : var(--color3);
-	--color-4    : var(--color4);
-	--color-5    : var(--color5);
+	--color-fg                          : var(--foreground);
+	--color-bg                          : var(--background);
+	--color-0                           : var(--color0);
+	--color-1                           : var(--color1);
+	--color-2                           : var(--color2);
+	--color-3                           : var(--color3);
+	--color-4                           : var(--color4);
+	--color-5                           : var(--color5);
 
-	--color-tab-active-end       : var(--color-2);
-	--color-tab-active-start     : var(--color-fg);
-	--color-tab-hover-end        : var(--color-5);
-	--color-tab-hover-start      : var(--color-1);
-	--color-tab-normal-end       : var(--color-bg);
-	--color-tab-normal-start     : var(--color-bg);
-	--color-tab-pinned-active    : var(--color-bg);
-	--color-tab-pinned-normal    : var(--color-bg);
-	--color-urlbar-buttons-bg    : #fc6b89;
-	--color-urlbar-text          : var(--color-5);
+	--color-tab-active-end              : var(--color-2);
+	--color-tab-active-start            : var(--color-fg);
+	--color-tab-hover-end               : var(--color-5);
+	--color-tab-hover-start             : var(--color-1);
+	--color-tab-normal-end              : var(--color-bg);
+	--color-tab-normal-start            : var(--color-bg);
+	--color-tab-pinned-active           : var(--color-bg);
+	--color-tab-pinned-normal           : var(--color-bg);
+	--color-urlbar-buttons-bg           : #fc6b89;
+	--color-urlbar-text                 : var(--color-5);
 
 
 	/* Easy way to tweak most params */
-	--gap-between-tabs                   : 4px;
-	--margin-around-urlbar               : 2px;
-	--margin-before-back-button          : 9px;
-	--padding-around-searchengine-opts   : 10px;
-	--pinned-tab-favicon-dim             : 5px;
-	--tab-height                         : 26px;
-	--tab-text-font                      : "Hasklug Nerd Font", sans-serif;
-	--tab-text-font-size                 : 9pt;
-	--margin-before-tab-list             : 12px;
-	--margin-after-tab-list              : -17px;
-	--urlbar-text-font                   : "mononoki Nerd Font", sans-serif;
-	--urlbar-text-size                   : 10pt;
-	--urlbar-text-weight                 : 600;
-	--urlbar-list-width                  : 50%;
-	--urlbar-container-margin            : 12px;
-	--left-arrow-scale                   : 0.8;
-	--right-arrow-scale            	     : var(--left-arrow-scale);
-	--tabs-autohide-delay                : 3s;
-	--tabs-autohide-duration             : .5s;
+	--gap-between-tabs                  : 4px;
+	--margin-around-urlbar              : 2px;
+	--margin-before-back-button         : 9px;
+	--padding-around-searchengine-opts  : 10px;
+	--pinned-tab-favicon-dim            : 5px;
+	--tab-height                        : 26px;
+	--tab-text-font                     : "Hasklug Nerd Font", sans-serif;
+	--tab-text-font-size                : 9pt;
+	--margin-before-tab-list            : 12px;
+	--margin-after-tab-list             : -17px;
+	--urlbar-text-font                  : "mononoki Nerd Font", sans-serif;
+	--urlbar-text-size                  : 10pt;
+	--urlbar-text-weight                : 600;
+	--urlbar-list-width                 : 50%;
+	--urlbar-container-margin           : 12px;
+	--left-arrow-scale                  : 0.8;
+	--right-arrow-scale                 : var(--left-arrow-scale);
+	--tabs-autohide-delay               : 3s;
+	--tabs-autohide-duration            : .5s;
 
 
 	/* ******************************************************************* */
