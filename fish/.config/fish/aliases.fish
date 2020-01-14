@@ -35,4 +35,4 @@ abbr 'c-x' 'chmod -x'
 
 abbr se 'sudoedit'
 
-abbr e 'exit'
+abbr ex 'exit'
