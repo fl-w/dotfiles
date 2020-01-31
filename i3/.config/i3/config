@@ -130,7 +130,7 @@ bindsym $mod+shift+l exec $bin/powermenu
 bindsym $mod+l exec $bin/lock-screen
 
 bindsym Print exec $bin/screenshot
-bindsym Shift+Print exec $bin/screenshot -s
+bindsym --release Shift+Print exec $bin/screenshot -s
 
 #
 # Workspace Navigation
@@ -232,7 +232,7 @@ set $ws0 "0"
 # 8
 # 9
 # for_window [class="firefox"] move to workspace $ws1
-for_window [class="code"] move to workspace $ws2
+# for_window [class="code"] move to workspace $ws2
 # for_window [class="Alacritty"] move to workspace $ws3
 for_window [class="(?i)Nautilus"] move to workspace $ws4
 for_window [class="Spotify"] move to workspace $ws8
