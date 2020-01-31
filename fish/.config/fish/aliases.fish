@@ -17,6 +17,7 @@ abbr c clear
 abbr cl clear
 abbr v nvim
 abbr g git
+abbr h history
 
 abbr gs git s
 abbr gp git push
