@@ -166,11 +166,11 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym h resize shrink height 10 px or 10 ppt
         bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym k resize grow width 10 px or 10 ppt
+        bindsym l resize grow height 10 px or 10 ppt
+        bindsym semicolon resize set width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -183,6 +183,9 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
+
+bindsym $mod+plus resize grow width 10 px or 10 ppt
+bindsym $mod+minus resize shrink width 10 px or 10 ppt
 
 # change focus
 bindsym $mod+Left focus left
@@ -228,14 +231,15 @@ set $ws0 "0"
 # 4
 # 5
 # 6
-# 7
-# 8
+# 7 Discord
+# 8 Music
 # 9
 # for_window [class="firefox"] move to workspace $ws1
 # for_window [class="code"] move to workspace $ws2
 # for_window [class="Alacritty"] move to workspace $ws3
-for_window [class="(?i)Nautilus"] move to workspace $ws4
-for_window [class="Spotify"] move to workspace $ws8
+for_window [class="Spotify"] fullscreen enable; move to workspace $ws8
+for_window [class="Kite"] move to workspace $ws6
+for_window [class="discord"] move to workspace $ws7
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -266,10 +270,12 @@ workspace $ws1 output $primary_monitor
 workspace $ws2 output $primary_monitor
 workspace $ws3 output $primary_monitor
 workspace $ws4 output $primary_monitor
-workspace $ws5 output $secondary_monitor
+workspace $ws5 output $primary_monitor
 workspace $ws6 output $secondary_monitor
 workspace $ws7 output $secondary_monitor
 workspace $ws8 output $secondary_monitor
+workspace $ws9 output $secondary_monitor
+workspace $ws0 output $secondary_monitor
 
 workspace $ws9 gaps outer 150
 workspace $ws0 gaps outer 60
