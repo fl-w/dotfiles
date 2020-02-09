@@ -89,13 +89,13 @@ augroup vimrc
     au!
     autocmd BufWritePost _vim,.vimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
+" augroup mygroup
+"   autocmd!
+"   " Setup formatexpr specified filetype(s).
+"   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+"   " Update signature help on jump placeholder
+"   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+" augroup end
 
 """ vim-current-word configuration
 hi CurrentWord gui=bold guifg=Normal

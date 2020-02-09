@@ -7,55 +7,56 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall
 endif
 
-
+" Plugin List
 call plug#begin()
-" Visuals
-"
-" Plug 'dylanaraps/wal.vim'               " Pywal for vim
-Plug 'ayu-theme/ayu-vim'                " Modern theme for vim
-Plug 'drewtempelmeyer/palenight.vim'    " Fantastic colors
-Plug 'nightsense/cosmic_latte'          " Theme that's easy on the eyes
-Plug 'dominikduda/vim_current_word'     " Highlighting word under cursor
-Plug 'godlygeek/tabular' |
-    Plug 'godlygeek/vim-markdown'       " Syntax highlighting for markdown (depends: tabular)
-Plug 'junegunn/goyo.vim'                " Distraction-free writing in Vim
-"
-"  helpers
-"
-Plug 'dense-analysis/ale'               " Async Lint Engine
-Plug 'maximbaz/lightline-ale'           " ALE indicator for lightline
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Keyword completion
-Plug 'tpope/vim-sensible'               " Some sensible settings
 
-Plug 'haya14busa/incsearch.vim'         " Incremental searching
-Plug 'haya14busa/incsearch-fuzzy.vim'
-Plug 'haya14busa/incsearch-easymotion.vim'
+  "
+  " Visuals
+  "
+  Plug 'ayu-theme/ayu-vim'                " Modern theme for vim
+  Plug 'drewtempelmeyer/palenight.vim'    " Fantastic colors
+  Plug 'nightsense/cosmic_latte'          " Theme that's easy on the eyes
+  " Plug 'dylanaraps/wal.vim'               " Pywal for vim
 
-Plug 'majutsushi/tagbar'                " Display tags in a window by scope.
-Plug 'tpope/vim-sleuth'                 " Autodetect file spacing
-Plug 'scrooloose/nerdcommenter'         " Awesome Commenting
-" Plug 'vim-scripts/auto-pairs-gentle'    " Add brackets automatically
-Plug 'vim-scripts/autoswap.vim'         " Handle swap files intelligently
-Plug 'sheerun/vim-polyglot'             " Mega language support pack
-Plug 'tpope/vim-fugitive'               " Git wrapper
-Plug 'itchyny/lightline.vim'            " Awesome status bar
-Plug 'junegunn/fzf', { 'dir': '~/.local/lib/fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'editorconfig/editorconfig-vim'    " .editorconfig support
-Plug 'tpope/vim-surround'               " Change your surroundings
-Plug 'terryma/vim-multiple-cursors'     " Multiple cursors
-Plug 'Yggdroot/indentLine'              " Indent guides
-Plug 'easymotion/vim-easymotion'        " Navigate files with ease
-Plug 'scrooloose/nerdtree'              " File tree view
-Plug 'Xuyuanp/nerdtree-git-plugin'      " Git indicators for nerdtree.
-Plug 'ryanoasis/vim-devicons'           " Add file icons to vim plugins
-Plug 'janko-m/vim-test'                 " Running tests
-Plug 'airblade/vim-gitgutter'           " Git gutter
-Plug 'junegunn/vim-easy-align'          " Align things
-Plug 'mhinz/vim-startify'               " Lovely, informative start screen
-Plug 'majutsushi/tagbar'
-Plug 'SirVer/ultisnips'                 " Snippets engine
-Plug 'honza/vim-snippets'               " Snippets
+  Plug 'dominikduda/vim_current_word'     " Highlighting word under cursor
+  Plug 'junegunn/goyo.vim'                " Distraction-free writing in Vim
+  " Plug 'godlygeek/tabular' |
+  "    Plug 'godlygeek/vim-markdown'       " Syntax highlighting for markdown (depends: tabular)
+
+  "
+  "  Syntax check
+  "
+  Plug 'dense-analysis/ale'               " Async Lint Engine
+  Plug 'maximbaz/lightline-ale'           " ALE indicator for lightline
+  Plug 'tpope/vim-sensible'               " Some sensible settings
+
+  Plug 'haya14busa/incsearch.vim'         " Incremental searching
+  Plug 'haya14busa/incsearch-fuzzy.vim'
+  Plug 'haya14busa/incsearch-easymotion.vim'
+
+  Plug 'majutsushi/tagbar'                " Display tags in a window by scope.
+  Plug 'tpope/vim-sleuth'                 " Autodetect file spacing
+  Plug 'scrooloose/nerdcommenter'         " Awesome Commenting
+  " Plug 'vim-scripts/auto-pairs-gentle'    " Add brackets automatically
+  Plug 'vim-scripts/autoswap.vim'         " Handle swap files intelligently
+  Plug 'sheerun/vim-polyglot'             " Mega language support pack
+  Plug 'tpope/vim-fugitive'               " Git wrapper
+  Plug 'itchyny/lightline.vim'            " Awesome status bar
+  Plug 'junegunn/fzf', { 'dir': '~/.local/lib/fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'editorconfig/editorconfig-vim'    " .editorconfig support
+  Plug 'tpope/vim-surround'               " Change your surroundings
+  Plug 'Yggdroot/indentLine'              " Indent guides
+  Plug 'easymotion/vim-easymotion'        " Navigate files with ease
+  Plug 'scrooloose/nerdtree'              " File tree view
+  Plug 'Xuyuanp/nerdtree-git-plugin'      " Git indicators for nerdtree.
+  Plug 'ryanoasis/vim-devicons'           " Add file icons to vim plugins
+  Plug 'airblade/vim-gitgutter'           " Git gutter
+  Plug 'junegunn/vim-easy-align'          " Align things
+  Plug 'mhinz/vim-startify'               " Lovely, informative start screen
+  Plug 'majutsushi/tagbar'
+  Plug 'SirVer/ultisnips'                 " Snippets engine
+  Plug 'honza/vim-snippets'               " Snippets
 
 
 call plug#end()
@@ -68,9 +69,9 @@ call plug#end()
 let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
       \ 'javascript' : ['eslint'],
-      \ 'python': ['black', 'isort', 'yapf', 'add_blank_lines_for_python_control_statements']
+      \ 'python': ['black', 'isort', 'add_blank_lines_for_python_control_statements']
       \}
-let g:ale_linters = {'python': ['flake8', 'mypy', 'pylint']}
+let g:ale_linters = {'python': ['pylint', 'flake8']}
 
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1
@@ -97,22 +98,14 @@ let g:javascript_plugin_jsdoc = 1    " Highlight JSDoc
 """ Indent guides
 let g:indentLine_char = '┆'
 
-""" COC configuration
-" let g:coc_node_path = '~/.nvm/versions/node/v10.17.0/bin/node'
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-" Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
-
-
 """ vim-easy-align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+
 
 """ NERDCommenter
 " Add spaces after comment delimiters by default
@@ -174,11 +167,12 @@ let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste'  ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified'  ] ],
-      \   'right': [ [ 'lineinfo' ],
+      \   'right': [ [ 'kite', 'lineinfo' ],
       \   [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
+      \   'gitbranch': 'fugitive#head',
+      \   'kite': 'kite#statusline'
       \ },
 \ }
 let g:lightline.component_expand = {
@@ -199,6 +193,8 @@ let g:goyo_width = 100
 " let g:goyo_linenr = 1
 autocmd! User GoyoLeave nested :highlight LineNr guibg=NONE gui=NONE
 
+""" Kite configuration
+let g:kite_auto_complete=1
 
 """ UtilSnips configuration
 let g:UltiSnipsExpandTrigger="<c-b>"
