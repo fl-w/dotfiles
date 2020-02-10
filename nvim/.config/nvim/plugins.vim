@@ -13,10 +13,9 @@ call plug#begin()
   "
   " Visuals
   "
-  Plug 'ayu-theme/ayu-vim'                " Modern theme for vim
   Plug 'drewtempelmeyer/palenight.vim'    " Fantastic colors
   Plug 'nightsense/cosmic_latte'          " Theme that's easy on the eyes
-  " Plug 'dylanaraps/wal.vim'               " Pywal for vim
+  Plug 'dylanaraps/wal.vim'               " Pywal for vim
 
   Plug 'dominikduda/vim_current_word'     " Highlighting word under cursor
   Plug 'junegunn/goyo.vim'                " Distraction-free writing in Vim
@@ -27,8 +26,14 @@ call plug#begin()
   "  Syntax check
   "
   Plug 'dense-analysis/ale'               " Async Lint Engine
-  Plug 'maximbaz/lightline-ale'           " ALE indicator for lightline
   Plug 'tpope/vim-sensible'               " Some sensible settings
+
+  Plug 'itchyny/lightline.vim'            " Awesome status bar
+  Plug 'maximbaz/lightline-ale'           " ALE indicator for lightline
+  Plug 'mengelbrecht/lightline-bufferline' " A buffer plugin for lightline
+
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'deoplete-plugins/deoplete-jedi'   " Deoplete source for python
 
   Plug 'haya14busa/incsearch.vim'         " Incremental searching
   Plug 'haya14busa/incsearch-fuzzy.vim'
@@ -41,7 +46,6 @@ call plug#begin()
   Plug 'vim-scripts/autoswap.vim'         " Handle swap files intelligently
   Plug 'sheerun/vim-polyglot'             " Mega language support pack
   Plug 'tpope/vim-fugitive'               " Git wrapper
-  Plug 'itchyny/lightline.vim'            " Awesome status bar
   Plug 'junegunn/fzf', { 'dir': '~/.local/lib/fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'editorconfig/editorconfig-vim'    " .editorconfig support
@@ -53,7 +57,6 @@ call plug#begin()
   Plug 'ryanoasis/vim-devicons'           " Add file icons to vim plugins
   Plug 'airblade/vim-gitgutter'           " Git gutter
   Plug 'junegunn/vim-easy-align'          " Align things
-  Plug 'mhinz/vim-startify'               " Lovely, informative start screen
   Plug 'majutsushi/tagbar'
   Plug 'SirVer/ultisnips'                 " Snippets engine
   Plug 'honza/vim-snippets'               " Snippets
@@ -80,16 +83,19 @@ let g:ale_set_ballons = 1
 let g:ale_sign_column_always = 1
 let g:ale_change_sign_column_color = 1
 let g:ale_close_preview_on_insert = 1
+
 " Use <leader>e to go to the next error
 nnoremap <leader>e :call LocationNext()<cr>
 
 
 " Ayu configuration
-let ayucolor="dark"
+let ayucolor="mirage"
 
 """ Custom Javascript configuration
 let g:javascript_plugin_jsdoc = 1    " Highlight JSDoc
 
+"" Deoplete configuration
+let g:deoplete#enable_at_startup = 1
 
 """ editorconfig
 " let g:EditorConfig_core_mode = 'external_command'
@@ -162,31 +168,50 @@ nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
+""" lightline/-buffers configuration
 let g:lightline = {
-      \ 'colorscheme': 'palenight',
+      \ 'colorscheme': 'cosmic_latte',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste'  ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified'  ] ],
       \   'right': [ [ 'kite', 'lineinfo' ],
       \   [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
-      \   'kite': 'kite#statusline'
-      \ },
+      \ }
 \ }
+let g:lightline.tabline = {
+      \  'left': [['buffers']],
+      \  'right': [['close']]
+\}
+
+let g:lightline.component_function = {
+      \  'gitbranch': 'fugitive#head',
+      \   'kite': 'kite#statusline'
+\}
 let g:lightline.component_expand = {
+      \ 'buffers': 'lightline#bufferline#buffers',
       \ 'linter_checking': 'lightline#ale#checking',
       \  'linter_warnings': 'lightline#ale#warnings',
       \  'linter_errors': 'lightline#ale#errors',
       \  'linter_ok': 'lightline#ale#ok',
 \}
 let g:lightline.component_type = {
+      \     'buffers': 'tabsel',
       \     'linter_checking': 'left',
       \     'linter_warnings': 'warning',
       \     'linter_errors': 'error',
       \     'linter_ok': 'left',
       \ }
+
+let g:lightline#bufferline#enable_devicons = 1
+let g:lightline#bufferline#unicode_symbols = 1
+let g:lightline#bufferline#min_buffer_count = 2
+let g:lightline#bufferline#show_number = 2
+let g:lightline#bufferline#unnamed = '[ No Name ]'
+let g:lightline#bufferline#reverse_buffers = 1
+
+let g:lightline#bufferline#number_map = {
+\ 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
+\ 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
 
 """ Goyo configuration
 let g:goyo_width = 100

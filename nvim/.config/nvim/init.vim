@@ -54,6 +54,7 @@ set laststatus=2                " Always show statusbar
 set scrolloff=5                 " Minimum space on bottom/top of window
 set sidescrolloff=7             " Minimum space on side
 set sidescroll=1
+set showtabline=2               " always show tabline
 set shortmess+=c                " don't give \|ins-completion-menu\| messages.
 set tabstop=4                   " 4 spaces
 "set tw=4                        " 4 spaces
