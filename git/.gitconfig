@@ -1,5 +1,5 @@
 [user]
-	name = Fol Bosun
+	name = Fol O
 	email = 30976147+folws@users.noreply.github.com
 	sigingkey = 4C83FF3C3BEB57B4
 [core]
@@ -44,6 +44,6 @@
 	lol = log --pretty=format:'[%C(blue)%h%Creset] %C(cyan)%an%Creset %C(yellow)%ar%Creset: %C(white)%s' --stat
 
 [commit]
-	gpgsign = true
+	gpgsign = false
 [gpg]
 	program = gpg2
