@@ -46,52 +46,53 @@ nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
 " Map Ctrl + p to open fuzzy find (FZF)
-nnoremap <c-p> :Files<cr>
+nnoremap <c-p>                   :Files<cr>
 
 " map <leader> + w to save file
-noremap <silent><leader>w <esc>:w!<cr>
+noremap <silent><leader>w        <esc>:w!<cr>
 
 " map <leader> + q to quit file
-noremap <silent><leader>q <esc>:q!<cr>
+noremap <silent><leader>q        <esc>:q!<cr>
 
 " map <leader><leader> to save and quit file
 noremap <silent><leader><leader> :wq!<cr>
 
+" map <leader> + . to toggle tags bar
+nmap <silent><leader>            :TagbarToggle<cr>
+
 " Map <leader> + f to toggle nerd tree
-noremap <silent><leader>f :NERDTreeToggleVCS<cr>
+noremap <silent><leader>f        :NERDTreeToggleVCS<cr>
 
 " Map <leader> + z to toggle zen mode
-noremap <silent><leader>z :Goyo<cr>
+noremap <silent><leader>z        :Goyo<cr>
 
 " Map <leader> + h to toggle keyword hl
-noremap <silent><leader>h :VimCurrentWordToggle<cr>
+noremap <silent><leader>h        :VimCurrentWordToggle<cr>
 
 
 "
 " Plugin specific mappings
 "
 
+""" vim-easy-align
+xmap <leader>a                  <Plug>(EasyAlign)
+nmap <leader>a                  <Plug>(EasyAlign)
+
+
 """ IncSearch
 noremap <silent><expr> <Space>/ incsearch#go(Config_easyfuzzymotion())
-map / <Plug>(incsearch-easymotion-/)
-map ? <Plug>(incsearch-easymotion-?)
-map g/ <Plug>(incsearch-easymotion-stay)
+map /                           <Plug>(incsearch-easymotion-/)
+map ?                           <Plug>(incsearch-easymotion-?)
+map g/                          <Plug>(incsearch-easymotion-stay)
 
 
 """ EasyMotion
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
-nmap s <Plug>(easymotion-overwin-s)
+nmap s                          <Plug>(easymotion-overwin-s)
 " or
 " `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
-nmap s <Plug>(easymotion-s2)
-
-" Turn on case-insensitive feature
-let g:EasyMotion_smartcase = 1
+nmap <leader>s                  <Plug>(easymotion-s2)
 
 " JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+map <leader>j                   <Plug>(easymotion-j)
+map <leader>k                   <Plug>(easymotion-k)

@@ -35,34 +35,6 @@ function! InsertTabWrapper()
     endif
   endfunction
 
-" If NERDTree is open in the current buffer
- function! NERDTreeToggleInCurDir()
-·   if exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1
-·   ·   exe ":NERDTreeClose"
-·   else
-·   ·   if (expand("%:t") != '')
-·   ·   ·   exe ":NERDTreeFind"
-·   ·   else
-·   ·   ·   exe ":NERDTreeToggle"
-·   ·   endif
-·   endif
-endfunction
-
-""" COC helper functions
-function! Check_back_space()
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-function! Show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-
 """ incsearch.vim x fuzzy x vim-easymotion
 
 function! Config_easyfuzzymotion(...)

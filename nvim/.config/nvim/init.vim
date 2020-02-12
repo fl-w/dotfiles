@@ -1,5 +1,6 @@
 source $HOME/.config/nvim/functions.vim
 source $HOME/.config/nvim/plugins.vim
+source $HOME/.config/nvim/plugins-config.vim
 source $HOME/.config/nvim/maps.vim
 
 "
@@ -8,7 +9,7 @@ source $HOME/.config/nvim/maps.vim
 
 " stop theme from setting bg color
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
-colorscheme palenight
+colorscheme quantum
 highlight LineNr guibg=NONE gui=NONE
 
 " set t_ut=
@@ -29,6 +30,7 @@ filetype plugin on
 filetype plugin indent on
 
 set termguicolors
+set background=dark
 set ff=unix
 set encoding=UTF-8
 set mouse=a
@@ -56,8 +58,7 @@ set sidescrolloff=7             " Minimum space on side
 set sidescroll=1
 set showtabline=2               " always show tabline
 set shortmess+=c                " don't give \|ins-completion-menu\| messages.
-set tabstop=4                   " 4 spaces
-"set tw=4                        " 4 spaces
+set tabstop=2                   " 2 spaces
 set shiftwidth=2                " 2 2 CHAINZ
 set cmdheight=2                 " Better display for messages
 set list                        " Display hidden chars as defined below
@@ -69,6 +70,8 @@ set noshowmode                  " Hide mode (lightline shows mode)
 set expandtab                   " Spaces > tabs
 set nofoldenable                " Disable folding
 set clipboard+=unnamedplus      " Use system clipboard
+set completeopt-=preview
+set completeopt+=noinsert,menuone
 
 """ Undo settings
 set undodir=~/.config/nvim/vim-undo
