@@ -22,6 +22,7 @@ abbr h history
 abbr gs git s
 abbr gp git push
 abbr gd git diff
+abbr gb git branch
 
 abbr cd.. 'cd ..'
 abbr .. 'cd ..'
