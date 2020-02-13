@@ -57,6 +57,17 @@ inoremap <silent><expr> <TAB>
 "
 let g:indentLine_char = '┆'
 
+" languageclient-neovim configuration
+"
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust':           ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript':     ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python':         ['/usr/local/bin/pyls'],
+    \ 'haskell':        ['hie-wrapper', '--lsp'],
+    \ }
 
 " lightline/-buffers configuration
 "
@@ -79,18 +90,18 @@ let g:lightline.component_function = {
       \   'kite': 'kite#statusline'
 \}
 let g:lightline.component_expand = {
-      \ 'buffers': 'lightline#bufferline#buffers',
-      \ 'linter_checking': 'lightline#ale#checking',
+      \ 'buffers':          'lightline#bufferline#buffers',
+      \ 'linter_checking':  'lightline#ale#checking',
       \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
+      \  'linter_errors':   'lightline#ale#errors',
+      \  'linter_ok':       'lightline#ale#ok',
 \}
 let g:lightline.component_type = {
-      \     'buffers': 'tabsel',
+      \     'buffers':         'tabsel',
       \     'linter_checking': 'left',
       \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \     'linter_ok': 'left',
+      \     'linter_errors':   'error',
+      \     'linter_ok':       'left',
       \ }
 
 let g:lightline#bufferline#enable_devicons = 1

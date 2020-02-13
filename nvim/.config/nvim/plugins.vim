@@ -41,6 +41,11 @@ call plug#begin()
   Plug 'maximbaz/lightline-ale'            " ALE indicator for lightline
   Plug 'mengelbrecht/lightline-bufferline' " A buffer plugin for lightline
 
+  Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'deoplete-plugins/deoplete-jedi'    " Deoplete source for python
   Plug 'artur-shaik/vim-Javacomplete2'     " Deoplete source for java
