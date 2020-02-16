@@ -49,6 +49,8 @@ call plug#begin()
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'deoplete-plugins/deoplete-jedi'    " Deoplete source for python
   Plug 'artur-shaik/vim-Javacomplete2'     " Deoplete source for java
+  Plug 'ternjs/tern_for_vim'               " Deoplete source for js
+  Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
   Plug 'haya14busa/incsearch.vim'          " Incremental searching
   Plug 'haya14busa/incsearch-fuzzy.vim'

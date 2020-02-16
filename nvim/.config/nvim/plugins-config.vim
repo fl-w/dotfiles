@@ -5,10 +5,15 @@
 " Ale configuration
 let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \ 'javascript' : ['eslint'],
+      \ 'javascript' : ['prettier'],
+      \ 'json' : ['fixjson'],
+      \ 'typescript': ['prettier', 'eslint'],
       \ 'python': ['black', 'isort', 'add_blank_lines_for_python_control_statements']
       \}
-let g:ale_linters = {'python': ['pylint', 'flake8']}
+let g:ale_linters = {
+      \ 'python': ['pylint', 'flake8'],
+      \ 'javascript': ['eslint']
+      \}
 
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1
@@ -140,6 +145,7 @@ let g:NERDToggleCheckAllLines    = 1
 let NERDTreeIgnore               = ['node_modules', 'tmp', 'bower_components']
 let NERDTreeMinimalUI            = 1
 let NERDTreeDirArrows            = 1
+let NERDTreeShowHidden           = 1
 let g:NERDTreeHijackNetrw        = 1
 let g:NERDTreeQuitOnOpen         = 1
 
