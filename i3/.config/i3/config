@@ -302,13 +302,13 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 #   |___/ |_/_/ \_\_|_\ |_|  \___/|_|
 #
 
-exec --no-startup-id start-pulseaudio-x11 & echo "Started pulseaudio"
-exec --no-startup-id $bin/run-tabpage
-exec_always --no-startup-id $bin/alternate-i3-layout
+exec --no-startup-id start-pulseaudio-x11 & notify-send "Started pulseaudio"
+exec --no-startup-id $bin/run-tabpage >/dev/null 2>&1
+exec_always --no-startup-id $bin/alternate-i3-layout >/dev/null 2>&1
 exec_always --no-startup-id $HOME/.screenlayout
 exec_always --no-startup-id wal -b '#1b1d1e' --iterative -i $HOME/.wallpapers
-exec_always --no-startup-id $config/picom/launch.sh
-exec_always --no-startup-id $config/dunst/launch.sh
-exec_always --no-startup-id $config/polybar/launch.sh
-exec_always --no-startup-id spicetify apply
+exec_always --no-startup-id $config/picom/launch.sh >/dev/null 2>&1
+exec_always --no-startup-id $config/dunst/launch.sh >/dev/null 2>&1
+exec_always --no-startup-id $config/polybar/launch.sh >/dev/null 2>&1
+# exec_always --no-startup-id spicetify apply
 exec_always --no-startup-id flashfocus >/dev/null 2>&1
