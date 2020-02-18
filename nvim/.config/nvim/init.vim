@@ -9,7 +9,7 @@ source $HOME/.config/nvim/maps.vim
 
 " stop theme from setting bg color
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
-colorscheme quantum
+colorscheme palenight
 highlight LineNr guibg=NONE gui=NONE
 
 " set t_ut=
@@ -70,8 +70,7 @@ set noshowmode                  " Hide mode (lightline shows mode)
 set expandtab                   " Spaces > tabs
 set nofoldenable                " Disable folding
 set clipboard+=unnamedplus      " Use system clipboard
-set completeopt-=preview
-set completeopt+=noinsert,menuone
+set completeopt+=noinsert,menu,longest,preview
 
 """ Undo settings
 set undodir=~/.config/nvim/vim-undo

@@ -15,8 +15,9 @@ call plug#begin()
   "
   Plug 'drewtempelmeyer/palenight.vim'     " Fantastic colors
   Plug 'nightsense/cosmic_latte'           " Theme that's easy on the eyes
-  Plug 'dylanaraps/wal.vim'                " Pywal for vim
   Plug 'kjssad/quantum.vim'                " A modern colorscheme inspired by firefox
+  Plug 'rakr/vim-one'                      " one-dark colorscheme for vim
+
 
   Plug 'sheerun/vim-polyglot'              " Mega language support pack
 
@@ -46,11 +47,12 @@ call plug#begin()
     \ 'do': 'bash install.sh',
     \ }
 
+  Plug 'Shougo/echodoc'                     " Displays function signatures from completions
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'deoplete-plugins/deoplete-jedi'    " Deoplete source for python
+  " Plug 'ternjs/tern_for_vim'               " Deoplete source for js
   Plug 'artur-shaik/vim-Javacomplete2'     " Deoplete source for java
-  Plug 'ternjs/tern_for_vim'               " Deoplete source for js
-  Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+  Plug 'HerringtonDarkholme/yats.vim'      " Syntax highlighting for ts
 
   Plug 'haya14busa/incsearch.vim'          " Incremental searching
   Plug 'haya14busa/incsearch-fuzzy.vim'
@@ -65,6 +67,8 @@ call plug#begin()
   Plug 'jiangmiao/auto-pairs'     " Add brackets automatically
   Plug 'vim-scripts/autoswap.vim'          " Handle swap files intelligently
   Plug 'tpope/vim-fugitive'                " Git wrapper
+
+  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
   Plug 'junegunn/fzf', { 'dir': '~/.local/lib/fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'

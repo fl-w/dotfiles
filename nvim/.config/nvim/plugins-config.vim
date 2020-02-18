@@ -12,7 +12,6 @@ let g:ale_fixers = {
       \}
 let g:ale_linters = {
       \ 'python': ['pylint', 'flake8'],
-      \ 'javascript': ['eslint']
       \}
 
 " Set this variable to 1 to fix files when you save them.
@@ -50,13 +49,61 @@ endfunction"}}}
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#manual_complete()
+      \ deoplete#manual_complete()"
 
-" inoremap <silent><expr> <CR>
-"       \ !(<SID>check_back_space()) &&
-"       \  ?
-"       \ UltiSnips#ExpandSnippet() :
-"       \ "\<CR>"
+inoremap <silent><expr> <CR>
+      \ pumvisible() ? "\<c-y>" :
+      \ "\<cr>"
+
+" echodoc configuration
+"
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'virtual'
+
+
+" firenvim configuration
+"
+if exists('g:started_by_firenvim') && g:started_by_firenvim
+    " general options
+
+    colorscheme cosmis_latte
+
+    highlight Normal guibg=#1b1d1e
+
+    augroup firenvim
+        autocmd!
+        autocmd BufEnter *.txt setlocal filetype=markdown.pandoc
+    augroup END
+endif
+
+
+" fzf configuration
+"
+let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
+let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4'
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+  call setbufvar(buf, '&signcolumn', 'no')
+
+  let height = float2nr(10)
+  let width = float2nr(80)
+  let horizontal = float2nr((&columns - width) / 2)
+  let vertical = 1
+
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': vertical,
+        \ 'col': horizontal,
+        \ 'width': width,
+        \ 'height': height,
+        \ 'style': 'minimal'
+        \ }
+
+  call nvim_open_win(buf, v:true, opts)
+endfunction
+
 
 " indentline configuration
 "
@@ -64,15 +111,13 @@ let g:indentLine_char = '┆'
 
 " languageclient-neovim configuration
 "
-set hidden
-
 let g:LanguageClient_serverCommands = {
-    \ 'rust':           ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'javascript':     ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
     \ 'python':         ['/usr/local/bin/pyls'],
     \ 'haskell':        ['hie-wrapper', '--lsp'],
+    \ 'javascript':     ['javascript-typescript-stdio'],
+    \ 'typescript':     ['typescript-language-server', '--stdio'],
     \ }
+
 
 " lightline/-buffers configuration
 "
@@ -109,12 +154,13 @@ let g:lightline.component_type = {
       \     'linter_ok':       'left',
       \ }
 
-let g:lightline#bufferline#enable_devicons = 1
-let g:lightline#bufferline#unicode_symbols = 1
-let g:lightline#bufferline#min_buffer_count = 2
-let g:lightline#bufferline#show_number = 2
-let g:lightline#bufferline#unnamed = '[ No Name ]'
-let g:lightline#bufferline#reverse_buffers = 1
+let g:lightline#bufferline#enable_devicons   = 1
+let g:lightline#bufferline#unicode_symbols   = 1
+let g:lightline#bufferline#min_buffer_count  = 2
+let g:lightline#bufferline#show_number       = 2
+let g:lightline#bufferline#unnamed           = '[ No Name ]'
+" let g:lightline#bufferline#reverse_buffers   = 1
+let g:lightline#bufferline#filename_modifier = ':t'
 
 let g:lightline#bufferline#number_map = {
 \ 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
@@ -182,6 +228,10 @@ call NERDTreeHighlightFile('scss', 'cyan', 'none', s:colors.cyan.gui, 'none')
 call NERDTreeHighlightFile('coffee', 'yellow', 'none', s:colors.dark_yellow.gui, 'none')
 call NERDTreeHighlightFile('js', 'yellow', 'none', s:colors.yellow.gui, 'none')
 call NERDTreeHighlightFile('rb', 'red', 'none', s:colors.red.gui, 'none')
+
+" tagbar configuration
+"
+" autocmd VimEnter * :unmap <space>
 
 
 " vim-easy-align configuration

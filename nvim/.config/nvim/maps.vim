@@ -45,8 +45,11 @@ nnoremap <silent><Right> :bnext<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-" Map Ctrl + p to open fuzzy find (FZF)
-nnoremap <c-p>                   :Files<cr>
+" Map <leader> + e to open fuzzy find (FZF)
+nnoremap <silent> <leader>e :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
+
+" Map Ctrl + p to open buffers in fzf
+nnoremap <silent> <leader>E :Buffers<CR>
 
 " map <leader> + w to save file
 noremap <silent><leader>w        <esc>:w!<cr>
@@ -57,8 +60,8 @@ noremap <silent><leader>q        <esc>:q!<cr>
 " map <leader><leader> to save and quit file
 noremap <silent><leader><leader> :wq!<cr>
 
-" map <leader> + . to toggle tags bar
-nmap <silent><leader>            :TagbarToggle<cr>
+" map <leader> + b to toggle tags bar
+nmap <silent><leader>b           :TagbarOpenAutoClose<cr>
 
 " Map <leader> + f to toggle nerd tree
 noremap <silent><leader>f        :NERDTreeToggleVCS<cr>
@@ -69,8 +72,11 @@ noremap <silent><leader>z        :Goyo<cr>
 " Map <leader> + h to toggle keyword hl
 noremap <silent><leader>h        :VimCurrentWordToggle<cr>
 
+noremap <silent><leader>y "*y
+noremap <silent><leader>p "*p
+noremap <silent><leader>Y "+y
+noremap <silent><leader>P "+y
 
-"
 " Plugin specific mappings
 "
 
@@ -88,7 +94,7 @@ map g/                          <Plug>(incsearch-easymotion-stay)
 
 """ EasyMotion
 " `s{char}{label}`
-nmap s                          <Plug>(easymotion-overwin-s)
+nnoremap s                          <Plug>(easymotion-overwin-s)
 " or
 " `s{char}{char}{label}`
 nmap <leader>s                  <Plug>(easymotion-s2)
@@ -96,3 +102,26 @@ nmap <leader>s                  <Plug>(easymotion-s2)
 " JK motions: Line motions
 map <leader>j                   <Plug>(easymotion-j)
 map <leader>k                   <Plug>(easymotion-k)
+
+" LanguageClient
+
+function! SetLSPShortcuts()
+  nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+  nnoremap K          :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+  nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+  nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+  nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+  nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+  nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+  nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <c-p>      :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+  nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+  nnoremap <leader><enter> :call LanguageClient#textDocument_codeAction()<CR>
+endfunction()
+
+augroup LSP
+  autocmd!
+  autocmd FileType cpp,c,java,ts,py,typescript call SetLSPShortcuts()
+augroup END
