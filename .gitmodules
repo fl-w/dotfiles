@@ -1,0 +1,3 @@
+[submodule "etc/refind/themes/rEFInd-minimal"]
+	path = etc/refind/themes/rEFInd-minimal
+	url = https://github.com/EvanPurkhiser/rEFInd-minimal
