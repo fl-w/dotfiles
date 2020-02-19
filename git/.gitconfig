@@ -12,12 +12,16 @@
 [include]
 	path = ~/.gitconfig_local
 [merge]
-	tool = vimdiff
+	tool = code
 [mergetool]
-	prompt = true
+	prompt = false
 	keepBackup = false
 [mergetool "vimdiff"]
 	cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[mergetool "code"]
+ cmd = code --wait $MERGED
+[mergetool "nvim"]
+	cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
 [alias]
 	s = status -sb
 	sw = switch
