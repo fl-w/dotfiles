@@ -114,6 +114,7 @@ let g:indentLine_char = '┆'
 let g:LanguageClient_serverCommands = {
     \ 'python':         ['/usr/local/bin/pyls'],
     \ 'haskell':        ['hie-wrapper', '--lsp'],
+    \ 'java':           ['/usr/bin/jdtls', '-data', getcwd()],
     \ 'javascript':     ['javascript-typescript-stdio'],
     \ 'typescript':     ['typescript-language-server', '--stdio'],
     \ }
