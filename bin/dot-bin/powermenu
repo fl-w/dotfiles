@@ -1,7 +1,7 @@
 #!/bin/bash
 
-options=" Lock| Logout| Shutdown| Reboot"
-ROFI_CMD="$(rofi -sep "|" -dmenu -i -p 'Power' -width 9 -hide-scrollbar -line-padding 4 -padding 20 -lines 4 <<< "$options")"
+options=" Lock| Logout| Shutdown| Reboot|-Hibernate"
+ROFI_CMD="$(rofi -sep "|" -dmenu -i -p 'Power' -width 9 -hide-scrollbar -line-padding 4 -padding 20 -lines 5 <<< "$options")"
 
             case "$ROFI_CMD" in
                 *Lock)
@@ -15,5 +15,8 @@ ROFI_CMD="$(rofi -sep "|" -dmenu -i -p 'Power' -width 9 -hide-scrollbar -line-pa
                             ;;
                 *Reboot)
                             reboot
+                            ;;
+                *Hibernate)
+                            systemctl hibernate
                             ;;
             esac
