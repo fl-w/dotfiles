@@ -3,8 +3,10 @@ let mapleader="\<Space>"
 " Move lines up(-) or down(_)
 noremap - ddp
 noremap _ ddkP
-noremap <C-S-Up> ddp
-noremap <C-S-Down> ddkP
+noremap <C-Up> ddp
+noremap <C-Down> ddkP
+
+vnoremap p "_dP
 
 " Write file as sudo
 cnoremap w!! w !sudo tee > /dev/null %
@@ -51,14 +53,17 @@ nnoremap <silent> <leader>e :call fzf#vim#files('.', {'options': '--prompt ""'})
 " Map Ctrl + p to open buffers in fzf
 nnoremap <silent> <leader>E :Buffers<CR>
 
-" map <leader> + w to save file
-noremap <silent><leader>w        <esc>:w!<cr>
+" map <leader> + x to save and exit file
+noremap <silent><leader>x        <esc>:x!<cr>
 
 " map <leader> + q to quit file
 noremap <silent><leader>q        <esc>:q!<cr>
 
-" map <leader><leader> to save and quit file
-noremap <silent><leader><leader> :wq!<cr>
+" map <leader> + Q to quit buffer
+noremap <silent><leader>Q        <esc>:q!<cr>
+
+" map <leader><leader> to save
+noremap <silent><leader><leader> :w!<cr>
 
 " map <leader> + b to toggle tags bar
 nmap <silent><leader>b           :TagbarOpenAutoClose<cr>
