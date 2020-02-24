@@ -21,7 +21,7 @@ set PATH $HOME/.local/bin $HOME/.bin $PATH
 [ -f /usr/bin/fzf ]; and [ -f /usr/bin/ag ]; and set -gx FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -l -g ""'
 
 # Import aliases
-[ -f $HOME/.config/fish/conf.d/aliases.fish ]; and . ~/.config/fish/conf.d/aliases.fish
+[ -f conf.d/aliases.fish ]; and . conf.d/aliases.fish
 
 # Set n prefix to home
 set -gx N_PREFIX $HOME/.n
