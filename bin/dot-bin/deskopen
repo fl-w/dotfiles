@@ -1,0 +1,31 @@
+#!/bin/sh
+# Run .desktop files
+
+USAGE="Usage: desktopen <file>"
+# ------------------------------------------------------------------
+
+if [ $# -eq 0 ]
+  then
+    echo $USAGE
+    exit 1;
+fi
+
+function extractExec() {
+  local exe=$(grep '^Exec' $1 | tail -1 | sed 's/^Exec=//' | sed 's/%.//' | sed 's/^"//g' | sed 's/" *$//g' )
+
+  if [ ! -z $exe ]; then
+    exec $exe &
+  else
+    echo 'Exec not found in' $1
+  fi
+}
+
+for var in "$@"
+do
+  if [ ! -f $var ]; then
+    echo $var " is not a file"
+    exit 1;
+  fi
+
+  extractExec $var
+done
