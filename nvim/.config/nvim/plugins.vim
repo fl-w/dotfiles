@@ -78,8 +78,8 @@ call plug#begin()
 
   Plug 'tpope/vim-eunuch'                  " Add unix commands to vim
   Plug 'tpope/vim-unimpaired'              " Bracket mappings
-  Plug 'bkad/CamelCaseMotion'              " Navigate through words
   Plug 'psliwka/vim-smoothie'
+  Plug 'mhinz/vim-startify'
 
   Plug 'samoshkin/vim-mergetool'           " use vim as mergetool
 

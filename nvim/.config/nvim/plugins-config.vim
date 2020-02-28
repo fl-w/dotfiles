@@ -247,6 +247,7 @@ call NERDTreeHighlightFile('coffee', 'yellow', 'none', s:colors.dark_yellow.gui,
 call NERDTreeHighlightFile('js', 'yellow', 'none', s:colors.yellow.gui, 'none')
 call NERDTreeHighlightFile('rb', 'red', 'none', s:colors.red.gui, 'none')
 
+
 " tagbar configuration
 "
 " autocmd VimEnter * :unmap <space>
@@ -274,6 +275,11 @@ autocmd FileType java JCEnable
 let g:mergetool_layout = 'mr'
 let g:mergetool_prefer_revision = 'local'
 
+
+" vim-rooter configuration
+"
+let g:rooter_change_directory_for_non_project_files = 'current'
+let g:rooter_patterns = ['.git/', 'README.*', 'package.json']
 
 " vim-smoothie configuration
 "

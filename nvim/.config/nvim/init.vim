@@ -70,7 +70,7 @@ set noshowmode                  " Hide mode (lightline shows mode)
 set expandtab                   " Spaces > tabs
 set nofoldenable                " Disable folding
 set clipboard+=unnamedplus      " Use system clipboard
-set completeopt+=noinsert,menu,longest,preview
+set completeopt+=noinsert,menu,preview,menuone
 
 """ Undo settings
 set undodir=~/.config/nvim/vim-undo
