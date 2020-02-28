@@ -22,14 +22,6 @@ noremap <C-h>   <C-w>h
 noremap <C-j>   <C-w>j
 noremap <C-k>   <C-w>k
 noremap <C-l>   <C-w>l
-noremap <M-h>   <C-w>h
-noremap <M-j>   <C-w>j
-noremap <M-k>   <C-w>k
-noremap <M-l>   <C-w>l
-
-" Map Shif+j,k to scroll down/up
-noremap <S-j>   <C-e>
-noremap <S-k>   <C-y>
 
 " Use Alt+h,j,k,l to navigate tabs
 noremap <M-h>   :tabp<cr>
@@ -40,12 +32,17 @@ noremap <M-l>   :tabn<cr>
 command! -nargs=1 -range TabFirst exec <line1> . ',' . <line2> . 'Tabularize /^[^' . escape(<q-args>, '\^$.[?*~') . ']*\zs' . escape(<q-args>, '\^$.[?*~')
 
 " Get off my lawn
-"nnoremap <Left> :echoe "Use h"<CR>
-"nnoremap <Right> :echoe "Use l"<CR>
+" nnoremap <Left> :echoe "Use h"<CR>
+" nnoremap <Right> :echoe "Use l"<CR>
+" nnoremap <Up> :echoe "Use k"<CR>
+" nnoremap <Down> :echoe "Use j"<CR>
+"
 nnoremap <silent><Left> :bprev<CR>
 nnoremap <silent><Right> :bnext<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+
+" Map Shif+j,k to scroll down/up
+noremap <Down>   <C-e>
+noremap <Up>   <C-y>
 
 " Map <leader> + e to open fuzzy find (FZF)
 nnoremap <silent> <leader>e :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
@@ -89,6 +86,9 @@ noremap <silent><leader>P "+y
 xmap <leader>a                  <Plug>(EasyAlign)
 nmap <leader>a                  <Plug>(EasyAlign)
 
+""" vim-smoothie
+silent! nmap <unique> <S-j>      <Plug>(SmoothieDownwards)
+silent! nmap <unique> <S-k>      <Plug>(SmoothieUpwards)
 
 """ IncSearch
 noremap <silent><expr> <Space>/ incsearch#go(Config_easyfuzzymotion())
@@ -112,7 +112,7 @@ map <leader>k                   <Plug>(easymotion-k)
 
 function! SetLSPShortcuts()
   nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-  nnoremap K          :call LanguageClient#textDocument_definition()<CR>
+  " nnoremap K          :call LanguageClient#textDocument_definition()<CR>
   nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
   nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
   nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>

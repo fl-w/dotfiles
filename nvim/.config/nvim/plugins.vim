@@ -25,14 +25,15 @@ call plug#begin()
   Plug 'junegunn/goyo.vim'                 " Distraction-free writing in Vim
   " Plug 'godlygeek/tabular' |
   " Plug 'godlygeek/vim-markdown'       " Syntax highlighting for markdown (depends: tabular)
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
   Plug 'scrooloose/nerdtree'               " File tree view
   Plug 'Xuyuanp/nerdtree-git-plugin'       " Git indicators for nerdtree.
   Plug 'airblade/vim-gitgutter'            " Git gutter
 
   Plug 'ryanoasis/vim-devicons'            " Add file icons to vim plugins
+  Plug 'kshenoy/vim-signature'             " Visualise and navigate marks
 
-  "
   " Syntax check
   "
   Plug 'dense-analysis/ale'                " Async Lint Engine
@@ -53,6 +54,7 @@ call plug#begin()
   " Plug 'ternjs/tern_for_vim'               " Deoplete source for js
   Plug 'artur-shaik/vim-Javacomplete2'     " Deoplete source for java
   Plug 'HerringtonDarkholme/yats.vim'      " Syntax highlighting for ts
+  Plug 'leafgarland/typescript-vim'
 
   Plug 'haya14busa/incsearch.vim'          " Incremental searching
   Plug 'haya14busa/incsearch-fuzzy.vim'
@@ -67,7 +69,21 @@ call plug#begin()
   Plug 'jiangmiao/auto-pairs'     " Add brackets automatically
   Plug 'vim-scripts/autoswap.vim'          " Handle swap files intelligently
   Plug 'tpope/vim-fugitive'                " Git wrapper
+  Plug 'junegunn/vim-peekaboo'             " Show register contents on "/@
 
+  Plug 'airblade/vim-rooter'               " Change working dir to project root
+
+  Plug 'camspiers/animate.vim'             " A Vim Automatic Window Resizing Plugin
+  Plug 'camspiers/lens.vim'
+
+  Plug 'tpope/vim-eunuch'                  " Add unix commands to vim
+  Plug 'tpope/vim-unimpaired'              " Bracket mappings
+  Plug 'psliwka/vim-smoothie'
+  Plug 'mhinz/vim-startify'
+
+  Plug 'samoshkin/vim-mergetool'           " use vim as mergetool
+
+  Plug 'vimwiki/vimwiki'                   " personal wiki tool for vim
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
   Plug 'junegunn/fzf', { 'dir': '~/.local/lib/fzf', 'do': './install --all' }

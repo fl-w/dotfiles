@@ -79,6 +79,9 @@ for_window [title="^.*"] border pixel 0
 for_window [class   = "rofi"] floating enable sticky enable
 for_window [class   = "Pavucontrol"] floating enable, sticky enable
 
+# popups during fullscreen mode
+popup_during_fullscreen smart
+
 set_from_resource $fg color7 #f0f0f0
 set_from_resource $bg color0 #000000
 set_from_resource $ac color8 #2f2f2f
@@ -237,9 +240,9 @@ set $ws0 "0"
 # for_window [class="firefox"] move to workspace $ws1
 # for_window [class="code"] move to workspace $ws2
 # for_window [class="Alacritty"] move to workspace $ws3
-for_window [class="Spotify"] move to workspace $ws8
 for_window [class="Kite"] move to workspace $ws6
 for_window [class="discord"] move to workspace $ws7
+for_window [class="Spotify"] move to workspace $ws8
 for_window [class="minecraft-launcher"] floating enable
 
 # switch to workspace
@@ -305,7 +308,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 
 exec --no-startup-id start-pulseaudio-x11 >/dev/null 2>&1 & notify-send "Started pulseaudio"
 exec --no-startup-id $bin/run-tabpage >/dev/null 2>&1
-exec --no-startup-id xss-lock -- dm-tool lock >/dev/null 2>&1
+# exec --no-startup-id xss-lock -- dm-tool lock >/dev/null 2>&1
 exec_always --no-startup-id $bin/alternate-i3-layout >/dev/null 2>&1
 exec_always --no-startup-id $HOME/.screenlayout
 exec_always --no-startup-id wal -b '#1b1d1e' --iterative -i $HOME/.wallpapers >/dev/null 2>&1

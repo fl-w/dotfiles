@@ -30,6 +30,11 @@ let g:ale_sign_warning = '⚠'
 let ayucolor="mirage"
 
 
+" CamelCaseMotion configuration
+"
+let g:camelcasemotion_key = '<leader>'
+
+
 " Deoplete configuration
 "
 let g:deoplete#enable_at_startup           = 1
@@ -57,8 +62,9 @@ inoremap <silent><expr> <CR>
 
 " echodoc configuration
 "
+set noshowmode
 let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'virtual'
+let g:echodoc#type = 'echo'
 
 
 " firenvim configuration
@@ -120,10 +126,16 @@ let g:LanguageClient_serverCommands = {
     \ }
 
 
+" lens.vim configuration
+"
+let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
+let g:lens#animate = 0
+
+
 " lightline/-buffers configuration
 "
 let g:lightline = {
-      \ 'colorscheme': 'quantum',
+      \ 'colorscheme': 'palenight',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste'  ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified'  ] ],
@@ -166,6 +178,11 @@ let g:lightline#bufferline#filename_modifier = ':t'
 let g:lightline#bufferline#number_map = {
 \ 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
 \ 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
+
+
+" markdown-preview configuration
+"
+let g:mkdp_auto_start = 1
 
 
 " NERDCommenter configuration
@@ -230,6 +247,7 @@ call NERDTreeHighlightFile('coffee', 'yellow', 'none', s:colors.dark_yellow.gui,
 call NERDTreeHighlightFile('js', 'yellow', 'none', s:colors.yellow.gui, 'none')
 call NERDTreeHighlightFile('rb', 'red', 'none', s:colors.red.gui, 'none')
 
+
 " tagbar configuration
 "
 " autocmd VimEnter * :unmap <space>
@@ -250,6 +268,22 @@ let g:EasyMotion_smartcase  = 1
 "
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType java JCEnable
+
+
+" vim-mergetool configuration
+"
+let g:mergetool_layout = 'mr'
+let g:mergetool_prefer_revision = 'local'
+
+
+" vim-rooter configuration
+"
+let g:rooter_change_directory_for_non_project_files = 'current'
+let g:rooter_patterns = ['.git/', 'README.*', 'package.json']
+
+" vim-smoothie configuration
+"
+let g:smoothie_no_default_mappings = 0
 
 
 " vim-test configuration
