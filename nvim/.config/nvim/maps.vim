@@ -39,6 +39,8 @@ command! -nargs=1 -range TabFirst exec <line1> . ',' . <line2> . 'Tabularize /^[
 "
 nnoremap <silent><Left> :bprev<CR>
 nnoremap <silent><Right> :bnext<CR>
+nnoremap <silent><C-Left> :bprev<CR>
+nnoremap <silent><C-Right> :bnext<CR>
 
 " Map Shif+j,k to scroll down/up
 noremap <Down>   <C-e>
@@ -111,7 +113,8 @@ map <leader>k                   <Plug>(easymotion-k)
 " LanguageClient
 
 function! SetLSPShortcuts()
-  nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <leader>ld :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<cr>
+  nnoremap <leader>d  :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<cr>
   " nnoremap K          :call LanguageClient#textDocument_definition()<CR>
   nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
   nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>

@@ -43,8 +43,13 @@ let g:deoplete#enable_smart_case           = 1
 "" Setup completetion sources
 let g:deoplete#sources                     = {}
 
+call deoplete#custom#source('LanguageClient',
+            \ 'min_pattern_length',
+            \ 2)
+
 let g:deoplete#sources#jedi#show_docstring = 1
 let g:deoplete#sources.java                = [ 'jc', 'javacomplete2', 'file', 'buffer', 'ultisnips' ]
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
 
 function! s:check_back_space() abort "{{{
   let col = col('.') - 1
@@ -62,8 +67,8 @@ inoremap <silent><expr> <CR>
 
 " echodoc configuration
 "
-set noshowmode
-let g:echodoc#enable_at_startup = 1
+" set noshowmode
+let g:echodoc#enable_at_startup = 0
 let g:echodoc#type = 'echo'
 
 
@@ -124,7 +129,9 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript':     ['javascript-typescript-stdio'],
     \ 'typescript':     ['typescript-language-server', '--stdio'],
     \ }
-
+    " \ 'typescript':     ['javascript-typescript-stdio'],
+let g:LanguageClient_hoverPreview = 'Always'
+let g:LanguageClient_echoProjectRoot = 0
 
 " lens.vim configuration
 "
