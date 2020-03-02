@@ -44,13 +44,13 @@ call plug#begin()
   Plug 'itchyny/lightline.vim'             " Awesome status bar
   Plug 'maximbaz/lightline-ale'            " ALE indicator for lightline
   Plug 'mengelbrecht/lightline-bufferline' " A buffer plugin for lightline
-
+  "
   Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
 
-  " Plug 'Shougo/echodoc'                     " Displays function signatures from completions
+  Plug 'Shougo/echodoc'                     " Displays function signatures from completions
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'deoplete-plugins/deoplete-jedi'    " Deoplete source for python
   " Plug 'ternjs/tern_for_vim'               " Deoplete source for js
@@ -71,6 +71,7 @@ call plug#begin()
   Plug 'scrooloose/nerdcommenter'          " Awesome Commenting
   Plug 'jiangmiao/auto-pairs'              " Add brackets automatically
   Plug 'vim-scripts/autoswap.vim'          " Handle swap files intelligently
+  Plug 'tpope/vim-obsession'               " continuously update session files
   Plug 'tpope/vim-fugitive'                " Git wrapper
   Plug 'junegunn/vim-peekaboo'             " Show register contents on /@
 

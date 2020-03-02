@@ -136,8 +136,10 @@ let g:LanguageClient_echoProjectRoot = 0
 " lens.vim configuration
 "
 let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
-let g:lens#animate = 0
-
+let g:lens#height_resize_min = 5
+let g:lens#height_resize_max = 40
+let g:lens#width_resize_max = 80
+let g:lens#width_resize_min = 20
 
 " lightline/-buffers configuration
 "
@@ -146,7 +148,7 @@ let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste'  ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified'  ] ],
-      \   'right': [ [ 'kite', 'lineinfo' ],
+      \   'right': [ [ 'obsession', 'lineinfo' ],
       \   [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]]
       \ }
 \ }
@@ -156,15 +158,18 @@ let g:lightline.tabline = {
 \}
 
 let g:lightline.component_function = {
-      \  'gitbranch': 'fugitive#head',
-      \   'kite': 'kite#statusline'
+      \  'gitbranch': 'fugitive#head'
 \}
+function LightlineObsession()
+    return '%{ObsessionStatus()}'
+endfunction
 let g:lightline.component_expand = {
       \ 'buffers':          'lightline#bufferline#buffers',
       \ 'linter_checking':  'lightline#ale#checking',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors':   'lightline#ale#errors',
-      \  'linter_ok':       'lightline#ale#ok',
+      \ 'obsession':        'LightlineObsession',
+      \ 'linter_warnings':  'lightline#ale#warnings',
+      \ 'linter_errors':    'lightline#ale#errors',
+      \ 'linter_ok':        'lightline#ale#ok',
 \}
 let g:lightline.component_type = {
       \     'buffers':         'tabsel',
