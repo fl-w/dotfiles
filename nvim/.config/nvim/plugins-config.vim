@@ -46,6 +46,8 @@ let g:deoplete#sources                     = {}
 call deoplete#custom#source('LanguageClient',
             \ 'min_pattern_length',
             \ 2)
+call deoplete#custom#option('camel_case', v:false)
+call deoplete#custom#option('max_list', 20)
 
 let g:deoplete#sources#jedi#show_docstring = 1
 let g:deoplete#sources.java                = [ 'jc', 'javacomplete2', 'file', 'buffer', 'ultisnips' ]
@@ -64,6 +66,7 @@ inoremap <silent><expr> <TAB>
 inoremap <silent><expr> <CR>
       \ pumvisible() ? "\<c-y>" :
       \ "\<cr>"
+
 
 " echodoc configuration
 "
@@ -120,6 +123,7 @@ endfunction
 "
 let g:indentLine_char = '┆'
 
+
 " languageclient-neovim configuration
 "
 let g:LanguageClient_serverCommands = {
@@ -133,13 +137,15 @@ let g:LanguageClient_serverCommands = {
 let g:LanguageClient_hoverPreview = 'Always'
 let g:LanguageClient_echoProjectRoot = 0
 
+
 " lens.vim configuration
 "
-let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
+let g:lens#disabled_filetypes = ['nerdtree', 'fzf', '[ No Name ]', 'Scratch', 'NERD_tree_1', 'NERD_tree_2']
 let g:lens#height_resize_min = 5
 let g:lens#height_resize_max = 40
 let g:lens#width_resize_max = 80
 let g:lens#width_resize_min = 20
+
 
 " lightline/-buffers configuration
 "
@@ -195,6 +201,23 @@ let g:lightline#bufferline#number_map = {
 " markdown-preview configuration
 "
 let g:mkdp_auto_start = 1
+
+
+" ncm2 configuration
+"
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+"
+" au User Ncm2Plugin call ncm2#register_source({
+"         \ 'name' : 'vimtex',
+"         \ 'priority': 9,
+"         \ 'subscope_enable': 1,
+"         \ 'complete_length': 1,
+"         \ 'scope': ['tex'],
+"         \ 'mark': 'tex',
+"         \ 'word_pattern': '\w+',
+"         \ 'complete_pattern': g:vimtex#re#ncm,
+"         \ 'on_complete': ['ncm2#on_complete#omni'],
+"         \ })
 
 
 " NERDCommenter configuration
@@ -274,6 +297,11 @@ call NERDTreeHighlightFile('rb', 'red', 'none', s:colors.red.gui, 'none')
 "
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase  = 1
+
+
+" vim-fugitive configuration
+"
+
 
 
 " vim-javacomplete2 configuration

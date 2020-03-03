@@ -58,8 +58,8 @@ noremap <silent><leader>x        <esc>:x!<cr>
 " map <leader> + q to quit file
 noremap <silent><leader>q        <esc>:q!<cr>
 
-" map <leader> + Q to quit buffer
-noremap <silent><leader>Q        <esc>:q!<cr>
+" map <leader> + w to quit buffer
+noremap <silent><leader>w        <esc>:BD<cr>
 
 " map <leader><leader> to save
 noremap <silent><leader><leader> :w!<cr>
@@ -133,3 +133,16 @@ augroup LSP
   autocmd!
   autocmd FileType cpp,c,java,ts,py,typescript call SetLSPShortcuts()
 augroup END
+
+
+" vim-fugative
+"
+noremap <leader>gm  :Gmove<cr>
+noremap <leader>gb  :Gblame<cr>
+noremap <leader>gg  :Ggrep<cr>
+noremap <leader>gc  :Gcommit<cr>
+noremap <leader>gm  :Gmerge<cr>
+noremap <leader>gr  :Grebase<cr>
+noremap <leader>gp  :Gpush<cr>
+noremap <leader>gf  :Gfetch<cr>
+noremap <leader>gu  :Gpull<cr>
