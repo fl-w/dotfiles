@@ -73,15 +73,15 @@ call plug#begin()
   Plug 'tpope/vim-eunuch'                  | " Add unix commands to vim
   Plug 'tpope/vim-unimpaired'              | " Bracket mappings
   Plug 'samoshkin/vim-mergetool'           | " use vim as mergetool
-  Plug 'vimwiki/vimwiki'                   | " personal wiki tool for vim
+  " Plug 'vimwiki/vimwiki'                   | " personal wiki tool for vim
   Plug 'editorconfig/editorconfig-vim'     | " .editorconfig support
   Plug 'easymotion/vim-easymotion'         | " Navigate files with ease
   Plug 'junegunn/vim-easy-align'           | " Align things
   Plug 'SirVer/ultisnips'                  | " Snippets engine
   Plug 'honza/vim-snippets'                | " Snippets
   Plug 'Shougo/echodoc'                    | " Displays function signatures from completions
-  " Plug 'camspiers/animate.vim'          |   " A Vim Automatic Window Resizing Plugin
-  " Plug 'camspiers/lens.vim'
+  Plug 'camspiers/animate.vim'             |   " A Vim Automatic Window Resizing Plugin
+  Plug 'camspiers/lens.vim'
 
 
   "

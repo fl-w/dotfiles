@@ -81,6 +81,13 @@ noremap <silent><leader>p "*p
 noremap <silent><leader>Y "+y
 noremap <silent><leader>P "+y
 
+"keep visual mode after indent
+vnoremap > >gv
+vnoremap < <gv
+
+" Map <leader> + le to go to next error
+nnoremap <leader>le :call LocationNext()<cr>
+
 " Plugin specific mappings
 "
 
@@ -146,3 +153,4 @@ noremap <leader>gr  :Grebase<cr>
 noremap <leader>gp  :Gpush<cr>
 noremap <leader>gf  :Gfetch<cr>
 noremap <leader>gu  :Gpull<cr>
+noremap <leader>gs  :Gstatus<cr>

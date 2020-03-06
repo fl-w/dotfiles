@@ -134,7 +134,7 @@ let g:LanguageClient_serverCommands = {
     \ 'typescript':     ['typescript-language-server', '--stdio'],
     \ }
     " \ 'typescript':     ['javascript-typescript-stdio'],
-let g:LanguageClient_hoverPreview = 'Always'
+let g:LanguageClient_hoverPreview = 'Never'
 let g:LanguageClient_echoProjectRoot = 0
 
 
@@ -299,19 +299,14 @@ let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase  = 1
 
 
-" vim-fugitive configuration
-"
-
-
-
 " vim-javacomplete2 configuration
 "
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-autocmd FileType java JCEnable
+" autocmd filetype java setlocal omnifunc=javacomplete#complete
+" autocmd filetype java jcenable
 
 
 " vim-mergetool configuration
-"
+
 let g:mergetool_layout = 'mr'
 let g:mergetool_prefer_revision = 'local'
 
@@ -319,7 +314,18 @@ let g:mergetool_prefer_revision = 'local'
 " vim-rooter configuration
 "
 let g:rooter_change_directory_for_non_project_files = 'current'
-let g:rooter_patterns = ['.git/', 'README.*', 'package.json']
+let g:rooter_patterns = [ '.project-root', 'package.json', 'README.*', '.git/' ]
+" let g:rooter_targets = '*'
+
+" vim-obsession configuration
+"
+augroup AutomaticallySourceSession | au!
+autocmd BufEnter *.*
+      \ if !empty(glob('./Session.vim'))
+      \   | :so Session.vim
+      \   | :Obsession!
+      \ | endif
+augroup end
 
 " vim-smoothie configuration
 "
