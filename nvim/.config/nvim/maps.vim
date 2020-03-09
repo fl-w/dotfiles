@@ -14,6 +14,11 @@ cnoremap w!! w !sudo tee > /dev/null %
 " Two semicolons to leave insert mode
 imap ;; <Esc>
 
+" Common basic keymaps
+nnoremap L $
+noremap H ^
+noremap ; :
+
  " Clear highlight by pressing esc
 nnoremap <esc> :noh<return><esc>
 

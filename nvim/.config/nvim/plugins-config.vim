@@ -7,11 +7,13 @@ let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
       \ 'javascript' : ['prettier'],
       \ 'json' : ['fixjson'],
+      \ 'java': ['google_java_format'],
       \ 'typescript': ['prettier', 'eslint'],
       \ 'python': ['black', 'isort', 'add_blank_lines_for_python_control_statements']
       \}
 let g:ale_linters = {
       \ 'python': ['pylint', 'flake8'],
+      \ 'java': ['checkstyle']
       \}
 
 " Set this variable to 1 to fix files when you save them.
@@ -50,7 +52,7 @@ call deoplete#custom#option('camel_case', v:false)
 call deoplete#custom#option('max_list', 20)
 
 let g:deoplete#sources#jedi#show_docstring = 1
-let g:deoplete#sources.java                = [ 'jc', 'javacomplete2', 'file', 'buffer', 'ultisnips' ]
+" let g:deoplete#sources.java                = [ 'jc', 'javacomplete2', 'file', 'buffer', 'ultisnips' ]
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
 
 function! s:check_back_space() abort "{{{
@@ -129,10 +131,10 @@ let g:indentLine_char = '┆'
 let g:LanguageClient_serverCommands = {
     \ 'python':         ['/usr/local/bin/pyls'],
     \ 'haskell':        ['hie-wrapper', '--lsp'],
-    \ 'java':           ['/usr/bin/jdtls', '-data', getcwd()],
     \ 'javascript':     ['javascript-typescript-stdio'],
     \ 'typescript':     ['typescript-language-server', '--stdio'],
     \ }
+    " \ 'java':           ['/usr/bin/jdtls', '-data', getcwd()],
     " \ 'typescript':     ['javascript-typescript-stdio'],
 let g:LanguageClient_hoverPreview = 'Never'
 let g:LanguageClient_echoProjectRoot = 0
@@ -150,7 +152,7 @@ let g:lens#width_resize_min = 20
 " lightline/-buffers configuration
 "
 let g:lightline = {
-      \ 'colorscheme': 'palenight',
+      \ 'colorscheme': 'one',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste'  ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified'  ] ],
@@ -300,8 +302,8 @@ let g:EasyMotion_smartcase  = 1
 
 
 " vim-javacomplete2 configuration
-"
-" autocmd filetype java setlocal omnifunc=javacomplete#complete
+
+autocmd filetype java setlocal omnifunc=javacomplete#complete
 " autocmd filetype java jcenable
 
 

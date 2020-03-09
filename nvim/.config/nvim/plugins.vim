@@ -22,7 +22,9 @@ call plug#begin()
   Plug 'drewtempelmeyer/palenight.vim'     | " Fantastic colors
   Plug 'nightsense/cosmic_latte'           | " Theme that's easy on the eyes
   Plug 'kjssad/quantum.vim'                | " A modern colorscheme inspired by firefox
+  Plug 'owickstrom/vim-colors-paramount'   | " V. Dark colorscheme with purple accent
   Plug 'rakr/vim-one'                      | " one-dark colorscheme for vim
+  Plug 'liuchengxu/space-vim-dark'         | " Dark colorscheme with vibrant colors
   Plug 'itchyny/lightline.vim'             | " Awesome status bar
   Plug 'maximbaz/lightline-ale'            | " ALE indicator for lightline
   Plug 'mengelbrecht/lightline-bufferline' | " A buffer plugin for lightline
