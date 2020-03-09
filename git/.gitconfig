@@ -5,6 +5,7 @@
 [core]
 	editor = nvim
 	excludesfile = ~/.gitexcludes
+	autocrlf = input
 [color]
 	ui = true
 [push]
