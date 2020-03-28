@@ -13,12 +13,14 @@
 [include]
 	path = ~/.gitconfig_local
 [merge]
-	tool = code
+	tool = kitty
 [mergetool]
 	prompt = false
 	keepBackup = false
 [mergetool "vimdiff"]
-	cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+	cmd = nvim -d $BASE $LOCAL $REMOTE -c '$wincmd w' -c 'wincmd J'
+[mergetool "kitty"]
+	cmd = kitty +kitten diff $LOCAL $REMOTE
 [mergetool "code"]
  cmd = code --wait $MERGED
 [mergetool "nvim"]
