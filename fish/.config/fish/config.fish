@@ -14,6 +14,17 @@ set -gx EDITOR /usr/bin/nvim
 # Append local bin dir to PATH
 set PATH $HOME/.local/bin $HOME/.bin $PATH
 
+# Append DART pub bin dir to PATH
+set PATH $HOME/.pub-cache/bin $PATH
+
+# Append android-sdk & emulator to PATH
+[ -d /opt/android-sdk ]; and set -x ANDROID_HOME /opt/android-sdk \
+
+; and set PATH $ANDROID_HOME/tools:$ANDROID_HOME/tools/bin $PATH \
+
+; and [ -d $ANDROID_HOME/emulator ]; and set PATH $ANDROID_HOME/emulator $PATH
+
+
 # Setup kitty auto complete
 [ -f /usr/bin/kitty ]; and kitty + complete setup fish | source
 
