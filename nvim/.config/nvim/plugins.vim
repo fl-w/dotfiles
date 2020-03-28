@@ -24,7 +24,6 @@ call plug#begin()
   Plug 'kjssad/quantum.vim'                | " A modern colorscheme inspired by firefox
   Plug 'owickstrom/vim-colors-paramount'   | " V. Dark colorscheme with purple accent
   Plug 'rakr/vim-one'                      | " one-dark colorscheme for vim
-  Plug 'liuchengxu/space-vim-dark'         | " Dark colorscheme with vibrant colors
   Plug 'itchyny/lightline.vim'             | " Awesome status bar
   Plug 'maximbaz/lightline-ale'            | " ALE indicator for lightline
   Plug 'mengelbrecht/lightline-bufferline' | " A buffer plugin for lightline
@@ -58,6 +57,7 @@ call plug#begin()
   Plug 'dense-analysis/ale'                | " Async Lint Engine
   Plug 'sheerun/vim-polyglot'              | " Mega language support pack
   Plug 'HerringtonDarkholme/yats.vim'      | " Syntax highlighting for ts
+  Plug 'dart-lang/dart-vim-plugin'         | " Syntax highlighting for dart
   Plug 'dominikduda/vim_current_word'      | " Highlighting word under cursor
 
 
@@ -81,6 +81,7 @@ call plug#begin()
   Plug 'junegunn/vim-easy-align'           | " Align things
   Plug 'SirVer/ultisnips'                  | " Snippets engine
   Plug 'honza/vim-snippets'                | " Snippets
+  Plug 'thosakwe/vim-flutter'              | " Commands for Flutter from vim
   Plug 'Shougo/echodoc'                    | " Displays function signatures from completions
   Plug 'camspiers/animate.vim'             |   " A Vim Automatic Window Resizing Plugin
   Plug 'camspiers/lens.vim'
