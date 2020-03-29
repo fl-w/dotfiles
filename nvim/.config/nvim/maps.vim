@@ -51,6 +51,10 @@ nnoremap <silent><C-Right> :bnext<CR>
 noremap <Down>   <C-e>
 noremap <Up>   <C-y>
 
+" Map {ii/jj} to move upo
+imap kk <esc>k
+imap jj <esc>j
+
 " Map <leader> + e to open fuzzy find (FZF)
 nnoremap <silent> <leader>e :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
 
