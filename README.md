@@ -1,14 +1,17 @@
-# I miei dotfiles
+# Dotfiles
 
 A tidy `$HOME` is a tidy mind.
 
 Insert Screenshot here..
 
-This repository consists of configuration for any tools I use within my [Arch Linux][arch] and [neovim][] development environment. I use a *lot* of tools which culminate in a sort of Unix IDE, I use [stow][] to link all of the required configuration into my home directory.
+This repository consists of configuration for any tools I use within my [Arch Linux][arch] and [neovim][] development environment.
+I use a *lot* of tools which culminate in a sort of Unix IDE,
+I use [stow][] to link all of the required configuration into my home directory.
 
++ distro: arch
 + wm: i3-gaps
 + shell: fish
-+ font: Roboto
++ font: Fira Code Patch
 + bar: polybar
 
 ## Quick start
@@ -47,7 +50,4 @@ Do what you want. Learn as much as you can. Unlicense more software.
 [aur]: https://aur.archlinux.org/
 [picom]: https://wiki.archlinux.org/index.php/Picom
 [fish]: http://fishshell.com/
-[antergos]: https://antergos.com/
 [neovim]: https://neovim.io/
-[emacs]: https://www.gnu.org/software/emacs/
-
