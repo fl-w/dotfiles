@@ -2,7 +2,9 @@
 
 A tidy `$HOME` is a tidy mind.
 
-Insert Screenshot here..
+![screenshot](screenshots/demo.png)
+
+Insert more screenshots here..
 
 This repository consists of configuration for any tools I use within my [Arch Linux][arch] and [neovim][] development environment.
 I use a *lot* of tools which culminate in a sort of Unix IDE,
