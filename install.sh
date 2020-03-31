@@ -12,6 +12,7 @@ PACKAGES=(
   picom
 
   kitty
+  nvim
 
   dunst
   polybar
@@ -20,7 +21,7 @@ PACKAGES=(
   flashfocus
   firefox
   doom-emacs
-  kitty
+
   wallpapers
 )
 
@@ -39,18 +40,43 @@ install_pkgs() {
   sudo $PACMAN $pkgs &>/dev/null
 }
 
+require_node() {
+  if which npm >/dev/null 2>&1 || [ ! -f /usr/bin/npm ] || install_node
+    then
+      return 1
+    else
+      return 0
+  fi
+}
+
+install_node() {
+  if curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n && bash n lts
+  then
+    return 1
+  else
+    return 0
+  fi
+}
+
+require_pip() {
+  [ ! -f /usr/bin/pip ] || install_pkgs $PKG_PIP
+}
+
 install_deps() {
   pkg=$1
   deps=$2
 
   pkgs=${deps[pkgs]}
-  py_pkgs=${deps[py_pkgs]}
+  py_pkgs=${deps[py]}
+  node=${deps[node]}
 
+  success=true
 
-  [ ! -z $pkgs ] && install_pkgs $pkgs
-  [ ! -z $py_pkgs ] && ( [ ! -f /usr/bin/pip ] || install_pkgs $PKG_PIP ) && pip install --user $py_pkgs &>/dev/null
+  [ ! -z "$pkgs" ] && install_pkgs $pkgs || success=false
+  [ ! -z "$py_pkgs" ] && require_pip && pip install --user $py_pkgs &>/dev/null || success=false
+  [ ! -z "$node" ] && require_node && npm install -g i $node || success=false
 
-  print_success "i3 dependencies installed" $pkg
+  $success && print_success "%s dependencies installed" $pkg && return 0 || return 1
 }
 
 main() {
@@ -65,7 +91,8 @@ main() {
 
     deps=(
       [pkgs]=""
-      [py_pkgs]=""
+      [py]=""
+      [node]=""
       [alt_pkgs]=""
     )
 
@@ -79,7 +106,8 @@ main() {
 
     install_deps $pkg $deps
 
-    stow -v -R $pkg -d $ROOT_DIR 3>&1 1>&2 2>&3 3>&- | grep -- '=' && print_success 'stowed i3 files.'
+    echo ""
+    stow -v --ignore deps -R $pkg -d $ROOT_DIR 3>&1 1>&2 2>&3 3>&- | grep -- '=' && print_success 'stowed %s files.' $pkg
   done
 }
 
