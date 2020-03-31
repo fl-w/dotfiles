@@ -55,8 +55,8 @@ mode "$mode_gaps_inner" {
         bindsym Shift+minus gaps inner all minus 5
         bindsym Shift+0     gaps inner all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "$mode_gaps"
 }
 mode "$mode_gaps_outer" {
         bindsym plus  gaps outer current plus 5
@@ -67,8 +67,8 @@ mode "$mode_gaps_outer" {
         bindsym Shift+minus gaps outer all minus 5
         bindsym Shift+0     gaps outer all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+        bindsym Return mode "$mode_gaps"
+        bindsym Escape mode "$mode_gaps"
 }
 
 
