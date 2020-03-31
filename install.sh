@@ -83,28 +83,28 @@ main() {
   typeset -A deps
 
   for pkg in ${PACKAGES[@]}; do
-    if [ ! -f $ROOT_DIR/$pkg/deps ]
+    if [  -f $ROOT_DIR/$pkg/deps ]
     then
+      deps=(
+        [pkgs]=""
+        [py]=""
+        [node]=""
+        [alt_pkgs]=""
+      )
+
+      while read line
+      do
+        if echo $line | grep -F = &>/dev/null
+        then
+          deps[$(echo "$line" | cut -d '=' -f 1)]=$(echo "$line" | cut -d '=' -f 2-)
+        fi
+      done < $ROOT_DIR/$pkg/deps
+
+      install_deps $pkg $deps
+    else
       print_info '%s has no deps -- skipping' $pkg
       continue
     fi
-
-    deps=(
-      [pkgs]=""
-      [py]=""
-      [node]=""
-      [alt_pkgs]=""
-    )
-
-    while read line
-    do
-      if echo $line | grep -F = &>/dev/null
-      then
-        deps[$(echo "$line" | cut -d '=' -f 1)]=$(echo "$line" | cut -d '=' -f 2-)
-      fi
-    done < $ROOT_DIR/$pkg/deps
-
-    install_deps $pkg $deps
 
     echo ""
     stow -v --ignore deps -R $pkg -d $ROOT_DIR 3>&1 1>&2 2>&3 3>&- | grep -- '=' && print_success 'stowed %s files.' $pkg
