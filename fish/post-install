@@ -1,0 +1,5 @@
+#!/usr/bin/env fish
+. $HOME/.config/fish/config.fish
+
+type -q omf || curl -L https://get.oh-my.fish | fish
+omf install && omf theme ortega

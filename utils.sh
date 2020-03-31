@@ -1,21 +1,51 @@
 #!/bin/bash
 
+# Reset
+Reset='\033[0m'
+
+# Colors
+Red='\033[0;31m'
+Green='\033[0;32m'
+Yellow='\033[0;33m'
+Cyan='\033[0;36m'
+
 function print_info() {
-  printf '\n\033[36m%s\033[0m\n' "$1"
+  message=$1 && shift
+  printf "\n$Cyan$message$Reset\n" "$@"
 }
 
 function print_warning() {
-  print '\n\033[33mWARN:\033[0m %s\n' "$1"
+  message=$1 && shift
+  printf "\n${Yellow}WARN:$Reset $message\n" "$@"
 }
 
 function print_success() {
-  print '\n\033[32mSUCCESS:\033[0m %s\n' "$1"
+  message=$1 && shift
+  printf "\n${Green}SUCCESS:$Reset $message\n" "$@"
 }
 
 function print_err() {
-  print '\n\033[31mERROR:\033[0m %s\n' "$1"
+  message=$1 && shift
+  printf "\n${Red}ERROR:$Reset $message\n" "$@"
 }
 
-function _update() {
+function bool_of() {
+  if $1
+  then
+    return 0
+  else
+    return 1
+  fi
+}
 
+function require_yay() {
+  [ ! -f "/usr/bin/yay" ] && {
+    $temp=$(pwd)
+    cd /tmp
+    git clone https://aur.archlinux.org/yay.git && cd yay
+    makepkg -si
+    cd $temp
+  } || {
+    printf ''
+  }
 }

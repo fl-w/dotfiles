@@ -83,7 +83,7 @@ main() {
   typeset -A deps
 
   for pkg in ${PACKAGES[@]}; do
-    if [  -f $ROOT_DIR/$pkg/deps ]
+    if [ -f $ROOT_DIR/$pkg/deps ]
     then
       deps=(
         [pkgs]=""
@@ -107,7 +107,12 @@ main() {
     fi
 
     echo ""
-    stow -v --ignore deps -R $pkg -d $ROOT_DIR 3>&1 1>&2 2>&3 3>&- | grep -- '=' && print_success 'stowed %s files.' $pkg
+    stow -v --ignore deps --ignore post-install --dotfiles -d $ROOT_DIR -R $pkg 3>&1 1>&2 2>&3 3>&- | grep -- '=' && print_success 'stowed %s files.' $pkg
+
+    if [ -f $ROOT_DIR/$pkg/post-install ]
+    then
+      $ROOT_DIR/$pkg/post-install
+    fi
   done
 }
 
