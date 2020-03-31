@@ -26,29 +26,34 @@
 [mergetool "nvim"]
 	cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
 [alias]
-	s = status -sb
-	sw = switch
-	b = branch
-	c = commit -v
-	a = add
-	re = restore
-	l = pull
-	p = push
-	f = fetch
-	mt = mergetool
-	m = merge
-	r = rebase
-	lg = log --stat
-	d = diff
+	s           = status -sb
+	sw          = switch
+	b           = branch
+	c           = commit -v
+	a           = add
+	re          = restore
+	l           = pull
+	p           = push
+	f           = fetch
+	mt          = mergetool
+	m           = merge
+	r           = rebase
+	lg          = log --stat
+	d           = diff
+
+	undo-commit = reset HEAD~
+	uc          = reset HEAD~
+
+	unstage     = restore --staged
 	# log
-	l = log --pretty=format:'%C(blue)%h%Creset %C(red)%G?%Creset %C(white)%s %C(yellow)(%cr) %C(cyan)%an%Creset - %C(magenta)%gd'
-	los = log --graph --date=short --decorate
+	l           = log --pretty=format:'%C(blue)%h%Creset %C(red)%G?%Creset %C(white)%s %C(yellow)(%cr) %C(cyan)%an%Creset - %C(magenta)%gd'
+	los         = log --graph --date=short --decorate
 
-	changes = log --pretty=format:'[%C(blue)%h%Creset] %C(cyan)%an%Creset %C(yellow)%cr: %C(white)%s' --name-status
+	changes     = log --pretty=format:'[%C(blue)%h%Creset] %C(cyan)%an%Creset %C(yellow)%cr: %C(white)%s' --name-status
 
-	changelog = log --pretty=format:' * %C(white)%s'
-	lof = log --graph --pretty=format:'[%C(blue)%h%Creset] -%C(red bold)%d%Creset %C(cyan)%an%Creset %C(yellow)%cr: %C(white)%s' --abbrev-commit --date=relative
-	lol = log --pretty=format:'[%C(blue)%h%Creset] %C(cyan)%an%Creset %C(yellow)%ar%Creset: %C(white)%s' --stat
+	changelog   = log --pretty=format:' * %C(white)%s'
+	lof         = log --graph --pretty=format:'[%C(blue)%h%Creset] -%C(red bold)%d%Creset %C(cyan)%an%Creset %C(yellow)%cr: %C(white)%s' --abbrev-commit --date=relative
+	lol         = log --pretty=format:'[%C(blue)%h%Creset] %C(cyan)%an%Creset %C(yellow)%ar%Creset: %C(white)%s' --stat
 
 [commit]
 	gpgsign = false
