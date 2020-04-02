@@ -124,7 +124,7 @@ bindsym $mod+button2 floating toggle
 bindsym $mod+Return exec $term
 
 # Rofi drun menu
-bindsym $mod+space exec  rofi -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg" -show combi
+bindsym $mod+space exec rofi -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg" -show combi
 
 # Power menu
 bindsym $mod+shift+l exec $bin/powermenu
