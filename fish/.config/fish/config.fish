@@ -1,6 +1,13 @@
 ## Fish config
 #
 
+# Start X at login
+if status --is-login
+  if test -z "$DISPLAY" -a $XDG_VTNR = 1
+    exec startx
+  end
+end
+
 # Disable fish greeting
 set -gx fish_greeting ''
 
@@ -9,7 +16,6 @@ set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
 
 # Set default editor to nvim
 set -gx EDITOR /usr/bin/nvim
-
 
 # Append local bin dir to PATH
 set PATH $HOME/.local/bin $HOME/.bin $PATH
