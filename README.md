@@ -3,6 +3,7 @@
 A tidy `$HOME` is a tidy mind.
 
 ![screenshot](demo.png)
+![screenshot2](demokde.png)
 
 Insert more screenshots here..
 
