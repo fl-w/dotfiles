@@ -80,6 +80,8 @@ install_deps() {
 }
 
 main() {
+  sudo -k
+
   typeset -A deps
 
   for pkg in ${PACKAGES[@]}; do

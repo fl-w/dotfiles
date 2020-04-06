@@ -43,6 +43,7 @@ call plug#begin()
   \ }                                      | " Async completion
   Plug 'artur-shaik/vim-Javacomplete2'     | " Deoplete source for java
   Plug 'deoplete-plugins/deoplete-jedi'    | " Deoplete source for python
+
   Plug 'autozimu/LanguageClient-neovim', {
   \ 'branch': 'next',
   \ 'do': 'bash install.sh',
