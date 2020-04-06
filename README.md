@@ -2,7 +2,7 @@
 
 A tidy `$HOME` is a tidy mind.
 
-![screenshot](screenshots/demo.png)
+![screenshot](demo.png)
 
 Insert more screenshots here..
 
