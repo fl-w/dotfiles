@@ -1,3 +1,1 @@
-#!/bin/bash
-
-rofi -modi run,drun -show drun -location 1 -xoffset 14 -yoffset 28 -line-padding 2 -columns 1 -width 20 -lines 10 -padding 18 -hide-scrollbar -show-icons -drun-icon-theme
+/home/folws/.bin/launcher
