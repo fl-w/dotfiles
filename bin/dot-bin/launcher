@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]
+  then
+    rofi -modi run,drun -show drun -line-padding 4 -lines 6 -location 0\
+      -columns 2 -width 50 -padding 30 -hide-scrollbar \
+      -show-icons
+    elif [ "$1" = "-f" ]; then
+      rofi -modi drun -show drun -hide-scrollbar -lines 3 -line-margin 15\
+        -padding 400 -colums 2 -bw 0 -eh 2 -auto-select -show-icons -fullscreen
+    else
+      echo "syntax: launcher [-f]"
+fi
