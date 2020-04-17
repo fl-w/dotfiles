@@ -10,7 +10,7 @@
 #
 
 # Set variables
-set $browser              brave
+set $browser              firefox
 set $music                spotify
 set $term                 kitty
 set $primary_monitor      HDMI-1
@@ -25,7 +25,7 @@ set $inner_gaps           20
 #     \_/ |___|___/\___/_/ \_\____|
 #
 
-font pango      : Roboto, Light 10
+font pango      : FiraCode Nerd Font, Regular 10
 for_window [class   = ".*"] title_format "%title"
 title_align center
 
@@ -126,8 +126,12 @@ bindsym $mod+button2 floating toggle
 # Terminal default
 bindsym $mod+Return exec $term
 
+# Browser default
+bindsym $mod+b exec $browser
+
 # Rofi drun menu
-bindsym $mod+space exec rofi -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg" -show combi
+bindsym $mod+space exec $bin/launcher
+bindsym $mod+shift+space exec $bin/launcher -f
 
 # Power menu
 bindsym $mod+shift+l exec $bin/powermenu
@@ -313,10 +317,10 @@ exec --no-startup-id start-pulseaudio-x11 >/dev/null 2>&1 & notify-send "Started
 exec --no-startup-id $bin/run-tabpage >/dev/null 2>&1
 # exec --no-startup-id xss-lock -- dm-tool lock >/dev/null 2>&1
 exec_always --no-startup-id $bin/alternate-i3-layout >/dev/null 2>&1
-exec_always --no-startup-id $HOME/.screenlayout
 exec_always --no-startup-id wal -b '#1b1d1e' --iterative -i $HOME/.wallpapers >/dev/null 2>&1
 exec_always --no-startup-id $config/picom/launch.sh >/dev/null 2>&1
 exec_always --no-startup-id $config/dunst/launch.sh >/dev/null 2>&1
 exec_always --no-startup-id $config/polybar/launch.sh >/dev/null 2>&1
+exec_always --no-startup-id $HOME/.screenlayout
 # exec_always --no-startup-id spicetify apply
 exec_always --no-startup-id flashfocus >/dev/null 2>&1
