@@ -7,11 +7,20 @@ if [ $# -lt 2 ]; then
     exit 1
 fi
 
+if [[ $1 == --process=* ]]
+then
+    process=${1:9}
+    shift
+else
+    process=$1
+fi
+
 # Terminate already running bar instances
-killall -q $
+killall -q $process
 
 # Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+while pgrep -u $UID -x $process >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
-polybar -c ~/.config/polybar/config.ini main &
+echo "$@"
+$@ &
