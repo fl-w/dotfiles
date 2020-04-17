@@ -1,7 +1,6 @@
 /*******************************************************************************
  * ROFI Color theme
- * User: Sergio Morales + Flow
- * Copyright: Sergio Morales
+ * User: Sergio Morales + folws
  *******************************************************************************/
 
 * {{
@@ -20,7 +19,7 @@
     selected-urgent-foreground:  rgba ( 220, 50, 47, 100 % );
     urgent-foreground:           rgba ( 220, 50, 47, 100 % );
     alternate-urgent-background: rgba ( 245, 245, 245, 100 % );
-    active-foreground:           rgba ( 194, 202, 208, 100 % );
+    active-foreground:           red;
     lightbg:                     rgba ( 238, 232, 213, 100 % );
     alternate-active-background: rgba ( 245, 245, 245, 100 % );
     alternate-normal-foreground: @foreground;
@@ -29,8 +28,8 @@
     lightfg:                     rgba ( 88, 104, 117, 100 % );
     selected-normal-background:  {color1};
     selected-normal-foreground:  rgba ( 180, 144,  82, 100 % );
-    selected-active-foreground:  {foreground};
-    border-color:                {color1};
+    selected-active-foreground:  rgba ( 180, 144,  82, 100 % );
+    border-color:                none;
     spacing:                     2;
     separatorcolor:              none;
     urgent-background:           rgba ( 255, 255, 255, 100 % );
@@ -41,9 +40,10 @@
     active-background:           rgba ( 255, 255, 255, 100 % );
     selected-active-background:  rgba ( 82, 148, 226, 100 % );
 
-	font: "Inconsolata Regular 13";
+	font: "Ubuntu Regular 13";
 }}
 #window {{
+    transparency: "real";
     background-color: @background;
     border:           2;
     padding:          20;
