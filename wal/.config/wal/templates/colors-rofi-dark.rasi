@@ -40,12 +40,14 @@
     active-background:           rgba ( 255, 255, 255, 100 % );
     selected-active-background:  rgba ( 82, 148, 226, 100 % );
 
-	font: "Ubuntu Regular 13";
+    border-size:                 0;
+
+	font: "FiraCode Nerd Font Regular 10.5";
 }}
 #window {{
     transparency: "real";
     background-color: @background;
-    border:           2;
+    border:           @border-size;
     padding:          20;
 	width:			30%;
 }}
@@ -56,7 +58,8 @@
 #message {{
     border:       0px 0px 0px ;
     border-color: @separatorcolor;
-    padding:      1px ;
+    padding:      1px;
+    margin-top:   2px;
 }}
 #textbox {{
     text-color: @foreground;
@@ -142,16 +145,16 @@
 #prompt {{
     spacing:    0;
     text-color: @normal-foreground;
-	font: "Inconsolata Bold 15";
-	margin: -2px 0 0 0;
+    font: "Ubuntu Bold 13";
+    margin: -2px 0 0 0;
 }}
 #inputbar {{
     children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
 }}
 #textbox-prompt-colon {{
     expand:     false;
-    str:        " > ";
-    margin:     0 0.3em 0em 0em ;
-    text-color: @normal-foreground;
-	font: "Inconsolata Bold 13";
+    str:        " 🢂 ";
+    margin:     0.1em 0em 0em 0em ;
+    text-color: {color1};
+    font: "Ubuntu Bold 8";
 }}
