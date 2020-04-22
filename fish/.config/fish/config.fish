@@ -30,6 +30,8 @@ set PATH $HOME/.pub-cache/bin $PATH
 
 ; and [ -d $ANDROID_HOME/emulator ]; and set PATH $ANDROID_HOME/emulator $PATH
 
+# Add xcursor path to env
+[ -d ~/.local/share/icons ]; and set -x XCURSOR_PATH ~/.local/share/icons
 
 # Setup kitty auto complete
 [ -f /usr/bin/kitty ]; and kitty + complete setup fish | source
