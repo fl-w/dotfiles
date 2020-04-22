@@ -17,7 +17,7 @@ PACKAGES=(
   dunst
   polybar
   rofi
-  wal
+  pywal
   flashfocus
   firefox
   doom-emacs
