@@ -4,6 +4,9 @@
 ##
 
 
+# .project-root
+**/.project-root
+
 # ssh files
 .ssh/**id_rsa**
 
