@@ -7,6 +7,7 @@ let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
       \ 'javascript' : ['prettier'],
       \ 'json' : ['fixjson'],
+      \ 'haskell': ['brittany'],
       \ 'java': ['google_java_format'],
       \ 'typescript': ['prettier', 'eslint'],
       \ 'python': ['black', 'isort', 'add_blank_lines_for_python_control_statements']
@@ -129,8 +130,8 @@ let g:indentLine_char = '┆'
 " languageclient-neovim configuration
 "
 let g:LanguageClient_serverCommands = {
-    \ 'python':         ['/usr/local/bin/pyls'],
     \ 'haskell':        ['hie-wrapper', '--lsp'],
+    \ 'python':         ['/usr/local/bin/pyls'],
     \ 'dart':           ['dart_language_server', '--lsp'],
     \ 'javascript':     ['javascript-typescript-stdio'],
     \ 'typescript':     ['typescript-language-server', '--stdio'],
