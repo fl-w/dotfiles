@@ -19,6 +19,8 @@ set $config               $HOME/.config
 set $bin                  $HOME/.bin
 set $outer_gaps           10
 set $inner_gaps           20
+
+
 #   __   _____ ___ _   _  _   _
 #   \ \ / /_ _/ __| | | |/_\ | |
 #    \ V / | |\__ \ |_| / _ \| |__
