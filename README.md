@@ -17,7 +17,7 @@ I use [stow][] to link all of the required configuration into my home directory.
 + shell: fish
 + font: Fira Code Nerd Font Patch
 + bar: polybar
-#### Screenshot 1
+#### Screenshot 2
 + distro: arch
 + wm: kde-plasma
 + terminal: konsole
