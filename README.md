@@ -2,27 +2,47 @@
 
 A tidy `$HOME` is a tidy mind.
 
-![screenshot](demo.png)
-![screenshot2](demokde.png)
-
-Insert more screenshots here..
 
 This repository consists of configuration for any tools I use within my [Arch Linux][arch] and [neovim][] development environment.
 I use a *lot* of tools which culminate in a sort of Unix IDE,
 I use [stow][] to link all of the required configuration into my home directory.
 
+![screenshot](demo.png)
+![screenshot2](demokde.png)
+
+#### Screenshot 1
 + distro: arch
 + wm: i3-gaps
++ terminal: kitty
 + shell: fish
-+ font: Fira Code Patch
++ font: Fira Code Nerd Font Patch
 + bar: polybar
+#### Screenshot 1
++ distro: arch
++ wm: kde-plasma
++ terminal: konsole
++ shell: fish
++ font: Source Code Pro
++ bar/dock: latte-dock
 
+Polybar
+
+My config is a modified Polybar-4 by adi1090x. - [GitHub]
 ## Quick start
 
-`some code here`
+`git clone https://github.com/folws/dotfiles ~/.dotfiles
+bash -c ~/.dotfiles/install
+`
 
 ## Overview
-
+ * Introduction
+ * Requirements
+ * Recommended modules
+ * Installation
+ * Configuration
+ * Troubleshooting
+ * FAQ
+ * Maintainers
 ```sh
 # general
 bin/       # global scripts
@@ -38,6 +58,7 @@ shell/     # shell utilities, including zsh + bash
 
 ## Unlicenced
 
+This are my personal dots so do what you want.
 Find the full [unlicense][] in the `UNLICENSE` file, but here's a snippet.
 
 >This is free and unencumbered software released into the public domain.
