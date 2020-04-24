@@ -1,0 +1,139 @@
+#!/bin/bash
+
+# shitty wallpaper
+# https://github.com/folws
+
+PREV_NAME=.fehbg.prev
+COLOR_BG='1b1d1e'
+
+PROGRAM_NAME=$(basename "$0")
+VERBOSE=0
+
+# colors
+CLEAR='\033[0m'
+RED='\033[0;31m'
+
+# =====================
+is_valid_hex() {
+    case $1 in
+      ( *[!0-9A-Fa-f]* | "" ) return 1 ;;
+      ( * )
+        case ${#1} in
+          ( 32 | 40 ) return 0 ;;
+          ( * )       return 1 ;;
+        esac
+    esac
+  }
+
+set_prev() {
+  if [ -z "$1" ]; then
+    show_help "specify a valid file name for the previous .fehbg: --prev <file>"
+  fi
+
+  PREV_NAME=$1
+}
+
+set_background() {
+  local color=$1
+  if [ ! -z color ]; then
+    is_valid_hex color
+
+    if [ $? == 1 ]; then
+      COLOR_BG=$color
+      return 0
+    fi
+  else
+    color="color"
+  fi
+
+  show_help "specify a valid background color code: --bg <$color>"
+  exit 1
+}
+
+find_prev() {
+  # check ~ ~/.config ~/.config/feh for previous fehbg
+  dirs=(
+    $HOME
+    $HOME/.config
+    $HOME/.config/feh
+  )
+
+  for dir in $dirs; do
+    local file=$dir/$PREV_NAME
+    if [ -f "$file" ]; then
+      echo $(sed -e "s/^'//" -e "s/'$//" <<<"$(cat "$file" | grep feh | cut -d ' ' -f 4)")
+      rm $file
+      break
+    fi
+  done
+}
+
+show_help() {
+  if [ -n "$1" ]; then
+    echo -e "${RED}👉 $1${CLEAR}\n";
+  fi
+
+   # Display Help
+   echo "Shitty wallpaper setter" >&2
+   echo
+   echo "Usage: $PROGRAM_NAME [...options] [next|prev|<PATH_TO_IMAGE>]"
+   echo "options:"
+   echo " -b, --bg <color>       the pywal bg color"
+   echo " -p, --prev <name>      the file name of the prev .fehbg"
+   echo " -h, --help             show this help text"
+   echo " -v  --verbose          run in verbose mode."
+   echo
+}
+
+parse_args() {
+  NEXT=-1
+  while [[ "$#" > 0 ]]; do case $1 in
+    n|next) NEXT=1; break;;
+    p|prev) NEXT=0; break;;
+    -b|--bg) set_background $2; shift;;
+    -p|--prev) set_prev $2; shift;;
+    -v|--verbose) VERBOSE=1;;
+    -h|--help) show_help; exit 0;;
+    *) show_help "Unknown parameter: $1"; exit 1;;
+
+  esac; shift; done
+
+  if [ $NEXT -lt 0 ]; then
+    show_help "Please specify a direction or a path to an image."
+    exit 1
+  fi
+
+}
+
+change_next() {
+  if [ "$VERBOSE" == 0 ]; then exec >/dev/null 2>&1; fi
+
+  [ -f ~/.fehbg ] && cp ~/.fehbg ~/$PREV_NAME
+  wal -b "$COLOR_BG" --iterative -q -i $HOME/.wallpapers >/dev/null 2>&1
+}
+
+change_prev() {
+  PREV_WAL=$(find_prev)
+
+  if [ -z $PREV_WAL ]; then
+    show_help "no prev .fehbg found"
+    exit 1
+  fi
+
+  if [ "$VERBOSE" == 0 ]; then exec >/dev/null 2>&1; fi
+
+  echo "Setting wallpaper to " $PREV_WAL
+  wal -b "$COLOR_BG" -i "$PREV_WAL"
+}
+
+main() {
+  parse_args $@
+
+  if [ "$NEXT" == 1 ]; then
+    change_next
+  else
+    change_prev
+  fi
+}
+
+main $@
