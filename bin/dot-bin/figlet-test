@@ -1,0 +1,15 @@
+#!/bin/env fish
+
+if not set -q argv[1]
+  set cmd (basename (status -f))
+  echo "Usage: $cmd <text> - test figlet fonts given a text."
+  exit 1
+end
+
+for font in /usr/share/figlet/fonts/*
+  set font (basename $font | sed 's/\.[^.]*$//')
+  echo $font :
+  figlet -f $font $argv[1]
+  echo
+  echo
+end
