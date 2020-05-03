@@ -7,7 +7,6 @@ I use a *lot* of tools which culminate in a sort of Unix IDE,
 I use [stow][] to link all of the required configuration into my home directory.
 
 ![screenshot](demo.png)
-+ distro: arch
 + wm: i3-gaps
 + terminal: kitty
 + shell: fish
@@ -15,7 +14,6 @@ I use [stow][] to link all of the required configuration into my home directory.
 + bar: polybar
 ##
 ![screenshot2](demokde.png)
-+ distro: arch
 + wm: kde-plasma
 + terminal: konsole
 + shell: fish
