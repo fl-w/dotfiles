@@ -1,0 +1,3 @@
+[submodule "firefox/.config/mozilla/firefox/themes/minifox"]
+	path = firefox/.config/mozilla/firefox/themes/minifox
+	url = https://github.com/folws/minifox
