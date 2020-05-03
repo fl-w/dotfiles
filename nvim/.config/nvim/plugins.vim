@@ -84,8 +84,8 @@ call plug#begin()
   Plug 'honza/vim-snippets'                | " Snippets
   Plug 'thosakwe/vim-flutter'              | " Commands for Flutter from vim
   Plug 'Shougo/echodoc'                    | " Displays function signatures from completions
-  Plug 'camspiers/animate.vim'             |   " A Vim Automatic Window Resizing Plugin
-  Plug 'camspiers/lens.vim'
+  " Plug 'camspiers/animate.vim'             |   " A Vim Automatic Window Resizing Plugin
+  " Plug 'camspiers/lens.vim'
 
 
   "

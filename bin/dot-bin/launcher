@@ -2,9 +2,9 @@
 
 if [ $# -eq 0 ]
   then
-    rofi -modi drun,run -show drun -sidebar-mode -line-padding 4 -lines 6 -location 0\
+    rofi -modi drun,run -show drun -line-padding 4 -lines 6 -location 0\
       -columns 2 -width 50 -padding 30 -hide-scrollbar \
-      -show-icons
+      -show-icons #  -sidebar-mode
     elif [ "$1" = "-f" ]; then
       rofi -modi drun -show drun -hide-scrollbar -lines 3 -line-margin 15\
         -padding 400 -colums 2 -bw 0 -eh 2 -auto-select -show-icons -fullscreen

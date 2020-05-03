@@ -1,40 +1,87 @@
 #!/bin/bash
-. utils.sh
-
 
 #######################################
-# Edit array ...
-PACKAGES=(
-  bash
-  fish
-
-  i3
-  picom
-
-  kitty
-  nvim
-
-  dunst
-  polybar
-  rofi
-  pywal
-  flashfocus
-  firefox
-  doom-emacs
-
-  wallpapers
-)
-
 PACMAN='/usr/bin/pacman -S --needed' # can be replaced with apt or package man or distro.
 PKG_PIP='python-pip'
 PKG_PIP2='python2-pip'
 
 #######################################
+# Do not edit after this line unless you know what you are doing
 
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &>/dev/null && pwd )"
 if [[ "$1" != "" ]]; then
     PACMAN="$1"
 fi
+
+PROGRAM_NAME=$(basename "$0")
+VERBOSE=0
+
+# Colors
+Red='\033[0;31m'
+Green='\033[0;32m'
+Yellow='\033[0;33m'
+Cyan='\033[0;36m'
+# Reset
+Reset='\033[0m'
+
+
+function print_info() {
+  message=$1 && shift
+  printf "\n$Cyan$message$Reset\n" "$@"
+}
+
+function print_warning() {
+  message=$1 && shift
+  printf "\n${Yellow}WARN:$Reset $message\n" "$@"
+}
+
+function print_success() {
+  message=$1 && shift
+  printf "\n${Green}SUCCESS:$Reset $message\n" "$@"
+}
+
+function print_err() {
+  message=$1 && shift
+  printf "\n${Red}ERROR:$Reset $message\n" "$@"
+}
+
+function bool_of() {
+  if $1
+  then
+    return 0
+  else
+    return 1
+  fi
+}
+
+function require_yay() {
+  [ ! -f "/usr/bin/yay" ] && {
+    $temp=$(pwd)
+    cd /tmp
+    git clone https://aur.archlinux.org/yay.git && cd yay
+    makepkg -si
+    cd $temp
+  } || {
+    printf ''
+  }
+}
+
+[ "${1:-}" = "--" ] && shift
+
+function show_help() {
+  if [ -n "$1" ]; then
+    print_err "$1"
+  fi
+
+   # Display Help
+   echo "Install and stow dots in home directory" >&2
+   echo
+   echo "Usage: $PROGRAM_NAME [ options ... ] [ ALL|PACKAGES ... ]"
+   echo "options:"
+   echo " -h, --help             show this help text"
+   echo " -v  --verbose          run in verbose mode."
+   echo
+}
 
 install_pkgs() {
   sudo $PACMAN $pkgs &>/dev/null
@@ -63,12 +110,12 @@ require_pip() {
 }
 
 install_deps() {
-  pkg=$1
-  deps=$2
+  local pkg=$1
+  local deps=$2
 
-  pkgs=${deps[pkgs]}
-  py_pkgs=${deps[py]}
-  node=${deps[node]}
+  local pkgs=${deps[pkgs]}
+  local py_pkgs=${deps[py]}
+  local node=${deps[node]}
 
   success=true
 
@@ -79,7 +126,19 @@ install_deps() {
   $success && print_success "%s dependencies installed" $pkg && return 0 || return 1
 }
 
+parse_args() {
+  while [[ "$#" > 0 ]]; do case $1 in
+
+
+    -v|--verbose) VERBOSE=1;;
+    -h|--help) show_help; exit 0;;
+    *) show_help "Unknown parameter: $1"; exit 1;;
+
+  esac; shift; done
+}
+
 main() {
+  trap "exit" INT
   sudo -k
 
   typeset -A deps
@@ -118,4 +177,5 @@ main() {
   done
 }
 
+parse_args "$@"
 main
