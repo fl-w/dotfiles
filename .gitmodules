@@ -1,6 +1,0 @@
-[submodule "etc/refind/themes/rEFInd-minimal"]
-	path = refind/themes/rEFInd-minimal
-	url = https://github.com/EvanPurkhiser/rEFInd-minimal
-[submodule "firefox/.config/firefox-themes/ortega"]
-	path = firefox/.config/firefox-themes/minimal-pywal-firefox
-	url = https://github.com/folws/minimal-pywal-firefox
