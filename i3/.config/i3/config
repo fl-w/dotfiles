@@ -135,7 +135,7 @@ bindsym $mod+shift+space exec $bin/launcher -f
 bindsym $mod+shift+l exec $bin/powermenu
 
 # Lock
-bindsym $mod+l exec $bin/lock-screen
+bindsym $mod+l exec $bin/lockscreen
 
 bindsym Print exec $bin/screenshot
 bindsym --release Shift+Print exec $bin/screenshot -s
@@ -247,9 +247,8 @@ set $ws0 "0"
 # for_window [class="Alacritty"] move to workspace $ws3
 for_window [class="minecraft-launcher"] floating enable
 
-# assign [class="firefox"] -> 3
-# assign [class="discord"] -> $ws7
-# assign [class="Spotify"] -> $ws8
+for_window [class="discord"] exec --no-startup-id $config/i3/scripts/move-to-ws $ws7
+for_window [class="Spotify"] exec --no-startup-id $config/i3/scripts/move-to-ws $ws8
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
