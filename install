@@ -1,99 +1,77 @@
 #!/bin/bash
-
-#######################################
-PACMAN='/usr/bin/pacman -S --needed' # can be replaced with apt or package man or distro.
-PKG_PIP='python-pip'
-PKG_PIP2='python2-pip'
-
-#######################################
+#   ███                      █████              ████  ████
+#  ▒▒▒                      ▒▒███              ▒▒███ ▒▒███
+#  ████  ████████    █████  ███████    ██████   ▒███  ▒███
+# ▒▒███ ▒▒███▒▒███  ███▒▒  ▒▒▒███▒    ▒▒▒▒▒███  ▒███  ▒███
+#  ▒███  ▒███ ▒███ ▒▒█████   ▒███      ███████  ▒███  ▒███
+#  ▒███  ▒███ ▒███  ▒▒▒▒███  ▒███ ███ ███▒▒███  ▒███  ▒███
+#  █████ ████ █████ ██████   ▒▒█████ ▒▒████████ █████ █████
+# ▒▒▒▒▒ ▒▒▒▒ ▒▒▒▒▒ ▒▒▒▒▒▒     ▒▒▒▒▒   ▒▒▒▒▒▒▒▒ ▒▒▒▒▒ ▒▒▒▒▒
+#
+# Simple dots install script
 # Do not edit after this line unless you know what you are doing
 
-ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &>/dev/null && pwd )"
-if [[ "$1" != "" ]]; then
-    PACMAN="$1"
-fi
 
 PROGRAM_NAME=$(basename "$0")
-VERBOSE=0
 
-# Colors
-Red='\033[0;31m'
-Green='\033[0;32m'
-Yellow='\033[0;33m'
-Cyan='\033[0;36m'
-# Reset
-Reset='\033[0m'
+VERBOSE=1
 
+ROOT_DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" &>/dev/null && pwd )"
+
+CLEANING_UP=0
+
+TEMP_DIR=$(mktemp)
+
+ALL_PACAKGES=0
+
+SKIP_SELECTION=1
+
+# Colors {{{
+COLOR_RED='\033[0;31m'
+
+COLOR_GREEN='\033[0;32m'
+
+COLOR_YELLOW='\033[0;33m'
+
+COLOR_CYAN='\033[0;36m'
+
+COLOR_RESET='\033[0m'
+# }}}
+
+
+# +++++++++++++++++++++++++++++++++++++++++++ {{{
+# + helper functions
+# +
 
 function print_info() {
-  message=$1 && shift
-  printf "\n$Cyan$message$Reset\n" "$@"
+  message=$1 && shift; printf "$COLOR_CYAN--- $message$COLOR_RESET\n" "$@"
+}
+
+function print_debug() {
+  if [[ "$VERBOSE" -gt 1 ]]; then
+    message=$1 && shift; printf "$COLOR_YELLOW--- $message$COLOR_RESET\n" $@
+  fi
 }
 
 function print_warning() {
-  message=$1 && shift
-  printf "\n${Yellow}WARN:$Reset $message\n" "$@"
+  message=$1 && shift; printf "${COLOR_YELLOW}WARN:$COLOR_RESET $message\n" "$@"
 }
 
 function print_success() {
-  message=$1 && shift
-  printf "\n${Green}SUCCESS:$Reset $message\n" "$@"
+  message=$1 && shift; printf "${COLOR_GREEN}SUCCESS:$COLOR_RESET $message\n" "$@"
 }
 
 function print_err() {
-  message=$1 && shift
-  printf "\n${Red}ERROR:$Reset $message\n" "$@"
+  message=$1 && shift; printf "${COLOR_RED}ERROR:$COLOR_RESET $message\n" "$@"
 }
 
-function bool_of() {
-  if $1
-  then
-    return 0
+function verbose_command() {
+  if [ $VERBOSE -eq 2 ]; then
+    "$@"
   else
-    return 1
+    "$@" >/dev/null 2>&1
   fi
-}
-
-function require_yay() {
-  [ ! -f "/usr/bin/yay" ] && {
-    $temp=$(pwd)
-    cd /tmp
-    git clone https://aur.archlinux.org/yay.git && cd yay
-    makepkg -si
-    cd $temp
-  } || {
-    printf ''
-  }
-}
-
-[ "${1:-}" = "--" ] && shift
-
-function show_help() {
-  if [ -n "$1" ]; then
-    print_err "$1"
-  fi
-
-   # Display Help
-   echo "Install and stow dots in home directory" >&2
-   echo
-   echo "Usage: $PROGRAM_NAME [ options ... ] [ ALL|PACKAGES ... ]"
-   echo "options:"
-   echo " -h, --help             show this help text"
-   echo " -v  --verbose          run in verbose mode."
-   echo
-}
-
-install_pkgs() {
-  sudo $PACMAN $pkgs &>/dev/null
-}
-
-require_node() {
-  if which npm >/dev/null 2>&1 || [ ! -f /usr/bin/npm ] || install_node
-    then
-      return 1
-    else
-      return 0
-  fi
+  return $?
 }
 
 install_node() {
@@ -105,77 +83,397 @@ install_node() {
   fi
 }
 
-require_pip() {
-  [ ! -f /usr/bin/pip ] || install_pkgs $PKG_PIP
-}
+prompt () {
+  local prompt=$1
+  local default=${2:0:1}
 
-install_deps() {
-  local pkg=$1
-  local deps=$2
+  if [[ ! -z "$default" ]] && ! [[ $default =~ [YNyn] ]]; then
+    default=
+  fi
 
-  local pkgs=${deps[pkgs]}
-  local py_pkgs=${deps[py]}
-  local node=${deps[node]}
+  while true; do
+      read -p "$prompt [Y/n]: " yn
+      if [[ -z "$yn" ]]; then yn=$default; fi
 
-  success=true
-
-  [ ! -z "$pkgs" ] && install_pkgs $pkgs || success=false
-  [ ! -z "$py_pkgs" ] && require_pip && pip install --user $py_pkgs &>/dev/null || success=false
-  [ ! -z "$node" ] && require_node && npm install -g i $node || success=false
-
-  $success && print_success "%s dependencies installed" $pkg && return 0 || return 1
-}
-
-parse_args() {
-  while [[ "$#" > 0 ]]; do case $1 in
-
-
-    -v|--verbose) VERBOSE=1;;
-    -h|--help) show_help; exit 0;;
-    *) show_help "Unknown parameter: $1"; exit 1;;
-
-  esac; shift; done
-}
-
-main() {
-  trap "exit" INT
-  sudo -k
-
-  typeset -A deps
-
-  for pkg in ${PACKAGES[@]}; do
-    if [ -f $ROOT_DIR/$pkg/deps ]
-    then
-      deps=(
-        [pkgs]=""
-        [py]=""
-        [node]=""
-        [alt_pkgs]=""
-      )
-
-      while read line
-      do
-        if echo $line | grep -F = &>/dev/null
-        then
-          deps[$(echo "$line" | cut -d '=' -f 1)]=$(echo "$line" | cut -d '=' -f 2-)
-        fi
-      done < $ROOT_DIR/$pkg/deps
-
-      install_deps $pkg $deps
-    else
-      print_info '%s has no deps -- skipping' $pkg
-      continue
-    fi
-
-    echo ""
-    stow -v --ignore deps --ignore post-install --dotfiles -d $ROOT_DIR -R $pkg 3>&1 1>&2 2>&3 3>&- | grep -- '=' && print_success 'stowed %s files.' $pkg
-
-    if [ -f $ROOT_DIR/$pkg/post-install ]
-    then
-      $ROOT_DIR/$pkg/post-install
-    fi
+      case $yn in
+          [Yy]* ) return 0;;
+          [Nn]* ) return 1;;
+          *) echo "Please answer yes or no.";;
+      esac
   done
 }
 
-parse_args "$@"
-main
+require_dep() {
+  if command -v $1 >/dev/null; then
+    print_debug "$1 found in %s" $(command -v $1)
+  else
+    print_warning "$1 is required to continue."
+
+    if ! test -z $2 && prompt "Would you like to install $1?" "y"; then
+      shift; verbose_command $@ || return 1
+    else
+      return 1
+    fi
+  fi
+}
+
+# }}}
+
+select_options() {
+  checked_char="●"
+  unchecked_char="○"
+  prompt="${1-'Check an option'} (again to uncheck, ENTER when done): "; shift
+
+  [[ "$1" -eq 1 ]] && { x=${#@}; for i in $(seq 0 $((x - 1))); do choices[i]=$checked_char; done; shift; }
+  options=("$@")
+
+  menu() {
+      echo "Avaliable options:  $checked_char-checked   $unchecked_char-unchecked"
+      for i in ${!options[@]}; do
+          printf "%3d) %s %s\n" $((i+1)) "${choices[i]:-$unchecked_char}" "${options[i]}"
+      done
+      [[ "$msg" ]] && echo "$msg"; :
+  }
+
+    if [[  ${#options[@]} > 0 ]]; then
+    while menu && read -rp "$prompt" num && [[ "$num" ]]; do
+        [[ "$num" != *[![:digit:]]* ]] &&
+        (( num > 0 && num <= ${#options[@]} )) ||
+        { msg="Invalid option: $num"; continue; }
+        ((num--)); msg="${options[num]} was ${choices[num]:+un}checked"
+        [[ "${choices[num]}" ]] && choices[num]="" || choices[num]=$checked_char
+    done
+  fi
+
+  selected=()
+  for i in ${!options[@]}; do
+      [[ "${choices[i]}" ]] && { msg="$msg ${options[i]}"; selected+=(${options[i]}); }
+  done
+
+  print_debug "You selected${msg-" nothing"}"
+}
+
+select_packages() {
+  local packages=($(ls -d */ | cut -f 1 -d '/'))
+
+  if [[ "$SKIP_SELECTION" == 1 ]]; then
+     select_options "Select packages to install" $ALL_PACAKGES "${packages[@]}"
+    PACKAGES=${selected[@]}
+  else
+    PACKAGES=${packages[@]}
+  fi
+}
+
+load_deps() {
+  if [[ ${#PACKAGES} -eq 0 ]]; then
+    print_info "No dots selected, nothing to do."
+    exit 0
+  fi
+
+  print_info "Searching for package dependencies"
+
+  DEPS_PACMAN=""
+  DEPS_PY=""
+  DEPS_NODE=""
+  DEPS_AUR=""
+
+  for pkg in ${PACKAGES[@]}; do
+
+    if [ -f $pkg/deps ]; then
+
+      while read line; do
+        if echo $line | grep -F = &>/dev/null; then
+
+          local deps=$(echo "$line" | cut -d '=' -f 2-)
+
+          case "$(echo "$line" | cut -d '=' -f 1)" in
+            py|python|py_pkgs)
+              DEPS_PY="$DEPS_PY $deps"
+              ;;
+            pkgs)
+              DEPS_PACMAN="$DEPS_PACMAN $deps"
+              ;;
+            node)
+              DEPS_NODE="$DEPS_NODE $deps"
+              ;;
+            alt_pkgs|aur)
+              DEPS_AUR="$DEPS_AUR $deps"
+              ;;
+          esac
+        fi
+      done < $pkg/deps
+
+    else
+      print_debug '%s has no deps -- skipping' $pkg
+      continue
+    fi
+  done
+
+  # trim trailing spaces
+  DEPS_PACMAN="$(sed -e 's/[[:space:]]*$//' <<<${DEPS_PACMAN})"
+  DEPS_PY="$(sed -e 's/[[:space:]]*$//' <<<${DEPS_PY})"
+  DEPS_NODE="$(sed -e 's/[[:space:]]*$//' <<<${DEPS_NODE})"
+  DEPS_AUR="$(sed -e 's/[[:space:]]*$//' <<<${DEPS_AUR})"
+  print_debug "done"
+}
+
+is_using_arch() {
+  find_distro_name() {
+    distro=$(cat /proc/version | awk -F'[()]' '{print $5}')
+  }
+
+  [[ -z "$distro" ]] && find_distro_name
+
+  case $distro in
+    Arch\ Linux*) return 0;;
+    *) return 1;;
+  esac
+}
+
+install_packages() {
+  print_info "Installing package dependencies"
+
+  local installer
+
+  find_pacman() {
+    case $distro in
+      Manjaro*|Arch*) printf "/usr/bin/pacman -S --needed";;
+      Debian*) printf '/usr/bin/apt-install';;
+      *) printf '';;
+    esac
+  }
+
+
+  is_using_arch || {
+    print_warning "Oh oh, it looks like you are not on Arch Linux."
+
+    # find pacman
+    installer=$(find_pacman)
+
+    read -rp "Enter the command for your package installer [$installer]: " installerc
+    installer=${installerc:-$installer}
+
+    if [[ ! -f $(echo $installer | cut -d' ' -f1) ]]; then
+      print_err "Couldn't find bin at that path $installer"
+      return 1;
+    fi
+
+  }
+
+  installer=${installer-$(find_pacman)}
+
+  if is_using_arch; then
+    pkgs=$(pacman -Qqs $(echo $DEPS_PACMAN | tr ' ' '|') | tr '\n' '|')
+    DEPS_PACMAN=$(echo $DEPS_PACMAN | tr ' ' '\n' | grep -vE "${pkgs::-1}" | tr '\n' ' ')
+  fi
+
+  if [[ ! -z "$DEPS_PACMAN" ]]; then
+    local deps=(${DEPS_PACMAN})
+    for i in $deps; do
+      print_info "> installing %s" $i
+      print_debug '$ sudo %s %s' $installer $i
+
+      verbose_command sudo $installer $i || {
+
+        print_err "could not install $1";
+
+        if ! prompt "continue"; then return 1; fi;
+      } && print_success "installed $i"
+
+    done
+
+    print_success "installed %d total packages." $(echo $DEPS_PACMAN | tr ' ' '\n' | wc -l)
+    return 0
+  else
+    print_debug 'All deps installed already.'
+    return 0
+  fi
+}
+
+install_aur_packages() {
+
+  is_using_arch || return 0;
+
+  print_info 'Installing AUR dependencies'
+
+  install_yay() {
+    local required=(tar curl)
+    for r in ${required[$@]}; do
+      command -v $r >/dev/null || { print_err "$r is required to install yay"; return 1; }
+    done
+
+    local temp=$(mktemp -d)
+
+    verbose_command curl https://aur.archlinux.org/cgit/aur.git/snapshot/yay.tar.gz --output $temp/package || { print_warning "could not clone yay repo"; }
+    tar -xf $temp/package -C $temp
+
+    pushd $temp >/dev/null
+    makepkg -si
+
+    popd >/dev/null
+  }
+
+  require_dep yay install_yay || return 0;
+
+  [[ ! -z "$DEPS_AUR" ]] && verbose_command yay --noconfirm --needed --noredownload --norebuild -S $DEPS_AUR
+
+  print_debug 'done'
+}
+
+install_py_packages() {
+  print_info 'Installing python dependencies with pip'
+
+
+  install_pip() {
+    require_dep curl || return 1
+
+    if is_using_arch; then
+      sudo $installer python-pip
+    else
+      pushd $TEMP_DIR >/dev/null
+      curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+      python get-pip.py && \
+      print_success "installed python"
+      popd >/dev/null
+    fi
+  }
+
+  require_dep pip3 install_pip || return 0
+
+  local deps=(${DEPS_PY})
+  for i in $deps; do
+    print_info "> installing python: %s" $i
+
+    verbose_command pip3 install --user $i || {
+      print_err "could not install $1";
+      if ! prompt "continue"; then return 1; fi;
+    }
+    done
+}
+
+stow_packages() {
+  print_info "Stowing packages to home."
+  local dashv=""
+
+  [[ "$VERBOSE" -eq 2 ]] && dashv="-v"
+
+  for pkg in ${PACKAGES[@]}; do
+    stow $dashv --ignore deps --ignore post-install \
+      --dotfiles -d $ROOT_DIR -R $pkg -t $HOME 3>&1 1>&2 2>&3 3>&- \
+      | grep -- '=' && print_success 'stowed %s files.' $pkg
+  done
+
+  return 0
+}
+
+post_install() {
+  print_info "running post install"
+
+  if [ -f $ROOT_DIR/$pkg/post-install ]
+  then
+    $ROOT_DIR/$pkg/post-install
+  fi
+}
+
+print_banner() {
+  cat <<- EOF
+    ██████           ████                          ███
+   ███▒▒███         ▒▒███                         ▒███
+  ▒███ ▒▒▒   ██████  ▒███  █████ ███ █████  █████ ▒███
+ ███████    ███▒▒███ ▒███ ▒▒███ ▒███▒▒███  ███▒▒  ▒███
+▒▒▒███▒    ▒███ ▒███ ▒███  ▒███ ▒███ ▒███ ▒▒█████ ▒███
+  ▒███     ▒███ ▒███ ▒███  ▒▒███████████   ▒▒▒▒███▒▒▒
+  █████    ▒▒██████  █████  ▒▒████▒████    ██████  ███
+ ▒▒▒▒▒      ▒▒▒▒▒▒  ▒▒▒▒▒    ▒▒▒▒ ▒▒▒▒    ▒▒▒▒▒▒  ▒▒▒
+
+EOF
+}
+
+show_help() {
+  if [ -n "$1" ]; then
+    print_err "$1"
+  fi
+
+  # Display Help
+  print_banner
+  print_info "Install and stow dots in home directory"
+  echo
+  echo "Usage: $PROGRAM_NAME [ options ... ]"
+  echo "options:"
+  echo " -a, --all              select all packages. "
+  echo " -s --skip-select       skip packages selection. "
+  echo " -h, --help             show this help text"
+  echo " -v  --verbose          run in verbose mode."
+  echo
+}
+
+parse_opts() {
+  while [[ "$1" =~ ^- && ! $1 == "--" ]]; do case $1 in
+    -a|--all) ALL_PACAKGES=1;;
+    -h|--help) show_help; exit 0;;
+    -p|--packages) parse_packakes_option $1;;
+    -s|--skip-select*) SKIP_SELECTION=0;;
+    -v|--verbose) VERBOSE=2;;
+    -q|--quiet) VERBOSE=0;;
+    *) show_help "Unknown parameter: $1"; exit 1;;
+
+  esac; shift; done
+  if [[ "$1" == '--' ]]; then shift; fi
+}
+
+main() {
+  parse_opts "$@"
+
+  if [[ "$VERBOSE" -eq 0 ]]; then
+    exec >/dev/null 2>&1
+  fi
+
+  pushd $ROOT_DIR >/dev/null
+
+  select_packages || quit
+
+  load_deps || quit
+
+  sudo -k
+
+  install_packages || quit
+
+  install_aur_packages || quit
+
+  install_py_packages || quit
+
+  stow_packages || quit
+
+  post_install || quit
+
+
+  print_banner
+
+  print_success
+  print_success "--- done ! installed %d dots ---" ${#PACKAGES}
+  print_success
+
+  exit 0
+}
+
+do_cleanup() {
+  # Guard clause so that it's only ran once
+  if [[ "$CLEANING_UP" == "1" ]]; then return; fi
+  CLEANING_UP=1
+
+  print_debug "cleaning up"
+
+  rm -r $TEMP_DIR
+}
+
+quit () {
+  do_cleanup
+  [ ! -z "$1" ] && print_err $1
+  exit 1
+}
+
+trap quit INT
+trap quit SIGHUP
+trap quit SIGINT
+trap quit SIGTERM
+main "$@"
