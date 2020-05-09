@@ -1,0 +1,13 @@
+#!/bin/bash
+
+interfaces=$(ip link show | grep ':' | ip link show | grep '^[0-9]:' | cut -d ' ' -f 2 | sed -e 's/://g')
+
+PS3="Enter the interface to use for polybar network module: "
+select interface in $interfaces
+do
+  sed -i "s/^interface = [a-z0-9]*/interface = $interface/g" ~/.config/polybar/modules.ini
+  break
+done
+
+cp ~/.config/polybar/fonts/* ~/.local/share/fonts
+fc-cache
