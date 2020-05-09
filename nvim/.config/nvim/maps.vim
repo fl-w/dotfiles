@@ -8,6 +8,27 @@ noremap <C-Down> ddkP
 
 vnoremap p "_dP
 
+" Replace word under cursor
+function! Rename_under_cursor(...)
+  let l:winview = winsaveview()
+  let l:curword = expand('<cword>')
+  let l:singleline = get(a:, 0, 0)
+  let l:range = l:singleline ? "," : "%"
+
+  call inputsave()
+  let l:replacement = input('replacement: ')
+  call inputrestore()
+
+
+  exe l:range . "s/" . l:curword . "/" . l:replacement . "/g"
+  call winrestview(l:winview)
+  redraw
+  echo "\"" . l:curword . "\" replaced with \"" . l:replacement . "\" in " . (l:singleline ? "line" : "file")
+endfunction
+
+noremap # :call Rename_under_cursor()<cr>
+noremap <S-r> :call Rename_under_cursor(1)<cr>
+
 " Write file as sudo
 cnoremap w!! w !sudo tee > /dev/null %
 
@@ -19,7 +40,10 @@ nnoremap L $
 noremap H ^
 noremap ; :
 
- " Clear highlight by pressing esc
+"
+nnoremap <leader>m za
+
+" Clear highlight by pressing esc
 nnoremap <esc> :noh<return><esc>
 
 " Use (Ctrl/Alt)+H,J,K,L to navigate (panes/tabs)

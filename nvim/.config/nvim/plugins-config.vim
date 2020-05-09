@@ -4,17 +4,20 @@
 
 " Ale configuration
 let g:ale_fixers = {
-      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \ 'javascript' : ['prettier'],
-      \ 'json' : ['fixjson'],
-      \ 'haskell': ['brittany'],
-      \ 'java': ['google_java_format'],
+      \ '*':          ['remove_trailing_lines', 'trim_whitespace'],
+      \ 'javascript': ['prettier'],
+      \ 'css':        ['prettier'],
+      \ 'c':          ['clang-format'],
+      \ 'json':       ['fixjson'],
+      \ 'haskell':    ['brittany'],
+      \ 'java':       ['google_java_format'],
       \ 'typescript': ['prettier', 'eslint'],
-      \ 'python': ['black', 'isort', 'add_blank_lines_for_python_control_statements']
+      \ 'python':     ['black', 'isort', 'add_blank_lines_for_python_control_statements']
       \}
 let g:ale_linters = {
-      \ 'python': ['pylint', 'flake8'],
-      \ 'java': ['checkstyle']
+      \ 'python':     ['pylint', 'flake8'],
+      \ 'c':          ['clang-tidy'],
+      \ 'java':       ['checkstyle']
       \}
 
 " Set this variable to 1 to fix files when you save them.
