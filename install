@@ -323,7 +323,6 @@ install_aur_packages() {
 install_py_packages() {
   print_info 'Installing python dependencies with pip'
 
-
   install_pip() {
     require_dep curl || return 1
 
@@ -341,7 +340,7 @@ install_py_packages() {
   require_dep pip3 install_pip || return 0
 
   local deps=(${DEPS_PY})
-  for i in $deps; do
+  for i in ${deps[@]}; do
     print_info "> installing python: %s" $i
 
     verbose_command pip3 install --user $i || {
@@ -360,7 +359,7 @@ stow_packages() {
   for pkg in ${PACKAGES[@]}; do
     stow $dashv --ignore deps --ignore post-install \
       --dotfiles -d $ROOT_DIR -R $pkg -t $HOME 3>&1 1>&2 2>&3 3>&- \
-      | grep -- '=' && print_success 'stowed %s files.' $pkg
+      | grep -- '=' && print_success 'stowed %s files.' $pkg || quit "could not stow $pkg"
   done
 
   return 0
