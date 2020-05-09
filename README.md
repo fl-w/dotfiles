@@ -1,11 +1,27 @@
-# Dotfiles
 
-A tidy `$HOME` is a tidy mind.
+# Dotfiles
+```
+    ██████           ████                          ███
+   ███▒▒███         ▒▒███                         ▒███
+  ▒███ ▒▒▒   ██████  ▒███  █████ ███ █████  █████ ▒███
+ ███████    ███▒▒███ ▒███ ▒▒███ ▒███▒▒███  ███▒▒  ▒███
+▒▒▒███▒    ▒███ ▒███ ▒███  ▒███ ▒███ ▒███ ▒▒█████ ▒███
+  ▒███     ▒███ ▒███ ▒███  ▒▒███████████   ▒▒▒▒███▒▒▒
+  █████    ▒▒██████  █████  ▒▒████▒████    ██████  ███
+ ▒▒▒▒▒      ▒▒▒▒▒▒  ▒▒▒▒▒    ▒▒▒▒ ▒▒▒▒    ▒▒▒▒▒▒  ▒▒▒
+```
 
 This repository consists of configuration for any tools I use within my [Arch Linux][arch] and [neovim][] development environment.
 I use a *lot* of tools which culminate in a sort of Unix IDE,
 I use [stow][] to link all of the required configuration into my home directory.
 
+## Overview
+- [Screenshots](#screenshots)
+- [Requirements](#requirements)
+- [Quick Start](#quick-start)
+- [Dots](#dots)
+- [License](#unlicense)
+## Screenshots
 ![screenshot](demo.png)
 + wm: i3-gaps
 + terminal: kitty
@@ -20,29 +36,29 @@ I use [stow][] to link all of the required configuration into my home directory.
 + font: Source Code Pro
 + bar/dock: latte-dock
 
-## Overview
- - [Quick Start](#quick-start)
-- [Configs](#configs)
-- [License](#unlicense)
+## Requirements
 
-## Quick start
-This quick start will show you how to quickly clone this repo and install all dots to your home.
-I usually keep my dotfiles in `/home/<USER>/.dotfiles`
-
-### Install GNU/stow
+### GNU/stow
 > If planning to use stow to manage the (symlinked) dots
 
 Your distribution repositories is very likely to contain `stow`, for example in Arch Linux, all you have to do to install it is:
 `sudo pacman -S stow`
 or on Ubuntu/Debian you can install stow by executing:
 `apt install stow`
-####
-### Clone
-- Clone this repo to your dots directory on your local machine using `git clone https://github.com/folws/dotfiles <DOTS_DIR>`
-### Setup
-- If you want more syntax highlighting, format your code like this:
 
-## Configs
+## Rice-insallation
+
+### Install & Update Script
+To **install** or **update** configs on your system, you should run the [install_script][]. To do that, you may either download and run the script manually, or use the following cURL or Wget command:
+```sh
+curl -sL https://raw.githubusercontent.com/folws/dotfiles/master/bootstrap | bash
+```
+
+```sh
+wget -qO- https://raw.githubusercontent.com/folws/dotfiles/master/bootstrap | bash
+```
+
+## Dots (WIP)
 
 ### Anne Pro 2
 Holds the light and keymap profiles for my anne pro keyboard
@@ -73,6 +89,7 @@ Find the full [unlicense][] in the `UNLICENSE` file, but here's a snippet.
 
 Do what you want. Learn as much as you can. Unlicense more software.
 
+[install_script]: https://raw.githubusercontent.com/folws/dotfiles/master/install
 [unlicense]: http://unlicense.org/
 [arch]: https://www.archlinux.org/
 [stow]: http://www.gnu.org/software/stow/
