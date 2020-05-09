@@ -1,2 +1,2 @@
-pkgs=xorg-server i3-gaps
+pkgs=xorg-server i3-gaps nerd-fonts-fira-code
 py_pkgs=i3-py
