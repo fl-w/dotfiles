@@ -233,8 +233,6 @@ is_using_arch() {
 install_packages() {
   print_info "Installing package dependencies"
 
-  local installer
-
   find_pacman() {
     case $distro in
       Manjaro*|Arch*) printf "/usr/bin/pacman -S --needed";;
@@ -273,7 +271,7 @@ install_packages() {
       print_info "> installing %s" $i
       print_debug '$ sudo %s %s' $installer $i
 
-      verbose_command sudo $installer $i || {
+      verbose_command yes | sudo $installer $i || {
 
         print_err "could not install $1";
 
@@ -351,8 +349,18 @@ install_py_packages() {
 }
 
 stow_packages() {
+  install_stow() {
+    verbose_command sudo $installer stow
+  }
+
   print_info "Stowing packages to home."
   local dashv=""
+
+  if is_using_arch; then
+    require_dep stow install_stow || return 0
+  else
+    require_dep stow || return 0
+  fi
 
   [[ "$VERBOSE" -eq 2 ]] && dashv="-v"
 
