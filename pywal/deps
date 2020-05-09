@@ -1,1 +1,2 @@
-py=imagemagick pywal
+pkgs=imagemagick
+py=pywal

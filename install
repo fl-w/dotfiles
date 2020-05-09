@@ -367,7 +367,7 @@ stow_packages() {
   for pkg in ${PACKAGES[@]}; do
     stow $dashv --ignore deps --ignore post-install \
       --dotfiles -d $ROOT_DIR -R $pkg -t $HOME 3>&1 1>&2 2>&3 3>&- \
-      | grep -- '=' && print_success 'stowed %s files.' $pkg || quit "couldn't stow $pkg"
+      | grep -- '=' && print_success 'stowed %s files.' $pkg
   done
 
   return 0
