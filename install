@@ -267,7 +267,7 @@ install_packages() {
 
   if [[ ! -z "$DEPS_PACMAN" ]]; then
     local deps=(${DEPS_PACMAN})
-    for i in $deps; do
+    for i in ${deps[@]}; do
       print_info "> installing %s" $i
       print_debug '$ sudo %s %s' $installer $i
 
@@ -367,7 +367,7 @@ stow_packages() {
   for pkg in ${PACKAGES[@]}; do
     stow $dashv --ignore deps --ignore post-install \
       --dotfiles -d $ROOT_DIR -R $pkg -t $HOME 3>&1 1>&2 2>&3 3>&- \
-      | grep -- '=' && print_success 'stowed %s files.' $pkg || quit "could not stow $pkg"
+      | grep -- '=' && print_success 'stowed %s files.' $pkg || quit "couldn't stow $pkg"
   done
 
   return 0
@@ -453,7 +453,6 @@ main() {
 
   post_install || quit
 
-
   print_banner
 
   print_success
@@ -475,7 +474,7 @@ do_cleanup() {
 
 quit () {
   do_cleanup
-  [ ! -z "$1" ] && print_err $1
+  [ ! -z "$1" ] && print_err $@
   exit 1
 }
 
