@@ -178,7 +178,13 @@ install_aur_packages() {
 
   require yay install_yay || return 0;
 
-  [[ ! -z "$DEPS_AUR" ]] && verbose_command yay --noconfirm --needed --noredownload --norebuild -S $DEPS_AUR
+  [[ ! -z "$DEPS_AUR" ]] && {
+    local aur=($DEPS_AUR)
+    for p in $aur; do
+      print_info "> installing aur dep: %s" $p
+      verbose_command yay --noconfirm --needed --noredownload --norebuild -S $d
+    done
+  }
 
   print_debug 'done'
 }

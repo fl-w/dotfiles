@@ -52,7 +52,7 @@ function require() {
 
 function join_by { local IFS="$1"; shift; echo "$*"; }
 
-function print_info() { local message=$1 && shift; printf "$COLOR_CYAN--- $message$COLOR_RESET\n" "$@"; }
+function print_info() { local message=$1 && shift; printf "$COLOR_CYAN[*] $message$COLOR_RESET\n" "$@"; }
 
 function print_warning() { local message=$1 && shift; printf "${COLOR_YELLOW}WARN:$COLOR_RESET $message\n" "$@";  }
 
@@ -62,7 +62,7 @@ function print_err() { local message=$1 && shift; printf "${COLOR_RED}ERROR:$COL
 
 function print_debug() {
   if [[ "$VERBOSE" -gt 1 ]]; then
-    message=$1 && shift; printf "$COLOR_YELLOW--- $message$COLOR_RESET\n" $@
+    message=$1 && shift; printf "$COLOR_YELLOW[*] $message$COLOR_RESET\n" $@
   fi
 }
 
