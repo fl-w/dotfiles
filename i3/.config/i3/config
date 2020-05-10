@@ -16,7 +16,7 @@ set $music                spotify
 set $term                 kitty
 set $primary_monitor      HDMI-1
 set $secondary_monitor    DP-1
-set $config               $HOME/.config
+set $scripts              $HOME/.config/i3/scripts
 set $bin                  $HOME/.bin
 set $outer_gaps           10
 set $inner_gaps           20
@@ -79,16 +79,17 @@ for_window [title="^.*"] border pixel 0
 # applications in floating (+ sticky) mode
 for_window [class   = "rofi"] floating enable sticky enable
 for_window [class   = "Pavucontrol"] floating enable, sticky enable
+for_window [class   = "minecraft-launcher"] floating enable
 
 # popups during fullscreen mode
 popup_during_fullscreen smart
 
-set_from_resource $fg color7 #f0f0f0
-set_from_resource $bg color0 #000000
-set_from_resource $ac color8 #2f2f2f
+set_from_resource $fg foreground #f2f2f2
+set_from_resource $bg background #1b1d1e
+set_from_resource $ac color8     #2f2f2f
 
 # class                 border  backgr. text indicator child_border
-client.focused          $ac     $ac     $fg  $ac       $ac
+client.focused          $fg     $fg     $bg  $fg       $fg
 client.focused_inactive $bg     $bg     $fg  $bg       $bg
 client.unfocused        $bg     $bg     $fg  $bg       $bg
 client.urgent           $bg     $bg     $fg  $bg       $bg
@@ -233,22 +234,18 @@ set $ws9 "9"
 set $ws0 "0"
 
 # Move certain apps to specific workspaces
-# 1 Web browser
+# 1 Files
 # 2 Coding
-# 3 Files
+# 3 Web browser
 # 4
 # 5
 # 6
 # 7 Discord
 # 8 Music
 # 9
-# for_window [class="firefox"] move to workspace $ws1
-# for_window [class="code"] move to workspace $ws2
-# for_window [class="Alacritty"] move to workspace $ws3
-for_window [class="minecraft-launcher"] floating enable
 
-for_window [class="discord"] exec --no-startup-id $config/i3/scripts/move-to-ws $ws7
-for_window [class="Spotify"] exec --no-startup-id $config/i3/scripts/move-to-ws $ws8
+for_window [class="discord"] exec --no-startup-id $scripts/move-to-ws.sh $ws7
+for_window [class="Spotify"] exec --no-startup-id $scripts/move-to-ws.sh $ws8
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -294,11 +291,7 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-#    __  __ ___ _  _ ___
-#   |  \/  |_ _| \| | __|
-#   | |\/| || || .` | _|
-#   |_|  |_|___|_|\_|___|
-#
+
 
 # Shortcut for audio control
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -313,11 +306,12 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 
 exec --no-startup-id start-pulseaudio-x11 >/dev/null 2>&1 & notify-send "Started pulseaudio"
 exec --no-startup-id $bin/run-tabpage >/dev/null 2>&1
-exec_always --no-startup-id $bin/alternate-i3-layout >/dev/null 2>&1
+exec_always discord; spotify # auto startup
 exec_always --no-startup-id $bin/swal next
-exec_always --no-startup-id $config/picom/launch.sh >/dev/null 2>&1
-exec_always --no-startup-id $config/dunst/launch.sh >/dev/null 2>&1
-exec_always --no-startup-id $config/polybar/launch.sh >/dev/null 2>&1
+exec_always --no-startup-id $scripts/i3-alternate-layout >/dev/null 2>&1
+exec_always --no-startup-id $scripts/i3-launch.sh picom
+exec_always --no-startup-id $scripts/i3-launch.sh dunst
+exec_always --no-startup-id $scripts/i3-launch.sh polybar
+exec_always --no-startup-id $scripts/i3-launch.sh flashfocus
 exec_always --no-startup-id $HOME/.screenlayout
-exec_always --no-startup-id flashfocus >/dev/null 2>&1
-# exec_always --no-startup-id spicetify apply
+exec_always --no-startup-id spicetify apply
