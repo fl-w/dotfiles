@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 TABDIR="$HOME/src/tab"
 LOCKDIR="/tmp/tab-page-lock"

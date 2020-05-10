@@ -17,7 +17,7 @@ set $term                 kitty
 set $primary_monitor      HDMI-1
 set $secondary_monitor    DP-1
 set $scripts              $HOME/.config/i3/scripts
-set $bin                  $HOME/.bin
+set $bin                  $HOME/.local/bin
 set $outer_gaps           10
 set $inner_gaps           20
 
