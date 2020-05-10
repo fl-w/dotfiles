@@ -43,7 +43,7 @@ function require() {
     print_warning "$1 is required to continue."
 
     if ! test -z $2 && prompt "Would you like to install $1?" "y"; then
-      shift; verbose_command $@ || return 1
+      shift; $@ || return 1
     else
       return 1
     fi
@@ -85,17 +85,15 @@ install_node() {
 }
 
 install_yay() {
-  local required=(tar curl)
-  for r in ${required[$@]}; do
-    command -v $r >/dev/null || { print_err "$r is required to install yay"; return 1; }
-  done
+  require tar || return 1
+  require curl || return 1
 
   local temp=$(mktemp -d)
 
   verbose_command curl https://aur.archlinux.org/cgit/aur.git/snapshot/yay.tar.gz --output $temp/package || { print_warning "could not clone yay repo"; }
   tar -xf $temp/package -C $temp
 
-  pushd $temp >/dev/null
+  pushd $temp/yay >/dev/null
   makepkg -si
 
   popd >/dev/null

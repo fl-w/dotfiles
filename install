@@ -94,11 +94,17 @@ load_deps() {
     fi
   done
 
-  # trim trailing spaces
-  DEPS_PACMAN="$(sed -e 's/[[:space:]]*$//' <<<${DEPS_PACMAN})"
-  DEPS_PY="$(sed -e 's/[[:space:]]*$//' <<<${DEPS_PY})"
-  DEPS_NODE="$(sed -e 's/[[:space:]]*$//' <<<${DEPS_NODE})"
-  DEPS_AUR="$(sed -e 's/[[:space:]]*$//' <<<${DEPS_AUR})"
+
+  local all_deps=("DEPS_PACMAN DEPS_PY DEPS_AUR DEPS_NODE")
+  for i in ${all_deps[@]}; do
+    local p="${!i}"
+
+    p="$(sed -e 's/[[:space:]]*$//' <<<${p})" # trim trailing spaces
+    p=$(echo "${p}" | xargs -n1 | sort -u | xargs) # remove dups
+
+    declare -gx "$i=$p "
+  done
+
   print_debug "done"
 }
 
@@ -153,7 +159,7 @@ install_dots() {
     local deps=(${DEPS_PACMAN})
     for i in ${deps[@]}; do
       print_info "> installing pacman dep: %s" $i
-      print_debug '$ sudo %s %s' $installer $i
+      print_debug "$ sudo $installer $i"
 
       verbose_command yes | sudo $installer $i || {
         print_err "could not install $1" && \
@@ -180,7 +186,7 @@ install_aur_packages() {
 
   [[ ! -z "$DEPS_AUR" ]] && {
     local aur=($DEPS_AUR)
-    for p in $aur; do
+    for p in ${aur[@]}; do
       print_info "> installing aur dep: %s" $p
       verbose_command yay --noconfirm --needed --noredownload --norebuild -S $d
     done
@@ -241,8 +247,8 @@ stow_packages() {
   local ignores=(${STOW_IGNORE})
   local stow="stow $dashv --dotfiles -d $ROOT_DIR -t $HOME"
 
-  for ignore in $ignore; do
-    stow='$stow --ignore "$ignore"'
+  for ignore in ${ignore[@]}; do
+    stow="$stow --ignore $ignore"
   done
 
   for pkg in ${DOTS[@]}; do
@@ -293,7 +299,7 @@ show_help() {
   echo "                              ignore dots."
   echo " -r, --stow-ignore \"file,file2,...\""
   echo "                              ignore stowing files"
-  echo " -S, --skip-select            skip dots pack selection. "
+  echo " -Y, --skip-select            skip dots pack selection. "
   # echo " -K, --skip-install           skip installing dependencies. "
   # echo " --skip-aur                   skip installing aur dependencies. "
   # echo " --skip-stow                  skip stowing dotfiles. "
@@ -316,7 +322,7 @@ parse_opts() {
     -a|--all) ALL_PACAKGES=1;;
     -i|--ignore) ignore IGNORE ignore $2; shift;;
     -k|--stow-ignore) ignore STOW_IGNORE stow $2; shift;;
-    -S|--skip-select) SKIP_SELECTION=0;;
+    -Y|--skip-select) SKIP_SELECTION=0;;
     -q|--quiet) VERBOSE=0;;
     -v|--verbose) VERBOSE=2;;
     *) show_help "Unknown parameter: $1"; exit 1;;

@@ -16,6 +16,8 @@
 [global/wm]
 margin-bottom = 10
 margin-top = 1
+wm-restack = i3
+enable-ipc = true
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -31,7 +33,7 @@ include-file = ~/.config/polybar/user_modules.ini
 
 [color]
 
-; 'aa' here makes background semi-transparent
+; '55' here makes background semi-transparent
 bg = #551B1D1E
 fg = ${xrdb:foreground}
 ac = ${xrdb:foreground}
