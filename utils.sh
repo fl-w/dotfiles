@@ -135,6 +135,13 @@ select_options() {
   print_debug "You selected${msg-" nothing"}"
 }
 
+function get_list_opt() {
+  local opt=$1
+  local delimiter=$2
+
+  echo $opt | tr ${delimiter[0:1]-","} ' '
+}
+
 # +
 # +
 # }}}

@@ -26,23 +26,30 @@ ALL_PACAKGES=0
 
 SKIP_SELECTION=1
 
+IGNORE="refind anne-pro-2-kb"
 STOW_IGNORE="post-install deps"
 
 . utils.sh
 
-select_packages() {
+select_dots() {
   local packages=($(ls -d */ | cut -f 1 -d '/'))
+
+  for ignore in ${IGNORE[@]}; do
+    for i in "${!packages[@]}"; do
+      if [[ ${packages[i]} = $ignore ]]; then unset 'packages[i]'; fi
+    done
+  done
 
   if [[ "$SKIP_SELECTION" == 1 ]]; then
      select_options "Select packages to install" $ALL_PACAKGES "${packages[@]}"
-    PACKAGES=${selected[@]}
+    DOTS=${selected[@]}
   else
-    PACKAGES=${packages[@]}
+    DOTS=${packages[@]}
   fi
 }
 
 load_deps() {
-  if [[ ${#PACKAGES} -eq 0 ]]; then
+  if [[ ${#DOTS} -eq 0 ]]; then
     print_info "No dots selected, nothing to do."
     exit 0
   fi
@@ -54,7 +61,7 @@ load_deps() {
   DEPS_NODE=""
   DEPS_AUR=""
 
-  for pkg in ${PACKAGES[@]}; do
+  for pkg in ${DOTS[@]}; do
 
     if [ -f $pkg/deps ]; then
 
@@ -107,7 +114,7 @@ is_using_arch() {
   esac
 }
 
-install_packages() {
+install_dots() {
   print_info "Installing package dependencies"
 
   find_pacman() {
@@ -144,14 +151,12 @@ install_packages() {
   if [[ ! -z "$DEPS_PACMAN" ]]; then
     local deps=(${DEPS_PACMAN})
     for i in ${deps[@]}; do
-      print_info "> installing %s" $i
+      print_info "> installing pacman dep: %s" $i
       print_debug '$ sudo %s %s' $installer $i
 
       verbose_command yes | sudo $installer $i || {
-
-        print_err "could not install $1";
-
-        if ! prompt "continue"; then return 1; fi;
+        print_err "could not install $1" && \
+        { if ! prompt "continue"; then return 1; fi; }
       } && print_success "installed $i"
 
     done
@@ -198,7 +203,7 @@ install_py_packages() {
 
   local deps=(${DEPS_PY})
   for i in ${deps[@]}; do
-    print_info "> installing python: %s" $i
+    print_info "> installing python dep: %s" $i
 
     verbose_command pip3 install --user $i || {
       print_err "could not install $1";
@@ -233,7 +238,7 @@ stow_packages() {
     stow='$stow --ignore "$ignore"'
   done
 
-  for pkg in ${PACKAGES[@]}; do
+  for pkg in ${DOTS[@]}; do
     print_debug "> stowing %s" $pkg
     $stow -R "$pkg" 3>&1 1>&2 2>&3 3>&- | grep -- '=' && print_success 'stowed %s dots.' $pkg
   done
@@ -277,30 +282,36 @@ show_help() {
   echo "optional arguments:"
   echo " -h, --help                   show this help text"
   echo " -a, --all                    select all packages. "
-  echo " -k, --stow-ignore \"file,file2,...\""
+  echo " -i, --ignore \"file,file2,...\""
+  echo "                              ignore dots."
+  echo " -r, --stow-ignore \"file,file2,...\""
   echo "                              ignore stowing files"
-  echo " --skip-select                skip dots pack selection. "
-  echo " --skip-install               skip installing dependencies. "
-  echo " --skip-aur                   skip installing aur dependencies. "
-  echo " --skip-stow                  skip stowing dotfiles. "
+  echo " -S, --skip-select            skip dots pack selection. "
+  # echo " -K, --skip-install           skip installing dependencies. "
+  # echo " --skip-aur                   skip installing aur dependencies. "
+  # echo " --skip-stow                  skip stowing dotfiles. "
   echo " -q, --quiet                  quiet mode, don't print anything."
   echo " -v, --verbose                run in verbose mode."
   echo
 }
 
-stow_ignore() {
-  local ignores=$(echo $1 | tr ',' ' ' )
+ignore() {
+  test -z "$3" && quit "please provide argument to $2"
 
-  print_debug "stow will ignore the files: \"$ignores\"."
-  STOW_IGNORE="$STOW_IGNORE $ignores"
+  local ignores=$(get_list_opt $3)
+
+  print_debug "will ignore the dots: \"$ignores\"."
+  $1="${$1} $ignores"
 }
+
 
 parse_opts() {
   while [[ "$1" =~ ^- && ! $1 == "--" ]]; do case $1 in
     -h|--help) show_help; exit 0;;
     -a|--all) ALL_PACAKGES=1;;
-    -k|--stow-ignore) stow_ignore $1; shift;;
-    --skip-select) SKIP_SELECTION=0;;
+    -i|--ignore) ignore IGNORE ignore $2;;
+    -k|--stow-ignore) ignore STOW_IGNORE stow $2; shift;;
+    -S|--skip-select) SKIP_SELECTION=0;;
     -q|--quiet) VERBOSE=0;;
     -v|--verbose) VERBOSE=2;;
     *) show_help "Unknown parameter: $1"; exit 1;;
@@ -318,13 +329,13 @@ main() {
 
   pushd $ROOT_DIR >/dev/null
 
-  select_packages || quit
+  select_dots || quit
 
   load_deps || quit
 
   sudo -k
 
-  install_packages || quit
+  install_dots || quit
 
   install_aur_packages || quit
 
@@ -337,7 +348,7 @@ main() {
   print_banner
 
   print_success
-  print_success "--- done ! installed %d dots ---" ${#PACKAGES}
+  print_success "--- done ! installed %d dots ---" ${#DOTS}
   print_success
 
   exit 0
@@ -354,8 +365,9 @@ do_cleanup() {
 }
 
 quit () {
-  do_cleanup
   [ ! -z "$1" ] && print_err $@
+
+  do_cleanup
   exit 1
 }
 
