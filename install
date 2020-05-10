@@ -33,8 +33,9 @@ STOW_IGNORE="post-install deps"
 
 select_dots() {
   local packages=($(ls -d */ | cut -f 1 -d '/'))
+  local ignores=(${IGNORE[@]})
 
-  for ignore in ${IGNORE[@]}; do
+  for ignore in ${ignores[@]}; do
     for i in "${!packages[@]}"; do
       if [[ ${packages[i]} = $ignore ]]; then unset 'packages[i]'; fi
     done
@@ -251,7 +252,7 @@ post_install() {
 
   if [ -f $ROOT_DIR/$pkg/post-install ]
   then
-    $ROOT_DIR/$pkg/post-install
+    . $ROOT_DIR/$pkg/post-install
   fi
 }
 
@@ -299,9 +300,7 @@ ignore() {
   test -z "$3" && quit "please provide argument to $2"
 
   local ignores=$(get_list_opt $3)
-
-  print_debug "will ignore the dots: \"$ignores\"."
-  $1="${$1} $ignores"
+  declare -gx "$1=${!1} $ignores"
 }
 
 
@@ -309,7 +308,7 @@ parse_opts() {
   while [[ "$1" =~ ^- && ! $1 == "--" ]]; do case $1 in
     -h|--help) show_help; exit 0;;
     -a|--all) ALL_PACAKGES=1;;
-    -i|--ignore) ignore IGNORE ignore $2;;
+    -i|--ignore) ignore IGNORE ignore $2; shift;;
     -k|--stow-ignore) ignore STOW_IGNORE stow $2; shift;;
     -S|--skip-select) SKIP_SELECTION=0;;
     -q|--quiet) VERBOSE=0;;

@@ -117,7 +117,7 @@ select_options() {
       [[ "$msg" ]] && echo "$msg"; :
   }
 
-    if [[  ${#options[@]} > 0 ]]; then
+    if [[ ${#options[@]} -gt 0 ]]; then
     while menu && read -rp "$prompt" num && [[ "$num" ]]; do
         [[ "$num" != *[![:digit:]]* ]] &&
         (( num > 0 && num <= ${#options[@]} )) ||
@@ -137,9 +137,9 @@ select_options() {
 
 function get_list_opt() {
   local opt=$1
-  local delimiter=$2
+  local delimiter=${2-,}
 
-  echo $opt | tr ${delimiter[0:1]-","} ' '
+  echo $opt | tr "${delimiter:0:1}" ' '
 }
 
 # +
