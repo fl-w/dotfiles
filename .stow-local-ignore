@@ -1,9 +1,0 @@
-# Stow ignore files
-
-
-\.git
-\.gitignore
-
-^/README.*
-^/LICENSE.*
-^/install.sh

@@ -1,13 +1,21 @@
 #!/bin/bash
 
-interfaces=$(ip link show | grep ':' | ip link show | grep '^[0-9]:' | cut -d ' ' -f 2 | sed -e 's/://g')
+set_interface() {
+  local interfaces=$(ip link show | grep ':' | ip link show | grep '^[0-9]:' | cut -d ' ' -f 2 | sed -e 's/://g')
 
-PS3="Enter the interface to use for polybar network module: "
-select interface in $interfaces
-do
-  sed -i "s/^interface = [a-z0-9]*/interface = $interface/g" ~/.config/polybar/modules.ini
-  break
-done
+  PS3="Enter the interface to use for polybar network module: "
+  select interface in $interfaces
+  do
+    sed -i "s/^interface = [a-z0-9]*/interface = $interface/g" ~/.config/polybar/modules.ini
+    break
+  done
+}
 
-cp ~/.config/polybar/fonts/* ~/.local/share/fonts
-fc-cache
+if prompt "Would you like to set network interface for polybar?" y; then
+  set_interface
+fi
+
+if prompt "Would you like to install fonts for polybar?" y; then
+  mkdir -p ~/.local/share/fonts
+  [[  -d ~/.config/polybar/fonts ]] && cp ~/.config/polybar/fonts/* ~/.local/share/fonts && fc-cache
+fi

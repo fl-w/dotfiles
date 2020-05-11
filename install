@@ -247,10 +247,11 @@ stow_packages() {
   local ignores=(${STOW_IGNORE})
   local stow="stow $dashv --dotfiles -d $ROOT_DIR -t $HOME"
 
-  for ignore in ${ignore[@]}; do
+  for ignore in ${ignores[@]}; do
     stow="$stow --ignore $ignore"
   done
 
+  print_debug $stow
   for pkg in ${DOTS[@]}; do
     print_debug "> stowing %s" $pkg
     $stow -R "$pkg" 3>&1 1>&2 2>&3 3>&- | grep -- '=' && print_success 'stowed %s dots.' $pkg
@@ -266,6 +267,7 @@ post_install() {
     if [ -f $ROOT_DIR/$dot/post-install ]
     then
       . $ROOT_DIR/$dot/post-install
+      print_success "$dot post install done."
     fi
   done
 }
