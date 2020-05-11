@@ -176,53 +176,42 @@ install_dots() {
   fi
 }
 
-install_aur_packages() {
+install_generic() {
+  local name=$1
+  local bin=$2
+  local deps=(${!3})
+  local bin_installer=$4
+  local installer=$5
 
-  is_using_arch || return 0;
+  print_info "Installing $name dependencies with $bin"
 
-  print_info 'Installing AUR dependencies'
+  require $bin $bin_installer || return 0
 
-  require yay install_yay || return 0;
+  for i in ${deps[@]}; do
+    print_info "-- installing $name dependency: %s" $i
 
-  [[ ! -z "$DEPS_AUR" ]] && {
-    local aur=($DEPS_AUR)
-    for p in ${aur[@]}; do
-      print_info "> installing aur dep: %s" $p
-      verbose_command yay --noconfirm --needed --noredownload --norebuild -S $d
-    done
-  }
+    verbose_command $installer $i || {
+      print_err "could not install $i";
+      if ! prompt "Want to continue?"; then return 1; fi;
+    }
+
+  done
 
   print_debug 'done'
 }
 
-install_py_packages() {
-  print_info 'Installing python dependencies with pip'
+install_aur_deps() {
+  is_using_arch || return 0;
 
-  install_pip() {
-    require curl || return 1
+  install_generic AUR yay DEPS_AUR install_yay "yay --noconfirm --needed --noredownload --norebuild -S"
+}
 
-    if is_using_arch; then
-      sudo $installer python-pip
-    else
-      pushd $TEMP_DIR >/dev/null
-      curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-      python get-pip.py && \
-      print_success "installed python"
-      popd >/dev/null
-    fi
-  }
+install_py_deps() {
+  install_generic python-pip pip3 DEPS_PY install_pip "pip3 install --user"
+}
 
-  require pip3 install_pip || return 0
-
-  local deps=(${DEPS_PY})
-  for i in ${deps[@]}; do
-    print_info "> installing python dep: %s" $i
-
-    verbose_command pip3 install --user $i || {
-      print_err "could not install $1";
-      if ! prompt "continue"; then return 1; fi;
-    }
-    done
+install_node_deps() {
+  install_generic node npm DEPS_NODE install_node "npm -g i"
 }
 
 stow_packages() {
@@ -254,7 +243,8 @@ stow_packages() {
   print_debug $stow
   for pkg in ${DOTS[@]}; do
     print_debug "> stowing %s" $pkg
-    $stow -R "$pkg" 3>&1 1>&2 2>&3 3>&- | grep -- '=' && print_success 'stowed %s dots.' $pkg
+    $stow -R "$pkg" 3>&1 1>&2 2>&3 3>&- | grep -- '=' && print_success "stowed $pkg dots." $pkg || \
+      { print_err "Issue whilst creating symmlink for $pkg"; }
   done
 
   return 0
@@ -266,8 +256,9 @@ post_install() {
   for dot in ${DOTS[@]}; do
     if [ -f $ROOT_DIR/$dot/post-install ]
     then
+      SECONDS=0
       . $ROOT_DIR/$dot/post-install
-      print_success "$dot post install done."
+      print_success "$dot post install took ${SECONDS}s."
     fi
   done
 }
@@ -352,9 +343,11 @@ main() {
 
   install_dots || quit
 
-  install_aur_packages || quit
+  install_aur_deps || quit
 
-  install_py_packages || quit
+  install_py_deps || quit
+
+  install_node_deps || quit
 
   stow_packages || quit
 

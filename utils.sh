@@ -76,7 +76,7 @@ function verbose_command() {
 }
 
 install_node() {
-  if curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n && bash n lts
+  if curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o $TEMP_DIR/n && bash $TEMP_DIR/n lts
   then
     return 1
   else
@@ -84,16 +84,26 @@ install_node() {
   fi
 }
 
+install_pip() {
+  require curl || return 1
+
+  if is_using_arch; then
+    sudo $installer python-pip
+  else
+    curl https://bootstrap.pypa.io/get-pip.py -o $TEMP_DIR/get-pip.py && python get-pip.py && \
+        print_success "installed python"
+  fi
+  return $?
+}
+
 install_yay() {
   require tar || return 1
   require curl || return 1
 
-  local temp=$(mktemp -d)
+  verbose_command curl https://aur.archlinux.org/cgit/aur.git/snapshot/yay.tar.gz --output $TEMP_DIR/package || { print_warning "could not clone yay repo"; }
+  tar -xf $TEMP_DIR/package -C $TEMP_DIR
 
-  verbose_command curl https://aur.archlinux.org/cgit/aur.git/snapshot/yay.tar.gz --output $temp/package || { print_warning "could not clone yay repo"; }
-  tar -xf $temp/package -C $temp
-
-  pushd $temp/yay >/dev/null
+  pushd $TEMP_DIR/yay >/dev/null
   makepkg -si
 
   popd >/dev/null
