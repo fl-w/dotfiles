@@ -20,16 +20,19 @@ ROOT_DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" &>/dev/null && pwd )"
 
 CLEANING_UP=0
 
-TEMP_DIR=$(mktemp)
+WORK_DIR=`mktemp -d -p "$ROOT_DIR"`
 
 ALL_PACAKGES=0
 
 SKIP_SELECTION=1
 
 IGNORE="refind anne-pro-2-kb"
+
 STOW_IGNORE="post-install deps"
 
+
 . utils.sh
+
 
 select_dots() {
   local packages=($(ls -d */ | cut -f 1 -d '/'))
@@ -329,6 +332,11 @@ parse_opts() {
 main() {
   parse_opts "$@"
 
+  # check if tmp dir was created
+  if [[ ! "$WORK_DIR" || ! -d "$WORK_DIR" ]]; then
+    quit "Could not create temp dir"
+  fi
+
   if [[ "$VERBOSE" -eq 0 ]]; then
     exec >/dev/null 2>&1
   fi
@@ -369,7 +377,7 @@ do_cleanup() {
 
   print_debug "cleaning up"
 
-  rm -r $TEMP_DIR
+  rm -r $WORK_DIR
 }
 
 quit () {
