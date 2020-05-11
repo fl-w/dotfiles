@@ -1,7 +1,8 @@
 #!/bin/bash
 
 fish -c "type -q omf" || curl -L https://get.oh-my.fish | fish
-fish -c "omf install https://github.com/folws/ortega && omf theme ortega"
+
+[[ -f ~/.config/omf/bundle ]] && fish -c "omf install $(cat ~/.config/omf/bundle | grep -v "default" | cut -f2 -d' ' | tr '\n' ' ')"
 
 if prompt "Would you like to set fish as your default prompt?" y ; then
   chsh -s $(command -v fish)
