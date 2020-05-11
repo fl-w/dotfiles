@@ -262,10 +262,12 @@ stow_packages() {
 post_install() {
   print_info "running post install"
 
-  if [ -f $ROOT_DIR/$pkg/post-install ]
-  then
-    . $ROOT_DIR/$pkg/post-install
-  fi
+  for dot in ${DOTS[@]}; do
+    if [ -f $ROOT_DIR/$dot/post-install ]
+    then
+      . $ROOT_DIR/$dot/post-install
+    fi
+  done
 }
 
 print_banner() {
