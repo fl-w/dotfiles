@@ -1,19 +1,3 @@
-# # function bleutoothctl_reader()
-# {
-#   {
-#     while true
-#     do
-#       if read line <$pipe; then
-#           if [[ "$line" == 'exit' ]]; then
-#               break
-#           fi
-#           echo $line
-#       fi
-#     done
-#   } | bluetoothctl > "$output_file"
-# }
-
-
 function btc --description 'reset and connect to a bluetoth device'
   if test -z  $argv[1]
     echo "Missin dev argument"
@@ -24,17 +8,22 @@ function btc --description 'reset and connect to a bluetoth device'
 
   contains "$device" bt_list_known_dev; and echo bluetoothctl remove $device
 
-  bluetoothctl scan on |
-  while true
-    if read line </tmp/btctemp
-      # echo $line
-      echo test
-    end
-  end |
+  set tmp (mktemp --suffix btc)
+  trap "remove_tmp $tmp" EXIT
+  echo "created tmp @ $tmp"
 
-  # bluetoothctl scan on | grep -q "$device"; and bluetoothctl trust $device; and bluetoothctl pair $device; and bluetoothctl connect $device
-  # bluetoothctl scan off
+  bluetoothctl scan on >$tmp 2>&1 &
+  echo "started bctl"
+  grep -q -m 1 "$device" (tail -f $tmp | psub) || return 1
 
+  echo found
+  bluetoothctl trust $device
+  bluetoothctl connect $device
+
+end
+
+function remove_tmp --argument tmp
+  rm "$tmp"
 end
 
 function blue_list_known_devices

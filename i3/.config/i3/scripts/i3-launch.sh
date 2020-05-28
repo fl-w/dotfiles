@@ -19,4 +19,4 @@ done
 [[ -z "$dot_dir" ]] && print_err "no config dir found for $dot" && exit 1
 [[ -z "$dot_dir/launch.sh" ]] && print_err "no launch.sh found in $dot_dir" && exit 1
 
-$dot_dir/launch.sh $@ >/dev/null 2>&1
+echo "launching $dot" && $dot_dir/launch.sh $@ >/dev/null 2>&1

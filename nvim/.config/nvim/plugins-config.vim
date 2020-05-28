@@ -44,19 +44,14 @@ let g:camelcasemotion_key = '<leader>'
 " Deoplete configuration
 "
 let g:deoplete#enable_at_startup           = 1
-let g:deoplete#enable_smart_case           = 1
 
 "" Setup completetion sources
-let g:deoplete#sources                     = {}
-
-call deoplete#custom#source('LanguageClient',
-            \ 'min_pattern_length',
-            \ 2)
+call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
+call deoplete#custom#source('jedi', 'show_docstring', v:true)
 call deoplete#custom#option('camel_case', v:false)
+call deoplete#custom#option('enable_smart_case', v:true)
 call deoplete#custom#option('max_list', 20)
 
-let g:deoplete#sources#jedi#show_docstring = 1
-" let g:deoplete#sources.java                = [ 'jc', 'javacomplete2', 'file', 'buffer', 'ultisnips' ]
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
 
 function! s:check_back_space() abort "{{{
@@ -77,9 +72,9 @@ inoremap <silent><expr> <CR>
 " echodoc configuration
 "
 " set noshowmode
-let g:echodoc#enable_at_startup = 0
-let g:echodoc#type = 'echo'
-
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'virtual'
+set cmdheight=2
 
 " firenvim configuration
 "
@@ -99,16 +94,23 @@ endif
 
 " fzf configuration
 "
-let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
-let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4'
+let $FZF_DEFAULT_COMMAND=$FZF_DEFAULT_COMMAND . ' -g "!plugged"'
+let $FZF_DEFAULT_OPTS = '--reverse --ansi '
+let $FZF_DEFAULT_OPTS .= $FZF_CTRL_T_OPTS
+let $FZF_DEFAULT_OPTS .= ' --margin=1,4 --color=dark --color=fg:#cbccc6,bg:#1b1d1e,hl:#707a8c'
+let $FZF_DEFAULT_OPTS .= ' --color=fg+:#707a8c,bg+:#191e2a,hl+:#ffcc66 '
+let $FZF_DEFAULT_OPTS .= ' --color=fg+:#707a8c,bg+:#191e2a,hl+:#ffcc66 '
+let $FZF_DEFAULT_OPTS .= ' --color=marker:#73d0ff,spinner:#73d0ff,header:#d4bfff'
+let $FZF_DEFAULT_OPTS .= ' --color=info:#73d0ff,prompt:#707a8c,pointer:#cbccc6'
+
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
 function! FloatingFZF()
   let buf = nvim_create_buf(v:false, v:true)
   call setbufvar(buf, '&signcolumn', 'no')
 
-  let height = float2nr(10)
-  let width = float2nr(80)
+  let height = float2nr(30)
+  let width = float2nr(130)
   let horizontal = float2nr((&columns - width) / 2)
   let vertical = 1
 
@@ -120,7 +122,7 @@ function! FloatingFZF()
         \ 'height': height,
         \ 'style': 'minimal'
         \ }
-
+    setlocal winhighlight=Normal:MarkdownError
   call nvim_open_win(buf, v:true, opts)
 endfunction
 
@@ -141,13 +143,22 @@ let g:LanguageClient_serverCommands = {
     \ }
     " \ 'java':           ['/usr/bin/jdtls', '-data', getcwd()],
     " \ 'typescript':     ['javascript-typescript-stdio'],
-let g:LanguageClient_hoverPreview = 'Never'
+" let g:LanguageClient_hoverPreview = 'Never'
 let g:LanguageClient_echoProjectRoot = 0
+let g:LanguageClient_rootMarkers = {
+      \ 'javascript': ['package.json']
+\}
+augroup LanguageClient_config
+  autocmd!
+  autocmd User LanguageClientStarted setlocal signcolumn=yes
+  autocmd User LanguageClientStopped setlocal signcolumn=auto
+augroup END
 
 
 " lens.vim configuration
 "
-let g:lens#disabled_filetypes = ['nerdtree', 'fzf', '[ No Name ]', 'Scratch', 'NERD_tree_1', 'NERD_tree_2']
+let g:lens#disabled_filetypes = ['nerdtree', 'fzf', '[ No Name ]', 'Scratch',
+      \ 'NERD_tree_1', 'NERD_tree_2', 'NERD_tree_3']
 let g:lens#height_resize_min = 5
 let g:lens#height_resize_max = 40
 let g:lens#width_resize_max = 80
@@ -209,23 +220,25 @@ let g:lightline#bufferline#number_map = {
 "
 let g:mkdp_auto_start = 1
 
+let g:md_auto_compile = 1
+function! CompileMarkdown()
+  if g:md_auto_compile
+    silent execute ":Start! pandoc " . expand("%") . " -o ~/.cache/" . expand("%:r") .
+          \ ".pdf --listings --toc --toc-depth=3 --number-sections"
+  endif
+endfunction
 
-" ncm2 configuration
-"
-" autocmd BufEnter * call ncm2#enable_for_buffer()
-"
-" au User Ncm2Plugin call ncm2#register_source({
-"         \ 'name' : 'vimtex',
-"         \ 'priority': 9,
-"         \ 'subscope_enable': 1,
-"         \ 'complete_length': 1,
-"         \ 'scope': ['tex'],
-"         \ 'mark': 'tex',
-"         \ 'word_pattern': '\w+',
-"         \ 'complete_pattern': g:vimtex#re#ncm,
-"         \ 'on_complete': ['ncm2#on_complete#omni'],
-"         \ })
+function! InsertMarkdownScreenShot()
+  let l:scr_dir = expand('%:h') . '/.screenshots'
+  silent! execute "!mkdir -p " . l:scr_dir
+  let l:path = system('SCR_DIR=' . l:scr_dir . ' SCR_PREFIX=' . expand('%:t:r') . '_ scr -s')
 
+  if strlen(l:path) != 0
+    silent! execute "normal! i![" . fnamemodify(l:path, ':t:r') . "](" . fnamemodify(l:path, ':.') . ")\<Esc>"
+  endif
+endfunction
+
+autocmd! BufWritePost *.md call CompileMarkdown()
 
 " NERDCommenter configuration
 "
@@ -295,6 +308,10 @@ call NERDTreeHighlightFile('rb', 'red', 'none', s:colors.red.gui, 'none')
 " autocmd VimEnter * :unmap <space>
 
 
+""" vim-current-word configuration
+hi CurrentWord gui=bold guifg=Normal
+hi CurrentWordTwins guibg=#2c323C guifg=#ffffff
+
 " vim-easy-align configuration
 "
 "' mappings: maps.vim
@@ -318,17 +335,23 @@ let g:mergetool_layout = 'mr'
 let g:mergetool_prefer_revision = 'local'
 
 
+" vim-notes configuration
+"
+let g:notes_directories = ['~/notes', '~/Documents/notes']
+let g:notes_suffix = '.md'
+
+
 " vim-rooter configuration
 "
 let g:rooter_change_directory_for_non_project_files = 'current'
-let g:rooter_patterns = [ '.project-root', 'package.json', 'README.*', '.git/' ]
+let g:rooter_patterns = [ '.project-root', 'deps', 'package.json', 'README.*', '.git/' ]
 " let g:rooter_targets = '*'
 
 " vim-obsession configuration
 "
 augroup AutomaticallySourceSession | au!
 autocmd BufEnter *.*
-      \ if !empty(glob('./Session.vim'))
+      \ if !empty(glob(expand('%:h') . '/Session.vim'))
       \   | :so Session.vim
       \   | :Obsession!
       \ | endif
@@ -338,10 +361,6 @@ augroup end
 "
 let g:smoothie_no_default_mappings = 0
 
-
-" vim-test configuration
-"
-let test#strategy = "neovim"
 
 " ultisnips configuration
 "

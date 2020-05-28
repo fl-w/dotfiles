@@ -76,7 +76,7 @@ function verbose_command() {
 }
 
 install_node() {
-  if curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o $WORK_DIR/n && bash $WORK_DIR/n lts
+  if curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o $WORK_DIR/n && exec $WORK_DIR/n lts
   then
     return 0
   else

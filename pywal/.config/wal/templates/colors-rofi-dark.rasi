@@ -1,8 +1,3 @@
-/*******************************************************************************
- * ROFI Color theme
- * User: Sergio Morales + folws
- *******************************************************************************/
-
 * {{
 	/* *******************************************************************
 	* colors
@@ -27,7 +22,7 @@
     normal-background:           rgba ( 255, 255, 255, 0 % );
     lightfg:                     rgba ( 88, 104, 117, 100 % );
     selected-normal-background:  {color1};
-    selected-normal-foreground:  rgba ( 180, 144,  82, 100 % );
+    selected-normal-foreground:  {color7};
     selected-active-foreground:  rgba ( 180, 144,  82, 100 % );
     border-color:                none;
     spacing:                     2;
@@ -153,8 +148,8 @@
 }}
 #textbox-prompt-colon {{
     expand:     false;
-    str:        " 🢂 ";
-    margin:     0.1em 0em 0em 0em ;
+    str:        "  ";
+    margin:     -0.3em 0em 0em 0em ;
     text-color: {color1};
-    font: "Ubuntu Bold 8";
+    font: "Ubuntu Bold 15";
 }}

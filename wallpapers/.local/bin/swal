@@ -1,13 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # shitty wallpaper
 # https://github.com/folws
 
 PREV_NAME=.fehbg.prev
-COLOR_BG='1b1d1e'
-
 PROGRAM_NAME=$(basename "$0")
 VERBOSE=0
+
+: "${COLOR_BG:=#1b1d1e}"
+: "${ALPHA:=55}"
 
 # colors
 CLEAR='\033[0m'
@@ -79,7 +80,9 @@ show_help() {
    echo "Usage: $PROGRAM_NAME [...options] [next|prev|<PATH_TO_IMAGE>]"
    echo "options:"
    echo " -b, --bg <color>       the pywal bg color"
+   echo " -a, --alpha <alpha>    the pywal color alpha"
    echo " -p, --prev <name>      the file name of the prev .fehbg"
+   echo " -r, --refresh          refresh the colors from the curr wal"
    echo " -h, --help             show this help text"
    echo " -v  --verbose          run in verbose mode."
    echo
@@ -91,7 +94,9 @@ parse_args() {
     n|next) NEXT=1; break;;
     p|prev) NEXT=0; break;;
     -b|--bg) set_background $2; shift;;
+    -a|--ALPHA) ALPHA="$2"; shift;;
     -p|--prev) set_prev $2; shift;;
+    -r|--refresh) [ $NEXT -lt 0 ] && { NEXT=0; PREV_NAME='.fehbg'; } || { show_help "Cannot pass --refresh with next/prev"; exit 1; };;
     -v|--verbose) VERBOSE=1;;
     -h|--help) show_help; exit 0;;
     *) show_help "Unknown parameter: $1"; exit 1;;
@@ -106,10 +111,8 @@ parse_args() {
 }
 
 change_next() {
-  if [ "$VERBOSE" == 0 ]; then exec >/dev/null 2>&1; fi
-
   [ -f ~/.fehbg ] && cp ~/.fehbg ~/$PREV_NAME
-  wal -b "$COLOR_BG" --iterative -q -i $HOME/.wallpapers >/dev/null 2>&1
+  wal -a "$ALPHA" -b "$COLOR_BG" --iterative -q -i $HOME/.wallpapers >/dev/null 2>&1
 }
 
 change_prev() {
@@ -120,14 +123,14 @@ change_prev() {
     exit 1
   fi
 
-  if [ "$VERBOSE" == 0 ]; then exec >/dev/null 2>&1; fi
-
   echo "Setting wallpaper to " $PREV_WAL
-  wal -b "$COLOR_BG" -i "$PREV_WAL"
+  wal -a "$ALPHA" -b "$COLOR_BG" -i "$PREV_WAL" >/dev/null 2>&1
 }
 
 main() {
-  parse_args $@
+  parse_args "$@"
+
+  if [ $VERBOSE == 0 ]; then exec >/dev/null 2>&1; fi
 
   if [ "$NEXT" == 1 ]; then
     change_next
@@ -136,4 +139,4 @@ main() {
   fi
 }
 
-main $@
+main "$@"

@@ -57,7 +57,7 @@ endfunction
 function! s:buffer_lines()
   let res = []
   for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
-    call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val '))
+    call extend(res, map(getbufline(b,0,"$"), '"[" . b . "]\t" . (v:key + 1) . ":\t" . v:val '))
   endfor
   return res
 endfunction
@@ -65,6 +65,6 @@ endfunction
 command! FZFLines call fzf#run({
 \   'source':  <sid>buffer_lines(),
 \   'sink':    function('<sid>line_handler'),
-\   'options': '--extended --nth=3..',
-\   'down':    '60%'
+\   'options': '--extended --nth=3.. --preview-window :wrap',
+\   'window': 'call FloatingFZF()'
 \})

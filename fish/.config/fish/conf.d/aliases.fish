@@ -5,6 +5,7 @@ alias l 'ls'
 alias ll 'ls -gaG'
 alias ls 'ls -FG --color=auto'
 alias su 'su -m'
+# alias nvim 'NVIM_CONFIG_HOME=~/.config/nvim command nvim'
 
 abbr ei 'nvim ~/.config/i3'
 abbr ei3 'nvim ~/.config/i3'
@@ -38,3 +39,6 @@ abbr 'c-x' 'chmod -x'
 abbr se 'sudoedit'
 
 abbr ex 'exit'
+abbr q  'exit'
+
+abbr lsblk 'sudo lsblk -o name,mountpoint,label,size,uuid'

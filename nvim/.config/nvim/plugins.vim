@@ -58,11 +58,11 @@ call plug#begin()
   Plug 'dense-analysis/ale'                | " Async Lint Engine
   Plug 'sheerun/vim-polyglot'              | " Mega language support pack
   Plug 'HerringtonDarkholme/yats.vim'      | " Syntax highlighting for ts
-  Plug 'dart-lang/dart-vim-plugin'         | " Syntax highlighting for dart
+  " Plug 'dart-lang/dart-vim-plugin'         | " Syntax highlighting for dart
   Plug 'dominikduda/vim_current_word'      | " Highlighting word under cursor
+  Plug 'ap/vim-css-color'                  | " Fast context-sensitive color name highlighter
 
 
-  "
   " Tools
   "
   Plug 'majutsushi/tagbar'                 | " Display tags in a window by scope.
@@ -76,14 +76,14 @@ call plug#begin()
   Plug 'tpope/vim-eunuch'                  | " Add unix commands to vim
   Plug 'tpope/vim-unimpaired'              | " Bracket mappings
   Plug 'samoshkin/vim-mergetool'           | " use vim as mergetool
+  Plug 'tpope/vim-dispatch'                | " async dispatcher
   " Plug 'vimwiki/vimwiki'                   | " personal wiki tool for vim
-  Plug 'editorconfig/editorconfig-vim'     | " .editorconfig support
   Plug 'easymotion/vim-easymotion'         | " Navigate files with ease
   Plug 'junegunn/vim-easy-align'           | " Align things
+  Plug 'Shougo/echodoc'                    | " Displays function signatures from completions
   Plug 'SirVer/ultisnips'                  | " Snippets engine
   Plug 'honza/vim-snippets'                | " Snippets
-  Plug 'thosakwe/vim-flutter'              | " Commands for Flutter from vim
-  Plug 'Shougo/echodoc'                    | " Displays function signatures from completions
+  " Plug 'thosakwe/vim-flutter'              | " Commands for Flutter from vim
   " Plug 'camspiers/animate.vim'             |   " A Vim Automatic Window Resizing Plugin
   " Plug 'camspiers/lens.vim'
 
@@ -100,7 +100,7 @@ call plug#begin()
   " Search
   "
   Plug 'haya14busa/incsearch.vim'          | " Incremental searching
-  Plug 'haya14busa/incsearch-fuzzy.vim'
+  " Plug 'haya14busa/incsearch-fuzzy.vim'
   Plug 'haya14busa/incsearch-easymotion.vim'
   Plug 'junegunn/fzf.vim'
   Plug 'junegunn/fzf', { 'dir': '~/.local/lib/fzf', 'do': './install --all' }

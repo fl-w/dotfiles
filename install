@@ -30,22 +30,24 @@ IGNORE="refind anne-pro-2-kb"
 
 STOW_IGNORE="post-install deps"
 
+DOTS=""
 
 . utils.sh
 
 
 select_dots() {
-  local packages=($(ls -d */ | cut -f 1 -d '/'))
+  # TODO: fx DOTS
+  DOTS=
   local ignores=(${IGNORE[@]})
 
   for ignore in ${ignores[@]}; do
-    for i in "${!packages[@]}"; do
-      if [[ ${packages[i]} = $ignore ]]; then unset 'packages[i]'; fi
+    for i in "${!DOTS[@]}"; do
+      if [[ ${DOTS[i]} = $ignore ]]; then unset 'DOTS[i]'; fi
     done
   done
 
   if [[ "$SKIP_SELECTION" == 1 ]]; then
-     select_options "Select packages to install" $ALL_PACAKGES "${packages[@]}"
+     select_options "Select packages to install" $ALL_PACAKGES "${DOTS[@]}"
     DOTS=${selected[@]}
   else
     DOTS=${packages[@]}
@@ -266,6 +268,17 @@ post_install() {
   done
 }
 
+ignore() {
+  test -z "$3" && quit "please provide argument to $2"
+
+  local ignores=$(get_list_opt $3)
+  declare -gx "$1=${!1} $ignores"
+}
+
+all_dots() {
+  printf $(ls -d */ | cut -f 1 -d '/')
+}
+
 print_banner() {
   cat <<- EOF
     ██████           ████                          ███
@@ -293,6 +306,7 @@ show_help() {
   echo "optional arguments:"
   echo " -h, --help                   show this help text"
   echo " -a, --all                    select all packages. "
+  echo " -w, --with <dot>             include given dot in install. "
   echo " -i, --ignore \"file,file2,...\""
   echo "                              ignore dots."
   echo " -r, --stow-ignore \"file,file2,...\""
@@ -306,19 +320,16 @@ show_help() {
   echo
 }
 
-ignore() {
-  test -z "$3" && quit "please provide argument to $2"
-
-  local ignores=$(get_list_opt $3)
-  declare -gx "$1=${!1} $ignores"
-}
-
-
 parse_opts() {
   while [[ "$1" =~ ^- && ! $1 == "--" ]]; do case $1 in
     -h|--help) show_help; exit 0;;
-    -a|--all) ALL_PACAKGES=1;;
-    -i|--ignore) ignore IGNORE ignore $2; shift;;
+    -a|--all) DOTS=`all_dots`;;
+    -w|--with|--include)
+      test -z "$2" && quit "please provide argument to $1."
+      ! echo $(all_dots) | grep -q $2 && quit "the dot given is not a valid dot \"$2\""
+      DOTS="$DOTS $2"
+      shift;;
+    -i|--ignore|--without) ignore IGNORE ignore $2; shift;;
     -k|--stow-ignore) ignore STOW_IGNORE stow $2; shift;;
     -Y|--skip-select) SKIP_SELECTION=0;;
     -q|--quiet) VERBOSE=0;;

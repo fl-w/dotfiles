@@ -71,6 +71,10 @@ set expandtab                   " Spaces > tabs
 set nofoldenable                " Disable folding
 set clipboard+=unnamedplus      " Use system clipboard
 set completeopt+=noinsert,menu,preview,menuone
+set wildignore-=.*
+set foldmethod=indent
+set foldlevel=1
+set foldclose=all
 
 """ Undo settings
 set undodir=~/.config/nvim/vim-undo
@@ -85,21 +89,11 @@ set undoreload=10000 "max number lines to save for undo on buffer reload
 autocmd! filetype *commit*,markdown setlocal spell         " Spell Check
 autocmd! filetype *commit*,markdown setlocal textwidth=72  " Looks good
 autocmd! filetype make setlocal noexpandtab                " In Makefiles DO NOT use spaces instead of tabs
-:autocmd BufRead,BufNewFile *.conf setf dosini       " Syntax highlighting for .conf
+autocmd! BufRead,BufNewFile *.conf setf dosini             " Syntax highlighting for .conf
+autocmd! BufRead,BufNewFile *.rasi setf css                " Syntax highlighting for .rasi
+
 autocmd BufWritePre * call TrimWhitespace() " Remove trailing whitespace when saving
 autocmd! BufReadPost * call SetCursorPosition()
-augroup vimrc
-    au!
-    autocmd BufWritePost _vim,.vimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-augroup END
-" augroup mygroup
-"   autocmd!
-"   " Setup formatexpr specified filetype(s).
-"   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-"   " Update signature help on jump placeholder
-"   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-" augroup end
 
-""" vim-current-word configuration
-hi CurrentWord gui=bold guifg=Normal
-hi CurrentWordTwins guibg=#2c323C guifg=#ffffff
+" let vim_dir = fnamemodify($MYVIMRC, ":h")
+" exec "autocmd BufWritePost " . vim_dir . "/*.vim,.vimrc so %"

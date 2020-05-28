@@ -80,10 +80,13 @@ imap kk <esc>k
 imap jj <esc>j
 
 " Map <leader> + e to open fuzzy find (FZF)
-nnoremap <silent> <leader>e :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
+nnoremap <silent> <leader>e :call fzf#vim#files('.', {'options': '--prompt ">"'})<CR>
 
-" Map Ctrl + p to open buffers in fzf
+" Map <leader> + E to open buffers in fzf
 nnoremap <silent> <leader>E :Buffers<CR>
+
+" Map <ctrl> + F to search open buffers in fzf
+nnoremap <silent> <C-S-F> :FZFLines<CR>
 
 " map <leader> + x to save and exit file
 noremap <silent><leader>x        <esc>:x!<cr>
@@ -97,14 +100,17 @@ noremap <silent><leader>w        <esc>:BD<cr>
 " map <leader><leader> to save
 noremap <silent><leader><leader> :w!<cr>
 
-" map <leader> + b to toggle tags bar
-nmap <silent><leader>b           :TagbarOpenAutoClose<cr>
+" map <leader> + t to toggle tags bar
+nmap <silent><leader>t           :TagbarOpenAutoClose<cr>
 
 " Map <leader> + f to toggle nerd tree
-noremap <silent><leader>f        :NERDTreeToggleVCS<cr>
+noremap <silent><leader>f        :NERDTreeToggle<cr>
 
 " Map <leader> + z to toggle zen mode
 noremap <silent><leader>z        :Goyo<cr>
+
+" Map <leader> + d to goto word def
+noremap <leader>d                <S-K>
 
 " Map <leader> + h to toggle keyword hl
 noremap <silent><leader>h        :VimCurrentWordToggle<cr>
@@ -157,12 +163,14 @@ function! SetLSPShortcuts()
   nnoremap <leader>d  :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<cr>
   " nnoremap K          :call LanguageClient#textDocument_definition()<CR>
   nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+  nnoremap <leader>r :call LanguageClient#textDocument_rename()<CR>
   nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
   nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
   nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+  nnoremap <leader>u :call LanguageClient#textDocument_references()<CR>
   nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-  nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
   nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
   nnoremap <c-p>      :call LanguageClient#textDocument_hover()<CR>
   nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
   nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
@@ -174,6 +182,10 @@ augroup LSP
   autocmd FileType cpp,c,java,ts,py,typescript call SetLSPShortcuts()
 augroup END
 
+" markdown
+augroup MD_SCR
+autocmd FileType md,markdown noremap s :call InsertMarkdownScreenShot()<CR>
+augroup END
 
 " vim-fugative
 "
