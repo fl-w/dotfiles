@@ -1,15 +1,21 @@
 
-# Dotfiles
-```
-    ██████           ████                          ███         █████           █████
-   ███▒▒███         ▒▒███                         ▒███        ▒▒███           ▒▒███
-  ▒███ ▒▒▒   ██████  ▒███  █████ ███ █████  █████ ▒███      ███████   ██████  ███████    █████
- ███████    ███▒▒███ ▒███ ▒▒███ ▒███▒▒███  ███▒▒  ▒███     ███▒▒███  ███▒▒███▒▒▒███▒    ███▒▒
-▒▒▒███▒    ▒███ ▒███ ▒███  ▒███ ▒███ ▒███ ▒▒█████ ▒███    ▒███ ▒███ ▒███ ▒███  ▒███    ▒▒█████
-  ▒███     ▒███ ▒███ ▒███  ▒▒███████████   ▒▒▒▒███▒▒▒     ▒███ ▒███ ▒███ ▒███  ▒███ ███ ▒▒▒▒███
-  █████    ▒▒██████  █████  ▒▒████▒████    ██████  ███    ▒▒████████▒▒██████   ▒▒█████  ██████
- ▒▒▒▒▒      ▒▒▒▒▒▒  ▒▒▒▒▒    ▒▒▒▒ ▒▒▒▒    ▒▒▒▒▒▒  ▒▒▒      ▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒     ▒▒▒▒▒  ▒▒▒▒▒▒
-```
+# Dotfiles (WIP)
+
+## Screenshots
+![screenshot](demo.png)
++ wm: i3-gaps
++ terminal: kitty
++ shell: fish
++ font: Fira Code Nerd Font Patch
++ bar: polybar
+##
+![screenshot2](demokde.png)
++ wm: kde-plasma
++ terminal: konsole
++ shell: fish
++ font: Source Code Pro
++ bar/dock: latte-dock
+
 This repository consists of configuration for any tools I use within my [Arch Linux][arch] and [neovim][] development environment.
 I use a *lot* of tools which culminate in a sort of Unix IDE,
 I use [stow][] to link all of the required configuration into my home directory.
@@ -61,20 +67,6 @@ Modified version of KorySchneider's tab [Github][tab].
 
 My config is a modified Polybar-4 by adi1090x. - [GitHub][adi1090x]
 
-## Screenshots
-![screenshot](demo.png)
-+ wm: i3-gaps
-+ terminal: kitty
-+ shell: fish
-+ font: Fira Code Nerd Font Patch
-+ bar: polybar
-##
-![screenshot2](demokde.png)
-+ wm: kde-plasma
-+ terminal: konsole
-+ shell: fish
-+ font: Source Code Pro
-+ bar/dock: latte-dock
 
 ## Unlicensed
 
