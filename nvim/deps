@@ -1,3 +1,0 @@
-py=neovim jedi flake8 black isort pyflakes pynvim yapf
-node=bash-language-server eslint fixjson neovim typescript-language-server prettier javascript-typescript-langserver
-pkgs=neovim

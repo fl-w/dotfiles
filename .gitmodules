@@ -1,6 +1,0 @@
-[submodule "firefox/.config/mozilla/firefox/themes/minifox"]
-	path = firefox/.config/mozilla/firefox/themes/minifox
-	url = https://github.com/folws/minifox
-[submodule "refind/themes/minfind"]
-	path = refind/themes/minfind
-	url = https://github.com/folws/minfind

@@ -1,0 +1,8 @@
+* {{
+    foreground:                  {foreground};
+    background:                  {background};
+    selected-normal-background:  {color1};
+    selected-normal-foreground:  {color7};
+    selected-urgent-background:  {color2};
+    textbox-prompt-colon-color:  {color1};
+}}

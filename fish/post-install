@@ -1,7 +1,0 @@
-#!/bin/bash
-
-fish -c "type -q omf" || curl -L https://get.oh-my.fish | fish
-
-if prompt "Would you like to set fish as your default prompt?" y ; then
-  chsh -s $(command -v fish)
-fi

@@ -1,0 +1,52 @@
+#!/bin/env bash
+
+TABDIR="$HOME/src/tab"
+LOCKDIR="/tmp/tab-page-lock"
+
+function pull_lastest {
+    if [ ! -d $TABDIR ]; then
+        echo 'Cloning repo into ' $TABDIR && \
+        git clone https://github.com/folws/tab $TABDIR
+    else
+        if [ $(git -C $TABDIR log ..origin/master --oneline | wc -l) -gt 2 ]; then
+            echo 'Pulling latest changes from remote' && \
+            git -C "$TABDIR" pull || return 1
+
+        fi
+    fi
+}
+
+#Remove the lock directory
+function remove_lock {
+    if rmdir $LOCKDIR; then
+        echo "Finished"
+    else
+        echo "Failed to remove lock directory '$LOCKDIR'"
+        exit 1
+    fi
+}
+
+if [ -z "$PORT" ]; then
+    PORT=8000
+fi
+
+pull_lastest || {
+    echo 'failed to pull lastest'
+    exit 1
+}
+
+# Acquire the lock and serve page
+if mkdir $LOCKDIR; then
+    #Ensure that if we "grabbed a lock", we release it
+    #Works for SIGTERM and SIGINT(Ctrl-C)
+    trap "remove_lock" EXIT
+
+    echo "Acquired lock"
+
+    # Serve $HOME/sbin/tab/index.html
+    python -m http.server $PORT -d $TABDIR > /dev/null 2>&1 || \
+    echo -e "Failed to start python http server..."
+else
+    echo "Could not create lock directory '$LOCKDIR'"
+    exit 1
+fi

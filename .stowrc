@@ -1,9 +1,0 @@
-# Stow ignore files
-
---ignore \.git
---ignore \.gitignore
---ignore \deps
-
---ignore ^/README.*
---ignore ^/LICENSE.*
---ignore ^/post-install
