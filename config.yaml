@@ -85,9 +85,15 @@ dotfiles:
   f_figlet-test:
     src: local/bin/figlet-test
     dst: ~/.local/bin/figlet-test
+  rofi_launcher:
+    src: local/bin/app-launcher
+    dst: ~/.local/bin/app-launcher
   f_launch-singleton:
     src: local/bin/launch-singleton
     dst: ~/.local/bin/launch-singleton
+  f_powermenu:
+    src: local/bin/powermenu
+    dst: ~/.local/bin/powermenu
   f_lockscreen:
     src: local/bin/lockscreen
     dst: ~/.local/bin/lockscreen
@@ -100,6 +106,9 @@ dotfiles:
   f_scr:
     src: local/bin/scr
     dst: ~/.local/bin/scr
+  f_swal:
+    src: local/bin/swal
+    dst: ~/.local/bin/swal
 profiles:
   atlas:
     dotfiles:

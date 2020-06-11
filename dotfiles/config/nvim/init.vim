@@ -66,8 +66,8 @@ set noshowmode                  " Hide mode (lightline shows mode)
 set expandtab                   " Spaces > tabs
 set clipboard+=unnamedplus      " Use system clipboard
 set completeopt+=noinsert,menu,preview,menuone
-" set nofoldenable                " Disable folding
 set wildignore-=.*
+set nofoldenable                " Disable folding
 set foldmethod=indent
 set foldclose=all
 set foldopen=all

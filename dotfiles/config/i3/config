@@ -171,8 +171,8 @@ bindsym $mod+Return exec $term
 bindsym $mod+b exec $browser
 
 # Rofi drun menu
-bindsym $mod+space exec $bin/launcher
-bindsym $mod+shift+space exec $bin/launcher -f
+bindsym $mod+space exec $bin/app-launcher
+bindsym $mod+shift+space exec $bin/app-launcher -f
 
 # Power menu
 bindsym $mod+slash exec $bin/powermenu
@@ -289,6 +289,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 # 8 Music
 # 9
 
+# for_window [class="code"] exec --no-startup-id $scripts/move-to-ws.sh $ws2
+# for_window [class="firefox"] exec --no-startup-id $scripts/move-to-ws.sh $ws3
 for_window [class="discord"] exec --no-startup-id $scripts/move-to-ws.sh $ws7
 for_window [class="Spotify"] exec --no-startup-id $scripts/move-to-ws.sh $ws8
 
