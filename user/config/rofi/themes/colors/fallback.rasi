@@ -1,0 +1,13 @@
+/* 
+ * Define fallback colors if not using pywal to gen colors.
+ */
+
+* {
+  foreground:           #c5c8c6;
+  background:           #1d1f21;
+  alternate-foreground: #c5c8c6;
+  alternate-background: #1d1f21;
+  soft:                 #85678f;
+  complement:           #eadab6;
+  accent:               #883B32;
+}

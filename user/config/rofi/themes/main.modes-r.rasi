@@ -1,0 +1,15 @@
+@import "main.modes"
+
+/* main with modes on the right */
+#window {
+  children: [ content, mode-switcher ];
+  orientation: horizontal;
+}
+
+#content {
+  children: [ inputbar, message, listview ];
+}
+
+#prompt {
+  enabled: false;
+}

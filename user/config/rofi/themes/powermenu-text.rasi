@@ -1,0 +1,14 @@
+@import "powermenu"
+
+#window {
+  width: 642px;
+}
+
+#listview {
+  padding: 7 0;
+}
+
+#element {
+  padding:  15 19;
+  font: @bold-font;
+}

@@ -1,5 +1,8 @@
+actions:
+  confirm: read {0}"[y/N]" -n 1 -r
+    [[ $REPLY =~ ^[Yy]$ ]] && {1}
 config:
-  dotpath: dotfiles
+  dotpath: user
   backup: true
   create: true
   banner: false
@@ -7,23 +10,14 @@ config:
   link_dotfile_default: link
   link_on_import: link
 dotfiles:
-  nvim:
+  d_nvim:
     dst: ~/.config/nvim/
     src: config/nvim
     link: link_children
-  zathura:
+  d_zathura:
     src: config/zathura
     dst: ~/.config/zathura
     link: link_children
-  f_gitconfig:
-    src: gitconfig
-    dst: ~/.gitconfig
-  pywal_xresources:
-    src: Xresources
-    dst: ~/.Xresources
-  pywal_xresources_template:
-    src: config/wal/templates/colors.Xresources
-    dst: ~/.Xresources
   d_wallpapers:
     src: wallpapers
     dst: ~/.wallpapers
@@ -53,39 +47,57 @@ dotfiles:
     src: config/rofi
     dst: ~/.config/rofi
     link: link_children
-  picom:
+  d_picom:
     src: config/picom
     dst: ~/.config/picom
     link: link_children
-  polybar:
+  d_polybar:
     src: config/polybar
     dst: ~/.config/polybar
     link: link_children
-  fish_shell:
+  d_fish_shell:
     src: config/fish
     dst: ~/.config/fish
     link: link_children
-  fish_shell_omf:
+  d_fish_shell_omf:
     src: config/omf
     dst: ~/.config/omf
     link: link_children
-  flashfocus:
+  d_flashfocus:
     src: config/flashfocus
     dst: ~/.config/flashfocus
     link: link_children
-  firefox_css:
-    src: config/mozilla/firefox/themes
-    dst: ~/.config/mozilla/firefox/themes
-  firefox_tabpage:
+  d_firefox_themes:
+    src: config/firefox/
+    dst: ~/.mozilla/firefox/themes
+    link: link_children
+  f_firefox_tabpage:
     src: local/bin/run-tabpage
     dst: ~/.local/bin/run-tabpage
+  f_kitty_conf:
+    src: config/kitty/kitty.conf
+    dst: ~/.config/kitty/kitty.conf
+  f_gitconfig:
+    src: gitconfig
+    dst: ~/.gitconfig
+  f_pywal_rofi_colorscheme:
+    src: config/wal/colorschemes/dark/default.rasi
+    dst: ~/.config/wal/colorschemes/dark/default.rasi
+  f_pywal_rofi_template:
+    src: config/wal/templates/colors-rofi-dark.rasi
+    dst: ~/.config/wal/templates/colors-rofi-dark.rasi
+  f_pywal_xresources_template:
+    src: config/wal/templates/colors.Xresources
+    dst: ~/.config/wal/templates/colors.Xresources
+    actions:
+      - confirm "Symlink generated pywal Xresources?" "ln -s {{@@ _dotfile_abs_dst @@}} ~/.Xresources"
   f_deskopen:
     src: local/bin/deskopen
     dst: ~/.local/bin/deskopen
   f_figlet-test:
     src: local/bin/figlet-test
     dst: ~/.local/bin/figlet-test
-  rofi_launcher:
+  f_rofi_launcher:
     src: local/bin/app-launcher
     dst: ~/.local/bin/app-launcher
   f_launch-singleton:
@@ -100,7 +112,7 @@ dotfiles:
   f_ls-chars:
     src: local/bin/ls-chars
     dst: ~/.local/bin/ls-chars
-  f_post-hibernate.sh:
+  f_post-hibernate:
     src: local/bin/post-hibernate.sh
     dst: ~/.local/bin/post-hibernate.sh
   f_scr:
@@ -110,6 +122,47 @@ dotfiles:
     src: local/bin/swal
     dst: ~/.local/bin/swal
 profiles:
-  atlas:
+  wallpapers:
     dotfiles:
-    - ALL
+      - d_wallpapers
+  firefox:
+    dotfiles:
+      - d_firefox_themes
+      - f_firefox_tabpage
+  fish_shell:
+    dotfiles:
+      - d_fish_shell
+      - d_fish_shell_omf
+  rofi:
+    dotfiles:
+        - d_rofi
+        - f_rofi_launcher
+        - f_pywal_rofi_template
+        - f_pywal_rofi_colorscheme
+  i3:
+    dotfiles:
+      - d_i3
+      - d_polybar
+      - d_nvim
+      - d_picom
+      - f_kitty_conf
+      - d_flashfocus
+      - d_dunst
+      - f_swal
+      - f_scr
+      - f_pywal_xresources_template
+      - f_post-hibernate
+      - f_ls-chars
+      - f_lockscreen
+      - f_powermenu
+      - f_xinitrc
+      - f_gitconfig
+    include:
+      - rofi
+      - wallpapers
+      - firefox
+      - fish_shell
+
+  atlas:
+    include:
+      - i3

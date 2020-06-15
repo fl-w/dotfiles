@@ -1,0 +1,7 @@
+@import "main.sb"
+
+/* main as a sidebar on the right */
+
+#window {
+  location:         north east;
+}

@@ -1,0 +1,22 @@
+@import "main"
+
+* {
+  selected-normal-background: @soft;
+  selected-normal-foreground: @foreground;
+  cycle:                      false;
+}
+
+#window {
+  fixed-columns: true;
+  width:    926px;
+  children: [ listview ];
+}
+#listview {
+  fixed-columns: true;
+  layout: horizontal;
+  spacing:          0px;
+}
+#element {
+  padding: 30 60;
+  font: "FiraCode Nerd Font 45";
+}

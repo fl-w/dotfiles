@@ -1,0 +1,9 @@
+* {{
+  foreground:           {foreground};
+  background:           {background};
+  alternate-foreground: @foreground;
+  alternate-background: @background;
+  soft:                 {color1};
+  complement:           {foreground};
+  accent:               {color3};
+}}

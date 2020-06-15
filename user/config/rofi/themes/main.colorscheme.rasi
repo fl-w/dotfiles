@@ -1,0 +1,108 @@
+@import "colors/fallback"
+@import "~/.cache/wal/colors-rofi-dark"
+
+* {
+  /* make background color transparent */
+  background-color:            rgba (0, 0, 0, 0 %);
+
+  prompt-colon-color:          @complement;
+  prompt-text-color:           @soft;
+
+  /* normal colors */
+  normal-foreground:           @foreground;
+  normal-background:           @backround;
+  selected-normal-background:  @accent;
+  selected-normal-foreground:  @complement;
+
+  /* active colors */
+  active-foreground:           @background;
+  active-background:           @foreground;
+  selected-active-foreground:  @active-background;
+  selected-active-background:  @soft;
+
+  /* urgent colors */
+  urgent-foreground:           @foreground;
+  urgent-background:           @soft;
+  selected-urgent-foreground:  @urgent-foreground;
+  selected-urgent-background:  white;
+
+  /* alternate colors */
+  alternate-normal-foreground: @normal-foreground;
+  alternate-normal-background: @normal-background;
+  alternate-active-foreground: @active-foreground;
+  alternate-active-background: @active-background;
+  alternate-urgent-foreground: @urgent-foreground;
+  alternate-urgent-background: @urgent-background;
+
+  text-color:       @normal-foreground;
+  border-color:                none;
+  separatorcolor:              none;
+}
+
+#window {
+  transparency:     "real";
+  background-color: @background;
+}
+
+#inputbar {
+  text-color:       @normal-foreground;
+  border:           @inputbar-border;
+  border-color:     @complement;
+}
+
+#textbox-prompt-colon {
+  str:              @prompt-colon-text;
+  text-color:       @prompt-colon-color;
+}
+
+#prompt {
+  text-color:       @prompt-text-color;
+}
+
+#message {
+  border-color:     @separatorcolor;
+}
+
+#listview {
+  border-color:     @separatorcolor;
+}
+
+#element normal normal {
+  background-color: @normal-background;
+  text-color:       @normal-foreground;
+}
+#element normal urgent {
+  background-color: @urgent-background;
+  text-color:       @urgent-foreground;
+}
+#element normal active {
+  background-color: @active-background;
+  text-color:       @active-foreground;
+}
+#element selected normal {
+  background-color: @selected-normal-background;
+  text-color:       @selected-normal-foreground;
+}
+#element selected urgent {
+  background-color: @selected-urgent-background;
+  text-color:       @selected-urgent-foreground;
+}
+#element selected active {
+  background-color: @selected-active-background;
+  text-color:       @selected-active-foreground;
+}
+#element alternate normal {
+  background-color: @alternate-normal-background;
+  text-color:       @alternate-normal-foreground;
+}
+#element alternate urgent {
+  background-color: @alternate-urgent-background;
+  text-color:       @alternate-urgent-foreground;
+}
+#element alternate active {
+  background-color: @alternate-active-background;
+  text-color:       @alternate-active-foreground;
+}
+#button selected {
+  text-color: @prompt-text-color;
+}

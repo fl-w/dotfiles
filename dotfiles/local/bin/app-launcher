@@ -1,3 +1,0 @@
-#!/bin/sh
-
-[ -f ~/.config/rofi/scripts/app-launcher.sh ] && ~/.config/rofi/scripts/app-launcher.sh

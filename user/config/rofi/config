@@ -1,0 +1,22 @@
+rofi.hide-scrollbar:         true
+rofi.modi:                   combi,ssh,window
+rofi.terminal:               kitty
+rofi.kb-cancel:              Escape,Alt+F1,Alt+F2
+rofi.soft:                   true
+rofi.sorting-method:         fzf
+rofi.combi-modi:             drun,run
+rofi.combi-hide-mode-prefix: true
+rofi.display-drun:           
+rofi.display-combi:          
+rofi.display-window:         缾
+rofi.display-ssh:            
+rofi.bw:                     2
+rofi.fixed-num-lines:        false
+rofi.theme:                  themes/main
+
+rofi.me-select-entry:        MouseSecondary
+rofi.me-accept-entry:        MousePrimary
+rofi.kb-mode-next:           Shift+Right,Tab
+rofi.kb-mode-previous:       Shift+Left,ISO_Left_Tab
+rofi.kb-row-tab:             Control+Tab
+rofi.kb-row-up:              Up,Control+p,Control+ISO_Left_Tab

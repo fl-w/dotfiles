@@ -1,0 +1,35 @@
+@import "main.rasi"
+
+/* main with modes on the left */
+#window {
+  children:         [ inputbar, mainbox ];
+  border:           @border-size;
+  padding:          20;
+  width:            30%;
+  x-offset:         -30px;
+}
+
+#mainbox {
+  children: [ mode-switcher, content ];
+  orientation: horizontal;
+}
+
+#content {
+  children: [ message, listview ];
+}
+
+
+#mode-switcher {
+  orientation: vertical;
+  padding: 0 25 0 5;
+}
+
+#button {
+  margin: 10 0;
+  padding: 0 22;
+}
+
+#button selected {
+  text-color:        @selected-active-foreground;
+  background-color:  @selected-active-background;
+}
