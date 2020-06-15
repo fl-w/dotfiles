@@ -20,18 +20,20 @@ function prompt () {
   local prompt=$1
   local default=${2:0:1}
 
-  if [[ ! -z "$default" ]] && ! [[ $default =~ [YNyn] ]]; then
-    default=
+  if [ ! -z "$default" ] && ! [[ "$default" =~ [YNyn] ]]; then
+    default=N
   fi
 
+  y=$([[ "$default" =~ [Yy] ]]  && echo "Y" || echo "y")
+  n=$([[ "$default" =~ [Nn] ]]  && echo "N" || echo "n")
+
   while true; do
-      read -p "$prompt [Y/n]: " yn
-      if [[ -z "$yn" ]]; then yn=$default; fi
+      read -p "$prompt [$y/$n]: " yn
+      [ ! "$yn" ] && yn=$default
 
       case $yn in
           [Yy]* ) return 0;;
           [Nn]* ) return 1;;
-          *) echo "Please answer yes or no.";;
       esac
   done
 }
