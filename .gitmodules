@@ -1,0 +1,3 @@
+[submodule "root/boot/efi"]
+	path = root/boot/efi
+	url = https://github.com/folws/rEFInd-minimal-dark
