@@ -1,23 +1,29 @@
 # folws's dotfiles
 
+
+> The current state of this repository is for backup only. Most scripts
+> will not work on your system.
+
 This repository consists of configuration for any tools I use within my [Arch Linux][arch] and [neovim][] development environment.
 I use a *lot* of tools which culminate in a sort of Unix IDE,
 I use [dotdrop] to install link all of the required configuration into my home directory.
 
 ## Preview
-![screenshot](demo.png)
-+ wm: i3-gaps
-+ terminal: kitty
-+ shell: fish
-+ font: Fira Code Nerd Font Patch
-+ bar: polybar
+![screenshot](screenshots/demo.png)
 ##
-![screenshot2](demokde.png)
+![screenshot2](screenshots/demokde.png)
 + wm: kde-plasma
 + terminal: konsole
 + shell: fish
 + font: Source Code Pro
 + bar/dock: latte-dock
+|          |                           |
+|----------|---------------------------|
+| wm       | i3-gaps                   |
+| terminal | kitty                     |
+| shell    | fish                      |
+| font     | Fira Code Nerd Font Patch |
+| bar      | polybar                   |
 
 ## Overview
 - [Requirements](#requirements)
