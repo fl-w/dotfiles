@@ -7,7 +7,7 @@ function gc --description 'git commit -m without the need to quote commit messag
         	else if test (git diff --name-only --cached --diff-filter=RM | wc -l | tr -d ' ') = 1
             		git commit -m "Update "(git diff --name-only --cached --diff-filter=RM)
         	else if not git diff --cached --exit-code --quiet
-            		git commit -m (curl -s "http://whatthecommit.com/index.txt")
+            		git commit -m (shuf -n 1 ~/.config/fish/functions/commit-msg-list)
 		else
 	    		echo "Nothing staged"
         	end

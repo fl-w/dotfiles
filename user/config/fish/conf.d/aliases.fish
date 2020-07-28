@@ -3,9 +3,9 @@
 alias df 'df -m'
 alias l 'ls'
 alias ll 'ls -gaG'
-alias ls 'ls -FG --color=auto'
+alias ls 'ls -FG --color=auto --group-directories-first'
 alias su 'su -m'
-# alias nvim 'NVIM_CONFIG_HOME=~/.config/nvim command nvim'
+alias yay 'yay -noupgrademenu --noeditmenu --nodiffmenu --nocleanmenu'
 
 abbr ei 'nvim ~/.config/i3'
 abbr ei3 'nvim ~/.config/i3'
@@ -14,9 +14,8 @@ abbr ev 'nvim ~/.config/nvim'
 abbr ep 'nvim ~/.config/polybar'
 
 abbr j jobs
-abbr c clear
-abbr cl clear
-abbr v nvim
+abbr c clear; abbr cl clear
+abbr v nvim; abbr nv nvim
 abbr g git
 abbr h history
 

@@ -16,17 +16,34 @@ end
 # Disable fish greeting
 set -gx fish_greeting ''
 
+# Open fish in vim-mode
+fish_vi_key_bindings
+
 # Set fish colors
 set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
 
 # Set default editor to nvim
 set -gx EDITOR /usr/bin/nvim
 
+set -gx BROWSER /usr/bin/firefox
+
 # Append local bin dir to PATH
 set PATH $HOME/.local/bin $HOME/.bin $PATH
 
 # Append DART pub bin dir to PATH
 set PATH $HOME/.pub-cache/bin $PATH
+
+# Append RUST cargo bin dir to PATH
+set PATH $HOME/.cargo/bin $PATH
+
+set -gx GOPATH $HOME/.go
+set -gx N_PREFIX $HOME/.n
+
+# Append Go bin dir to PATH
+set PATH $GOPATH/bin $PATH
+
+# Set n prefix to home
+[ -d $N_PREFIX/bin ]; and set PATH $N_PREFIX/bin $PATH
 
 # Append android-sdk & emulator to PATH
 [ -d /opt/android-sdk ]; and set -x ANDROID_HOME /opt/android-sdk
@@ -40,24 +57,25 @@ and [ -d $ANDROID_HOME/emulator ]; and set PATH $ANDROID_HOME/emulator $PATH
 [ -f /usr/bin/kitty ]; and kitty + complete setup fish | source
 
 # Set default bat command
-_command bat; and set -g BAT_DEFAULT_COMMAND "bat --color always --theme DarkNeon --style=header,grid,changes --wrap never {} "
+_command bat; and set -g BAT_DEFAULT_COMMAND "bat --color always --theme base16 --style=header,changes --wrap never {} "
 # Set FZF to use rg
 _command fzf
 and set -gx FZF_PREVIEW_COMMAND "$BAT_DEFAULT_COMMAND 2>/dev/null || head -n 60 {} 2>/dev/null || tree -a -C {} 2>/dev/null"
 and set -gx FZF_CTRL_T_OPTS "--min-height 30 --preview-window down:60% --preview-window noborder --preview '$FZF_PREVIEW_COMMAND'"
 and _command rg
-and set -gx FZF_DEFAULT_COMMAND 'rg --hidden --ignore -l -g "!{.npm,.cache,.n,node_modules,build,target,.git,plugged}" -e ""'
+and set -gx FZF_DEFAULT_COMMAND 'rg --hidden --ignore --follow -l -g "!{.npm,.cache,.n,node_modules,build,target,.git,plugged}" -e ""'
 and set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND -g '!{.ssh,*private,*local,.bash_history}' "
 
 # Import aliases
 [ -f conf.d/aliases.fish ]; and . conf.d/aliases.fish
 
-# Set n prefix to home
-set -gx N_PREFIX $HOME/.n
-[ -d $N_PREFIX/bin ]; and set PATH $N_PREFIX/bin $PATH
-
 # pipenv completion
 command -v pipenv >/dev/null && eval (pipenv --completion)
 
-# Open fish in vim-mode
-fish_vi_key_bindings
+# Pipr binding
+bind \ca run-pipr
+
+# set pywal colors
+[ -f ~/.cache/wal/sequences ]
+# and cat ~/.cache/wal/sequences &
+# todo: write pywal colors.fish and source
