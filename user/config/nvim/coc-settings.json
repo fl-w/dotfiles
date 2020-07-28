@@ -1,0 +1,49 @@
+{
+  "coc.preferences.bracketEnterImprove": false,
+  "coc.source.neco.priority": 90,
+  "coc.source.buffer.priority": 80,
+  "coc.source.syntax.priority": 85,
+  "tabnine.priority": 70,
+  "codeLens.enable": true,
+  "diagnostic.errorSign": "",
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.enableHighlightLineNumber": false,
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "",
+  "diagnostic.hintSign": " ",
+  "diagnostic.virtualText": true,
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh",
+        "bash"
+      ]
+    },
+    "efm": {
+      "command": "efm-langserver",
+      "args": [],
+      "filetypes": ["vim", "markdown", "yaml"]
+    }
+  },
+  "list.indicator": ">",
+  "list.selectedSignText": " ",
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "rust-analyzer.cargo.loadOutDirsFromCheck": true,
+  "rust-analyzer.procMacro.enable": true,
+  "rust-analyzer.completion.postfix.enable": true,
+  "snippets.priority": 100,
+  "snippets.ultisnips.enable": false,
+  "suggest.noselect": false,
+  "suggest.completionItemKindLabels": {
+    "text": "t",
+    "method": "m",
+    "function": ""
+  }
+ // "yank.priority": 20
+}

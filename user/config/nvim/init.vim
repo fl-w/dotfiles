@@ -1,97 +1,49 @@
-source $HOME/.config/nvim/functions.vim
-source $HOME/.config/nvim/plugins.vim
-source $HOME/.config/nvim/plugins-config.vim
-source $HOME/.config/nvim/maps.vim
-
+" init.vim
 "
-" Colorscheme
+"    .o oOOOOOOOo                                            0OOOo
+"    Ob.OOOOOOOo  OOOo.      oOOo.                      .adOOOOOOO
+"    OboO000000000000.OOo. .oOOOOOo.    OOOo.oOOOOOo..0000000000OO
+"    OOP.oOOOOOOOOOOO 0POOOOOOOOOOOo.   `0OOOOOOOOOP,OOOOOOOOOOOB'
+"    `O'OOOO'     `OOOOo"OOOOOOOOOOO` .adOOOOOOOOO"oOOO'    `OOOOo
+"    .OOOO'            `OOOOOOOOOOOOOOOOOOOOOOOOOO'            `OO
+"    OOOOO                 '"OOOOOOOOOOOOOOOO"`                oOO
+"   oOOOOOba.                .adOOOOOOOOOOba               .adOOOOo.
+"  oOOOOOOOOOOOOOba.    .adOOOOOOOOOO@^OOOOOOOba.     .adOOOOOOOOOOOO
+"  OOOOOOOOOOOOOOOOO.OOOOOOOOOOOOOO"`  '"OOOOOOOOOOOOO.OOOOOOOOOOOOOO
+"    :            .oO%OOOOOOOOOOo.OOOOOO.oOOOOOOOOOOOO?         .
+"    Y           'OOOOOOOOOOOOOO: .oOOo. :OOOOOOOOOOO?'         :`
+"    .            oOOP"%OOOOOOOOoOOOOOOO?oOOOOO?OOOO"OOo
+"                 '%o  OOOO"%OOOO%"%OOOOO"OOOOOO"OOO':
+"                      `$"  `OOOO' `O"Y ' `OOOO'  o             .
+"    .                  .     OP"          : o     .
 "
 
-" stop theme from setting bg color
-autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
-colorscheme paramount
-highlight LineNr guibg=NONE gui=NONE
+let g:vim_config_root = $HOME . "/.config/nvim" " expand('%:h')
+let g:vim_ignore_configs_list = ['ale']
+let g:is_darwin = has('win32') || has('win64')
+let g:is_linux = has('unix') && !has('macunix')
 
-" set t_ut=
-" let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-" let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-"
-"Use 24-bit (true-color) mode in Vim/Neovim
-if (has("nvim"))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+runtime plugins.vim
+
+runtime! settings/*.vim
+runtime! maps/*.vim
+
+if exists('g:started_by_firenvim') && g:started_by_firenvim
+  runtime clients/firenvim.vim " firenvim specific configuration
+
+elseif exists('g:vscode')
+  runtime clients/vscode.vim   " vscode specific configuration
+
+else
+  " load plugin configs
+  let g:plug_configs = map(filter(copy(g:plugs_order), {_, val -> index(g:vim_ignore_configs_list, val) == -1}),
+        \ '"plugin-config/" . tolower(fnamemodify(v:val, ":r")) . ".vim"')
+  for s:plug in g:plug_configs
+    exe 'runtime' s:plug
+  endfor
+  runtime plugin-config/statusline.vim
 endif
 
-"
-" General configuration
-"
-
-filetype plugin on
-filetype plugin indent on
-
-set termguicolors
-set background=dark
-set ff=unix
-set encoding=UTF-8
-set mouse=a
-set hidden                      " if hidden is not set, TextEdit might fail.
-set cursorline                  " Highlight the current line
-set lazyredraw                  " Faster scrolling
-set number                      " Show line number
-set relativenumber              " Show relative line number
-set autoindent                  " Enable auto indentation
-" set cc=140                      " Show linecolumn
-set autochdir                   " Change working directory to open file
-set wildmode=list:full          " Autocomplete
-set wildignore=*.o,*.obj,*~     " Ignore file
-set showmatch                   " highlight matching braces
-set hlsearch                    " Highlight search
-set smartcase                   " unless uppercase explicitly mentioned
-set smartindent                 " indent smartly
-set nowrap                      " Don't wrap text
-set laststatus=2                " Always show statusbar
-set scrolloff=5                 " Minimum space on bottom/top of window
-set sidescrolloff=7             " Minimum space on side
-set sidescroll=1
-set showtabline=2               " always show tabline
-set shortmess+=c                " don't give \|ins-completion-menu\| messages.
-set tabstop=2                   " 2 spaces
-set shiftwidth=2                " 2 2 CHAINZ
-set cmdheight=2                 " Better display for messages
-set list                        " Display hidden chars as defined below
-set listchars=tab:▷⋅,trail:⋅,nbsp:+,extends:»,precedes:«
-set splitright                  " Open vsp on right and bottom
-set splitbelow                  " which feels more natural
-set pastetoggle=<F2>
-set noshowmode                  " Hide mode (lightline shows mode)
-set expandtab                   " Spaces > tabs
-set clipboard+=unnamedplus      " Use system clipboard
-set completeopt+=noinsert,menu,preview,menuone
-set wildignore-=.*
-" set nofoldenable                " Disable folding
-set foldmethod=marker
-set foldclose=all
-set foldopen=all
-set foldnestmax=3
-set foldminlines=15
-
-""" Undo settings
-set undodir=~/.config/nvim/vim-undo
-set undofile
-set undolevels=1000  "max number of changes that can be undone
-set undoreload=10000 "max number lines to save for undo on buffer reload
-
-" syntax sync minlines=256  " Makes big files slow
-" set synmaxcol=2048        " Also long lines are slow
-
-" Filetype specific settings
-autocmd! filetype *commit*,markdown setlocal spell         " Spell Check
-autocmd! filetype *commit*,markdown setlocal textwidth=72  " Looks good
-autocmd! filetype make setlocal noexpandtab                " In Makefiles DO NOT use spaces instead of tabs
-autocmd! BufRead,BufNewFile *.conf setf dosini             " Syntax highlighting for .conf
-autocmd! BufRead,BufNewFile *.rasi setf css                " Syntax highlighting for .rasi
-
-" autocmd BufWritePre * call TrimWhitespace() " Remove trailing whitespace when saving
-autocmd! BufReadPost * call SetCursorPosition()
-
-" let vim_dir = fnamemodify($MYVIMRC, ":h")
-" exec "autocmd BufWritePost " . vim_dir . "/*.vim,.vimrc so %"
+if exists('*utils#abbr_command')
+  call utils#abbr_command('rc', 'so $MYVIMRC') " use :rc to source this file
+endif

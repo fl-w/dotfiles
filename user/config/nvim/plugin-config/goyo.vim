@@ -1,0 +1,4 @@
+" goyo.vim configuration
+"
+
+

@@ -1,111 +1,162 @@
 " List all plugins here.
 "
 
+command! PI PlugInstall | q                     | " register command to plug install and quit
+
+" Check for custom site directory
+if !exists("g:vim_plug_dir")
+  " default site to local instead of nvim config dir
+  let g:vim_data_dir = expand(stdpath('data'))
+  let g:vim_plug_dir = g:vim_data_dir . '/plugged'
+endif
+
 " Install VimPlug if not present
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall
+if empty(glob(g:vim_data_dir . '/autoload/plug.vim'))
+  if executable('curl')
+    echomsg 'Downloading and installing vim-plug.'
+    silent exe '!curl -fLo ' . g:vim_data_dir . '/autoload/plug.vim' .
+      \ ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  else
+    echoerr 'curl is needed to install vim-plug and is not found in path, please install vim-plug manually.'
+    finish
+  endif
 endif
 
 " Plugin List
-call plug#begin()
+"
+call plug#begin(g:vim_plug_dir)
+
+if exists('g:started_by_firenvim')
+  Plug 'glacambre/firenvim', { 'do':
+    \ { _ -> firenvim#install(0) } }            | " Use neovim client in browser
+else
 
   "
   " Base
   "
-  Plug 'tpope/vim-sensible'                | " Some sensible settings
+  if !has('nvim')
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+  endif
+
+  Plug 'hardcoreplayers/dashboard-nvim'         | " Fancy start screen
 
 
   "
-  " Visuals
+  " Colorschemes
   "
-  Plug 'drewtempelmeyer/palenight.vim'     | " Fantastic colors
-  Plug 'nightsense/cosmic_latte'           | " Theme that's easy on the eyes
-  Plug 'kjssad/quantum.vim'                | " A modern colorscheme inspired by firefox
-  Plug 'owickstrom/vim-colors-paramount'   | " V. Dark colorscheme with purple accent
-  Plug 'itchyny/lightline.vim'             | " Awesome status bar
-  Plug 'maximbaz/lightline-ale'            | " ALE indicator for lightline
-  Plug 'mengelbrecht/lightline-bufferline' | " A buffer plugin for lightline
-  Plug 'psliwka/vim-smoothie'              | " Smooth scrolling
-  Plug 'Yggdroot/indentLine'               | " Indent guides
+  Plug 'ayu-theme/ayu-vim'                      | " Modern theme for modern VIMs
+  Plug 'sjl/badwolf'                            | " clean theme for vim
+  Plug 'AlessandroYorba/Despacio'               | " Soft theme for vim
+  Plug 'morhetz/gruvbox'                        | " Gruvbox (dont ask)...
+  Plug 'kaicataldo/material.vim'                | " Fantastic colors
+  Plug 'drewtempelmeyer/palenight.vim'          | " awesome colorful theme for vim #1
+  Plug 'jaredgorski/SpaceCamp'                  | " Bright colorful theme for vim with a hint of purple
+  Plug 'owickstrom/vim-colors-paramount'        | " V. Dark colorscheme with purple accent
+  Plug 'challenger-deep-theme/vim'
 
+  "
+  " Syntax highlighting
+  "
+  Plug 'vim-pandoc/vim-pandoc-syntax'           | " Pandoc syntax
+  Plug 'sheerun/vim-polyglot'                   | " Mega language support pack
+
+
+  "
+  " Autocomplete
+  "
+  Plug 'neoclide/coc.nvim'                      | " Intellisense engine with lsp
+  Plug 'neoclide/coc-neco'                      | " Vim Completion source for coc
+  Plug 'Shougo/neco-vim'
 
   "
   " Editor
   "
-  Plug 'junegunn/goyo.vim'                 | " Distraction-free writing in Vim
-  Plug 'tpope/vim-surround'                | " Change your surroundings
-  Plug 'junegunn/vim-peekaboo'             | " Show register contents on /@
-  Plug 'jiangmiao/auto-pairs'              | " Add brackets automatically
-  Plug 'Shougo/deoplete.nvim', {
-  \ 'do': 'UpdateRemotePlugins'
-  \ }                                      | " Async completion
-  Plug 'artur-shaik/vim-Javacomplete2'     | " Deoplete source for java
-  Plug 'deoplete-plugins/deoplete-jedi'    | " Deoplete source for python
-
-  Plug 'autozimu/LanguageClient-neovim', {
-  \ 'branch': 'next',
-  \ 'do': 'bash install.sh',
-  \ }                                      | " LSP protocol for vim
-  Plug 'airblade/vim-gitgutter'            | " Git gutter
-  Plug 'kshenoy/vim-signature'             | " Visualise and navigate marks
-  Plug 'vim-pandoc/vim-pandoc'             | " Pandoc integration
+  Plug 'tpope/vim-abolish'                      | " Easily search and substitute
+  Plug 'jiangmiao/auto-pairs'                   | " Add brackets automatically
+  Plug 'bkad/CamelCaseMotion'                   | " Add camel case motion
+  Plug 'rhysd/clever-f.vim'                     | " Quick f,t vim motions
+  Plug 'junegunn/goyo.vim'                      | " Distraction-free writing in Vim
+  Plug 'Yggdroot/indentLine'                    | " Indent guides
+  Plug 'majutsushi/tagbar'                      | " Display tags in a window by scope.
+  Plug 'tpope/vim-surround'                     | " Change your surroundings
+  Plug 'dhruvasagar/vim-table-mode'             | " Easily create tables in vim
+  " Plug 'tpope/vim-characterize'                 | " Show unicode charater metadata
+  Plug 'mbbill/undotree'                        | " Graphical undo history
+  Plug 'simnalamburt/vim-mundo'
+  Plug 'luochen1990/rainbow'                    | " Colorise bracket pairs
+  Plug 'easymotion/vim-easymotion'              | " More vim motions!
+  Plug 'machakann/vim-highlightedyank'          | " Highlight yanked text
+  Plug 'mhinz/vim-signify'                      | " Git gutter
+  Plug 'vim-pandoc/vim-pandoc'                  | " Pandoc integration
+  Plug 'junegunn/vim-peekaboo'                  | " Show register contents on /@
+  Plug 'kshenoy/vim-signature'                  | " Visualise and navigate marks in gutter
+  Plug 'liuchengxu/vim-which-key'               | " Show keybindings in a popup
+  " Plug 'bagrat/vim-buffet'
 
 
   "
-  " Syntax
-  "
-  Plug 'dense-analysis/ale'                | " Async Lint Engine
-  Plug 'sheerun/vim-polyglot'              | " Mega language support pack
-  Plug 'HerringtonDarkholme/yats.vim'      | " Syntax highlighting for ts
-  " Plug 'dart-lang/dart-vim-plugin'         | " Syntax highlighting for dart
-  Plug 'jackguo380/vim-lsp-cxx-highlight'  | " Semantic highlight for c/c++ with ccls
-  Plug 'dominikduda/vim_current_word'      | " Highlighting word under cursor
-  Plug 'ap/vim-css-color'                  | " Fast context-sensitive color name highlighter
-  Plug 'vim-pandoc/vim-pandoc-syntax'      | " Pandoc syntax
-
-
   " Tools
   "
-  Plug 'majutsushi/tagbar'                 | " Display tags in a window by scope.
-  Plug 'qpkorr/vim-bufkill'                | " Delete buffer without losing split window
-  Plug 'tpope/vim-sleuth'                  | " Autodetect file spacing
-  Plug 'scrooloose/nerdcommenter'          | " Awesome Commenting
-  Plug 'vim-scripts/autoswap.vim'          | " Handle swap files intelligently
-  Plug 'tpope/vim-obsession'               | " continuously update session files
-  " Plug 'tpope/vim-fugitive'                | " Git wrapper
-  Plug 'airblade/vim-rooter'               | " Set working directory to project root
-  Plug 'tpope/vim-eunuch'                  | " Add unix commands to vim
-  Plug 'tpope/vim-unimpaired'              | " Bracket mappings
-  Plug 'samoshkin/vim-mergetool'           | " use vim as mergetool
-  Plug 'tpope/vim-dispatch'                | " async dispatcher
-  " Plug 'vimwiki/vimwiki'                   | " personal wiki tool for vim
-  Plug 'easymotion/vim-easymotion'         | " Navigate files with ease
-  Plug 'junegunn/vim-easy-align'           | " Align things
-  Plug 'Shougo/echodoc'                    | " Displays function signatures from completions
-  Plug 'SirVer/ultisnips'                  | " Snippets engine
-  Plug 'honza/vim-snippets'                | " Snippets
-  " Plug 'thosakwe/vim-flutter'              | " Commands for Flutter from vim
-  " Plug 'camspiers/animate.vim'             |   " A Vim Automatic Window Resizing Plugin
-  " Plug 'camspiers/lens.vim'
+  Plug 'vim-scripts/autoswap.vim'               | " Handle swap files intelligently
+  Plug 'preservim/nerdcommenter'                | " Awesome commenting
+  Plug 'majutsushi/tagbar'                      | " Display tags in a window by scope.
+  Plug 'qpkorr/vim-bufkill'                     | " Delete buffer without losing split window
+  Plug 'tpope/vim-obsession'                    | " continuously update session files
+  Plug 'tpope/vim-eunuch'                       | " Add unix commands to vim
+  Plug 'tpope/vim-fugitive'                     | " Git wrapper
+  Plug 'samoshkin/vim-mergetool'                | " use vim as mergetool
+  Plug 'tpope/vim-sleuth'                       | " Autodetect file spacing
+  Plug 'psliwka/vim-smoothie'                   | " Smooth scrolling
+
+  "
+  " Snippets
+  "
+  Plug 'Shougo/neosnippet.vim'                  | " Snippets engine
+  Plug 'Shougo/neosnippet-snippets'             | " Snippets
+  Plug 'honza/vim-snippets'                     | " MOH Snippets
 
 
   "
-  " File manager
+  " File explorer
   "
-  Plug 'scrooloose/nerdtree'               | " File tree view
-  Plug 'ryanoasis/vim-devicons'            | " Add file icons to vim plugins
-  Plug 'Xuyuanp/nerdtree-git-plugin'       | " Git indicators for nerdtree.
+  Plug 'lambdalisue/fern.vim'                   | " Asynchronous tree viewer
+  Plug 'ryanoasis/vim-devicons'                 | " Add file icons to plugins
+  Plug 'lambdalisue/fern-renderer-devicons.vim' | " Add file icons to fern
+  " Plug 'folws/fern-devicons-syntax'             | " Add syntax highlight to icons
 
 
   "
   " Search
   "
-  Plug 'haya14busa/incsearch.vim'          | " Incremental searching
-  Plug 'haya14busa/incsearch-fuzzy.vim'
+  Plug 'haya14busa/incsearch.vim'               | " Incremental searching
   Plug 'haya14busa/incsearch-easymotion.vim'
-  Plug 'junegunn/fzf.vim'
-  Plug 'junegunn/fzf', { 'dir': '~/.local/lib/fzf', 'do': './install --all' }
+  Plug 'haya14busa/incsearch-fuzzy.vim'
+  Plug 'junegunn/fzf', {
+        \ 'dir': '~/.local/lib/fzf',
+        \ 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'                       | " Fuzzy searching in vim
 
-
+endif
 call plug#end()
+
+fu! s:install_missing_plugins()
+  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    PlugInstall --sync | q
+  endif
+endfu
+
+" install missing plugins on startup
+augroup vimrc_pi
+  let s:self = expand('%')
+  au!
+  " au VimEnter * call <SID>install_missing_plugins()
+  exe 'au SourcePost' s:self 'call <SID>install_missing_plugins()'
+augroup END
+
+
+call utils#abbr_command('pi', 'PlugInstall')
+call utils#abbr_command('pud', 'PlugUpdate')
+call utils#abbr_command('pug', 'PlugUpgrade')
+call utils#abbr_command('ps', 'PlugStatus')
+call utils#abbr_command('pc', 'PlugClean')
