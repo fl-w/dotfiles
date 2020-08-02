@@ -1,13 +1,15 @@
 " which-key.vim configuration and keybinds
 "
 
+call which_key#register('<Space>', "g:which_key_map")
+
 " map leader to which key
 nnoremap <silent> <leader>  :<c-u>WhichKey '<Space>'<CR>
 vnoremap <silent> <leader>  :<c-u>WhichKeyVisual '<Space>'<CR>
 
-let s:key_sep = '//'
-let g:which_key_sep = '→'
+let g:which_key_use_floating_win = 1
 let g:which_key_map =  {}
+let s:key_sep = '//'
 
 " Map <leader> + e to open fuzzy find (FZF) " 
 nnoremap <silent> <leader>e :call fzf#vim#files('.', {'options': '--prompt " "'})<CR>
@@ -18,39 +20,61 @@ nnoremap <silent> <leader>E :Buffers<CR>
 " map <leader> + t to toggle tags bar
 nmap <silent><leader>t           :TagbarOpenAutoClose<cr>
 
-" Map <leader> + f to toggle nerd tree
-noremap <silent><leader>f        :CocCommand explorer<cr>
-
-" Map <leader> + z to toggle zen mode
-noremap <silent><leader>z        :Goyo<cr>
-
 " Map <ctrl> + F to search open buffers in fzf
 nnoremap <silent> <C-F> :FZFLines<CR>
 
 " Single mappings
 let g:which_key_map['/'] = [ '<Plug>NERDCommenterToggle'  , 'toggle comment' ]
-let g:which_key_map['.'] = [ ':e $MYVIMRC'                , 'open vimrc' ]
-let g:which_key_map[' '] = [ ':w!'                        , 'force write file' ]
-let g:which_key_map['w'] = [ ':w'                         , 'write file' ]
+let g:which_key_map[' '] = [ ':update'                    , 'write file if modified' ]
 let g:which_key_map[';'] = [ ':Commands'                  , 'commands' ]
 let g:which_key_map['='] = [ '<C-W>='                     , 'balance windows' ]
-let g:which_key_map[','] = [ 'Startify'                   , 'start screen' ]
-let g:which_key_map['d'] = [ ':BD'                        , 'delete buffer']
-let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
-let g:which_key_map['f'] = [ ':Files'                     , 'search files' ]
+let g:which_key_map[','] = [ ':Dashboard'                 , 'start screen' ]
+let g:which_key_map['d'] = [ ':WintabsClose'              , 'delete buffer']
+let g:which_key_map['q'] = [ ':q'                         , 'close window']
+let g:which_key_map['f'] = [ ':Drawer'                    , 'toggle file drawer' ]
+let g:which_key_map['e'] = [ ':Files'                     , 'search files' ]
 let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
 let g:which_key_map['q'] = [ 'q'                          , 'quit' ]
-let g:which_key_map['r'] = [ ':RnvimrToggle'              , 'ranger' ]
-let g:which_key_map['S'] = [ ':SSave'                     , 'save session' ]
+let g:which_key_map['S'] = [ ':SessionSave'               , 'save session' ]
 let g:which_key_map['F'] = [ ':Rg'                        , 'search text' ]
 let g:which_key_map['v'] = [ '<C-W>v'                     , 'split right']
 let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
 
 
+" . is for vimrc
+let g:which_key_map['.'] = {
+      \ '.': [ ':e $MYVIMRC',              'open vimrc' ],
+      \ 'p': [ ':e $VIM_ROOT/plugins.vim', 'open plugins' ],
+      \ 'g': [ ':e $VIM_ROOT/general.vim', 'open general conf' ],
+      \ 'r': [ ':so $MYVIMRC',             'reload source'],
+      \ ';': [ ':so %',                    'source current file'],
+      \}
+
 " b is for buffer
 let g:which_key_map.b = {
-      \ 'name' : s:key_sep . 'buffer'
+      \ 'name' : s:key_sep . 'buffer',
+      \ 'n' : [':WintabsNext', 'next'],
+      \ 'p' : [':WintabsPrevious', 'previous'],
       \ }
+
+" c is for comment
+let g:which_key_map.c = {
+      \ 'name' : s:key_sep . 'comment'
+      \ }
+
+" g is for git
+let g:which_key_map.g = {
+      \ 'name': s:key_sep . 'git',
+      \ 'v': [':Gmove', 'git move wrapper'],
+      \ 'b': [':Gblame', 'git blame wrapper'],
+      \ 'g':  [':Ggrep', 'git grep wrapper'],
+      \ 'm': [':Gmerge', 'git merge wrapper'],
+      \ 'r': [':Grebase', 'git rebase wrapper'],
+      \ 'p': [':Gpush', 'git push wrapper'],
+      \ 'f': [':Gfetch', 'git fetch wrapper'],
+      \ 'u': [':Gpull', 'git pull wrapper'],
+      \ 's': [':Gstatus', 'git status']
+      \}
 
 " l is for language server protocol
 let g:which_key_map.l = {
@@ -86,22 +110,31 @@ let g:which_key_map.l = {
       \ 't' : ['<Plug>(coc-type-definition)'         , 'type definition'],
       \ 'u' : [':CocListResume'                      , 'resume list'],
       \ 'U' : [':CocUpdate'                          , 'update CoC'],
-      \ 'v' : [':Vista!!'                            , 'tag viewer'],
       \ 'z' : [':CocDisable'                         , 'disable CoC'],
       \ 'Z' : [':CocEnable'                          , 'enable CoC'],
       \ }
 
-" " Hide statusline
-" autocmd! FileType which_key
-" autocmd  FileType which_key set laststatus=0 noshowmode noruler
-"   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-"
-
-" Plugin specific mappings
-"
-
-" rename symbol
-nmap <leader>rn <Plug>(coc-rename)
+" w is for window
+let g:which_key_map.w = {
+      \ 'name' : '+windows' ,
+      \ 'w' : ['<C-W>w'     , 'other-window']          ,
+      \ 'd' : ['<C-W>c'     , 'delete-window']         ,
+      \ '-' : ['<C-W>s'     , 'split-window-below']    ,
+      \ '|' : ['<C-W>v'     , 'split-window-right']    ,
+      \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
+      \ 'h' : ['<C-W>h'     , 'window-left']           ,
+      \ 'j' : ['<C-W>j'     , 'window-below']          ,
+      \ 'l' : ['<C-W>l'     , 'window-right']          ,
+      \ 'k' : ['<C-W>k'     , 'window-up']             ,
+      \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
+      \ 'J' : [':resize +5'  , 'expand-window-below']   ,
+      \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
+      \ 'K' : [':resize -5'  , 'expand-window-up']      ,
+      \ '=' : ['<C-W>='     , 'balance-window']        ,
+      \ 's' : ['<C-W>s'     , 'split-window-below']    ,
+      \ 'v' : ['<C-W>v'     , 'split-window-below']    ,
+      \ '?' : ['Windows'    , 'fzf-window']            ,
+      \ }
 
 """ vim-easy-align
 xmap <leader>a                  <Plug>(EasyAlign)
@@ -110,36 +143,3 @@ nmap <leader>a                  <Plug>(EasyAlign)
 """ vim-smoothie
 " silent! nmap <unique> <S-j>      <Plug>(SmoothieDownwards)
 " silent! nmap <unique> <S-k>      <Plug>(SmoothieUpwards)
-
-""" IncSearch
-noremap <silent><expr> <Space>/ incsearch#go(Easyfuzzymotion())
-map /                           <Plug>(incsearch-easymotion-/)
-" map ?                           <Plug>(incsearch-easymotion-?)
-map g/                          <Plug>(incsearch-easymotion-stay)
-
-
-""" EasyMotion
-" `s{char}{char}{label}`
-nmap s                  <Plug>(easymotion-s2)
-
-" JK motions: Line motions
-map <leader>j                   <Plug>(easymotion-j)
-map <leader>k                   <Plug>(easymotion-k)
-
-" markdown
-augroup MD_SCR
-autocmd FileType md,markdown noremap s :call InsertMarkdownScreenShot()<CR>
-augroup END
-
-" vim-fugative
-"
-noremap <leader>gm  :Gmove<cr>
-noremap <leader>gb  :Gblame<cr>
-noremap <leader>gg  :Ggrep<cr>
-noremap <leader>gc  :Gcommit<cr>
-noremap <leader>gm  :Gmerge<cr>
-noremap <leader>gr  :Grebase<cr>
-noremap <leader>gp  :Gpush<cr>
-noremap <leader>gf  :Gfetch<cr>
-noremap <leader>gu  :Gpull<cr>
-noremap <leader>gs  :Gstatus<cr>

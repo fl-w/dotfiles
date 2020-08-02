@@ -43,17 +43,18 @@ else
 
 
   "
-  " Colorschemes
+  " Colorschemes (yes i know)
   "
   Plug 'ayu-theme/ayu-vim'                      | " Modern theme for modern VIMs
   Plug 'sjl/badwolf'                            | " clean theme for vim
-  Plug 'AlessandroYorba/Despacio'               | " Soft theme for vim
   Plug 'morhetz/gruvbox'                        | " Gruvbox (dont ask)...
   Plug 'kaicataldo/material.vim'                | " Fantastic colors
   Plug 'drewtempelmeyer/palenight.vim'          | " awesome colorful theme for vim #1
   Plug 'jaredgorski/SpaceCamp'                  | " Bright colorful theme for vim with a hint of purple
   Plug 'owickstrom/vim-colors-paramount'        | " V. Dark colorscheme with purple accent
-  Plug 'challenger-deep-theme/vim'
+  Plug 'junegunn/limelight.vim'
+  Plug 'cseelus/vim-colors-lucid'
+
 
   "
   " Syntax highlighting
@@ -72,42 +73,44 @@ else
   "
   " Editor
   "
-  Plug 'tpope/vim-abolish'                      | " Easily search and substitute
-  Plug 'jiangmiao/auto-pairs'                   | " Add brackets automatically
   Plug 'bkad/CamelCaseMotion'                   | " Add camel case motion
-  Plug 'rhysd/clever-f.vim'                     | " Quick f,t vim motions
-  Plug 'junegunn/goyo.vim'                      | " Distraction-free writing in Vim
-  Plug 'Yggdroot/indentLine'                    | " Indent guides
-  Plug 'majutsushi/tagbar'                      | " Display tags in a window by scope.
-  Plug 'tpope/vim-surround'                     | " Change your surroundings
   Plug 'dhruvasagar/vim-table-mode'             | " Easily create tables in vim
-  " Plug 'tpope/vim-characterize'                 | " Show unicode charater metadata
-  Plug 'mbbill/undotree'                        | " Graphical undo history
-  Plug 'simnalamburt/vim-mundo'
-  Plug 'luochen1990/rainbow'                    | " Colorise bracket pairs
   Plug 'easymotion/vim-easymotion'              | " More vim motions!
-  Plug 'machakann/vim-highlightedyank'          | " Highlight yanked text
-  Plug 'mhinz/vim-signify'                      | " Git gutter
-  Plug 'vim-pandoc/vim-pandoc'                  | " Pandoc integration
+  Plug 'jiangmiao/auto-pairs'                   | " Add brackets automatically
+  Plug 'junegunn/goyo.vim'                      | " Distraction-free writing in Vim
   Plug 'junegunn/vim-peekaboo'                  | " Show register contents on /@
   Plug 'kshenoy/vim-signature'                  | " Visualise and navigate marks in gutter
   Plug 'liuchengxu/vim-which-key'               | " Show keybindings in a popup
-  " Plug 'bagrat/vim-buffet'
+  Plug 'machakann/vim-highlightedyank'          | " Highlight yanked text
+  Plug 'majutsushi/tagbar'                      | " Display tags in a window by scope.
+  Plug 'mbbill/undotree'                        | " Graphical undo history
+  Plug 'mhinz/vim-signify'                      | " Git gutter
+  Plug 'rhysd/clever-f.vim'                     | " Quick f,t vim motions
+  Plug 'samoshkin/vim-mergetool'                | " use vim as mergetool
+  Plug 'simnalamburt/vim-mundo'
+  Plug 'tpope/vim-abolish'                      | " Easily search and substitute
+  Plug 'tpope/vim-surround'                     | " Change your surroundings
+  Plug 'vim-pandoc/vim-pandoc'                  | " Pandoc integration
+  Plug 'Yggdroot/indentLine'                    | " Indent guides
+  Plug 'zefei/vim-wintabs'                      | " Manage buffers per window
+  " Plug 'zefei/vim-wintabs-powerline'
 
 
   "
   " Tools
   "
-  Plug 'vim-scripts/autoswap.vim'               | " Handle swap files intelligently
-  Plug 'preservim/nerdcommenter'                | " Awesome commenting
+  Plug 'junegunn/vim-easy-align'                | " Easily align text
   Plug 'majutsushi/tagbar'                      | " Display tags in a window by scope.
-  Plug 'qpkorr/vim-bufkill'                     | " Delete buffer without losing split window
-  Plug 'tpope/vim-obsession'                    | " continuously update session files
+  Plug 'preservim/nerdcommenter'                | " Awesome commenting
+  Plug 'psliwka/vim-smoothie'                   | " Smooth scrolling
+  Plug 'samoshkin/vim-mergetool'                | " use vim as mergetool
+  Plug 'thinca/vim-template'                    | " Template file engine
+  Plug 'tpope/vim-obsession'                    | " Continuously update session files
   Plug 'tpope/vim-eunuch'                       | " Add unix commands to vim
   Plug 'tpope/vim-fugitive'                     | " Git wrapper
-  Plug 'samoshkin/vim-mergetool'                | " use vim as mergetool
   Plug 'tpope/vim-sleuth'                       | " Autodetect file spacing
-  Plug 'psliwka/vim-smoothie'                   | " Smooth scrolling
+  Plug 'vim-scripts/autoswap.vim'               | " Handle swap files intelligently
+
 
   "
   " Snippets
@@ -124,7 +127,6 @@ else
   Plug 'ryanoasis/vim-devicons'                 | " Add file icons to plugins
   Plug 'lambdalisue/fern-renderer-devicons.vim' | " Add file icons to fern
   " Plug 'folws/fern-devicons-syntax'             | " Add syntax highlight to icons
-
 
   "
   " Search
@@ -147,8 +149,8 @@ fu! s:install_missing_plugins()
 endfu
 
 " install missing plugins on startup
+let s:self = expand('%')
 augroup vimrc_pi
-  let s:self = expand('%')
   au!
   " au VimEnter * call <SID>install_missing_plugins()
   exe 'au SourcePost' s:self 'call <SID>install_missing_plugins()'

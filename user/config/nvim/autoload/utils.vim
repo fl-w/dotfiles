@@ -15,10 +15,38 @@ fu! utils#boolexists(varname) abort
   return value
 endfu
 
+" https://github.com/lambdalisue/dotfiles/blob/6304fb488916d07d24e97e0c9bb785320bff1f4a/nvim/init.vim#L422
+function! utils#auto_mkdir(dir, force) abort
+  if empty(a:dir) || a:dir =~# '^\w\+://' || isdirectory(a:dir) || a:dir =~# '^suda:'
+    return
+  endif
+  if !a:force
+    echohl Question | call inputsave()
+    try
+      let result = input(
+            \ printf('"%s" does not exist. Create? [y/N]', a:dir),
+            \ '',
+            \)
+      if empty(result)
+        echohl WarningMsg | echo 'Canceled'
+        return
+      endif
+    finally
+      call inputrestore()
+      echohl None
+    endtry
+  endif
+  call mkdir(a:dir, 'p')
+endfunction
+
 function! utils#isdir(dir) abort
   " tests whether the path of the current buffer matches a directory.
   return !empty(a:dir) && (isdirectory(a:dir) ||
         \ (!empty($SYSTEMDRIVE) && isdirectory('/'.tolower($SYSTEMDRIVE[0]).a:dir)))
+endfunction
+
+function! utils#project_root()
+  return getcwd()
 endfunction
 
 function! utils#trim_whitespace()
@@ -28,17 +56,6 @@ function! utils#trim_whitespace()
   %s/\s\+$//e
   call winrestview(l:save)
 endfunction
-
-fun! utils#copy_hi_group(group, to)
-  let id = synIDtrans(hlID(a:group))
-  for mode in ['cterm', 'gui']
-    for g in ['fg', 'bg']
-      exe 'let '. mode.g. "=  synIDattr(id, '". g."#', '". mode. "')"
-      exe "let ". mode.g. " = empty(". mode.g. ") ? 'NONE' : ". mode.g
-    endfor
-  endfor
-  exe printf('hi %s ctermfg=%s ctermbg=%s guifg=%s guibg=%s', a:to, ctermbg, ctermfg, guifg, guibg)
-endf
 
 function! utils#nonwrite_buffer_init() abort
   setl nonumber
@@ -73,11 +90,11 @@ function! utils#has_colorscheme(name) abort
   return !empty(globpath(&runtimepath, l:pat))
 endfunction
 
-function! utils#toggle_settings(name) abort
+function! utils#toggle_setting(name) abort
   " toggle given setting name
   """
   if !exists('&' . a:name)
-    echohl WarningMsg | echo 'cannot toggle unknwon setting: \''.  | echohl None
+    echohl WarningMsg | echo printf("cannot toggle unknown setting: '%s'", a:name) | echohl None
     return
   endif
   if execute('echon &'. a:name)

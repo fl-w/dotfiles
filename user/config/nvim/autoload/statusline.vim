@@ -90,7 +90,8 @@ endfunction
 
 function! statusline#current_function_tag()
   return get(b:, 'coc_current_function',
-        \ exists('*tagbar#currenttag') ? tagbar#currenttag('%s', '', '') : ''
+        \ exists('*tagbar#currenttag') ?
+        \ tagbar#currenttag(tagbar#currenttagtype('%s', '') == 'function' ? '%s()' : '%s', '') : ''
         \ )
 endfunction
 
@@ -119,5 +120,5 @@ function! statusline#spell() abort
 endfunction
 
 function! statusline#markdownpreview() abort
-  exists('b:markdownpreview') ? get(g:, 'statusline_icon_markdownpreview', '' . ' ') : ''
+  return exists('b:markdownpreview') ? get(g:, 'statusline_icon_markdownpreview', '' . ' ') : ''
 endfunction

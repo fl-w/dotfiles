@@ -29,7 +29,8 @@ nnoremap k gk
 nnoremap Y y$
 
 " Open vertial split
-"nnoremap <silent> | :vsp
+nnoremap <silent> \| :vsp<cr>
+nnoremap <silent> \ :sp<cr>
 
 " Scroll with arrow keys
 noremap <Down> <C-e>
@@ -70,9 +71,10 @@ noremap <c-j>   <c-w>j
 noremap <c-k>   <c-w>k
 noremap <c-l>   <c-w>l
 
-" Use {,shift}+tab to navigate buffers
-nnoremap <silent>   <tab> :bnext<CR>
-nnoremap <silent> <s-tab> :bprevious<CR>
+" Use {,shift}+tab to navigate tabs
+nnoremap <silent>   <tab> :tabnext<CR>
+nnoremap <silent> <s-tab> :tabprevious<CR>
+
 " Use (left/right) to navigate buffers
 " nnoremap <silent> <Right> :bnext<CR>
 " nnoremap <silent> <Left>  :bprevious<CR>

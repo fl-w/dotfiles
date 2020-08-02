@@ -12,11 +12,38 @@ augroup vimrc
   au!
 
   au BufWritePre * call utils#trim_whitespace()                       " Remove trailing whitespace when saving
+  au BufWritePre *
+        \ call utils#auto_mkdir(expand('<afile>:p:h'), v:cmdbang)     " auto create missing directories
   au InsertEnter * let b:icul = &cul | set nocul                      " Remove cursorline on insertmode
-  au InsertLeave * if utils#boolexists('b:icul') | set cul            " Replace prev cursorline
-  au FocusLost   * if &nu | let b:irnu = &rnu | set nornu | endif     " Remove relative number on focus lost
-  au FocusGained * if utils#boolexists('b:irnu') | set rnu | endif    " Replace relative number
+  au InsertLeave * if utils#boolexists('b:icul') | set cul | endif    " Replace prev cursorline
+  au BufEnter *.txt if &buftype == 'help' | wincmd T | nnoremap <buffer> q :q<cr> | endif
+  au WinLeave * if &cursorline | let w:cur = 1 | setl nocursorline | endif
+  au WinEnter * if utils#boolexists('w:cur') | unlet w:cur | setl cursorline | endif
 augroup END
+
+" markdown
+augroup MD_SCR
+autocmd FileType md,markdown noremap s :call InsertMarkdownScreenShot()<CR>
+augroup END
+
+fun! s:on_focus_lost()
+  " Remove relative number on focus lost
+  if &nu
+    let b:irnu = 1
+    setl nornu
+  endif
+endf
+
+fun! s:on_focus_enter()
+  " Restore relative number
+  if utils#boolexists('b:irnu')
+    unlet b:irnu
+    setl rnu
+  endif
+endf
+
+au vimrc FocusLost * call s:on_focus_lost()
+au vimrc FocusGained *  call s:on_focus_enter()
 
 augroup auto_read
     autocmd!

@@ -25,9 +25,6 @@ endif
 set background=dark                                | " set background to be dark
 set synmaxcol=300                                  | " use syntax highlighting only for 300 columns
 
-let g:colors_bg_transparent = v:true
-let g:colorscheme_default = 'badwolf'
-
 fu! s:get_color_scheme()
   return get(g:, 'colors_name', 'default')
 endfu
@@ -37,9 +34,9 @@ fu! s:set_colors() abort
 
   if &background == 'light' | return | endif
 
-  call utils#copy_hi_group('DiffAdd', 'SignifySignAdd')
-  call utils#copy_hi_group('DiffChange', 'SignifySignChange')
-  call utils#copy_hi_group('DiffRemove', 'SignifySignRemove')
+  call utils#color#copy_hi_group('DiffAdd', 'SignifySignAdd')
+  call utils#color#copy_hi_group('DiffChange', 'SignifySignChange')
+  call utils#color#copy_hi_group('DiffRemove', 'SignifySignRemove')
 
   hi                LineNr ctermbg=NONE  guibg=NONE                | " dont highlight line number
   hi            SignColumn ctermbg=NONE  guibg=NONE                | " dont highlight sign column
@@ -54,6 +51,18 @@ fu! s:set_colors() abort
   hi     SignifySignChange               guibg=bg                  | " dont add bacground to git diff signs
   hi     SignifySignRemove               guibg=bg                  | " dont add bacground to git diff signs
   hi            DiffChange ctermfg=203   guifg=#FF5270             | " make diff remove distintive red
+  hi              Function cterm=bold    gui=bold
+  hi               Keyword cterm=bold    gui=bold
+  hi             Statement cterm=bold    gui=bold
+
+  " #181320 bg #847d91
+
+  " todo
+  highlight default link WhichKey          Function
+  highlight default link WhichKeySeperator DiffAdded
+  highlight default link WhichKeyGroup     Keyword
+  highlight default link WhichKeyDesc      Identifier
+  highlight default link WhichKeyFloating Pmenu
 
   if l:color_scheme != 'ayu'
     hi          Pmenu ctermfg=243 ctermbg=237  guifg=#767676 guibg=#2b2b30
@@ -68,7 +77,7 @@ fu! s:set_colors() abort
   endif
 
   if index(['material', 'palenight', 'badwolf'] , s:get_color_scheme()) != -1
-    hi         String ctermfg=140             guifg=#a790d5 gui=italic
+    hi         String ctermfg=140             guifg=#a790d5
   endif
 endfu
 
@@ -77,7 +86,11 @@ augroup colorscheme_detect
   au BufRead,BufNewFile *.conf setf dosini                        | " syntax highlighting for .conf
   au BufRead,BufNewFile *.rasi setf css                           | " syntax highlighting for .rasi
   au ColorScheme        *      call <SID>set_colors()             | " set colors on color scheme change
-  au VimEnter           *      exe 'colo' g:colorscheme_default | call <SID>set_colors()
   au BufEnter           *      syntax sync fromstart              | " accurate syntax highlighting
   au FileType           json   syntax match Comment +\/\/.\+$+    | " allow comments in json files
 augroup END
+
+if has('vim_starting')
+  colo ayu
+  " colo badwolf
+endif

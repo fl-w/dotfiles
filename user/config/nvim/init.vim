@@ -18,14 +18,17 @@
 "    .                  .     OP"          : o     .
 "
 
-let g:vim_config_root = $HOME . "/.config/nvim" " expand('%:h')
+let g:vim_config_root = expand('<sfile>:p:h')
+let $VIM_ROOT = g:vim_config_root
 let g:vim_ignore_configs_list = ['ale']
 let g:is_darwin = has('win32') || has('win64')
 let g:is_linux = has('unix') && !has('macunix')
 
-runtime plugins.vim
+if has('vim_starting')
+  runtime general.vim
+endif
 
-runtime! settings/*.vim
+runtime! plugins.vim
 runtime! maps/*.vim
 
 if exists('g:started_by_firenvim') && g:started_by_firenvim
@@ -35,13 +38,14 @@ elseif exists('g:vscode')
   runtime clients/vscode.vim   " vscode specific configuration
 
 else
+  runtime! conf.d/*.vim
+
   " load plugin configs
   let g:plug_configs = map(filter(copy(g:plugs_order), {_, val -> index(g:vim_ignore_configs_list, val) == -1}),
-        \ '"plugin-config/" . tolower(fnamemodify(v:val, ":r")) . ".vim"')
+        \ '"plugins.d/" . tolower(fnamemodify(v:val, ":r")) . ".vim"')
   for s:plug in g:plug_configs
     exe 'runtime' s:plug
   endfor
-  runtime plugin-config/statusline.vim
 endif
 
 if exists('*utils#abbr_command')

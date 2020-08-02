@@ -19,7 +19,9 @@ augroup coc_autocomplete
   " show signature in insert mode
   au CursorHoldI * silent call CocActionAsync('showSignatureHelp')
   " Update signature help on jump placeholder.
-  au User CocJumpPlaceholder silent call CocActionAsync('showSignatureHelp')
+  au User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  " Format prior to save
+  autocmd BufWritePre * silent call CocAction('format')
   " close the preview window when completion is done.
   au CompleteDone * if pumvisible() == 0 | silent! pclose | endif
 augroup END
@@ -74,3 +76,11 @@ nmap    <silent> gd <Plug>(coc-definition)
 nmap    <silent> gy <Plug>(coc-type-definition)
 nmap    <silent> gi <Plug>(coc-implementation)
 nmap    <silent> gr <Plug>(coc-references)
+xmap    <silent> if <Plug>(coc-funcobj-i)
+xmap    <silent> af <Plug>(coc-funcobj-a)
+omap    <silent> if <Plug>(coc-funcobj-i)
+omap    <silent> af <Plug>(coc-funcobj-a)
+xmap    <silent> ic <Plug>(coc-classobj-i)
+xmap    <silent> ac <Plug>(coc-classobj-a)
+omap    <silent> ic <Plug>(coc-classobj-i)
+omap    <silent> ac <Plug>(coc-classobj-a)
