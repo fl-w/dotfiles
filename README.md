@@ -10,6 +10,11 @@ I use [dotdrop] to install link all of the required configuration into my home d
 
 ## Preview
 ![screenshot](screenshots/demo.png)
++ wm: i3-gaps
++ terminal: kitty
++ shell: fish
++ font: Fira Code Nerd Font Patch
++ bar: polybar
 ##
 ![screenshot2](screenshots/demokde.png)
 + wm: kde-plasma
@@ -17,13 +22,6 @@ I use [dotdrop] to install link all of the required configuration into my home d
 + shell: fish
 + font: Source Code Pro
 + bar/dock: latte-dock
-|          |                           |
-|----------|---------------------------|
-| wm       | i3-gaps                   |
-| terminal | kitty                     |
-| shell    | fish                      |
-| font     | Fira Code Nerd Font Patch |
-| bar      | polybar                   |
 
 ## Overview
 - [Requirements](#requirements)
