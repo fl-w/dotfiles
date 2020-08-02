@@ -19,6 +19,11 @@ set -gx fish_greeting ''
 # Open fish in vim-mode
 fish_vi_key_bindings
 
+# Set env vars
+set -gx GOPATH $HOME/.go
+set -gx N_PREFIX $HOME/.n
+
+
 # Set fish colors
 set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
 
@@ -36,9 +41,6 @@ set PATH $HOME/.pub-cache/bin $PATH
 # Append RUST cargo bin dir to PATH
 set PATH $HOME/.cargo/bin $PATH
 
-set -gx GOPATH $HOME/.go
-set -gx N_PREFIX $HOME/.n
-
 # Append Go bin dir to PATH
 set PATH $GOPATH/bin $PATH
 
@@ -46,7 +48,7 @@ set PATH $GOPATH/bin $PATH
 [ -d $N_PREFIX/bin ]; and set PATH $N_PREFIX/bin $PATH
 
 # Append android-sdk & emulator to PATH
-[ -d /opt/android-sdk ]; and set -x ANDROID_HOME /opt/android-sdk
+[ -d /opt/android-sdk ]; and set -gx ANDROID_HOME /opt/android-sdk
 and set PATH $ANDROID_HOME/tools:$ANDROID_HOME/tools/bin $PATH
 and [ -d $ANDROID_HOME/emulator ]; and set PATH $ANDROID_HOME/emulator $PATH
 
@@ -58,6 +60,7 @@ and [ -d $ANDROID_HOME/emulator ]; and set PATH $ANDROID_HOME/emulator $PATH
 
 # Set default bat command
 _command bat; and set -g BAT_DEFAULT_COMMAND "bat --color always --theme base16 --style=header,changes --wrap never {} "
+
 # Set FZF to use rg
 _command fzf
 and set -gx FZF_PREVIEW_COMMAND "$BAT_DEFAULT_COMMAND 2>/dev/null || head -n 60 {} 2>/dev/null || tree -a -C {} 2>/dev/null"

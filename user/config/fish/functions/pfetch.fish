@@ -1,6 +1,6 @@
 function pfetch --description 'Run pfetch with predefined args'
   set -l user $USER
-  set -l PF_INFO "ascii title os kernel pkgs shell wm palette"
+  set -l PF_INFO "ascii title os kernel pkgs shell wm"
   set -l infinity false
   set -l clear false
 
@@ -13,13 +13,13 @@ function pfetch --description 'Run pfetch with predefined args'
         set clear true
       case i infinite
         set infinity true
+      case p pallete
+        set PF_INFO "$PF_INFO pallete"
     end
   end
   if $clear
     clear
   end
   USER=$user PF_INFO=$PF_INFO command pfetch
-  if $infinity
-    sleep infinity
-  end
+  and $infinity; and sleep infinity
 end
