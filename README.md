@@ -2,7 +2,7 @@
 
 
 > The current state of this repository is for backup only. Most scripts
-> will not work on your system.
+> will not work on your system, some are outdated with even more outdated documentation
 
 This repository consists of configuration for any tools I use within my [Arch Linux][arch] and [neovim][] development environment.
 I use a *lot* of tools which culminate in a sort of Unix IDE,
@@ -32,25 +32,13 @@ I use [dotdrop] to install link all of the required configuration into my home d
 
 ## Requirements
 
-### GNU/stow
-> If planning to use stow to manage the (symlinked) dots
+### python-pip
+> If planning to use dotdrop to manage the (symlinked) dots
 
-Your distribution repositories is very likely to contain `stow`, for example in Arch Linux, all you have to do to install it is:
-`sudo pacman -S stow`
+Your distribution repositories is very likely to contain `python-pip`, for example in Arch Linux, all you have to do to install it is:
+`sudo pacman -S python-pip`
 or on Ubuntu/Debian you can install stow by executing:
-`apt install stow`
-
-## Rice-insallation
-
-### Install & Update Script
-To **install** or **update** configs on your system, you should run the [install_script][]. To do that, you may either download and run the script manually, or use the following cURL or Wget command:
-```sh
-curl -sL https://raw.githubusercontent.com/folws/dotfiles/master/bootstrap | bash
-```
-
-```sh
-wget -qO- https://raw.githubusercontent.com/folws/dotfiles/master/bootstrap | bash
-```
+`apt install python-pip`
 
 ## Dots (WIP)
 
