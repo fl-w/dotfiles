@@ -9,12 +9,12 @@ if exists('g:loaded_ftmarkdown')
 endif
 
 let g:md_auto_compile = 1
-let s:md_auto_compile_outdir = "~/.cache/"
+let g:md_auto_compile_outdir = "~/.cache/"
 let g:loaded_ftmarkdown = 1
 
 function! CompileMarkdown()
-      silent execute ":Start! pandoc " . expand("%") . " -o " . s:md_auto_compile_outdir . expand("%:r") .
-          \ ".pdf --toc --toc-depth=3 --number-sections"
+    silent execute ":Start! pandoc " . expand("%") . " -o " . g:md_auto_compile_outdir . expand("%:r") .
+        \ ".pdf --toc --toc-depth=3 --number-sections"
 endfunction
 
 function! InsertMarkdownScreenShot()
@@ -27,4 +27,4 @@ function! InsertMarkdownScreenShot()
   endif
 endfunction
 
-autocmd! BufWritePost *.md if g:md_auto_compile call CompileMarkdown() endif
+autocmd! BufWritePost *.md if g:md_auto_compile | call CompileMarkdown() | endif

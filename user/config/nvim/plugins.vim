@@ -105,9 +105,10 @@ else
   Plug 'psliwka/vim-smoothie'                   | " Smooth scrolling
   Plug 'samoshkin/vim-mergetool'                | " use vim as mergetool
   Plug 'thinca/vim-template'                    | " Template file engine
-  Plug 'tpope/vim-obsession'                    | " Continuously update session files
+  Plug 'tpope/vim-dispatch'                     | " Autodetect file spacing
   Plug 'tpope/vim-eunuch'                       | " Add unix commands to vim
   Plug 'tpope/vim-fugitive'                     | " Git wrapper
+  Plug 'tpope/vim-obsession'                    | " Continuously update session files
   Plug 'tpope/vim-sleuth'                       | " Autodetect file spacing
   Plug 'vim-scripts/autoswap.vim'               | " Handle swap files intelligently
 

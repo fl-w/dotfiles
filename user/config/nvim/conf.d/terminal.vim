@@ -66,7 +66,7 @@ fun! terminal#open()
 
   " create buffer if not exists
   if !bufexists(s:term_name . '-1')
-    echom 'opening new term buffer'
+    " echom 'opening new term buffer'
     " spawn term
     call termopen($SHELL, { 'detach': 1 })
 
