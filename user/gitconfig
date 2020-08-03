@@ -54,8 +54,12 @@
 	changelog   = log --pretty=format:' * %C(white)%s'
 	lof         = log --graph --pretty=format:'[%C(blue)%h%Creset] -%C(red bold)%d%Creset %C(cyan)%an%Creset %C(yellow)%cr: %C(white)%s' --abbrev-commit --date=relative
 	lol         = log --pretty=format:'[%C(blue)%h%Creset] %C(cyan)%an%Creset %C(yellow)%ar%Creset: %C(white)%s' --stat
+	squash      = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
+	conflicts   = diff --name-only --diff-filter=U
 
 [commit]
 	gpgsign = false
 [gpg]
 	program = gpg2
+[pull]
+	rebase = false
