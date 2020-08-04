@@ -22,7 +22,8 @@ I use [dotdrop] to install link all of the required configuration into my home d
 + shell: fish
 + font: Source Code Pro
 + bar/dock: latte-dock
-
+##
+![](screenshots/nvim.png)
 ## Overview
 - [Requirements](#requirements)
 - [Quick Start](#quick-start)
