@@ -9,6 +9,9 @@ I use a *lot* of tools which culminate in a sort of Unix IDE,
 I use [dotdrop] to install link all of the required configuration into my home directory.
 
 ## Preview
+### neovim
+![](screenshots/nvim.png)
+##
 ![screenshot](screenshots/demo.png)
 + wm: i3-gaps
 + terminal: kitty
@@ -22,8 +25,7 @@ I use [dotdrop] to install link all of the required configuration into my home d
 + shell: fish
 + font: Source Code Pro
 + bar/dock: latte-dock
-##
-![](screenshots/nvim.png)
+
 ## Overview
 - [Requirements](#requirements)
 - [Quick Start](#quick-start)
