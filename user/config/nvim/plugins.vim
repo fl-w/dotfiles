@@ -47,14 +47,9 @@ else
   "
   Plug 'ayu-theme/ayu-vim'                      | " Modern theme for modern VIMs
   Plug 'sjl/badwolf'                            | " clean theme for vim
-  Plug 'morhetz/gruvbox'                        | " Gruvbox (dont ask)...
-  Plug 'kaicataldo/material.vim'                | " Fantastic colors
   Plug 'drewtempelmeyer/palenight.vim'          | " awesome colorful theme for vim #1
-  Plug 'jaredgorski/SpaceCamp'                  | " Bright colorful theme for vim with a hint of purple
   Plug 'owickstrom/vim-colors-paramount'        | " V. Dark colorscheme with purple accent
-  Plug 'junegunn/limelight.vim'
-  Plug 'cseelus/vim-colors-lucid'
-
+  Plug 'cseelus/vim-colors-lucid'               | " Fantastic colors
 
   "
   " Syntax highlighting
@@ -67,43 +62,44 @@ else
   " Autocomplete
   "
   Plug 'neoclide/coc.nvim'                      | " Intellisense engine with lsp
-  Plug 'neoclide/coc-neco'                      | " Vim Completion source for coc
-  Plug 'Shougo/neco-vim'
+  Plug 'neoclide/coc-neco'                      | " Add vim completion to coc
+  Plug 'Shougo/neco-vim'                        | " Vim completion source
 
   "
   " Editor
   "
+  Plug 'AndrewRadev/splitjoin.vim'              | " Switch between single-line and multi-line code
   Plug 'bkad/CamelCaseMotion'                   | " Add camel case motion
   Plug 'dhruvasagar/vim-table-mode'             | " Easily create tables in vim
   Plug 'easymotion/vim-easymotion'              | " More vim motions!
   Plug 'jiangmiao/auto-pairs'                   | " Add brackets automatically
   Plug 'junegunn/goyo.vim'                      | " Distraction-free writing in Vim
+  Plug 'junegunn/limelight.vim'
   Plug 'junegunn/vim-peekaboo'                  | " Show register contents on /@
   Plug 'kshenoy/vim-signature'                  | " Visualise and navigate marks in gutter
   Plug 'liuchengxu/vim-which-key'               | " Show keybindings in a popup
   Plug 'machakann/vim-highlightedyank'          | " Highlight yanked text
   Plug 'majutsushi/tagbar'                      | " Display tags in a window by scope.
-  Plug 'mbbill/undotree'                        | " Graphical undo history
   Plug 'mhinz/vim-signify'                      | " Git gutter
   Plug 'rhysd/clever-f.vim'                     | " Quick f,t vim motions
   Plug 'samoshkin/vim-mergetool'                | " use vim as mergetool
-  Plug 'simnalamburt/vim-mundo'
   Plug 'tpope/vim-abolish'                      | " Easily search and substitute
   Plug 'tpope/vim-surround'                     | " Change your surroundings
   Plug 'vim-pandoc/vim-pandoc'                  | " Pandoc integration
   Plug 'Yggdroot/indentLine'                    | " Indent guides
-  Plug 'zefei/vim-wintabs'                      | " Manage buffers per window
-  " Plug 'zefei/vim-wintabs-powerline'
 
 
   "
   " Tools
   "
+  Plug 'camspiers/animate.vim'                  | " animation library
   Plug 'junegunn/vim-easy-align'                | " Easily align text
   Plug 'majutsushi/tagbar'                      | " Display tags in a window by scope.
-  Plug 'preservim/nerdcommenter'                | " Awesome commenting
+  Plug 'mbbill/undotree'                        | " Graphical undo history
+  Plug 'tpope/vim-commentary'                   | " Awesome commenting
   Plug 'psliwka/vim-smoothie'                   | " Smooth scrolling
   Plug 'samoshkin/vim-mergetool'                | " use vim as mergetool
+  Plug 'simnalamburt/vim-mundo'                 | " Another graphical undo history
   Plug 'thinca/vim-template'                    | " Template file engine
   Plug 'tpope/vim-dispatch'                     | " Autodetect file spacing
   Plug 'tpope/vim-eunuch'                       | " Add unix commands to vim
@@ -111,6 +107,7 @@ else
   Plug 'tpope/vim-obsession'                    | " Continuously update session files
   Plug 'tpope/vim-sleuth'                       | " Autodetect file spacing
   Plug 'vim-scripts/autoswap.vim'               | " Handle swap files intelligently
+  Plug 'zefei/vim-wintabs'                      | " Manage buffers per window
 
 
   "
@@ -124,10 +121,15 @@ else
   "
   " File explorer
   "
-  Plug 'lambdalisue/fern.vim'                   | " Asynchronous tree viewer
+  Plug 'lambdalisue/fern.vim'
+  " \ { 'commit': '0e862fc1a13ddb18fbd8b410d208b034c3cf7370' }                  | " Asynchronous tree viewer
   Plug 'ryanoasis/vim-devicons'                 | " Add file icons to plugins
+  " Plug 'lambdalisue/fern-renderer-nerdfont.vim'
   Plug 'lambdalisue/fern-renderer-devicons.vim' | " Add file icons to fern
+  " Plug 'lambdalisue/nerdfont.vim'
   " Plug 'folws/fern-devicons-syntax'             | " Add syntax highlight to icons
+  " Plug 'lambdalisue/glyph-palette.vim'
+
 
   "
   " Search
