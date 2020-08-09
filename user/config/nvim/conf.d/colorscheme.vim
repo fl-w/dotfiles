@@ -45,6 +45,7 @@ fu! s:set_colors() abort
   hi               Comment ctermfg=239   guifg=#4E4E4E gui=italic  | " change comment color and set to italic
   hi            StatusLine guifg=#4E4E4E guibg=bg      gui=italic  | " make statusline invisible
   hi          StatusLineNC guifg=#2b2b30 guibg=bg      gui=italic  | " same with inactive statusline
+  hi         StatusLineINC guifg=#2b2b30 guibg=#181320 gui=italic  | " add background to statusline if has neighboring window below
   hi           EndOfBuffer guifg=#1f1f31 guibg=bg                  | " make EndOfBuffer ~ faint
   hi             VertSplit guifg=bg      guibg=bg                  | " dont highlight vertical split
   hi        SignifySignAdd               guibg=bg                  | " dont add bacground to git diff signs
@@ -52,7 +53,6 @@ fu! s:set_colors() abort
   hi     SignifySignRemove               guibg=bg                  | " dont add bacground to git diff signs
   hi            DiffChange ctermfg=203   guifg=#FF5270             | " make diff remove distintive red
   hi              Function cterm=bold    gui=bold
-  hi               Keyword cterm=bold    gui=bold
   hi             Statement cterm=bold    gui=bold
 
   " #181320 bg #847d91
@@ -68,17 +68,24 @@ fu! s:set_colors() abort
     hi          Pmenu ctermfg=243 ctermbg=237  guifg=#767676 guibg=#2b2b30
     hi       PmenuSel ctermfg=140 ctermbg=237  guifg=#a790d5 guibg=#2b2b30 gui=bold
     hi      PmenuSbar ctermfg=28  ctermbg=233  guifg=#c269fe guibg=#303030
-    hi     PmenuThumb ctermfg=160 ctermbg=97   guifg=#e0211d guibg=#875faf
+    hi     PmenuThumb ctermfg=160 ctermbg=97   guifg=#ff2c4b guibg=#875faf
+  else
+    " hi       Function                          guifg=#ff7733
+    " hi        Keyword                          guifg=#ff2c4b
   endif
 
   if l:color_scheme == 'badwolf'
     hi DiffAdd guifg=#B8CC52
     hi DiffChange guifg=#36A3D9
+    hi Normal guifg=#e4e0ed
   endif
 
-  if index(['material', 'palenight', 'badwolf'] , s:get_color_scheme()) != -1
-    hi         String ctermfg=140             guifg=#a790d5
-  endif
+  " if index(['material', 'palenight', 'badwolf'] , s:get_color_scheme()) != -1
+  "   hi         String ctermfg=140             guifg=#a790d5               gui=italic
+  " else
+  "   hi         String                                                     gui=italic
+  " endif
+
 endfu
 
 augroup colorscheme_detect

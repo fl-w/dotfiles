@@ -29,8 +29,8 @@ nnoremap k gk
 nnoremap Y y$
 
 " Open vertial split
-nnoremap <silent> \| :vsp<cr>
-nnoremap <silent> \ :sp<cr>
+nnoremap <silent> \| :vnew<cr>
+nnoremap <silent> \ :new<cr>
 
 " Scroll with arrow keys
 noremap <Down> <C-e>
@@ -46,16 +46,16 @@ nnoremap <silent> <M-h>    :vertical resize -2<CR>
 nnoremap <silent> <M-l>    :vertical resize +2<CR>
 
 " Map double <leader> to save
-noremap <silent> <leader> <leader> :w! <cr>
+noremap <silent> <leader> <leader> :update! <cr>
 
 " Map <leader> + x to save and exit file
 noremap <silent> <leader> x  :x! <cr>
 
 " Map <leader> + q to quit file
-noremap <silent> <leader> q  :q!<cr>
+nmap <silent> <leader> q  :q!<cr>
 
-" Map <leader> + d to goto word def
-noremap <leader> d  <S-K>
+" Map gd to goto word def
+noremap gd  <S-K>
 
 " Map {[/]}<space> to {prepend/append} blank line (inspired by tpope)
 noremap <silent> ]<space>  :<c-u>pu =repeat(nr2char(10),v:count)<bar>execute "'[-1"<cr>
@@ -70,6 +70,10 @@ noremap <c-h>   <c-w>h
 noremap <c-j>   <c-w>j
 noremap <c-k>   <c-w>k
 noremap <c-l>   <c-w>l
+
+" Use ctrl+p to replace word under cursor with clipboard text
+noremap <c-p>   viw"0p
+noremap <c-P>   viW"0p
 
 " Use {,shift}+tab to navigate tabs
 nnoremap <silent>   <tab> :tabnext<CR>

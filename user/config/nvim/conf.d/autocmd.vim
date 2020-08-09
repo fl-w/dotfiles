@@ -21,6 +21,9 @@ augroup vimrc
   au WinEnter * if utils#boolexists('w:cur') | unlet w:cur | setl cursorline | endif
 augroup END
 
+fun! s:unset_temp(setting)
+endf
+
 " markdown
 augroup MD_SCR
 autocmd FileType md,markdown noremap s :call InsertMarkdownScreenShot()<CR>

@@ -1,4 +1,5 @@
 " add syntax highlighting to fern devicons
+
 if !exists('g:fern_renderer_devicons_loaded') || exists('g:fern_renderer_devicons_syntax_loaded')
   finish
 endif

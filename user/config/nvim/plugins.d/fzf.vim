@@ -1,9 +1,42 @@
 " fzf{,.vim} configuration
 "
 
-let g:fzf_layout = {'up': '~35%'}
-let g:fzf_preview_window = 'right:60%'
-let g:fzf_default_command = get(g:, 'fzf_default_command', $FZF_DEFAULT_COMMAND . ' -g "!plugged"')
+" Jump to the existing window if possible.
+let g:fzf_buffers_jump = v:true
+
+" Tell ripgrep to use current working directory
+" let g:rg_derive_root = v:true
+
+" " Set fzf to floating layout
+" let g:fzf_layout = {
+"       \ 'window': {
+"       \   'width': 0.75,
+"       \   'height': 0.75,
+"       \   'highlight': 'Comment',
+"       \   'yoffset': 0.25,
+"       \   'border': 'sharp'
+"       \ } }
+
+let g:fzf_layout = {
+ \ 'window': 'new | wincmd J | resize 1 | call animate#window_percent_height(0.4)'
+\ }
+
+augroup fzf_custom
+  au!
+  autocmd FileType fzf call utils#init_minimal_window()
+        \ | tnoremap <buffer> <silent> <Esc> <C-\><C-n>:call utils#sliding_window_animate(1, { -> execute('wincmd c')}, v:true)<cr>i
+augroup end
+
+" Override fzf command
+let g:fzf_default_command = get(g:, 'fzf_default_command',
+      \ $FZF_DEFAULT_COMMAND . ($FZF_DEFAULT_COMMAND != "" ? ' -g "!plugged"' : ''))
+if strlen(g:fzf_default_command) != 0 | let $FZF_DEFAULT_COMMAND = g:fzf_default_command | endif
+
+" Override fzf opts
+let g:fzf_default_opts = get(g:, 'fzf_default_opts',
+      \ $FZF_DEFAULT_OPTS . ' --inline-info --bold --margin=1,4')
+let $FZF_DEFAULT_OPTS = g:fzf_default_opts
+
 let g:fzf_colors = {
   \ 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -19,56 +52,32 @@ let g:fzf_colors = {
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-let $FZF_DEFAULT_COMMAND = g:fzf_default_command
-let $FZF_DEFAULT_OPTS = '--layout=reverse --border'
-" let $FZF_DEFAULT_OPTS .= $FZF_CTRL_T_OPTS
-" let $FZF_DEFAULT_OPTS .= ' --margin=1,4 --color=dark '
-" let $FZF_DEFAULT_OPTS .= ' --color=fg+:#707a8c,bg+:#191e2a,hl+:#ffcc66 '
-" let $FZF_DEFAULT_OPTS .= ' --color=fg+:#707a8c,bg+:#191e2a,hl+:#ffcc66 '
-" let $FZF_DEFAULT_OPTS .= ' --color=marker:#73d0ff,spinner:#73d0ff,header:#d4bfff'
-" let $FZF_DEFAULT_OPTS .= ' --color=info:#73d0ff,prompt:#707a8c,pointer:#cbccc6'
+" nnoremap \ :Rg<CR>
+nnoremap <C-T> :Files<cr>
 
-fu! FloatingFZF()
-  let buf = nvim_create_buf(v:false, v:true)
-  let height = float2nr(&lines * 0.35)
-  let width = float2nr(&columns * 0.8)
+command! -bang -nargs=? -complete=dir Files
+      \ call fzf#vim#files(
+      \ <q-args>,
+      \ fzf#vim#with_preview({'options': ['--prompt=ﬦ ', '--info=hidden']}),
+      \ <bang>0)
 
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': 1,
-        \ 'col': (&columns - width) / 2,
-        \ 'width': width,
-        \ 'height': height,
-        \ 'style': 'minimal'
-        \ }
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
-  setl winhl=Normal:MarkdownError
-  " keepalt file explorer
+    command! -bang -nargs=* Rg
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+      \   fzf#vim#with_preview(), <bang>0)
 
-  call setbufvar(buf, '&signcolumn', 'no')
-  call setbufvar(buf, '&rnu', 'no')
-  call nvim_open_win(buf, v:true, opts)
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
 
-function! s:line_handler(l)
-  let keys = split(a:l, ':\t')
-  exec 'buf' keys[0]
-  exec keys[1]
-  normal! ^zz
-endfunction
-
-function! s:buffer_lines()
-  let res = []
-  for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
-    call extend(res, map(getbufline(b,0,"$"), '"[" . b . "]\t" . (v:key + 1) . ":\t" . v:val '))
-  endfor
-  return res
-endfunction
-
-command! FZFLines call fzf#run({
-\   'source':  <sid>buffer_lines(),
-\   'sink':    function('<sid>line_handler'),
-\   'options': '--extended --nth=3.. --preview-window :wrap',
-\   'window': 'call FloatingFZF()'
-\})
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 

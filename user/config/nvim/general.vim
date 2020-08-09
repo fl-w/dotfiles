@@ -27,16 +27,15 @@ set title                                      | " change the terminal title
 set autoread                                   | " auto reload unmodified files changed outside vim
 set hidden                                     | " allow unsaved buffers to be hidden
 set switchbuf=useopen                          | " always switch buffer instead of opening new one
-set shortmess=a                                | " skip 'press enter to continue' prompt
 " set number                                     | " show line number
-" set relativenumber                             | " show relative line number
+set relativenumber                             | " show relative line number
 set lazyredraw                                 | " don't redraw when executing macros, smoother experience
 set clipboard+=unnamedplus                     | " use system clipboard
 set smartcase                                  | " unless uppercase explicitly mentioned
 set cursorline                                 | " Highlight the current line
 set nostartofline                              | " jump to first character in line
 set history=1000                               | " increase max items in history
-set timeout ttimeout timeoutlen=100            | " timeout length for mapped sequence (default: 1000)
+set timeout ttimeout timeoutlen=480            | " timeout length for mapped sequence (default: 1000)
 set history=1000                               | " increase max items in history
 set smartindent                                | " indent smartly
 set autoindent                                 | " enable auto indentation
@@ -45,7 +44,6 @@ set mouse=a                                    | " enable mouse support in all m
 set visualbell noerrorbells                    | " disable visual and errorbells
 set updatetime=180                             | " set cursor hold timeout
 set noshowmode                                 | " hide mode (lightline shows mode)
-set noshowcmd                                  | " hide incomplete commands
 set splitright                                 | " open vsp on right and bottom
 set splitbelow                                 | " » which feels more natural
 set previewheight=38                           | " set height for preview window (default: 12)
@@ -66,7 +64,8 @@ set laststatus=2                               | " always show statusbar
 set scrolloff=5                                | " Minimum space on bottom/top of window
 set sidescrolloff=7                            | " Minimum space on side
 set showtabline=1                              | " show tabline only if there is at least 1 tab
-" set shortmess+=a                               | " don't give \|ins-completion-menu\| messages.
+set shortmess+=c                               | " don't give \|ins-completion-menu\| messages.
+set shortmess+=S                               | " don't show search count message.
 set smarttab                                   | " indents according to shiftwidth on tab
 set expandtab                                  | " use spaces instead of tabs. (spaces > tab)
 set shiftround                                 | " make indent a multiple of shiftwidth

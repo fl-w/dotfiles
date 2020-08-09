@@ -13,8 +13,8 @@ if &runtimepath =~? 'auto-pairs'
   let b:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'", "`":"`", '<':'>'}
 endif
 
-if exists('g:which_key_map')
-  let g:which_key_map[';'] = [ ':so %', 'Source current script' ]
-else
-  nnoremap <buffer> <silent> <leader>; :source %<cr>
+if !exists('g:which_key_map')
+  nnoremap <buffer> <silent> <leader>.. :source %<cr>
 endif
+
+noremap <buffer> <silent> <F10> :<C-u>exec getline('.')<cr>

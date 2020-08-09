@@ -3,6 +3,9 @@
 
 let g:wintabs_ui_readonly = ' '
 let g:wintabs_ui_modified = ' '
+let g:wintabs_autoclose = 2
+let g:wintabs_autoclose_vim = 2
+
 let s:sep_left = "\ue0be" " or  ue0b6 | a | e
 let s:sep_right = "\ue0b8" " or ue0b4 | c | 8
 

@@ -26,7 +26,11 @@
     "efm": {
       "command": "efm-langserver",
       "args": [],
-      "filetypes": ["vim", "markdown", "yaml"]
+      "filetypes": [
+        "vim",
+        "markdown",
+        "yaml"
+      ]
     }
   },
   "list.indicator": ">",
@@ -45,5 +49,4 @@
     "method": "m",
     "function": ""
   }
- // "yank.priority": 20
 }

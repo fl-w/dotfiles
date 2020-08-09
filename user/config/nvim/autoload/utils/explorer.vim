@@ -11,5 +11,5 @@ fu! utils#explorer#init(...)
   setl nofoldenable
   setl foldmethod=manual
   setl signcolumn=no
-  call utils#nonwrite_buffer_init()
+  call utils#init_minimal_window()
 endfunction

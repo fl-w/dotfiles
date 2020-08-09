@@ -8,36 +8,56 @@ let g:loaded_netrwSettings     = 1
 let g:loaded_netrwFileHandlers = 1
 
 " fern settings
-let g:fern#disable_drawer_auto_quit = 1
 let g:fern#default_hidden = 1
-let g:fern#drawer_keep=1
-let g:fern#disable_drawer_auto_resize=1
-let g:fern#renderer="devicons"
-let g:fern#drawer_width = 32
 let g:fern#disable_default_mappings = 1
-let g:fern#disable_drawer_auto_winfixwidth= 1
+let g:fern#drawer_keep=1
+let g:fern#disable_drawer_auto_resize = 1
+let g:fern#renderer="devicons"
+let g:fern#drawer_width = 26
 
-command! Drawer call OpenFernDrawer()
 
 augroup fern_ftdetect
   au!
-  autocmd FileType fern call <SID>fern_init()
   autocmd BufEnter * ++nested call <SID>hijack_netrw()
   autocmd ColorScheme * call <SID>set_colors()
+  autocmd FileType fern call <SID>fern_init()
+  autocmd FileType fern-renamer
+        \  nnoremap <buffer> <cr> :w<cr>
+        \| nnoremap <buffer> <esc> :q!<cr>
+        \| nnoremap <buffer> q :q!<cr>
 augroup END
+
+fu! s:hijack_netrw()
+  let path = fnameescape(expand('%:p'))
+  if !isdirectory(path)
+    return
+  endif
+  bwipeout % | exe 'cd' path | call fern#toggle_drawer(path) | wincmd p
+endfu
+
+fu! fern#get_status_string() abort
+  return 'fern'
+endfu
+
+let s:drawer = utils#sliding_window('fern_drawer', { 'width': g:fern#drawer_width })
+fu! fern#toggle_drawer(...) abort
+  let path = get(a:, 1, fnamemodify('.', ':p'))
+  call s:drawer.toggle({ ->
+        \ execute(printf('Fern %s -drawer -keep -reveal=%s', path, expand('%'))) })
+endfu
+
+command! Drawer call fern#toggle_drawer()
 
 fun! s:set_colors()
   hi       FernLeaf ctermfg=159 guifg=#3E4B59
   hi! link FernRoot Keyword
   hi! link FernBranch Keyword
-  " call fern#renderers.devicons().highlight() " update icon highlight
+  " call fern#renderers.devicons().highl ight() " update icon highlight
 endf
 
 function! s:fern_init() abort
   silent! call utils#explorer#init("fern")
   call s:set_colors()
-
-  let t:fern_drawer_win_id = win_getid()
 
   " disable these mappings
   nmap <silent> <buffer> <3-LeftMouse> <Nop>
@@ -53,8 +73,7 @@ function! s:fern_init() abort
     \   "\<Plug>(fern-action-open:select)",
     \ )
 
-  nmap <buffer> <Plug>(fern-action-rename) <Plug>(fern-action-rename:vsplit)
-  hi! link FernRoot Keyword
+  nmap <buffer> <Plug>(fern-action-rename) <Plug>(fern-action-rename:tabedit)
 
   " set custom close on open action, no space after \ and before :<C-u> is
   " important
@@ -122,39 +141,5 @@ function! s:fern_init() abort
   nmap <buffer> md <Plug>(fern-action-new-dir)
   nmap <buffer> mf <Plug>(fern-action-new-file)
   nmap <buffer> . <Plug>(fern-action-hide-toggle)
-  nmap <buffer> q :<C-u>quit<CR>
+  nmap <buffer> q :<C-u>silent call fern#toggle_drawer()<cr>
 endfunction
-
-fu! s:hijack_netrw()
-  let path = fnameescape(expand('%:p'))
-  if !isdirectory(path)
-    return
-  endif
-  bwipeout %
-  exe 'cd ' . path
-  execute printf('Fern %s -drawer', path)
-endfu
-
-fu! fern#get_status_string() abort
-  return 'fern'
-endfu
-
-fu! ToggleFernDrawer() abort
-  let w = win_id2win(get(t:, 'fern_drawer_win_id', -1))
-  if w == 0
-    call OpenFernDrawer()
-  else
-    exe w . 'wincmd c'
-    unlet t:fern_drawer_win_id
-  endif
-endfu
-
-fu! OpenFernDrawer() abort
-  " open fern drawer
-  " echo fnamemodify('.', ':p')
-  exe printf('Fern %s -drawer -width=%d -keep -reveal=%s',
-    \  fnamemodify('.', ':p'),
-    \  g:fern#drawer_width,
-    \  expand('%')
-    \ )
-endfu

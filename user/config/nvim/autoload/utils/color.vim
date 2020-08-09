@@ -16,3 +16,9 @@ fun! utils#color#copy_hi_group(group, to)
   exe printf('hi %s ctermfg=%s ctermbg=%s guifg=%s guibg=%s', a:to, ctermbg, ctermfg, guifg, guibg)
 endf
 
+function! utils#color#has_colorscheme(name) abort
+  " check if a colorscheme exists
+  " inspired by https://stackoverflow.com/a/5703164/6064933.
+  let l:pat = 'colors/' . a:name . '.vim'
+  return !empty(globpath(&runtimepath, l:pat))
+endfunction

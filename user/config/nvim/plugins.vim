@@ -70,7 +70,8 @@ else
   "
   Plug 'AndrewRadev/splitjoin.vim'              | " Switch between single-line and multi-line code
   Plug 'bkad/CamelCaseMotion'                   | " Add camel case motion
-  Plug 'dhruvasagar/vim-table-mode'             | " Easily create tables in vim
+  Plug 'dhruvasagar/vim-table-mode',
+        \ { 'for': 'markdown' }                 | " Easily create tables in vim
   Plug 'easymotion/vim-easymotion'              | " More vim motions!
   Plug 'jiangmiao/auto-pairs'                   | " Add brackets automatically
   Plug 'junegunn/goyo.vim'                      | " Distraction-free writing in Vim
@@ -80,7 +81,8 @@ else
   Plug 'liuchengxu/vim-which-key'               | " Show keybindings in a popup
   Plug 'machakann/vim-highlightedyank'          | " Highlight yanked text
   Plug 'majutsushi/tagbar'                      | " Display tags in a window by scope.
-  Plug 'mhinz/vim-signify'                      | " Git gutter
+  " Plug 'mhinz/vim-signify'                      | " Git gutter
+  Plug 'airblade/vim-gitgutter'
   Plug 'rhysd/clever-f.vim'                     | " Quick f,t vim motions
   Plug 'samoshkin/vim-mergetool'                | " use vim as mergetool
   Plug 'tpope/vim-abolish'                      | " Easily search and substitute

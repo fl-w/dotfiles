@@ -58,29 +58,37 @@ function! statusline#update(...) abort
   for n in range(1, winnr('$'))
     call setwinvar(n, '&statusline',
           \ s:stl[n!=w ? 'active' : 'inactive'][slim || winwidth(n) <= slimw ? 'slim' : '_'])
-    if has('nvim')
-      let hl = getwinvar(n, '&winhl')
-      let whl = getwinvar(n, '_statusline_winhl')
-      if whl is ""
-        call setwinvar(n, '_statusline_winhl', { 'val': hl })
-      else
-        let hl = whl.val
-      endif
-      call setwinvar(n, '&winhl', s:win_has_bottom_neighbour(n) ?
-            \ hl . "StatusLine:StatusLineI,StatusLineNC:StatusLineINC" :
-            \ hl
-            \ )
-    endif
   endfor
 endfunction
+
+function statusline#update_hi() abort
+  if ! has('nvim')
+    return
+  endif
+
+  for n in range(1, winnr('$'))
+    let hl = getwinvar(n, '&winhl')
+    let whl = getwinvar(n, '_statusline_winhl')
+    if empty(whl)
+      call setwinvar(n, '_statusline_winhl', { 'cache': hl })
+    else
+      let hl = whl.cache
+    endif
+    call setwinvar(n, '&winhl', s:win_has_bottom_neighbour(n) ?
+          \ hl . "StatusLine:StatusLineI,StatusLineNC:StatusLineINC" :
+          \ hl
+          \ )
+  endfor
+endf
 
 fun! s:win_has_bottom_neighbour(n)
   let b = win_screenpos(a:n)[0] + winheight(a:n) - 1
   for l:win in range(1, winnr('$'))
-    if a:n != l:win && win_screenpos(l:win)[0] > b
+    if a:n != l:win && win_screenpos(l:win)[0] > b && buflisted(winbufnr(l:win))
       return v:true
     endif
   endfor
+  return v:false
 endf
 
 function! s:on_mode_change(mode) abort
@@ -96,7 +104,7 @@ function! s:is_temp_file()
 endfunction
 
 function! s:is_invalid_win() abort
-  return s:is_temp_file() "|| &buftype ==# 'popup'
+  return s:is_temp_file() || &buftype ==# 'popup'
 endfunction
 
 " init vars and set statusline
@@ -107,6 +115,7 @@ augroup statusline_update
   " Change colors for insert mode
   autocmd InsertEnter,InsertChange * call s:on_mode_change(v:insertmode)
   autocmd VimEnter,BufEnter,WinEnter,ColorScheme * call statusline#update()
+  autocmd WinNew,WinClosed * call statusline#update_hi()
 augroup END
 
 hi default link StatusLineI StatusLine
