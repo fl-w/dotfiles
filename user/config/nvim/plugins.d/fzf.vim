@@ -17,8 +17,9 @@ let g:fzf_buffers_jump = v:true
 "       \   'border': 'sharp'
 "       \ } }
 
+let g:fzf_height = 16
 let g:fzf_layout = {
- \ 'window': 'new | wincmd J | resize 1 | call animate#window_percent_height(0.4)'
+ \ 'window': 'new | wincmd J | resize 1 | call animate#window_absolute_height(g:fzf_height)'
 \ }
 
 augroup fzf_custom
@@ -29,8 +30,8 @@ augroup end
 
 " Override fzf command
 let g:fzf_default_command = get(g:, 'fzf_default_command',
-      \ $FZF_DEFAULT_COMMAND . ($FZF_DEFAULT_COMMAND != "" ? ' -g "!plugged"' : ''))
-if strlen(g:fzf_default_command) != 0 | let $FZF_DEFAULT_COMMAND = g:fzf_default_command | endif
+      \ $FZF_DEFAULT_COMMAND . (!empty($FZF_DEFAULT_COMMAND) ? ' -g "!plugged"' : ''))
+if !empty(g:fzf_default_command) | let $FZF_DEFAULT_COMMAND = g:fzf_default_command | endif
 
 " Override fzf opts
 let g:fzf_default_opts = get(g:, 'fzf_default_opts',
