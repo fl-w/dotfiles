@@ -89,10 +89,8 @@ function! statusline#gitstatus()
 endfunction
 
 function! statusline#current_function_tag()
-  return get(b:, 'coc_current_function',
-        \ exists('*tagbar#currenttag') ?
-        \ tagbar#currenttag(tagbar#currenttagtype('%s', '') == 'function' ? '%s()' : '%s', '') : ''
-        \ )
+  return printf('%s %s()', get(g:, 'statusline_icon_function', ''),
+        \ get(b:, 'vista_nearest_method_or_function', get(b:, 'coc_current_function', '')))
 endfunction
 
 function! statusline#linter() abort

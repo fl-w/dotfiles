@@ -96,7 +96,7 @@ else
   "
   Plug 'camspiers/animate.vim'                  | " animation library
   Plug 'junegunn/vim-easy-align'                | " Easily align text
-  Plug 'majutsushi/tagbar'                      | " Display tags in a window by scope.
+  Plug 'liuchengxu/vista.vim'                   | " Displays tags in a window by scope
   Plug 'mbbill/undotree'                        | " Graphical undo history
   Plug 'tpope/vim-commentary'                   | " Awesome commenting
   Plug 'psliwka/vim-smoothie'                   | " Smooth scrolling
