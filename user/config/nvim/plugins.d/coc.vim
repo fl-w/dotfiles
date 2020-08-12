@@ -12,14 +12,20 @@ if exists('*utils#abbr_command')
   call utils#abbr_command('coc', 'CocConfig')  " Use coc to open coc config
 endif
 
+highlight! link CocErrorSign Error
+
 augroup coc_autocomplete
   au!
-  " coc-highlight: highlight word under cursor on hold
+
+  " coc-highlight: highlight word under cursor
   au CursorHold * silent call CocActionAsync('highlight')
+
   " show signature in insert mode
   au CursorHoldI * silent call CocActionAsync('showSignatureHelp')
+
   " Update signature help on jump placeholder.
   au User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+
   " Format prior to save
   autocmd BufWritePre * silent call CocAction('format')
   " close the preview window when completion is done.
@@ -46,7 +52,7 @@ function! s:tab_complete() abort
 endfunction
 
 function! s:show_documentation() abort
-  if (index(['vim','help'], &filetype) >= 0)
+  if index(['vim','help'], &filetype) >= 0
     try
       execute ':h '.expand('<cword>')
     catch

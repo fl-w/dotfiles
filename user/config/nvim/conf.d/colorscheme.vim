@@ -48,6 +48,7 @@ fu! s:set_colors() abort
   hi         StatusLineINC guifg=#2b2b30 guibg=#181320 gui=italic  | " add background to statusline if has neighboring window below
   hi           EndOfBuffer guifg=#1f1f31 guibg=bg                  | " make EndOfBuffer ~ faint
   hi             VertSplit guifg=bg      guibg=bg                  | " dont highlight vertical split
+  hi            CursorLine guifg=NONE                              | " don't highlight current line
   hi        SignifySignAdd               guibg=bg                  | " dont add bacground to git diff signs
   hi     SignifySignChange               guibg=bg                  | " dont add bacground to git diff signs
   hi     SignifySignRemove               guibg=bg                  | " dont add bacground to git diff signs
@@ -64,16 +65,16 @@ fu! s:set_colors() abort
   highlight default link WhichKeyDesc      Identifier
   highlight default link WhichKeyFloating Pmenu
 
-  if l:color_scheme != 'ayu'
-    hi          Pmenu ctermfg=243 ctermbg=237  guifg=#767676 guibg=#2b2b30
-    hi       PmenuSel ctermfg=140 ctermbg=237  guifg=#a790d5 guibg=#2b2b30 gui=bold
-    hi      PmenuSbar ctermfg=28  ctermbg=233  guifg=#c269fe guibg=#303030
-    hi     PmenuThumb ctermfg=160 ctermbg=97   guifg=#ff2c4b guibg=#875faf
-  else
-    " hi       Function                          guifg=#ff7733
-    " hi        Keyword                          guifg=#ff2c4b
-  endif
 
+
+  hi          Pmenu ctermfg=243 ctermbg=237  guifg=#767676 guibg=#36323d
+  hi       PmenuSel ctermfg=140 ctermbg=237  guifg=#a790d5 guibg=#36323d gui=bold
+  hi      PmenuSbar ctermfg=28  ctermbg=233  guifg=#c269fe guibg=#303030
+  hi     PmenuThumb ctermfg=160 ctermbg=97   guifg=#ff2c4b guibg=#875faf
+  hi          Error ctermfg=204 ctermbg=NONE guifg=#ff3333 guibg=NONE   gui=none
+  " alt error color:  #ff5370
+
+  " colorscheme specific configuration
   if l:color_scheme == 'badwolf'
     hi DiffAdd guifg=#B8CC52
     hi DiffChange guifg=#36A3D9
