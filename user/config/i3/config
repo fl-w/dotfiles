@@ -176,6 +176,10 @@ bindsym $mod+Return exec $term
 # Browser default
 bindsym $mod+b exec $browser
 
+# Spotify & discord
+bindsym $mod+n exec spotify
+bindsym $mod+m exec discord
+
 # Rofi drun menu
 bindsym $mod+space exec $bin/app-launcher --tabs --window --drun --ssh --show drun
 bindsym $mod+shift+space exec $bin/app-launcher -v modes --show drun --window --drun --ssh
@@ -373,6 +377,6 @@ exec_always --no-startup-id $scripts/i3-launch.sh flashfocus
 exec_always --no-startup-id $scripts/i3-alternate-layout >/dev/null 2>&1
 exec_always --no-startup-id $HOME/.screenlayout
 # exec_always --no-startup-id spicetify apply
-exec_always --no-startup-id xset r rate 310 40 # set x key repeat rate
+exec_always --no-startup-id xset r rate 280 50
 exec_always --no-startup-id sxhkd
 #}}}
