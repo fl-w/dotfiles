@@ -27,4 +27,8 @@ function! InsertMarkdownScreenShot()
   endif
 endfunction
 
-autocmd! BufWritePost *.md if g:md_auto_compile | call CompileMarkdown() | endif
+augroup markdown_tools
+  autocmd! BufWritePost *.md if g:md_auto_compile | call CompileMarkdown() | endif
+  autocmd FileType md,markdown noremap <buffer> s :call InsertMarkdownScreenShot()<CR>
+augroup end
+

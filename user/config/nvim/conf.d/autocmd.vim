@@ -16,17 +16,9 @@ augroup vimrc
         \ call utils#auto_mkdir(expand('<afile>:p:h'), v:cmdbang)     " auto create missing directories
   au InsertEnter * let b:icul = &cul | set nocul                      " Remove cursorline on insertmode
   au InsertLeave * if utils#boolexists('b:icul') | set cul | endif    " Replace prev cursorline
-  au BufEnter *.txt if &buftype == 'help' | wincmd T | nnoremap <buffer> q :q<cr> | endif
+  au BufEnter *.txt if &buftype == 'help' && winnr('$') > 1 | wincmd T | nnoremap <buffer> q :q<cr> | endif
   au WinLeave * if &cursorline | let w:cur = 1 | setl nocursorline | endif
   au WinEnter * if utils#boolexists('w:cur') | unlet w:cur | setl cursorline | endif
-augroup END
-
-fun! s:unset_temp(setting)
-endf
-
-" markdown
-augroup MD_SCR
-autocmd FileType md,markdown noremap s :call InsertMarkdownScreenShot()<CR>
 augroup END
 
 fun! s:on_focus_lost()
@@ -48,13 +40,13 @@ endf
 au vimrc FocusLost * call s:on_focus_lost()
 au vimrc FocusGained *  call s:on_focus_enter()
 
-augroup auto_read
-    autocmd!
-    " autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
-    "             \ if mode() == 'n' && getcmdwintype() == '' | checktime | endif
-    autocmd FileChangedShellPost * echohl WarningMsg
-                \ | echo "File changed on disk. Buffer reloaded!" | echohl None
-augroup END
+" augroup auto_read
+"     autocmd!
+"     autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+"                 \ if mode() == 'n' && getcmdwintype() == '' | checktime | endif
+"     autocmd FileChangedShellPost * echohl WarningMsg
+"                 \ | echo "File changed on disk. Buffer reloaded!" | echohl None
+" augroup END
 
 " Return to last edit position when opening a file
 augroup resume_edit_position

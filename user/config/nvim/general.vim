@@ -27,8 +27,7 @@ set title                                      | " change the terminal title
 set autoread                                   | " auto reload unmodified files changed outside vim
 set hidden                                     | " allow unsaved buffers to be hidden
 set switchbuf=useopen                          | " always switch buffer instead of opening new one
-" set number                                     | " show line number
-set relativenumber                             | " show relative line number
+set relativenumber number                      | " show relative line number
 set lazyredraw                                 | " don't redraw when executing macros, smoother experience
 set clipboard+=unnamedplus                     | " use system clipboard
 set smartcase                                  | " unless uppercase explicitly mentioned

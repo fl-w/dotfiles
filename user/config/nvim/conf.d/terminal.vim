@@ -21,7 +21,7 @@ fu! s:term_init()
   setl nocursorline
   setl bufhidden=hide
 
-  call utils#hide_statusline()
+  let &l:statusline='%{getline(line("w$")+1)}' " hide statusline
 
   startinsert
 

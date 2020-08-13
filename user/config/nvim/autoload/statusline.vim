@@ -89,8 +89,8 @@ function! statusline#gitstatus()
 endfunction
 
 function! statusline#current_function_tag()
-  return printf('%s %s()', get(g:, 'statusline_icon_function', ''),
-        \ get(b:, 'vista_nearest_method_or_function', get(b:, 'coc_current_function', '')))
+  let fn = get(b:, 'vista_nearest_method_or_function', get(b:, 'coc_current_function', ''))
+  return !empty(fn) ? printf('%s()', fn) : ''
 endfunction
 
 function! statusline#linter() abort

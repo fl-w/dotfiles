@@ -14,6 +14,8 @@ noremap       - ddp
 noremap       _ ddkP
 vmap <silent> - :m '>+1<CR>gv=gv
 vmap <silent> _ :m '<-2<CR>gv=gv
+vmap <silent> J :m '>+1<CR>gv=gv
+vmap <silent> K :m '<-2<CR>gv=gv
 
 " Move lines with alt + up or down
 noremap <m-Up> ddkP
@@ -35,6 +37,8 @@ nnoremap <silent> \ :new<cr>
 " Scroll with arrow keys
 noremap <Down> <C-e>
 noremap <Up>   <C-y>
+" noremap <Down> <C-e>
+" noremap <Up>   <C-y>
 
 " Clear highlight by pressing esc
 nnoremap <silent> <esc>  :noh<return><esc>
@@ -46,13 +50,13 @@ nnoremap <silent> <M-h>    :vertical resize -2<CR>
 nnoremap <silent> <M-l>    :vertical resize +2<CR>
 
 " Map double <leader> to save
-noremap <silent> <leader> <leader> :update! <cr>
+noremap <silent> <leader><leader> :update!<cr>
 
 " Map <leader> + x to save and exit file
-noremap <silent> <leader> x  :x! <cr>
+noremap <silent> <leader>x  :x!<cr>
 
-" Map <leader> + q to quit file
-nmap <silent> <leader> q  :q!<cr>
+" Map <leader> + q to quit window
+nmap <silent> <leader>q  :q!<cr>
 
 " Map gd to goto word def
 noremap gd  <S-K>
@@ -66,14 +70,24 @@ nmap    <cr>   ]<space>
 nmap    <s-cr> [<space>
 
 " Use ctrl+{h,j,k,l} to navigate window panes
-noremap <c-h>   <c-w>h
-noremap <c-j>   <c-w>j
-noremap <c-k>   <c-w>k
-noremap <c-l>   <c-w>l
+noremap  <c-h>   <c-w>h
+noremap  <c-j>   <c-w>j
+noremap  <c-k>   <c-w>k
+noremap  <c-l>   <c-w>l
+inoremap <c-h>   <c-w>h
+inoremap <c-j>   <c-w>j
+inoremap <c-k>   <c-w>k
+inoremap <c-l>   <c-w>l
+if exists(':tnoremap')
+  tnoremap <c-h>   <c-\><c-n><c-w>h
+  tnoremap <c-j>   <c-\><c-n><c-w>j
+  tnoremap <c-k>   <c-\><c-n><c-w>k
+  tnoremap <c-l>   <c-\><c-n><c-w>l
+endif
 
 " Use ctrl+p to replace word under cursor with clipboard text
 noremap <c-p>   viw"0p
-noremap <c-P>   viW"0p
+noremap <c-P>   vaW"0p
 
 " Use {,shift}+tab to navigate tabs
 nnoremap <silent>   <tab> :tabnext<CR>
@@ -106,3 +120,7 @@ noremap <silent><leader>P "+y
 " Map {jj/kk} -> {down/up} in insert mode
 inoremap <nowait> kk <esc>k
 inoremap <nowait> jj <esc>j
+
+" Use ctrl+{j,k} to navigate omnifunc
+inoremap <expr> <c-j> ("\<C-n>")
+inoremap <expr> <c-k> ("\<C-p>")

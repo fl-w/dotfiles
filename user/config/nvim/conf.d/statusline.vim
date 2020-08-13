@@ -56,13 +56,15 @@ function! statusline#update(...) abort
 
   let s:stl = get(a:, '1', !exists('s:stl')) ? s:statusline() : s:stl
   for n in range(1, winnr('$'))
-    call setwinvar(n, '&statusline',
-          \ s:stl[n!=w ? 'active' : 'inactive'][slim || winwidth(n) <= slimw ? 'slim' : '_'])
+    if getwinvar(n, '&buftype') != 'terminal'
+      call setwinvar(n, '&statusline',
+            \ s:stl[n!=w ? 'active' : 'inactive'][slim || winwidth(n) <= slimw ? 'slim' : '_'])
+    endif
   endfor
 endfunction
 
 function statusline#update_hi() abort
-  if ! has('nvim')
+  if !has('nvim')
     return
   endif
 
