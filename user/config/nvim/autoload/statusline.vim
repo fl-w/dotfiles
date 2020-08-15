@@ -90,7 +90,7 @@ endfunction
 
 function! statusline#current_function_tag()
   let fn = get(b:, 'vista_nearest_method_or_function', get(b:, 'coc_current_function', ''))
-  return !empty(fn) ? printf('%s()', fn) : ''
+  return !empty(fn) ? printf('%s%s', fn, fn =~ '*)' ? '' : '()') : ''
 endfunction
 
 function! statusline#linter() abort

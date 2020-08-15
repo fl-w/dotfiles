@@ -18,14 +18,21 @@ let g:fzf_buffers_jump = v:true
 "       \ } }
 
 let g:fzf_height = 16
-let g:fzf_layout = {
- \ 'window': 'new | wincmd J | resize 1 | call animate#window_absolute_height(g:fzf_height)'
-\ }
+
+" slide fzf in
+call utils#window#slide_window('fzf', g:fzf_height)
+
+fun! s:close_fzf()
+  let w = winnr()
+  let cl = getwinvar(w, '_animated_close')
+  " close normally or animate if possible
+  exe empty(cl) ? printf('%dwincmd c', w) : cl
+endf
 
 augroup fzf_custom
   au!
   autocmd FileType fzf call utils#init_minimal_window()
-        \ | tnoremap <buffer> <silent> <Esc> <C-\><C-n>:call utils#sliding_window_animate(1, { -> execute('wincmd c')}, v:true)<cr>i
+        \ | tnoremap <buffer> <silent> <Esc> <C-\><C-n>:call <sid>close_fzf()<cr>
 augroup end
 
 " Override fzf command
@@ -56,31 +63,27 @@ let g:fzf_colors = {
 " nnoremap \ :Rg<CR>
 nnoremap <C-T> :Files<cr>
 
+let s:fzf_opts = {'options': [
+      \ '--prompt=ﬦ ',
+      \ '--info=hidden',
+      \ '--preview-window=noborder'
+      \ ]}
+
 command! -bang -nargs=? -complete=dir Files
       \ call fzf#vim#files(
       \ <q-args>,
-      \ fzf#vim#with_preview({'options': ['--prompt=ﬦ ', '--info=hidden']}),
+      \ fzf#vim#with_preview(s:fzf_opts),
       \ <bang>0)
+
+command! -bang -nargs=* Rg
+      \ call fzf#vim#grep(
+      \ printf(
+      \   'rg --follow --column --line-number --no-heading --color=always --smart-case -- %s || true',
+      \   shellescape(<q-args>)),
+      \ 1,
+      \ fzf#vim#with_preview(s:fzf_opts), <bang>0)
 
 command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
   \   'git grep --line-number -- '.shellescape(<q-args>), 0,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
-
-if !empty($RG_DEFAULT_COMMAND)
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \ $RG_DEFAULT_COMMAND . shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-endif
-
-function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-endfunction
-
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-

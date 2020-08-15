@@ -15,12 +15,22 @@ let g:fern#disable_drawer_auto_resize = 1
 let g:fern#renderer="devicons"
 let g:fern#drawer_width = 26
 
+" make fern windows 'slide' in and out on open
+call utils#window#slide_window('fern', g:fern#drawer_width)
 
 augroup fern_ftdetect
   au!
+
+  " replace netrw with fern to open directory
   autocmd BufEnter * ++nested call <SID>hijack_netrw()
+
+  " set drawer colors on color scheme change
   autocmd ColorScheme * call <SID>set_colors()
+
+  " customize fern buffer
   autocmd FileType fern call <SID>fern_init()
+
+  " add mappings to rename buffer to feel more natural
   autocmd FileType fern-renamer
         \  nnoremap <buffer> <cr> :w<cr>
         \| nnoremap <buffer> <esc> :q!<cr>
@@ -29,30 +39,31 @@ augroup END
 
 fu! s:hijack_netrw()
   let path = fnameescape(expand('%:p'))
-  if !isdirectory(path)
-    return
+  if isdirectory(path)
+    bwipeout %
+    exe 'cd' path
+    call fern#toggle_drawer(path)
   endif
-  bwipeout % | exe 'cd' path | call fern#toggle_drawer(path) | wincmd p
 endfu
 
 fu! fern#get_status_string() abort
   return 'fern'
 endfu
 
-let s:drawer = utils#sliding_window('fern_drawer', { 'width': g:fern#drawer_width })
+let s:drawer = utils#window#toggle_window('fern_drawer')
 fu! fern#toggle_drawer(...) abort
   let path = get(a:, 1, fnamemodify('.', ':p'))
-  call s:drawer.toggle({ ->
-        \ execute(printf('Fern %s -drawer -keep -reveal=%s', path, expand('%'))) })
+  call s:drawer.toggle(
+    \ { -> execute(printf('Fern %s -drawer -keep -reveal=%s', path, expand('%'))) })
 endfu
 
 command! Drawer call fern#toggle_drawer()
 
 fun! s:set_colors()
+  " set custom fern colors
   hi       FernLeaf ctermfg=159 guifg=#3E4B59
   hi! link FernRoot Keyword
   hi! link FernBranch Keyword
-  " call fern#renderers.devicons().highl ight() " update icon highlight
 endf
 
 function! s:fern_init() abort

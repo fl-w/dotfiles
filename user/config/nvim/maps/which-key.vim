@@ -22,6 +22,7 @@ let g:which_key_map['d'] = [ ':Drawer',              'toggle file drawer' ]
 let g:which_key_map['e'] = [ ':Files',               'edit files' ]
 let g:which_key_map['E'] = [ ':GFiles',              'edit project files' ]
 let g:which_key_map['S'] = [ ':SessionSave',         'save session' ]
+let g:which_key_map['v'] = [ ':Vista!!',             'toggle tags window' ]
 let g:which_key_map['z'] = [ ':Goyo',                'zen' ]
 
 " remove previous mappings
@@ -52,6 +53,19 @@ let g:which_key_map.b = {
       \ 'n' : [':WintabsNext', 'next'],
       \ 'p' : [':WintabsPrevious', 'previous'],
       \ 'd' : [':WintabsClose', 'previous'],
+      \ }
+
+" f is for fzf/find
+let g:which_key_map.f = {
+      \ 'name': '+find',
+      \ 't': [':Rg',       'find text'],
+      \ 'f': [':Files',    'find files'],
+      \ 'b': [':Buffers',  'find buffers'],
+      \ 'c': [':Colors',   'find colors'],
+      \ 'C': [':Commands', 'find commands'],
+      \ 'h': [':Helptags', 'find help'],
+      \ 'o': [':normal go', 'find tags in file'],
+      \ '/': [':History',  'find history'],
       \ }
 
 " g is for git
@@ -102,18 +116,6 @@ let g:which_key_map.l = {
       \ 'U' : [':CocUpdate',                        'update CoC'],
       \ 'z' : [':CocDisable',                       'disable CoC'],
       \ 'Z' : [':CocEnable',                        'enable CoC'],
-      \ }
-
-" f is for fzf/find
-let g:which_key_map.f = {
-      \ 'name': '+find',
-      \ 't': [':Rg',       'find text'],
-      \ 'f': [':Files',    'find files'],
-      \ 'b': [':Buffers',  'find buffers'],
-      \ 'c': [':Colors',   'find colors'],
-      \ 'C': [':Commands', 'find commands'],
-      \ 'h': [':Helptags', 'find help'],
-      \ '/': [':History',  'find history'],
       \ }
 
 " t is for terminal

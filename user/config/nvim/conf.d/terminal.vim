@@ -7,10 +7,8 @@ let s:term_height = 0.21
 let s:term_name = 'terminal-window'
 let s:term_auto_clear = v:false
 
-let s:terminal = utils#sliding_window('terminal_window_id', { 'height': &lines * s:term_height })
-
-" Q to hide terminal
-" tnoremap <expr> Q if &buftype == 'terminal' | echo noo | endif
+let s:terminal = utils#window#toggle_window('terminal_window_id')
+call utils#window#slide_window('terminal', s:term_height)
 
 fu! s:term_init()
   setl nonumber nornu " remove line numbering
@@ -21,7 +19,8 @@ fu! s:term_init()
   setl nocursorline
   setl bufhidden=hide
 
-  let &l:statusline='%{getline(line("w$")+1)}' " hide statusline
+  " hide statusline
+  let &l:statusline='%{getline(line("w$")+1)}'
 
   startinsert
 
@@ -62,6 +61,7 @@ fun! terminal#open() abort
 
   call win_gotoid(s:terminal.id())
   let name = terminal#get_ready_term()
+  setfiletype terminal
 
   " create buffer if not exists
   if !bufexists(name)
