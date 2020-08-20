@@ -52,10 +52,12 @@ augroup dashboard_init
     autocmd!
     autocmd User dashboardReady let &l:stl = ' This statusline rocks!'
     " I like the dashboard commands over my fzf bindings
+    " 20/8/2020: the :DashboardFind commands use override global
+    " fzf vars hence my config
     autocmd filetype dashboard call utils#init_minimal_window()
-                \| nnoremap <buffer> <space>fw :DashboardFindWord<cr>
-                \| nnoremap <buffer> <space>fh :DashboardFindHistory<cr>
-                \| nnoremap <buffer> <space>ff :DashboardFindFile<cr>
-                \| nnoremap <buffer> <space>fb :DashboardJumpMarks<cr>
+                " \| nnoremap <buffer> <space>fw :DashboardFindWord<cr>
+                " \| nnoremap <buffer> <space>fh :DashboardFindHistory<cr>
+                " \| nnoremap <buffer> <space>ff :DashboardFindFile<cr>
+                " \| nnoremap <buffer> <space>fb :DashboardJumpMarks<cr>
     autocmd VimEnter * Dashboard
 augroup END
