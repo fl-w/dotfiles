@@ -50,22 +50,24 @@ let g:which_key_map['.'] = {
 " b is for buffer
 let g:which_key_map.b = {
       \ 'name' : '+buffer',
-      \ 'n' : [':WintabsNext', 'next'],
+      \ 'n' : [':WintabsNext',     'next'],
       \ 'p' : [':WintabsPrevious', 'previous'],
-      \ 'd' : [':WintabsClose', 'previous'],
+      \ 'd' : [':WintabsClose',    'previous'],
+      \ '?' : [':Buffers',         'list buffers'],
       \ }
 
 " f is for fzf/find
 let g:which_key_map.f = {
       \ 'name': '+find',
-      \ 't': [':Rg',       'find text'],
+      \ 'w': [':Rg',       'find word'],
       \ 'f': [':Files',    'find files'],
-      \ 'b': [':Buffers',  'find buffers'],
       \ 'c': [':Colors',   'find colors'],
       \ 'C': [':Commands', 'find commands'],
-      \ 'h': [':Helptags', 'find help'],
+      \ 'B': [':Buffers',  'find buffers'],
+      \ 'b': [':Marks',    'find bookmarks'],
+      \ 'h': [':History',  'find history'],
+      \ '?': [':Helptags', 'find help'],
       \ 'o': [':normal go', 'find tags in file'],
-      \ '/': [':History',  'find history'],
       \ }
 
 " g is for git

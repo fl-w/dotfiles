@@ -35,11 +35,12 @@ let g:dashboard_custom_header = [
 let g:dashboard_default_executive = 'fzf'
 
 let g:dashboard_custom_shortcut = {
-\ 'last_session'       : 'SPC s l',
+\ 'toggle_drawer'      : 'SPC d',
 \ 'find_history'       : 'SPC f h',
 \ 'find_file'          : 'SPC f f',
+\ 'find_word'          : 'SPC f w',
+\ 'last_session'       : 'SPC s l',
 \ 'change_colorscheme' : 'SPC . c',
-\ 'find_word'          : 'SPC f a',
 \ 'book_marks'         : 'SPC f b',
 \ }
 
@@ -50,4 +51,11 @@ endfunction
 augroup dashboard_init
     autocmd!
     autocmd User dashboardReady let &l:stl = ' This statusline rocks!'
+    " I like the dashboard commands over my fzf bindings
+    autocmd filetype dashboard call utils#init_minimal_window()
+                \| nnoremap <buffer> <space>fw :DashboardFindWord<cr>
+                \| nnoremap <buffer> <space>fh :DashboardFindHistory<cr>
+                \| nnoremap <buffer> <space>ff :DashboardFindFile<cr>
+                \| nnoremap <buffer> <space>fb :DashboardJumpMarks<cr>
+    autocmd VimEnter * Dashboard
 augroup END
