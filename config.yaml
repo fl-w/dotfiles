@@ -19,7 +19,7 @@ dotfiles:
     dst: ~/.config/zathura
     link: link_children
   d_wallpapers:
-    src: wallpapers
+    src: ../wallpapers
     dst: ~/.wallpapers
     link: link_children
   f_bashrc:
