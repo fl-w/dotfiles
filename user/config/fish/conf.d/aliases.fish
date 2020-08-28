@@ -5,13 +5,16 @@ alias l 'ls'
 alias ll 'ls -gaG'
 alias ls 'ls -FG --color=auto --group-directories-first'
 alias su 'su -m'
-alias yay 'yay -noupgrademenu --noeditmenu --nodiffmenu --nocleanmenu'
+# alias yay 'yay -noupgrademenu --noeditmenu --nodiffmenu --nocleanmenu'
 
 abbr ei 'nvim ~/.config/i3'
 abbr ei3 'nvim ~/.config/i3'
 abbr ef 'nvim ~/.config/fish'
 abbr ev 'nvim ~/.config/nvim'
 abbr ep 'nvim ~/.config/polybar'
+
+# sudo systemctl
+abbr ssc 'sudo systemctl'
 
 abbr j jobs
 abbr c clear; abbr cl clear

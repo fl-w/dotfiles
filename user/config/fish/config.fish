@@ -20,7 +20,11 @@ set -gx fish_greeting ''
 fish_vi_key_bindings
 
 # Set env vars
+
+# Set go path to hidden dir
 set -gx GOPATH $HOME/.go
+
+# Set n prefix to home
 set -gx N_PREFIX $HOME/.n
 
 # Set fish colors
@@ -29,6 +33,7 @@ set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
 # Set default editor to nvim
 set -gx EDITOR /usr/bin/nvim
 
+# Set default browser to firefox
 set -gx BROWSER /usr/bin/firefox
 
 # Append local bin dir to PATH
@@ -43,13 +48,14 @@ set PATH $HOME/.cargo/bin $PATH
 # Append Go bin dir to PATH
 set PATH $GOPATH/bin $PATH
 
-# Set n prefix to home
-[ -d $N_PREFIX/bin ]; and set PATH $N_PREFIX/bin $PATH
+[ -d $N_PREFIX/bin ]; and set --prepend PATH $N_PREFIX/bin
 
 # Append android-sdk & emulator to PATH
-[ -d /opt/android-sdk ]; and set -gx ANDROID_HOME /opt/android-sdk
-and set PATH $ANDROID_HOME/tools:$ANDROID_HOME/tools/bin $PATH
-and [ -d $ANDROID_HOME/emulator ]; and set PATH $ANDROID_HOME/emulator $PATH
+[ -d /opt/android-sdk ]
+  and set -gx ANDROID_HOME /opt/android-sdk
+  and set PATH $ANDROID_HOME/tools:$ANDROID_HOME/tools/bin $PATH
+  and [ -d $ANDROID_HOME/emulator ]
+    and set PATH $ANDROID_HOME/emulator $PATH
 
 # Add xcursor path to env
 [ -d ~/.local/share/icons ]; and set -x XCURSOR_PATH ~/.local/share/icons
@@ -58,25 +64,27 @@ and [ -d $ANDROID_HOME/emulator ]; and set PATH $ANDROID_HOME/emulator $PATH
 [ -f /usr/bin/kitty ]; and kitty + complete setup fish | source
 
 # Set default bat command
-_command bat; and set -g BAT_DEFAULT_COMMAND bat --color always --theme dracula --style=header,changes --wrap never {}
+_command bat; and set -g BAT_DEFAULT_COMMAND bat --color always --theme dracula --style=header,changes --wrap never
 
 # Set default ripgrep command
-_command rg; and set -g RG_DEFAULT_COMMAND rg --files --hidden --ignore --follow -l -g '!{.npm,.cache,.n,node_modules,build,target,.git}'
+_command rg; and set -g RG_DEFAULT_COMMAND rg --files --hidden --ignore -l
 
 # Set FZF to use rg
 if _command fzf
   # Set fzf preview to use bat if available, otherwise cat
   set -q BAT_DEFAULT_COMMAND
-    and set _CAT "$BAT_DEFAULT_COMMAND;" or set _CAT cat
+    and set _CAT $BAT_DEFAULT_COMMAND; or set _CAT cat
 
-  set -gx FZF_PREVIEW_COMMAND "$_CAT" 2>/dev/null || head -n 60 {} 2>/dev/null || tree -a -C {} 2>/dev/null
+  set -g FZF_PREVIEW_COMMAND $_CAT {} || head -n 60 {} || tree -a -C {}
 
   # Set fzf to use preview in ctrl-t
-  set -gx FZF_CTRL_T_OPTS --min-height 30 --preview-window down:60% --preview-window --noborder --preview "$FZF_PREVIEW_COMMAND"
+
+  set -gx FZF_DEFAULT_OPTS
+  set -gx FZF_CTRL_T_OPTS $FZF_DEFAULT_OPTS --min-height 30 --preview-window down:60% --preview-window noborder --preview "'$FZF_PREVIEW_COMMAND 2>/dev/null'"
 
   set -q RG_DEFAULT_COMMAND
     and set -gx FZF_DEFAULT_COMMAND $RG_DEFAULT_COMMAND
-    and set -gx FZF_CTRL_T_COMMAND "$RG_DEFAULT_COMMAND" -g '!{.ssh,*private,*local,.bash_history}'
+    and set -gx FZF_CTRL_T_COMMAND $RG_DEFAULT_COMMAND 2>/dev/null
 end
 
 # Import aliases
