@@ -41,7 +41,17 @@ else
 
   Plug 'hardcoreplayers/dashboard-nvim'         | " Fancy start screen
 
+function! s:plugopen(entry)
+  call fern#toggle_drawer(expand(g:vim_plug_dir) .'/'. a:entry)
+  execute 'lcd' expand('%')
+endfunction
 
+command! Plugins call fzf#run({
+      \ 'source':  reverse(sort(map(globpath(g:vim_plug_dir, '*', 0, 1), 'fnamemodify(v:val, ":t")'))),
+      \ 'sink':    function('<sid>plugopen'),
+      \ 'options': '+m',
+      \ 'left':    30
+      \ })
   "
   " Colorschemes (yes i know)
   "
@@ -167,3 +177,5 @@ call utils#abbr_command('pud', 'PlugUpdate')
 call utils#abbr_command('pug', 'PlugUpgrade')
 call utils#abbr_command('ps', 'PlugStatus')
 call utils#abbr_command('pc', 'PlugClean')
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

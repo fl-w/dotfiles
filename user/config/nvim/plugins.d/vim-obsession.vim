@@ -11,3 +11,5 @@ augroup end
 "       \   | :so ~/.local/share/nvim/site/Session.vim
 "       \   | :Obsession! ~/.local/share/nvim/site/Session.vim
 "       \ | endif
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

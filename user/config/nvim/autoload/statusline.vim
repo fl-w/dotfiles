@@ -120,3 +120,5 @@ endfunction
 function! statusline#markdownpreview() abort
   return exists('b:markdownpreview') ? get(g:, 'statusline_icon_markdownpreview', '' . ' ') : ''
 endfunction
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

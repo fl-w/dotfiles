@@ -13,3 +13,5 @@ fu! utils#explorer#init(...)
   setl signcolumn=no
   call utils#init_minimal_window()
 endfunction
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

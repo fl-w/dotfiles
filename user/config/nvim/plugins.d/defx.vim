@@ -92,3 +92,5 @@ function s:defx_toggle_zoom() abort "{{{
       let b:DefxZoomed = 1
   endif
 endfunction "}}}
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

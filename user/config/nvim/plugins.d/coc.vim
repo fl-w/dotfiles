@@ -90,3 +90,5 @@ xmap    <silent> ic <Plug>(coc-classobj-i)
 xmap    <silent> ac <Plug>(coc-classobj-a)
 omap    <silent> ic <Plug>(coc-classobj-i)
 omap    <silent> ac <Plug>(coc-classobj-a)
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

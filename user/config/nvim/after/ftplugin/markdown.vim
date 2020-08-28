@@ -32,3 +32,5 @@ augroup markdown_tools
   autocmd FileType md,markdown noremap <buffer> s :call InsertMarkdownScreenShot()<CR>
 augroup end
 
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

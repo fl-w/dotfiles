@@ -40,3 +40,5 @@ call NERDTreeHighlightFile('scss', 'cyan', 'none', s:colors.cyan.gui, 'none')
 call NERDTreeHighlightFile('coffee', 'yellow', 'none', s:colors.dark_yellow.gui, 'none')
 call NERDTreeHighlightFile('js', 'yellow', 'none', s:colors.yellow.gui, 'none')
 call NERDTreeHighlightFile('rb', 'red', 'none', s:colors.red.gui, 'none')
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

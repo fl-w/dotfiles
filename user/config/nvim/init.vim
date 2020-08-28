@@ -51,3 +51,5 @@ endif
 if exists('*utils#abbr_command')
   call utils#abbr_command('rc', 'so $MYVIMRC') " use :rc to source this file
 endif
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

@@ -18,3 +18,5 @@ if !exists('g:which_key_map')
 endif
 
 noremap <buffer> <silent> <F10> :<C-u>exec getline('.')<cr>
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

@@ -42,17 +42,17 @@ fu! s:set_colors() abort
   hi            SignColumn ctermbg=NONE  guibg=NONE                | " dont highlight sign column
   hi                Normal ctermbg=NONE  guibg=NONE                | " stop theme from setting bg color
   hi HighlightedyankRegion ctermbg=0     guibg=#13354A             | " change yank highlight color
-  hi               Comment ctermfg=239   guifg=#4E4E4E gui=italic  | " change comment color and set to italic
+  hi               Comment ctermfg=239   guifg=#36323d gui=italic  | " change comment color and set to italic
   hi            StatusLine guifg=#4E4E4E guibg=bg      gui=italic  | " make statusline invisible
   hi          StatusLineNC guifg=#2b2b30 guibg=bg      gui=italic  | " same with inactive statusline
   hi         StatusLineINC guifg=#2b2b30 guibg=#181320 gui=italic  | " add background to statusline if has neighboring window below
-  hi           EndOfBuffer guifg=#1f1f31 guibg=bg                  | " make EndOfBuffer ~ faint
+  hi           EndOfBuffer guifg=#1f1f31 guibg=bg                  | " make EndOfBuffer ('~' char) faint
   hi             VertSplit guifg=bg      guibg=bg                  | " dont highlight vertical split
   hi            CursorLine guifg=NONE                              | " don't highlight current line
   hi        SignifySignAdd               guibg=bg                  | " dont add bacground to git diff signs
   hi     SignifySignChange               guibg=bg                  | " dont add bacground to git diff signs
   hi     SignifySignRemove               guibg=bg                  | " dont add bacground to git diff signs
-  hi            DiffChange ctermfg=203   guifg=#FF5270             | " make diff remove distintive red
+  hi            DiffChange ctermfg=203   guifg=#9FC267
   hi              Function cterm=bold    gui=bold
   hi             Statement cterm=bold    gui=bold
 
@@ -66,9 +66,8 @@ fu! s:set_colors() abort
   highlight default link WhichKeyFloating Pmenu
 
 
-
-  hi          Pmenu ctermfg=243 ctermbg=237  guifg=#767676 guibg=#36323d
-  hi       PmenuSel ctermfg=140 ctermbg=237  guifg=#a790d5 guibg=#36323d gui=bold
+  hi          Pmenu ctermfg=243 ctermbg=237  guifg=#767676 guibg=#0B0712
+  hi       PmenuSel ctermfg=140 ctermbg=237  guifg=#8569B3 guibg=#0B0712 gui=bold
   hi      PmenuSbar ctermfg=28  ctermbg=233  guifg=#c269fe guibg=#303030
   hi     PmenuThumb ctermfg=160 ctermbg=97   guifg=#ff2c4b guibg=#875faf
   hi          Error ctermfg=204 ctermbg=NONE guifg=#ff3333 guibg=NONE   gui=none
@@ -102,3 +101,5 @@ if has('vim_starting')
   colo ayu
   " colo badwolf
 endif
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

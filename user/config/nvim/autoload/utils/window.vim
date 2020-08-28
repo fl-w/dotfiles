@@ -129,3 +129,5 @@ fu! utils#window#toggle_window(name)
 
   return window
 endf
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

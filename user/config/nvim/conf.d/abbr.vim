@@ -15,3 +15,5 @@ cnoreabbrev Bd bd
 
 cnoreabbrev wrap set wrap
 cnoreabbrev nowrap set nowrap
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

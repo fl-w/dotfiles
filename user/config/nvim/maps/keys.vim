@@ -37,15 +37,13 @@ nnoremap <silent> \ :new<cr>
 " Scroll with arrow keys
 noremap <Down> <C-e>
 noremap <Up>   <C-y>
-" noremap <Down> <C-e>
-" noremap <Up>   <C-y>
 
 " Clear highlight by pressing esc
 nnoremap <silent> <esc>  :noh<return><esc>
 
 " Use alt + hjkl to resize windows
-nnoremap <silent> <M-j>    :resize -2<CR>
-nnoremap <silent> <M-k>    :resize +2<CR>
+nnoremap <silent> <M-j>    :resize +2<CR>
+nnoremap <silent> <M-k>    :resize -2<CR>
 nnoremap <silent> <M-h>    :vertical resize -2<CR>
 nnoremap <silent> <M-l>    :vertical resize +2<CR>
 
@@ -64,6 +62,12 @@ noremap gd  <S-K>
 " Map {[/]}<space> to {prepend/append} blank line (inspired by tpope)
 noremap <silent> ]<space>  :<c-u>pu =repeat(nr2char(10),v:count)<bar>execute "'[-1"<cr>
 noremap <silent> [<space>  :<c-u>pu!=repeat(nr2char(10),v:count)<bar>execute "']+1"<cr>
+
+" Map useful commands to [/]
+nnoremap <silent> [l       :lprevious<cr>
+nnoremap <silent> ]l       :lnext<cr>
+nnoremap <silent> [t       :tabprevious<cr>
+nnoremap <silent> ]t       :tabnext<cr>
 
 " Map {,shift} + enter to insert blank line with ( ]/[ + space ) ^
 nmap    <cr>   ]<space>
@@ -124,3 +128,5 @@ inoremap <nowait> jj <esc>j
 " Use ctrl+{j,k} to navigate omnifunc
 inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

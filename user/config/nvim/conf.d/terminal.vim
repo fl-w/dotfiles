@@ -111,3 +111,5 @@ nnoremap <silent> <leader>tt :call terminal#toggle()<cr>
 nnoremap <silent> <leader>to :call terminal#open()<cr>
 nnoremap <silent> <leader>tc :call terminal#close()<cr>
 nnoremap <silent> <leader>te :call terminal#exec_interactive()<cr>
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

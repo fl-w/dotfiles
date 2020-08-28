@@ -16,7 +16,8 @@ augroup vimrc
         \ call utils#auto_mkdir(expand('<afile>:p:h'), v:cmdbang)     " auto create missing directories
   au InsertEnter * let b:icul = &cul | set nocul                      " Remove cursorline on insertmode
   au InsertLeave * if utils#boolexists('b:icul') | set cul | endif    " Replace prev cursorline
-  au BufEnter *.txt if &buftype == 'help' && winnr('$') > 1 | wincmd T | nnoremap <buffer> q :q<cr> | endif
+  au BufEnter *.txt if &buftype == 'help'
+        \| nnoremap <buffer> q :q<cr> | if winnr('$') > 1 | wincmd T | endif | endif
   au WinLeave * if &cursorline | let w:cur = 1 | setl nocursorline | endif
   au WinEnter * if utils#boolexists('w:cur') | unlet w:cur | setl cursorline | endif
 augroup END
@@ -56,3 +57,5 @@ augroup resume_edit_position
         \ | execute "normal! g`\"zvzz"
         \ | endif
 augroup END
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

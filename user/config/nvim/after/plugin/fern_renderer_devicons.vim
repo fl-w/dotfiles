@@ -137,3 +137,5 @@ call extend(g:fern#renderers, { 'devicons': funcref('s:new') })
 augroup fern_syntax_on_colorscheme
   autocmd ColorScheme * call fern#renderers.devicons().highlight()
 augroup end
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

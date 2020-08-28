@@ -25,3 +25,5 @@ if exists('g:started_by_firenvim') && g:started_by_firenvim
     autocmd BufEnter *.txt setlocal filetype=markdown.pandoc
   augroup END
 endif
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

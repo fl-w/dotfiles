@@ -20,3 +20,5 @@ endf
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

@@ -22,3 +22,5 @@ function! utils#color#has_colorscheme(name) abort
   let l:pat = 'colors/' . a:name . '.vim'
   return !empty(globpath(&runtimepath, l:pat))
 endfunction
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

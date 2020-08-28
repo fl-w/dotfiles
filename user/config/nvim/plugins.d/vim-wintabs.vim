@@ -75,3 +75,5 @@ fun! s:padding(len)
 endf
 
 call s:init()
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

@@ -9,6 +9,7 @@ vnoremap <silent> <leader>  :<c-u>WhichKeyVisual '<Space>'<CR>
 
 let g:which_key_use_floating_win = 1
 let g:which_key_map =  {}
+let g:which_key_position = 'topleft'
 
 " Single mappings
 let g:which_key_map[' '] = [ ':update',              'write file if modified' ]
@@ -154,3 +155,5 @@ let g:which_key_map.w = {
 """ vim-smoothie
 " silent! nmap <unique> <S-j>      <Plug>(SmoothieDownwards)
 " silent! nmap <unique> <S-k>      <Plug>(SmoothieUpwards)
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

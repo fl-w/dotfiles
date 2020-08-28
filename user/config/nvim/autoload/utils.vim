@@ -61,7 +61,7 @@ function! utils#trim_whitespace()
   call winrestview(l:save)
 endfunction
 
-function s:safe(cmd) abort
+function utils#safe(cmd) abort
   try
     exe a:cmd
   catch
@@ -76,7 +76,7 @@ function! utils#init_minimal_window() abort
   setl nolist
   setl conceallevel=3
 
-  call s:safe('IndentLinesDisable') " disable indent lines
+  call utils#safe('IndentLinesDisable') " disable indent lines
 
 endfunction
 
@@ -144,3 +144,5 @@ function! utils#jump_error()
     try | lfirst | catch | endtry
   endtry
 endfunction
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

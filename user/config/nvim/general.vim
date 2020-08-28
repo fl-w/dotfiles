@@ -1,4 +1,3 @@
-" vim:set sw=2:
 " General configuration
 "
 
@@ -100,3 +99,5 @@ set undoreload=10000 "max number lines to save for undo on buffer reload
 set foldmethod=marker
 set foldnestmax=3
 set foldminlines=15
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

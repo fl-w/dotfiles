@@ -26,5 +26,8 @@ let g:ale_fixers = {
 let g:ale_linters = {
       \ 'python':     ['pylint', 'flake8'],
       \ 'c':          ['clang-tidy'],
-      \ 'java':       ['checkstyle']
+      \ 'java':       ['checkstyle'],
+      \ 'rust':       ['clippy']
       \}
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

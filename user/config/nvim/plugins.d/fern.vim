@@ -15,6 +15,9 @@ let g:fern#disable_drawer_auto_resize = 1
 let g:fern#renderer="devicons"
 let g:fern#drawer_width = 26
 
+" start fern on vim enter if is directory
+let g:fern_vimstart = v:true
+
 " make fern windows 'slide' in and out on open
 call utils#window#slide_window('fern', g:fern#drawer_width)
 
@@ -42,7 +45,9 @@ fu! s:hijack_netrw()
   if isdirectory(path)
     bwipeout %
     exe 'cd' path
-    call fern#toggle_drawer(path)
+    if !has('vim_starting') || g:fern_vimstart
+      call fern#toggle_drawer(path)
+    endif
   endif
 endfu
 
@@ -154,3 +159,5 @@ function! s:fern_init() abort
   nmap <buffer> . <Plug>(fern-action-hide-toggle)
   nmap <buffer> q :<C-u>silent call fern#toggle_drawer()<cr>
 endfunction
+
+" vim: sw=2 sts=2 tw=0 fdm=marker

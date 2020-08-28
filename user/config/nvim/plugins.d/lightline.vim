@@ -103,3 +103,5 @@ call lightline#_update()
 let g:lightline#bufferline#number_map = {
 \ 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
 \ 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
+
+" vim: sw=2 sts=2 tw=0 fdm=marker
