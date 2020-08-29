@@ -135,15 +135,25 @@ profiles:
       - d_fish_shell_omf
   rofi:
     dotfiles:
-        - d_rofi
-        - f_rofi_launcher
-        - f_pywal_rofi_template
-        - f_pywal_rofi_colorscheme
+      - d_rofi
+      - f_rofi_launcher
+      - f_pywal_rofi_template
+      - f_pywal_rofi_colorscheme
+  neovim:
+    dotfiles:
+      - d_nvim
+  _base:
+    dotfiles:
+      - f_gitconfig
+    include:
+      - neovim
+      - wallpapers
+      - firefox
+      - fish_shell
   i3:
     dotfiles:
       - d_i3
       - d_polybar
-      - d_nvim
       - d_picom
       - f_kitty_conf
       - d_flashfocus
@@ -156,13 +166,13 @@ profiles:
       - f_lockscreen
       - f_powermenu
       - f_xinitrc
-      - f_gitconfig
     include:
+      - _base
       - rofi
-      - wallpapers
-      - firefox
-      - fish_shell
 
+  spaceship:
+     include:
+       - _base
   atlas:
     include:
       - i3
