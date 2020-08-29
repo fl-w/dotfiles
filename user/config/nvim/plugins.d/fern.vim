@@ -8,12 +8,13 @@ let g:loaded_netrwSettings     = 1
 let g:loaded_netrwFileHandlers = 1
 
 " fern settings
-let g:fern#default_hidden = 1
-let g:fern#disable_default_mappings = 1
-let g:fern#drawer_keep=1
-let g:fern#disable_drawer_auto_resize = 1
-let g:fern#renderer="devicons"
-let g:fern#drawer_width = 26
+let g:fern_renderer_devicons_disable_warning = 1
+let g:fern#default_hidden                    = 1
+let g:fern#disable_default_mappings          = 1
+let g:fern#drawer_keep                       = 1
+let g:fern#disable_drawer_auto_resize        = 1
+let g:fern#renderer                          = "devicons"
+let g:fern#drawer_width                      = 26
 
 " start fern on vim enter if is directory
 let g:fern_vimstart = v:true
