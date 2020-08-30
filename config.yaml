@@ -71,12 +71,13 @@ dotfiles:
     src: config/firefox/
     dst: ~/.mozilla/firefox/themes
     link: link_children
+  d_kitty:
+    src: config/kitty/
+    dst: ~/.config/kitty
+    link: link_children
   f_firefox_tabpage:
     src: local/bin/run-tabpage
     dst: ~/.local/bin/run-tabpage
-  f_kitty_conf:
-    src: config/kitty/kitty.conf
-    dst: ~/.config/kitty/kitty.conf
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
@@ -142,6 +143,9 @@ profiles:
   neovim:
     dotfiles:
       - d_nvim
+  kitty:
+    dotfiles:
+      - d_kitty
   _base:
     dotfiles:
       - f_gitconfig
@@ -155,7 +159,6 @@ profiles:
       - d_i3
       - d_polybar
       - d_picom
-      - f_kitty_conf
       - d_flashfocus
       - d_dunst
       - f_swal
@@ -169,10 +172,12 @@ profiles:
     include:
       - _base
       - rofi
+      - kitty
 
   spaceship:
      include:
        - _base
+       - kitty
   atlas:
     include:
       - i3
