@@ -117,7 +117,7 @@ augroup statusline_update
   " Change colors for insert mode
   autocmd InsertEnter,InsertChange * call s:on_mode_change(v:insertmode)
   autocmd VimEnter,BufEnter,WinEnter,ColorScheme * call statusline#update()
-  autocmd WinNew,WinClosed * call statusline#update_hi()
+  autocmd WinNew * call statusline#update_hi()
 augroup END
 
 hi default link StatusLineI StatusLine
