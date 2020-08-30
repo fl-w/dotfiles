@@ -75,7 +75,7 @@ if _command fzf
   set -q BAT_DEFAULT_COMMAND
     and set _CAT $BAT_DEFAULT_COMMAND; or set _CAT cat
 
-  set -g FZF_PREVIEW_COMMAND $_CAT {} || head -n 60 {} || tree -a -C {}
+  set -g FZF_PREVIEW_COMMAND "$_CAT {} || head -n 60 {} || tree -a -C {}"
 
   # Set fzf to use preview in ctrl-t
 
