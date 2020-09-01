@@ -12,8 +12,6 @@ cnoremap w!! w !sudo tee > /dev/null %
 " Move lines up(_) or down(-)
 noremap       - ddp
 noremap       _ ddkP
-vmap <silent> - :m '>+1<CR>gv=gv
-vmap <silent> _ :m '<-2<CR>gv=gv
 vmap <silent> J :m '>+1<CR>gv=gv
 vmap <silent> K :m '<-2<CR>gv=gv
 
