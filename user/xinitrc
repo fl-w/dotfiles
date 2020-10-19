@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# xinit for i3 if not using lightdm
-
-exec i3
-
-screenlayout=~/.config/i3/scripts/setxrandr.sh
-test -f $screenlayout && $screenlayout

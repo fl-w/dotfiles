@@ -47,7 +47,10 @@ fu! s:hijack_netrw()
     bwipeout %
     exe 'cd' path
     if !has('vim_starting') || g:fern_vimstart
-      call fern#toggle_drawer(path)
+      try
+        call fern#toggle_drawer(path)
+      catch
+      endtry
     endif
   endif
 endfu

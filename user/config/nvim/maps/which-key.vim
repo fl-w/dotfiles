@@ -1,15 +1,28 @@
 " which-key.vim configuration and keybinds
 "
 
-call which_key#register('<Space>', 'g:which_key_map')
+try 
+  call which_key#register('<Space>', 'g:which_key_map')
+catch 
+  echohl WarningMsg | echo "WhichKey not loaded, skipping keymaps" | echohl NONE
+  finish
+endtry
+
+
+" todo
+highlight default link WhichKey          Function
+highlight default link WhichKeySeperator DiffAdded
+highlight default link WhichKeyGroup     Keyword
+highlight default link WhichKeyDesc      Identifier
+highlight default link WhichKeyFloating  Pmenu
 
 " map leader to which key
 nnoremap <silent> <leader>  :<c-u>WhichKey '<Space>'<CR>
 vnoremap <silent> <leader>  :<c-u>WhichKeyVisual '<Space>'<CR>
 
-let g:which_key_use_floating_win = 1
+" let g:which_key_use_floating_win = 1
 let g:which_key_map =  {}
-let g:which_key_position = 'topleft'
+" let g:which_key_position = 'topleft'
 
 " Single mappings
 let g:which_key_map[' '] = [ ':update',              'write file if modified' ]

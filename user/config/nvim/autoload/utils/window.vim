@@ -96,7 +96,7 @@ fu! utils#window#toggle_window(name)
           \ { -> execute(printf('botright split +set\ nobuflisted %s', name)) })
 
     try
-      call Create() | call statusline#update_hi() | setl wfh wfw
+      call Create() | call utils#safe('call statusline#update_hi()') | setl wfh wfw
     catch
       echoerr 'Error: could not create window with function:' string(Create)
       return

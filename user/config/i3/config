@@ -15,15 +15,16 @@
 set $browser              firefox
 set $music                spotify
 set $term                 kitty
-set $primary_monitor      HDMI-1
-set $secondary_monitor    DP-1
-set $scripts              $HOME/.config/i3/scripts
-set $bin                  $HOME/.local/bin
+set $scripts              $XDG_CONFIG_HOME/i3/scripts
+set $bin                  $HOME/bin
 set $outer_gaps           10
 set $inner_gaps           20
 set $border               0
 set $mod                  Mod4
 set $alt_mod              Mod1
+
+set $primary_monitor      HDMI-1
+set $secondary_monitor    DP-1
 
 # Define names for default workspaces for which we configure key bindings later on.
 set $ws1 "1"
@@ -133,8 +134,9 @@ popup_during_fullscreen smart
 set_from_resource $fg foreground #f2f2f2
 set_from_resource $bg background #1b1d1e
 set_from_resource $ac color8     #2f2f2f
+# set $bg #8569B3
 
-# class                 border  backgr. text indicator child_border
+#class                 border  backgr. text indicator child_border
 client.focused          $ac     $fg     $bg  $fg       $ac
 client.focused_inactive $bg     $bg     $fg  $bg       $bg
 client.unfocused        $bg     $bg     $fg  $bg       $bg
@@ -186,8 +188,8 @@ bindsym $mod+shift+space exec $bin/app-launcher -v modes --show drun --window --
 
 # Window switch menu
 bindsym $mod+backslash exec rofi -show window
-bindsym Mod1+Tab exec rofi -show window
-bindsym mod1+shift+tab exec rofi -show window
+bindsym $alt_mod+Tab exec rofi -show window
+bindsym $alt_mod+shift+tab exec rofi -show window
 
 # Power menu
 bindsym $mod+p exec $bin/powermenu
@@ -264,17 +266,6 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-
-
-# bindsym --release $alt_mod+h exec --no-startup-id ~/src/wm-vim-navigate/wm-vim-navigate left
-# bindsym --release $alt_mod+j exec --no-startup-id ~/src/wm-vim-navigate/wm-vim-navigate down
-# bindsym --release $alt_mod+k exec --no-startup-id ~/src/wm-vim-navigate/wm-vim-navigate up
-# bindsym --release $alt_mod+l exec --no-startup-id ~/src/wm-vim-navigate/wm-vim-navigate right
-
-# bindsym --release $alt_mod+h exec --no-startup-id $bin/x-ignore-window -t "*VIM*" i3-msg focus left
-# bindsym --release $alt_mod+j exec --no-startup-id $bin/x-ignore-window -t "*VIM*" i3-msg focus down
-# bindsym --release $alt_mod+k exec --no-startup-id $bin/x-ignore-window -t "*VIM*" i3-msg focus up
-# bindsym --release $alt_mod+l exec --no-startup-id $bin/x-ignore-window -t "*VIM*" i3-msg focus right
 
 # move windows around
 bindsym $mod+shift+Left move left
@@ -365,18 +356,20 @@ bindsym $mod+e layout toggle split
 exec --no-startup-id start-pulseaudio-x11 & >/dev/null 2>&1
 exec --no-startup-id $bin/run-tabpage & >/dev/null 2>&1
 exec --no-startup-id $scripts/x-close-no-focus "Pavucontrol" >/dev/null 2>&1
+exec --no-startup-id $bin/setxrandr
 
 # exec_always discord # auto startup
 
 # notes: pywal needs to be installed as a system package otherwise run using bash
 # also pywal needs to be set before starting polybar
 exec_always --no-startup-id $bin/swal -q n -b '#131315' && $scripts/i3-launch.sh polybar
-exec_always --no-startup-id $scripts/i3-launch.sh picom -b
+exec_always --no-startup-id $scripts/i3-launch.sh picom -b --experimental-backends
 exec_always --no-startup-id $scripts/i3-launch.sh dunst
 exec_always --no-startup-id $scripts/i3-launch.sh flashfocus
 exec_always --no-startup-id $scripts/i3-alternate-layout >/dev/null 2>&1
-exec_always --no-startup-id $HOME/.screenlayout
 # exec_always --no-startup-id spicetify apply
-exec_always --no-startup-id xset r rate 280 50
 exec_always --no-startup-id sxhkd
+exec_always --no-startup-id xset r rate 190 60
 #}}}
+
+# vim: sw=2 fdm=marker

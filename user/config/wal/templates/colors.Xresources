@@ -10,7 +10,7 @@ emacs*background:   {background}
 URxvt*foreground:   {foreground}
 XTerm*foreground:   {foreground}
 UXTerm*foreground:  {foreground}
-URxvt*background:   {background.alpha}
+URxvt*background:   {background}
 XTerm*background:   {background}
 UXTerm*background:  {background}
 URxvt*cursorColor:  {cursor}

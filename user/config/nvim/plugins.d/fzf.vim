@@ -61,9 +61,11 @@ augroup fzf_custom
 augroup end
 
 " Override fzf command to add extra ripgrep opts
-let g:fzf_default_command = get(g:, 'fzf_default_command',
-      \ $FZF_DEFAULT_COMMAND . (!empty($FZF_DEFAULT_COMMAND) ? ' --follow -g "!plugged"' : ''))
-if !empty(g:fzf_default_command) | let $FZF_DEFAULT_COMMAND = g:fzf_default_command | endif
+if !empty($FZF_DEFAULT_COMMAND)
+  let g:fzf_default_command = get(g:, 'fzf_default_command',
+        \ $FZF_DEFAULT_COMMAND . ' --follow -g "!vim-undo/**" -g "!plugged/**" -g "!.git/**"')
+  let $FZF_DEFAULT_COMMAND = g:fzf_default_command
+endif
 
 " Override fzf opts
 let g:fzf_default_opts = get(g:, 'fzf_default_opts',

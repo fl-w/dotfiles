@@ -18,8 +18,9 @@
 "    .                  .     OP"          : o     .
 "
 
-let g:vim_config_root = expand('<sfile>:p:h')
-let $VIM_ROOT = g:vim_config_root
+let $VIM_ROOT = expand('<sfile>:p:h')
+let $VIM_DATA_ROOT = expand(stdpath('data')) 
+
 let g:vim_ignore_configs_list = ['ale']
 let g:is_darwin = has('win32') || has('win64')
 let g:is_linux = has('unix') && !has('macunix')
@@ -49,7 +50,7 @@ else
 endif
 
 if exists('*utils#abbr_command')
-  call utils#abbr_command('rc', 'so $MYVIMRC') " use :rc to source this file
+  call utils#abbr_command('rc', 'so $MYVIMRC') " use :rc to resource this file
 endif
 
 " vim: sw=2 sts=2 tw=0 fdm=marker

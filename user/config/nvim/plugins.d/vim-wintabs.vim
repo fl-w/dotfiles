@@ -1,29 +1,32 @@
 " vim-wintabs configuration
 "
 
+noremap <Right> :<C-u>WintabsNext<cr>
+noremap <Left> :<C-u>WintabsPrevious<cr>
+
 let g:wintabs_ui_readonly = ' '
 let g:wintabs_ui_modified = ' '
 let g:wintabs_autoclose = 2
 let g:wintabs_autoclose_vim = 2
+let g:wintabs_ui_sep_inbetween = ""
+let g:wintabs_ui_sep_rightmost = ""
 
 let s:sep_left = "\ue0be" " or  ue0b6 | a | e
 let s:sep_right = "\ue0b8" " or ue0b4 | c | 8
 
-noremap <Right> :<C-u>WintabsNext<cr>
-noremap <Left> :<C-u>WintabsPrevious<cr>
-
 fun! s:init()
-  let g:wintabs_renderers = extend(wintabs#renderers#defaults(), {
-    \ 'buffer': funcref('s:buffer'),
-    \ 'buffer_sep': funcref('s:buffer_sep'),
-    \ 'line_sep': funcref('s:line_sep'),
-    \ 'padding': funcref('s:padding'),
-    \ })
+  " let g:wintabs_renderers = extend(wintabs#renderers#defaults(), {
+  "   \ 'buffer': funcref('s:buffer'),
+  "   \ 'buffer_sep': funcref('s:buffer_sep'),
+  "   \ 'line_sep': funcref('s:line_sep'),
+  "   \ 'padding': funcref('s:padding'),
+  "   \ })
 
   augroup wintabs_powerline_on_colorscheme
-  autocmd!
-  autocmd ColorScheme,VimEnter * call s:on_colorscheme()
+    autocmd!
+    autocmd ColorScheme,VimEnter * call s:on_colorscheme()
   augroup END
+
   call s:on_colorscheme()
 endf
 

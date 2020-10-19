@@ -2,13 +2,15 @@
 
 # shitty wallpaper
 # https://github.com/folws
+# TODO: update bad script
 
 PREV_NAME=.fehbg.prev
 PROGRAM_NAME=$(basename "$0")
 VERBOSE=0
 
-: "${COLOR_BG:=#1b1d1e}"
+: "${COLOR_BG:=#131315}"
 : "${ALPHA:=55}"
+: "${WALLPAPERS:=$HOME/.wallpapers}"
 
 # colors
 CLEAR='\033[0m'
@@ -17,11 +19,11 @@ RED='\033[0;31m'
 # =====================
 is_valid_hex() {
     case $1 in
-      ( *[!0-9A-Fa-f]* | "" ) return 1 ;;
-      ( * )
+      *[!0-9A-Fa-f]* | "" ) return 1 ;;
+      *)
         case ${#1} in
-          ( 32 | 40 ) return 0 ;;
-          ( * )       return 1 ;;
+          32 | 40 ) return 0 ;;
+          * )       return 1 ;;
         esac
     esac
   }
@@ -77,7 +79,7 @@ show_help() {
    # Display Help
    echo "Shitty wallpaper setter" >&2
    echo
-   echo "Usage: $PROGRAM_NAME [...options] [next|prev|<PATH_TO_IMAGE>]"
+   echo "Usage: $PROGRAM_NAME [...options] [next|prev|<WALLPAPERS_TO_IMAGE>]"
    echo "options:"
    echo " -b, --bg <color>       the pywal bg color"
    echo " -a, --alpha <alpha>    the pywal color alpha"
@@ -96,10 +98,10 @@ parse_args() {
     -b|--bg) set_background $2; shift;;
     -a|--ALPHA) ALPHA="$2"; shift;;
     -p|--prev) set_prev $2; shift;;
-    -r|--refresh) [ $NEXT -lt 0 ] && { NEXT=0; PREV_NAME='.fehbg'; } || { show_help "Cannot pass --refresh with next/prev"; exit 1; };;
-    -v|--verbose) VERBOSE=1;;
+    -R|--refresh) [ $NEXT -lt 0 ] && { NEXT=0; PREV_NAME='.fehbg'; } || { show_help "Cannot pass --refresh with next/prev"; exit 1; };;
+    -q|--quiet) VERBOSE=1;;
     -h|--help) show_help; exit 0;;
-    *) show_help "Unknown parameter: $1"; exit 1;;
+    *) WALLPAPERS="$1"; NEXT=1;;
 
   esac; shift; done
 
@@ -112,7 +114,9 @@ parse_args() {
 
 change_next() {
   [ -f ~/.fehbg ] && cp ~/.fehbg ~/$PREV_NAME
-  wal -a "$ALPHA" -b "$COLOR_BG" --iterative -q -i $HOME/.wallpapers >/dev/null 2>&1
+
+  echo "Setting next wallpaper with wal"
+  wal -a "$ALPHA" -b "$COLOR_BG" --iterative -q -i $WALLPAPERS || echo "Could not call pywal with: '$WALLPAPERS'"
 }
 
 change_prev() {
@@ -130,7 +134,7 @@ change_prev() {
 main() {
   parse_args "$@"
 
-  if [ $VERBOSE == 0 ]; then exec >/dev/null 2>&1; fi
+  if [ $VERBOSE == 1 ]; then exec >/dev/null 2>&1; fi
 
   if [ "$NEXT" == 1 ]; then
     change_next

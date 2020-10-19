@@ -1,6 +1,7 @@
 " statusline.vim: minimal custom statusline (inspired by eleline)
 "
 
+finish
 " if exists('g:loaded_statusline') || v:version < 700 |  finish | endif
 let g:loaded_statusline = 1
 
@@ -26,6 +27,7 @@ function! s:statusline() abort
   let l:fname = s:def('fname_full') " show file name with icons
   let l:stl = {}
   let l:stl.active = {}
+  let l:stl.inactive = {}
 
   let l:stl.active['slim'] = l:fname . '%<'
   let l:stl.active['_'] = join([
@@ -42,8 +44,10 @@ function! s:statusline() abort
         \ repeat(' ', 2))
         \])
 
-  " for now make inactive statusline same as active
-  let l:stl.inactive = l:stl.active
+  " for now make inactive statusline same as active slim
+  let l:stl.inactive.slim = l:stl.active.slim
+  let l:stl.inactive._ = l:stl.active.slim
+
   return l:stl
 endfunction
 
@@ -57,8 +61,9 @@ function! statusline#update(...) abort
   let s:stl = get(a:, '1', !exists('s:stl')) ? s:statusline() : s:stl
   for n in range(1, winnr('$'))
     if getwinvar(n, '&buftype') != 'terminal'
-      call setwinvar(n, '&statusline',
-            \ s:stl[n!=w ? 'active' : 'inactive'][slim || winwidth(n) <= slimw ? 'slim' : '_'])
+      " call setwinvar(n, '&tabline',
+      call setwinvar(n, '&stl',
+            \ s:stl[n==w ? 'active' : 'inactive'][slim || winwidth(n) <= slimw ? 'slim' : '_'])
     endif
   endfor
 endfunction
@@ -115,9 +120,9 @@ call statusline#update()
 augroup statusline_update
   autocmd!
   " Change colors for insert mode
-  autocmd InsertEnter,InsertChange * call s:on_mode_change(v:insertmode)
-  autocmd VimEnter,BufEnter,WinEnter,ColorScheme * call statusline#update()
-  autocmd WinNew * call statusline#update_hi()
+  " autocmd InsertEnter,InsertChange * call s:on_mode_change(v:insertmode)
+  autocmd VimEnter,BufEnter,WinEnter * call statusline#update()
+  autocmd WinNew,WinClosed * call statusline#update_hi()
 augroup END
 
 hi default link StatusLineI StatusLine

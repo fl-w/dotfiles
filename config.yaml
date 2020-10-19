@@ -1,6 +1,5 @@
 actions:
-  confirm: read {0}"[y/N]" -n 1 -r
-    [[ $REPLY =~ ^[Yy]$ ]] && {1}
+  confirm: read {0} "[y/N]" -n 1 -r [[ $REPLY =~ ^[Yy]$ ]] && {1}
 config:
   dotpath: user
   backup: true
@@ -22,15 +21,14 @@ dotfiles:
     src: ../wallpapers
     dst: ~/.wallpapers
     link: link_children
-  f_bashrc:
-    src: bashrc
-    dst: ~/.bashrc
-  f_xinitrc:
-    src: xinitrc
-    dst: ~/.xinitrc
-  f_profile:
-    src: profile
-    dst: ~/.profile
+  d_x:
+    src: config/x
+    dst: ~/.config/x
+    link: link_children
+  d_sh:
+    src: config/sh
+    dst: ~/.config/sh
+    link: link_children
   d_dunst:
     src: config/dunst
     dst: ~/.config/dunst
@@ -76,8 +74,8 @@ dotfiles:
     dst: ~/.config/kitty
     link: link_children
   f_firefox_tabpage:
-    src: local/bin/run-tabpage
-    dst: ~/.local/bin/run-tabpage
+    src: bin/run-tabpage
+    dst: ~/bin/run-tabpage
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
@@ -91,93 +89,98 @@ dotfiles:
     src: config/wal/templates/colors.Xresources
     dst: ~/.config/wal/templates/colors.Xresources
     actions:
-      - confirm "Symlink generated pywal Xresources?" "ln -s {{@@ _dotfile_abs_dst @@}} ~/.Xresources"
+    - confirm "Symlink generated pywal Xresources?" "ln -s {{@@ _dotfile_abs_dst @@}} ~/.Xresources"
   f_deskopen:
-    src: local/bin/deskopen
-    dst: ~/.local/bin/deskopen
+    src: bin/deskopen
+    dst: ~/bin/deskopen
   f_figlet-test:
-    src: local/bin/figlet-test
-    dst: ~/.local/bin/figlet-test
+    src: bin/figlet-test
+    dst: ~/bin/figlet-test
   f_rofi_launcher:
-    src: local/bin/app-launcher
-    dst: ~/.local/bin/app-launcher
+    src: bin/app-launcher
+    dst: ~/bin/app-launcher
   f_launch-singleton:
-    src: local/bin/launch-singleton
-    dst: ~/.local/bin/launch-singleton
+    src: bin/launch-singleton
+    dst: ~/bin/launch-singleton
   f_powermenu:
-    src: local/bin/powermenu
-    dst: ~/.local/bin/powermenu
+    src: bin/powermenu
+    dst: ~/bin/powermenu
   f_lockscreen:
-    src: local/bin/lockscreen
-    dst: ~/.local/bin/lockscreen
+    src: bin/lockscreen
+    dst: ~/bin/lockscreen
   f_ls-chars:
-    src: local/bin/ls-chars
-    dst: ~/.local/bin/ls-chars
+    src: bin/ls-chars
+    dst: ~/bin/ls-chars
   f_post-hibernate:
-    src: local/bin/post-hibernate.sh
-    dst: ~/.local/bin/post-hibernate.sh
+    src: bin/post-hibernate.sh
+    dst: ~/bin/post-hibernate.sh
   f_scr:
-    src: local/bin/scr
-    dst: ~/.local/bin/scr
+    src: bin/scr
+    dst: ~/bin/scr
   f_swal:
-    src: local/bin/swal
-    dst: ~/.local/bin/swal
+    src: bin/swal
+    dst: ~/bin/swal
+  f_setxrandr:
+    src: bin/setxrandr
+    dst: ~/bin/setxrandr
 profiles:
   wallpapers:
     dotfiles:
-      - d_wallpapers
+    - d_wallpapers
   firefox:
     dotfiles:
-      - d_firefox_themes
-      - f_firefox_tabpage
+    - d_firefox_themes
+    - f_firefox_tabpage
   fish_shell:
     dotfiles:
-      - d_fish_shell
-      - d_fish_shell_omf
+    - d_fish_shell
+    - d_fish_shell_omf
   rofi:
     dotfiles:
-      - d_rofi
-      - f_rofi_launcher
-      - f_pywal_rofi_template
-      - f_pywal_rofi_colorscheme
+    - d_rofi
+    - f_rofi_launcher
+    - f_pywal_rofi_template
+    - f_pywal_rofi_colorscheme
   neovim:
     dotfiles:
-      - d_nvim
+    - d_nvim
   kitty:
     dotfiles:
-      - d_kitty
+    - d_kitty
   _base:
     dotfiles:
-      - f_gitconfig
+    - f_gitconfig
+    - d_sh
+    - d_x
     include:
-      - neovim
-      - wallpapers
-      - firefox
-      - fish_shell
+    - neovim
+    - wallpapers
+    - firefox
+    - fish_shell
   i3:
     dotfiles:
-      - d_i3
-      - d_polybar
-      - d_picom
-      - d_flashfocus
-      - d_dunst
-      - f_swal
-      - f_scr
-      - f_pywal_xresources_template
-      - f_post-hibernate
-      - f_ls-chars
-      - f_lockscreen
-      - f_powermenu
-      - f_xinitrc
+    - d_i3
+    - d_polybar
+    - d_picom
+    - d_flashfocus
+    - d_dunst
+    - f_swal
+    - f_setxrandr
+    - f_scr
+    - f_pywal_xresources_template
+    - f_post-hibernate
+    - f_ls-chars
+    - f_lockscreen
+    - f_powermenu
     include:
-      - _base
-      - rofi
-      - kitty
+    - _base
+    - rofi
 
   spaceship:
-     include:
-       - _base
-       - kitty
+    include:
+    - _base
+    - kitty
   atlas:
     include:
-      - i3
+    - i3
+    - kitty

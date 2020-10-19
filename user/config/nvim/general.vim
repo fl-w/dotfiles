@@ -25,8 +25,8 @@ set list listchars=tab:│\ ,nbsp:+,extends:»,precedes:« | " display hidden ch
 set title                                      | " change the terminal title
 set autoread                                   | " auto reload unmodified files changed outside vim
 set hidden                                     | " allow unsaved buffers to be hidden
-set switchbuf=useopen                          | " always switch buffer instead of opening new one
-set relativenumber number                      | " show relative line number
+set switchbuf=                                 | " always switch buffer instead of opening new one
+set number relativenumber                      | " show relative line number
 set lazyredraw                                 | " don't redraw when executing macros, smoother experience
 set clipboard+=unnamedplus                     | " use system clipboard
 set smartcase                                  | " unless uppercase explicitly mentioned
@@ -77,12 +77,12 @@ set foldcolumn=0                               | " don't show foldcolumn
 set signcolumn=yes                             | " always show signcolumn
 set nofoldenable                               | " disable folding by default
 set fillchars+=vert:\                          | " disable verticle split lines
-set formatoptions&
-set formatoptions+=B                           | " don't insert space when joining lines
-set formatoptions+=j                           | " remove comment leader when joining lines
-set formatoptions+=n                           | " auto insert comment on new line
-set formatoptions+=m                           | " break long lines
-set formatoptions+=r                           | " auto insert comment on new line
+" set formatoptions&
+" set formatoptions+=B                           | " don't insert space when joining lines
+" set formatoptions+=j                           | " remove comment leader when joining lines
+" set formatoptions+=n                           | " auto insert comment on new line
+" set formatoptions+=m                           | " break long lines
+" set formatoptions+=r                           | " auto insert comment on new line
 " set cc=80                                      | " show linecolumn
 " set autochdir                                  | " change working directory to open file
 " ignore files when globbing

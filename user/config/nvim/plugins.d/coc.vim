@@ -79,9 +79,14 @@ nmap    <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap    <silent> gd <Plug>(coc-definition)
+nmap    <silent><nowait> go :CocList outline<cr>
+nmap    <silent><nowait> gO :CocList -I -A symbols<cr>
+nmap    <silent><nowait> ge :CocList diagnostics<cr>
 nmap    <silent> gy <Plug>(coc-type-definition)
 nmap    <silent> gi <Plug>(coc-implementation)
 nmap    <silent> gr <Plug>(coc-references)
+nmap    <silent> gR <Plug>(coc-rename)
+
 xmap    <silent> if <Plug>(coc-funcobj-i)
 xmap    <silent> af <Plug>(coc-funcobj-a)
 omap    <silent> if <Plug>(coc-funcobj-i)

@@ -43,10 +43,10 @@ let g:dashboard_custom_shortcut = {
       \ 'book_marks'         : 'SPC f b',
       \ }
 
-let g:dashboard_custom_section = {
-      \ 'buffer_list': [' Recently lase session                 SPC b b'],
-      \ 'find_file': []
-      \}
+" let g:dashboard_custom_section = {
+"       \ 'buffer_list': [' Recently lase session                 SPC b b'],
+"       \ 'find_file': []
+"       \}
 
 function! s:dashboard_init() abort
   call utils#nonwrite_buffer_init()

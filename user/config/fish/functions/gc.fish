@@ -7,7 +7,7 @@ function gc --description 'git commit -m without the need to quote commit messag
         	else if test (git diff --name-only --cached --diff-filter=RM | wc -l | tr -d ' ') = 1
             		git commit -m "Update "(git diff --name-only --cached --diff-filter=RM)
         	else if not git diff --cached --exit-code --quiet
-            		git commit -m (shuf -n 1 ~/.config/fish/functions/commit-msg-list)
+            		git commit -m (shuf -n 1 ~/.config/fish/commit-msg-list)
 		else
 	    		echo "Nothing staged"
         	end
@@ -15,6 +15,7 @@ function gc --description 'git commit -m without the need to quote commit messag
         	echo 'git checkout -'
         	git checkout -
     	else
-        	git commit -m (echo $argv)
+            # if nothing is staged, then ammend commit
+            git commit -m "$argv" (git diff --cached --exit-code --quiet && echo --amend)
     end
 end

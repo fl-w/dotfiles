@@ -3,6 +3,7 @@
 
 set concealcursor=c
 set synmaxcol=3000  " For long paragraphs
+set nonu nornu
 
 if exists('g:loaded_ftmarkdown')
   finish

@@ -92,8 +92,8 @@ noremap <c-p>   viw"0p
 noremap <c-P>   vaW"0p
 
 " Use {,shift}+tab to navigate tabs
-nnoremap <silent>   <tab> :tabnext<CR>
-nnoremap <silent> <s-tab> :tabprevious<CR>
+" nnoremap <silent>   <tab> :tabnext<CR>
+" nnoremap <silent> <s-tab> :tabprevious<CR>
 
 " Use (left/right) to navigate buffers
 " nnoremap <silent> <Right> :bnext<CR>

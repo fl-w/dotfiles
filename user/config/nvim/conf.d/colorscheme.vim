@@ -22,7 +22,7 @@ if has('syntax') && !exists('g:syntax_on')
   syntax enable                                    | " enables syntax highlighting
 endif
 
-set background=dark                                | " set background to be dark
+" set background=dark                                | " set background to be dark
 set synmaxcol=300                                  | " use syntax highlighting only for 300 columns
 
 fu! s:get_color_scheme()
@@ -32,11 +32,17 @@ endfu
 fu! s:set_colors() abort
   let l:color_scheme = s:get_color_scheme()
 
+  hi MatchParen cterm=italic gui=italic
+  hi! link MatchParen Keyword
   if &background == 'light' | return | endif
 
   call utils#color#copy_hi_group('DiffAdd', 'SignifySignAdd')
   call utils#color#copy_hi_group('DiffChange', 'SignifySignChange')
   call utils#color#copy_hi_group('DiffRemove', 'SignifySignRemove')
+  call utils#color#copy_hi_group('DiffAdd', 'GitGutterAdd')
+  call utils#color#copy_hi_group('DiffChange', 'GitGutterChange')
+  call utils#color#copy_hi_group('DiffRemove', 'GitGutterRemove')
+
 
   hi                LineNr ctermbg=NONE  guibg=NONE                | " dont highlight line number
   hi            SignColumn ctermbg=NONE  guibg=NONE                | " dont highlight sign column
@@ -47,24 +53,26 @@ fu! s:set_colors() abort
   hi          StatusLineNC guifg=#2b2b30 guibg=bg      gui=italic  | " same with inactive statusline
   hi         StatusLineINC guifg=#2b2b30 guibg=#181320 gui=italic  | " add background to statusline if has neighboring window below
   hi           EndOfBuffer guifg=#1f1f31 guibg=bg                  | " make EndOfBuffer ('~' char) faint
+  hi            CursorLine ctermfg=12    guibg=#181320             | " change the color of the cursor line to suit my chosen bg color
   hi             VertSplit guifg=bg      guibg=bg                  | " dont highlight vertical split
-  hi            CursorLine guifg=NONE                              | " don't highlight current line
+  " hi            CursorLine guifg=NONE                              | " don't highlight current line
   hi        SignifySignAdd               guibg=bg                  | " dont add bacground to git diff signs
   hi     SignifySignChange               guibg=bg                  | " dont add bacground to git diff signs
   hi     SignifySignRemove               guibg=bg                  | " dont add bacground to git diff signs
+  hi          GitGutterAdd               guibg=bg                  | " dont add bacground to git diff signs
+  hi       GitGutterChange               guibg=bg                  | " dont add bacground to git diff signs
+  hi       GitGutterRemove               guibg=bg                  | " dont add bacground to git diff signs
   hi            DiffChange ctermfg=203   guifg=#9FC267
   hi              Function cterm=bold    gui=bold
   hi             Statement cterm=bold    gui=bold
+  hi                String                             gui=italic
+
+  " tabline
+  hi           TabLineFill guifg=#39373b guibg=bg gui=none
+  call utils#color#copy_hi_group('Statement', 'TablineSel')
+  hi            TabLineSel guibg=#181320            gui=bold
 
   " #181320 bg #847d91
-
-  " todo
-  highlight default link WhichKey          Function
-  highlight default link WhichKeySeperator DiffAdded
-  highlight default link WhichKeyGroup     Keyword
-  highlight default link WhichKeyDesc      Identifier
-  highlight default link WhichKeyFloating Pmenu
-
 
   hi          Pmenu ctermfg=243 ctermbg=237  guifg=#767676 guibg=#0B0712
   hi       PmenuSel ctermfg=140 ctermbg=237  guifg=#8569B3 guibg=#0B0712 gui=bold
@@ -72,19 +80,6 @@ fu! s:set_colors() abort
   hi     PmenuThumb ctermfg=160 ctermbg=97   guifg=#ff2c4b guibg=#875faf
   hi          Error ctermfg=204 ctermbg=NONE guifg=#ff3333 guibg=NONE   gui=none
   " alt error color:  #ff5370
-
-  " colorscheme specific configuration
-  if l:color_scheme == 'badwolf'
-    hi DiffAdd guifg=#B8CC52
-    hi DiffChange guifg=#36A3D9
-    hi Normal guifg=#e4e0ed
-  endif
-
-  " if index(['material', 'palenight', 'badwolf'] , s:get_color_scheme()) != -1
-  "   hi         String ctermfg=140             guifg=#a790d5               gui=italic
-  " else
-  "   hi         String                                                     gui=italic
-  " endif
 
 endfu
 
@@ -98,8 +93,8 @@ augroup colorscheme_detect
 augroup END
 
 if has('vim_starting')
-  colo ayu
-  " colo badwolf
+  let _theme = getenv("_THEME")
+  exe 'set bg=' . (_theme != v:null ? _theme : 'dark')
 endif
 
 " vim: sw=2 sts=2 tw=0 fdm=marker

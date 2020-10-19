@@ -1,1 +1,1 @@
-/home/folws/.local/lib/fzf/shell/key-bindings.fish
+/home/fl-w/.local/lib/fzf/shell/key-bindings.fish
