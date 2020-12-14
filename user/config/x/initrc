@@ -39,8 +39,9 @@ for file in "/etc/X11/Xresources" "$HOME/.Xresources" "$c/x/resources"; do
     fi
 done
 
-# Run user script
+# Run user scripts
 xset r rate 190 60
+
 xrandr.sh
 
 echo "X init wrapper complete, running session $@" > ~/done

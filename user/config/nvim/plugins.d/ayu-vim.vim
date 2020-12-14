@@ -1,4 +1,5 @@
-" Ayu configuration
+" vim: sw=2 sts=2 tw=0 fdm=marker
+" ayu-vim configuration
 "
 
 fu s:set_theme()
@@ -12,5 +13,3 @@ let colors_name = get(g:, 'colors_name', "default")
 if empty(colors_name) || colors_name == "default"
   call s:set_theme()
 endif
-
-" vim: sw=2 sts=2 tw=0 fdm=marker

@@ -2,8 +2,8 @@
   "coc.preferences.bracketEnterImprove": true,
   "coc.source.buffer.priority": 80,
   "coc.source.neco.priority": 100,
-  "coc.source.syntax.priority": 90,
-  "tabnine.priority": 85,
+  "coc.source.syntax.priority": 60,
+  //  "tabnine.priority": 85,
   "codeLens.enable": true,
   "diagnostic.errorSign": "",
   "diagnostic.checkCurrentLine": true,
@@ -12,6 +12,8 @@
   "diagnostic.infoSign": "",
   "diagnostic.hintSign": " ",
   "diagnostic.virtualText": true,
+  "git.addGBlameToVirtualText": true,
+  "git.enableGutters": false,
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
@@ -35,9 +37,12 @@
   },
   "list.indicator": ">",
   "list.selectedSignText": " ",
-  "python.formatting.provider": "black",
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true,
+  "list.alignColumns": true,
+  "list.source.diagnostics.includeCode": false,
+  "list.source.diagnostics.pathFormat": "filename",
+  // "python.formatting.provider": "black",
+  // "python.linting.enabled": true,
+  // "python.linting.pylintEnabled": true,
   "rust-analyzer.checkOnSave.command": "clippy",
   "rust-analyzer.cargo.loadOutDirsFromCheck": true,
   "rust-analyzer.procMacro.enable": true,
@@ -49,5 +54,6 @@
     "text": "t",
     "method": "m",
     "function": ""
-  }
+  },
+  "clangd.path": "/home/fl-w/etc/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd"
 }

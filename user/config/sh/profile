@@ -1,55 +1,76 @@
 # /.profile - sh/bash login script
 
-# Set default editor to neovim
-export EDITOR="/usr/bin/nvim"
-
-# Set default browser (i switch between versions of machines)
-for browser in "/usr/bin/firefox"{,-developer-edition}; do
-  if [ -x "$browser" ]; then
-    export BROWSER="$browser"; break
-  fi
-done
-
-CONFIG_HOME="etc"
-DATA_HOME="usr"
-CACHE_HOME="usr/cache"
-
-# Set XDG directories to non-hidden
-export XDG_CONFIG_HOME="$HOME/$CONFIG_HOME"
-export XDG_DATA_HOME="$HOME/$DATA_HOME"
-export XDG_CACHE_HOME="$HOME/$CACHE_HOME" 
+export \
+  conf="$HOME/etc" \
+  data="$HOME/usr" \
+  opt="$HOME/opt"  \
+  cache="$HOME/usr/cache"
 
 # Make XDG directories
-for dir in "$XDG_CACHE_HOME" "$XDG_DATA_HOME" "$XDG_CONFIG_HOME"; do
+for dir in "$cache" "$data" "$conf"; do
   test -d $dir || mkdir -m 0700 -p $dir
 done
+
+has() { type "$1" &>/dev/null; }
+
+default() {
+  local name="$1"; shift
+  for def in $@; do
+    if has "$def"; then
+      export $name="$def"
+      break
+    fi
+  done
+}
+
+# set default editor
+default EDITOR \
+  nvim nano vim vi
+
+# set default browser (i switch between browsers on diff machines)
+default BROWSER \
+  firefox{,-developer-edition} brave-browser chromium
+
+# Set XDG directories to non-hidden
+export \
+  XDG_DATA_HOME="$data"   \
+  XDG_CACHE_HOME="$cache" \
+  XDG_CONFIG_HOME="$conf"
+
+# Declutter $HOME
+export \
+  N_PREFIX="$data/n" \
+  CARGO_HOME="$data/cargo" \
+  RUSTUP_HOME="$data/rustup" \
+  GOPATH="$cache/go"   \
+  TEXMFHOME="$XDG_DATA_HOME/texmf/" \
+  WEECHAT_HOME="$conf/weechat"  \
+  GTK2_RC_FILES="$conf/gtk-2.0/gtkrc-2.0" \
+  _FASD_DATA="$cache/fasd" \
+  GNUPGHOME="$opt/apps/gpg"
+  # NPM_CONFIG_USERCONFIG="$conf/npm/npmrc" \
+
+# export \ 
+#   HISTFILE="$cache/sh/bash_history" \
+#   LESSHISTFILE="$null" \
+#   ERRFILE="$cache/session-errors"
+
+alias \
+  yarn="yarn --use-yarnrc $conf/npm/yarnrc"
+
+# set ls colors
+export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 
 # Symlink stubborn dirs
 for dir in CONFIG CACHE; do
   dirl="$(echo ".$dir" | tr '[:upper:]' '[:lower:]')"
   dir=${dir}_HOME; dir=${!dir}
 
-  if [[ -d "$HOME/.$dirl" && ! -L "$HOME/$dirl" ]]; then 
+  if [[ -d "$HOME/$dirl" && ! -L "$HOME/$dirl" ]]; then 
     mv "$HOME/$dirl"/* $dir
     rm -r "$HOME/$dirl"
+    ln -s "${!dir}" "$HOME/$dirl"
   fi
-  ln -s "${!dir}" "$HOME/.$dirl"
 done
 
-unset CONFIG_HOME CACHE_HOME DATA_HOME
-
-# Declutter $HOME
-export CARGO_HOME="$XDG_DATA_HOME/cargo" 
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup" 
-export GOPATH="$XDG_DATA_HOME/go" 
-export _FASD_DATA="$XDG_DATA_HOME/fasd/store" 
-export N_PREFIX="$XDG_DATA_HOME/n" 
-# export XAUTHORITY="$XDG_CACHE_HOME/xauth" 
-export GNUPGHOME="$XDG_CACHE_HOME/gpg"
-
-# prevent `less` from storing history
-export LESSHISTFILE=/dev/null
-
-# set ls colors
-export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 # vim: sw=2

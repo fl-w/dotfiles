@@ -12,6 +12,16 @@ if exists('*utils#abbr_command')
   call utils#abbr_command('coc', 'CocConfig')  " Use coc to open coc config
 endif
 
+let g:coc_global_extensions = [ 
+  \ "coc-syntax"       ,
+  \ "coc-snippets"     ,
+  \ "coc-lists"        ,
+  \ "coc-json"         ,
+  \ "coc-rust-analyzer",
+  \ "coc-clangd"       ,
+  \ ]
+
+" configure error color
 highlight! link CocErrorSign Error
 
 augroup coc_autocomplete
@@ -51,14 +61,13 @@ function! s:tab_complete() abort
   return s:check_back_space() ? "\<tab>" : coc#refresh()
 endfunction
 
-function! s:show_documentation() abort
-  if index(['vim','help'], &filetype) >= 0
-    try
-      execute ':h '.expand('<cword>')
-    catch
-    endtry
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
 
@@ -73,19 +82,19 @@ inoremap <silent> <expr> <S-TAB> pumvisible() ? "\<c-n>" : "\<c-h>"
 inoremap <silent> <expr>    <CR> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>\<c-r>=coc#on_enter()\<cr>"
 " inoremap <silent> <expr>   <ESC> pumvisible() ? "\<c-e>" : "\<esc>"
 
-" Use `[g` and `]g` to navigate diagnostics
-nmap    <silent> [g <Plug>(coc-diagnostic-prev)
-nmap    <silent> ]g <Plug>(coc-diagnostic-next)
+" Use `[e` and `]e` to navigate diagnostics
+nmap    <silent> [e <Plug>(coc-diagnostic-prev)
+nmap    <silent> ]e <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap    <silent> gd <Plug>(coc-definition)
-nmap    <silent><nowait> go :CocList outline<cr>
-nmap    <silent><nowait> gO :CocList -I -A symbols<cr>
-nmap    <silent><nowait> ge :CocList diagnostics<cr>
+nmap    <silent><nowait> go :CocFzfList outline<cr>
+nmap    <silent><nowait> gO :CocFzfList -I -A symbols<cr>
+nmap    <silent><nowait> ge :CocFzfList diagnostics<cr>
 nmap    <silent> gy <Plug>(coc-type-definition)
 nmap    <silent> gi <Plug>(coc-implementation)
-nmap    <silent> gr <Plug>(coc-references)
-nmap    <silent> gR <Plug>(coc-rename)
+nmap    <silent> gr <Plug>(coc-rename)
+nmap    <silent> gR <Plug>(coc-references)
 
 xmap    <silent> if <Plug>(coc-funcobj-i)
 xmap    <silent> af <Plug>(coc-funcobj-a)

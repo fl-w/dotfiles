@@ -59,8 +59,8 @@ fun! s:slide_win(size)
   " set win var to animate close this window
   call setwinvar(n, '_animated_close', cl)
 
-  " create mapping to slide out window on <esc>
-  exe printf('nnoremap <silent> <buffer> <esc> %s<cr>', cl)
+  " create mapping to slide out window on q
+  exe printf('nnoremap <silent> <buffer> q %s<cr>', cl)
 endf
 
 fun! utils#window#slide_window(name, size)

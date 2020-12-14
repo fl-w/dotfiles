@@ -22,4 +22,6 @@ function pfetch --description 'Run pfetch with predefined args'
   end
   USER=$user PF_INFO=$PF_INFO command pfetch
   and $infinity; and sleep infinity
+
+  return 0;
 end

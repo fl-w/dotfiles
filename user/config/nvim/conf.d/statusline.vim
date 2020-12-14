@@ -1,7 +1,6 @@
 " statusline.vim: minimal custom statusline (inspired by eleline)
 "
 
-finish
 " if exists('g:loaded_statusline') || v:version < 700 |  finish | endif
 let g:loaded_statusline = 1
 

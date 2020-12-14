@@ -1,5 +1,9 @@
 # set LS_COLORS dxfxcxdxbxegedabagacad
 
+[ -f "$XDG_CONFIG_HOME/sh/alias" ] 
+    and . "$XDG_CONFIG_HOME/sh/alias"
+
+
 alias df 'df -m'
 alias ll 'ls -gaG'
 alias ls 'ls -h --color=auto --group-directories-first'
@@ -38,13 +42,12 @@ abbr q  'exit'
 
 abbr slblk 'sudo lsblk -o name,mountpoint,label,size,uuid'
 
-# stop wget from storing history
-alias wget 'wget --no-hsts --hsts-file'
+abbr ei 'nvim $conf/i3'
+abbr ef 'nvim $conf/fish'
+abbr ek 'nvim $conf/kitty'
+abbr ev 'nvim $conf/nvim'
+abbr ep 'nvim $conf/polybar'
 
+if has zzz; abbr ZZZ 'zzz -Z'; end
 
-abbr ei 'nvim ~/.config/i3'
-abbr ei3 'nvim ~/.config/i3'
-abbr ef 'nvim ~/.config/fish'
-abbr ev 'nvim ~/.config/nvim'
-abbr ep 'nvim ~/.config/polybar'
-
+if has kitty; alias icat 'kitty +kitten icat --align left'; end

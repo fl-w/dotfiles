@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-TABDIR="$HOME/src/tab"
+TABDIR="${XDG_DATA_HOME:-".local/share"}/tab"
 LOCKDIR="/tmp/tab-page-lock"
 
 function pull_lastest {
@@ -43,7 +43,7 @@ if mkdir $LOCKDIR; then
 
     echo "Acquired lock"
 
-    # Serve $HOME/sbin/tab/index.html
+    # Serve tabpage
     python -m http.server $PORT -d $TABDIR > /dev/null 2>&1 || \
     echo -e "Failed to start python http server..."
 else

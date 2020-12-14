@@ -8,7 +8,7 @@ PREV_NAME=.fehbg.prev
 PROGRAM_NAME=$(basename "$0")
 VERBOSE=0
 
-: "${COLOR_BG:=#131315}"
+: "${COLOR_BG:=#06070a}"
 : "${ALPHA:=55}"
 : "${WALLPAPERS:=$HOME/.wallpapers}"
 

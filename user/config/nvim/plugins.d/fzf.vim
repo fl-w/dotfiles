@@ -4,16 +4,6 @@
 " Tell ripgrep to use current working directory
 " let g:rg_derive_root = v:true
 
-" " Set fzf to floating layout
-" let g:fzf_layout = {
-"       \ 'window': {
-"       \   'width': 0.75,
-"       \   'height': 0.75,
-"       \   'highlight': 'Comment',
-"       \   'yoffset': 0.25,
-"       \   'border': 'sharp'
-"       \ } }
-
 " Jump to the existing window if possible.
 let g:fzf_buffers_jump = v:true
 
@@ -25,27 +15,28 @@ let g:fzf_height = 16
 " don't open files over the following buffers
 let g:_fzf_prevent_winbuf = ['fern', 'fugitive', 'vista']
 
-" slide fzf in
-call utils#window#slide_window('fzf', g:fzf_height)
+function fzf#__open(command) 
+  let buf = expand('%')
+  if winnr('$') > 1
+    \ && len(filter(copy(g:_fzf_prevent_winbuf), "bufname('%') =~ v:val")) > 0
+    exe "normal! \<c-w>\<c-w>"
+  endif
 
-" function s:fzf_ignore_buf()
-"   " check if coming from fzf and going to a buf is a listed
-"   let name = bufname('%')
-"   echom 'before' winnr() ' with ' name
-"   let ar = copy(g:_fzf_prevent_winbuf)
-"   if winnr('$') > 1
-"         \ && len(filter(ar, "bufname('%') =~ v:val")) > 0
-"     exe "normal! \<c-w>\<c-w>"
-"     echom 'yeah man ;D'
-"     wincmd w
-"     echom 'after'  winnr() ' with ' bufname()
-"   endif
-"   echom ar
-" endf
+  exe ':' . a:command
+endf
 
-" augroup fzf_ignore_buf
-"   au BufWinEnter * call s:fzf_ignore_buf()
-" augroup end
+" Set fzf to floating layout
+let g:fzf_layout = {
+      \ 'window': {
+      \   'width': 0.75,
+      \   'height': 0.65,
+      \   'highlight': 'Comment',
+      \   'yoffset': 0.25,
+      \   'border': 'sharp'
+      \ } }
+
+" " slide fzf in
+" call utils#window#slide_window('fzf', g:fzf_height)
 
 fun! s:close_fzf()
   let w = winnr()

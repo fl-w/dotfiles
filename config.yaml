@@ -89,7 +89,8 @@ dotfiles:
     src: config/wal/templates/colors.Xresources
     dst: ~/.config/wal/templates/colors.Xresources
     actions:
-    - confirm "Symlink generated pywal Xresources?" "ln -s {{@@ _dotfile_abs_dst @@}} ~/.Xresources"
+    - confirm "Symlink generated pywal Xresources?" "ln -s {{@@ _dotfile_abs_dst @@}}
+      ~/.Xresources"
   f_deskopen:
     src: bin/deskopen
     dst: ~/bin/deskopen
@@ -99,9 +100,9 @@ dotfiles:
   f_rofi_launcher:
     src: bin/app-launcher
     dst: ~/bin/app-launcher
-  f_launch-singleton:
-    src: bin/launch-singleton
-    dst: ~/bin/launch-singleton
+  f_laun.ch:
+    src: bin/laun.sh
+    dst: ~/bin/laun.sh
   f_powermenu:
     src: bin/powermenu
     dst: ~/bin/powermenu
@@ -120,10 +121,15 @@ dotfiles:
   f_swal:
     src: bin/swal
     dst: ~/bin/swal
-  f_setxrandr:
-    src: bin/setxrandr
-    dst: ~/bin/setxrandr
+  f_lch:
+    src: bin/lch
+    dst: ~/bin/lch
 profiles:
+  bin:
+    dotfiles:
+    - f_lch
+    - f_laun.ch
+    - f_scr
   wallpapers:
     dotfiles:
     - d_wallpapers
@@ -153,6 +159,7 @@ profiles:
     - d_sh
     - d_x
     include:
+    - bin
     - neovim
     - wallpapers
     - firefox
@@ -165,7 +172,6 @@ profiles:
     - d_flashfocus
     - d_dunst
     - f_swal
-    - f_setxrandr
     - f_scr
     - f_pywal_xresources_template
     - f_post-hibernate

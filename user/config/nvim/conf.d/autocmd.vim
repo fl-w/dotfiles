@@ -1,8 +1,10 @@
 " Filetype specific settings
 "
-autocmd! filetype *commit*,markdown setlocal spell         | " Spell Check
-autocmd! filetype *commit*,markdown setlocal textwidth=72  | " Looks good
-autocmd! filetype make setlocal noexpandtab                | " In Makefiles DO NOT use spaces instead of tabs
+au! BufRead,BufNewFile *.asm setfiletype r
+au! filetype *commit*,markdown setlocal spell         | " Spell Check
+au! filetype *commit*,markdown setlocal textwidth=72  | " Looks good
+au! filetype make setlocal noexpandtab                | " In Makefiles DO NOT use spaces instead of tabs
+au! filetype r set tabstop=4 | retab
 
 augroup window_size
   au! VimResized * wincmd =

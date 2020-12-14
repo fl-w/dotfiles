@@ -1,1 +1,21 @@
-xset r rate 210 50
+# /.xprofile - xorg login script
+
+has() { 
+    type "$1" >/dev/null 
+}
+
+ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+if has xset; then
+    xset r rate 190 60 # increase kb repeat rate
+    xset -dpms         # disable dpms(https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling)
+fi
+
+# set dual monitor layout (TODO: make more advanced ?? 13/12/20 - i dont know what this means)
+if has xrandr; then 
+    for sc in "$ROOT/xrandr/set-layout" "$ROOT/xrandr/aset-layout"; do
+        [ -x $sc ] && $sc &
+    done
+fi
+
+# start pulseaudio 

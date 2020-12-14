@@ -5,30 +5,33 @@ if status --is-login
   end
 end
 
-function _command --description "check if command is a command" --argument c
-  command -v $c >/dev/null
-  return $fish_status
-end
-
 # Disable fish greeting
 set -g fish_greeting ''
 
 # Set fish colors
 set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
 
-# Append local bin dir to PATH
-set PATH $HOME/.local/bin $HOME/bin $PATH
-
-# Append DART pub bin dir to PATH
-set PATH $HOME/.pub-cache/bin $PATH
-
-# Append RUST cargo bin dir to PATH
-set PATH $CARGO_HOME/bin $PATH
+function add_path --argument bin
+  [ -d $bin ]; and set --prepend PATH $bin
+end
 
 # Append Go bin dir to PATH
-set PATH $GOPATH/bin $PATH
+add_path $GOPATH/bin
 
-[ -d $N_PREFIX/bin ]; and set --prepend PATH $N_PREFIX/bin
+# Append n directory to PATH
+add_path $N_PREFIX/bin 
+
+# Append bin dir to PATH
+add_path $HOME/bin
+
+# Append DART pub bin dir to PATH
+add_path $HOME/.pub-cache/bin
+
+# Append RUST cargo bin dir to PATH
+add_path $CARGO_HOME/bin
+
+# # Append the current directory to path
+add_path .
 
 # Append android-sdk & emulator to PATH
 [ -d /opt/android-sdk ]
@@ -43,11 +46,16 @@ set PATH $GOPATH/bin $PATH
 # Setup kitty auto complete
 [ -f /usr/bin/kitty ]; and kitty + complete setup fish | source
 
+function _command --description "check if command is a command" --argument c
+  command -v $c >/dev/null
+  return $fish_status
+end
+
 # Set default bat command
 _command bat; and set -g BAT_DEFAULT_COMMAND bat --color always --theme Dracula --style=header,changes --wrap never
 
 # Set default ripgrep command
-_command rg; and set -g RG_DEFAULT_COMMAND "rg --files --hidden -g '!.git/**' --ignore -l"
+_command rg; and set -g RG_DEFAULT_COMMAND "rg --files --hidden -g '!.git/**' -g '!target/' -g '!Cargo.{toml,lock}' --ignore -l"
 
 # Set FZF to use rg
 if _command fzf

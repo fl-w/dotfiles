@@ -10,9 +10,9 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar for all monitors
 if command -v xrandr &> /dev/null; then
-    for monitor in $(xrandr --query | grep -i connected | grep -v disconnected | cut -d ' ' -f1); 
+    for MONITOR in $(xrandr --query | grep -i connected | grep -v disconnected | cut -d ' ' -f1); 
     do
-        MONITOR=${monitor} polybar --reload main &
+        MONITOR="$MONITOR" polybar --reload main &
     done
 else
     polybar --reload main &

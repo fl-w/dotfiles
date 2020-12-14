@@ -53,4 +53,9 @@ if exists('*utils#abbr_command')
   call utils#abbr_command('rc', 'so $MYVIMRC') " use :rc to resource this file
 endif
 
+" nightly config
+if has('nvim-0.5')
+  lua require('init-nightly')
+endif
+
 " vim: sw=2 sts=2 tw=0 fdm=marker
