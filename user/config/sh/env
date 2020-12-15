@@ -1,0 +1,26 @@
+# declutter $HOME
+export \
+    CARGO_HOME="$XDG_DATA_HOME/cargo" \
+    RUSTUP_HOME="$XDG_DATA_HOME/rustup" \
+    GOPATH="$XDG_DATA_HOME/go" \
+    _FASD_DATA="$XDG_DATA_HOME/fasd/store" \
+    N_PREFIX="$XDG_DATA_HOME/n" \
+    XAUTHORITY="$XDG_CACHE_HOME/xauth" \
+    GNUPGHOME="$XDG_CACHE_HOME/gpg"
+
+# prevent `less` from storing history
+export LESSHISTFILE=/dev/null
+
+# Add colors to less
+# export \
+#     LESS_TERMCAP_mb=$'\e[1;32m'    \
+#     LESS_TERMCAP_md=$'\e[1;32m'    \ 
+#     LESS_TERMCAP_me=$'\e[0m'       \
+#     LESS_TERMCAP_se=$'\e[0m'       \
+#     LESS_TERMCAP_so=$'\e[01;33m'   \
+#     LESS_TERMCAP_ue=$'\e[0m'       \
+#     LESS_TERMCAP_us=$'\e[1;4;31m'  \
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# vim: ft=sh
