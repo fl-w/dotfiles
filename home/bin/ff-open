@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+ff=
+for f in firefox firefox-developer-edition; do
+    if type $f &>/dev/null
+        then
+            ff=$f; break
+    fi
+done
+
+[ ! -z "$ff" ] && $ff -new-tab "$1"

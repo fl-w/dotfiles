@@ -1,15 +1,24 @@
-# Start X at login
-if status --is-login
-  if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-    # exec startx
-  end
-end
-
 # Disable fish greeting
 set -g fish_greeting ''
 
-# Set fish colors
+# Open fish in vim-mode
+fish_vi_key_bindings
+
+# Set ls colors
 set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
+
+set -g theme_prompt_symbol λ
+
+# Automatically install fundle (Warning: dangerous on bad connections)
+if not functions -q fundle
+  eval (curl -sfL https://git.io/fundle-install)
+end
+
+fundle plugin 'franciscolourenco/done'
+fundle plugin 'fl-w/ortega'
+fundle plugin 'jethrokuan/z'
+
+fundle init
 
 function add_path --argument bin
   [ -d $bin ]; and set --prepend PATH $bin
@@ -75,19 +84,8 @@ if _command fzf
     and set -gx FZF_CTRL_T_COMMAND "$RG_DEFAULT_COMMAND 2>/dev/null"
 end
 
-# # Import aliases
-# [ -f conf.d/aliases.fish ]; and . conf.d/aliases.fish
-
 # pipenv completion
 command -v pipenv >/dev/null && eval (pipenv --completion)
 
 # Pipr binding
 bind \ca run-pipr
-
-# Open fish in vim-mode
-fish_vi_key_bindings
-
-# set pywal colors
-# [ -f ~/.cache/wal/sequences ]
-# and cat ~/.cache/wal/sequences &
-# todo: write pywal colors.fish and source

@@ -48,13 +48,13 @@ fu! colorscheme#set() abort
   hi            SignColumn ctermbg=NONE  guibg=NONE                | " dont highlight sign column
   hi                Normal ctermbg=NONE  guibg=NONE                | " stop theme from setting bg color
   hi HighlightedyankRegion ctermbg=0     guibg=#13354A             | " change yank highlight color
-  hi               Comment ctermfg=239   guifg=#36323d gui=italic  | " change comment color and set to italic
+  " hi               Comment ctermfg=239   guifg=#36323d gui=italic  | " change comment color and set to italic
   hi            StatusLine guifg=#4E4E4E guibg=bg      gui=italic  | " make statusline invisible
   hi          StatusLineNC guifg=#2b2b30 guibg=bg      gui=italic  | " same with inactive statusline
   hi         StatusLineINC guifg=#2b2b30 guibg=#181320 gui=italic  | " add background to statusline if has neighboring window below
   hi           EndOfBuffer guifg=#1f1f31 guibg=bg                  | " make EndOfBuffer ('~' char) faint
-  hi            CursorLine ctermfg=12    guibg=#181320 guifg=NONE  | " change the color of the cursor line to suit my chosen bg color
-  hi          CursorLineNr guifg=#767676                           | " change the color of the cursor line to suit my chosen bg color
+  " hi            CursorLine ctermfg=12    guibg=#181320 guifg=NONE  | " change the color of the cursor line to suit my chosen bg color
+  " hi          CursorLineNr guifg=#767676                           | " change the color of the cursor line to suit my chosen bg color
   hi             VertSplit guifg=bg      guibg=bg      gui=NONE    | " dont highlight vertical split
   hi            CursorLine guifg=NONE                              | " don't highlight current line
   hi        SignifySignAdd               guibg=bg                  | " dont add bacground to git diff signs
