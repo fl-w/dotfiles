@@ -195,7 +195,7 @@ profiles:
     include:
     - _base
     - kitty
-  atlas:
+  4tlas:
     include:
     - i3
     - kitty
