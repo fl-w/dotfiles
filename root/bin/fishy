@@ -1,0 +1,16 @@
+#!/bin/bash
+# fihsy - fish login shell wrapper
+
+# check if this is a login shell
+if [[ "$0" == -* || "$1" =~ --?l(\w+)? ]]; 
+then 
+  exec /bin/bash -l
+
+  [ -x "$HOME/.env" ] && . "$HOME/.env"
+
+  prof="${conf:-$HOME/.config}/sh/profile"
+  shopt -q login_shell && [ -x $prof ] && . $prof
+  unset prof
+fi
+
+exec fish "$@"
