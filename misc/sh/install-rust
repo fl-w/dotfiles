@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+source "${0%/*}/"utils
+
+type rustup &>/dev/null || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+cargo install watchexec
+cargo install cargo-edit

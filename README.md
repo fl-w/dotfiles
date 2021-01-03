@@ -10,16 +10,16 @@ I use [dotdrop] to install link all of the required configuration into my home d
 
 ## Preview
 ### neovim
-![](screenshots/nvim.png)
+![](misc/screenshots/nvim.png)
 ##
-![screenshot](screenshots/demo.png)
+![screenshot](misc/screenshots/demo.png)
 + wm: i3-gaps
 + terminal: kitty
 + shell: fish
 + font: Fira Code Nerd Font Patch
 + bar: polybar
 ##
-![screenshot2](screenshots/demokde.png)
+![screenshot2](misc/screenshots/demokde.png)
 + wm: kde-plasma
 + terminal: konsole
 + shell: fish
@@ -30,7 +30,7 @@ I use [dotdrop] to install link all of the required configuration into my home d
 - [Requirements](#requirements)
 - [Quick Start](#quick-start)
 - [Dots](#dots)
-- [Screenshots](#screenshots)
+- [Screenshots](#misc/screenshots)
 - [License](#unlicense)
 
 ## Requirements
