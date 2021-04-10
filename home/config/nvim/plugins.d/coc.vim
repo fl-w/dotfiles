@@ -89,12 +89,14 @@ nmap    <silent> ]e <Plug>(coc-diagnostic-next)
 " GoTo code navigation.
 nmap    <silent> gd <Plug>(coc-definition)
 nmap    <silent><nowait> go :CocFzfList outline<cr>
-nmap    <silent><nowait> gO :CocFzfList -I -A symbols<cr>
+nmap    <silent><nowait> gO :CocFzfList symbols<cr>
 nmap    <silent><nowait> ge :CocFzfList diagnostics<cr>
+nmap    <silent><nowait> gE :CocFzfList diagnostics --current-buf<cr>
+nmap    <silent> ga <Plug>(coc-codeaction-selected)w
 nmap    <silent> gy <Plug>(coc-type-definition)
 nmap    <silent> gi <Plug>(coc-implementation)
-nmap    <silent> gr <Plug>(coc-rename)
-nmap    <silent> gR <Plug>(coc-references)
+nmap    <silent> gr <Plug>(coc-references)
+nmap    <silent> gR <Plug>(coc-rename)
 
 xmap    <silent> if <Plug>(coc-funcobj-i)
 xmap    <silent> af <Plug>(coc-funcobj-a)

@@ -12,8 +12,8 @@
   "diagnostic.infoSign": "",
   "diagnostic.hintSign": " ",
   "diagnostic.virtualText": true,
-  "git.addGBlameToVirtualText": true,
-  "git.enableGutters": false,
+  // "git.addGBlameToVirtualText": true,
+  // "git.enableGutters": false,
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
@@ -44,9 +44,12 @@
   // "python.linting.enabled": true,
   // "python.linting.pylintEnabled": true,
   "rust-analyzer.checkOnSave.command": "clippy",
-  "rust-analyzer.cargo.loadOutDirsFromCheck": true,
+  // "rust-analyzer.cargo.loadOutDirsFromCheck": true,
   "rust-analyzer.procMacro.enable": true,
   "rust-analyzer.completion.postfix.enable": true,
+  "rust-analyzer.diagnostics.disabled": [
+    "incorrect-ident-case"
+  ],
   "snippets.priority": 85,
   "snippets.ultisnips.enable": false,
   "suggest.noselect": false,

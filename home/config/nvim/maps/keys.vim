@@ -45,6 +45,9 @@ nnoremap <silent> <M-k>    :resize -2<CR>
 nnoremap <silent> <M-h>    :vertical resize -2<CR>
 nnoremap <silent> <M-l>    :vertical resize +2<CR>
 
+" Force gf to open file under cursor
+map <silent> gf :e <cfile><CR>
+
 " Map double <leader> to save
 noremap <silent> <leader><leader> :update!<cr>
 

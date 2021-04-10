@@ -1,8 +1,8 @@
 " vim-wintabs configuration
 "
 
-noremap <Right> :<C-u>WintabsNext<cr>
-noremap <Left> :<C-u>WintabsPrevious<cr>
+noremap <silent> <Left> :<C-u>WintabsPrevious<cr>
+noremap <silent> <Right> :<C-u>WintabsNext<cr>
 
 let g:wintabs_ui_readonly = ' '
 let g:wintabs_ui_modified = ' '
@@ -14,13 +14,16 @@ let g:wintabs_ui_sep_rightmost = ""
 let s:sep_left = "\ue0be" " or  ue0b6 | a | e
 let s:sep_right = "\ue0b8" " or ue0b4 | c | 8
 
+let s:sep_left = ""
+let s:sep_right = ""
+
 fun! s:init()
-  " let g:wintabs_renderers = extend(wintabs#renderers#defaults(), {
-  "   \ 'buffer': funcref('s:buffer'),
-  "   \ 'buffer_sep': funcref('s:buffer_sep'),
-  "   \ 'line_sep': funcref('s:line_sep'),
-  "   \ 'padding': funcref('s:padding'),
-  "   \ })
+  let g:wintabs_renderers = extend(wintabs#renderers#defaults(), {
+    \ 'buffer': funcref('s:buffer'),
+    \ 'buffer_sep': funcref('s:buffer_sep'),
+    \ 'line_sep': funcref('s:line_sep'),
+    \ 'padding': funcref('s:padding'),
+    \ })
 
   augroup wintabs_powerline_on_colorscheme
     autocmd!
@@ -35,10 +38,12 @@ fun! s:on_colorscheme()
   hi WintabsEmpty      guibg=NONE
   hi WintabsArrow      guibg=NONE
   hi WintabsActive     guibg=#a790d5 gui=italic
-  hi WintabsActiveSep  guibg=NONE guifg=#a790d5
+  " hi WintabsActiveSep  guibg=NONE guifg=#a790d5
+  hi! link WintabsActive Statement
 
   hi! link WintabsInactive Wintabs
   hi! link Wintabs StatusLine
+  " hi! link WintabsEmpty WintabsActive
 endf
 
 fun! s:buffer(bufnr, config)

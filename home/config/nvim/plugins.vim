@@ -37,9 +37,8 @@ else
   " Intellisense engine with lsp
   Plug 'lervag/vimtex'
   Plug 'neoclide/coc.nvim', 
-    \ { 'branch': 'master', 
-    \   'do': 'yarn install --frozen-lockfile',
-    \   'commit': '7f84d6bdd79e30b71862a9ef228fc0312fe04beb' }
+    \ { 'branch': 'release' }
+    " \   'do': 'yarn install --frozen-lockfile' }
   " Intellisense engine with lsp
   Plug 'neoclide/coc-neco'                      | " Add vim completion to coc
   Plug 'Shougo/neco-vim', { 'for': 'vim' }      | " Vim completion source
@@ -55,15 +54,15 @@ else
   Plug 'rakr/vim-one'                           | " Fantastic colors
   Plug 'NLKNguyen/papercolor-theme'             | " Light theme with sane background
   Plug 'lifepillar/vim-gruvbox8'                | " Gruvbox theme for VIM
-  Plug 'jaredgorski/SpaceCamp'
-  Plug 'liuchengxu/space-vim-dark'
-  Plug 'tyrannicaltoucan/vim-deep-space'
-  Plug 'AlessandroYorba/Sierra'
-  Plug 'junegunn/seoul256.vim'
-  Plug 'jdsimcoe/abstract.vim'
-  Plug 'glepnir/oceanic-material'
-  Plug 'mhartington/oceanic-next'
-  Plug 'wadackel/vim-dogrun'
+  " Plug 'jaredgorski/SpaceCamp'
+  " Plug 'liuchengxu/space-vim-dark'
+  " Plug 'tyrannicaltoucan/vim-deep-space'
+  " Plug 'AlessandroYorba/Sierra'
+  " Plug 'junegunn/seoul256.vim'
+  " Plug 'jdsimcoe/abstract.vim'
+  " Plug 'glepnir/oceanic-material'
+  " Plug 'mhartington/oceanic-next'
+  " Plug 'wadackel/vim-dogrun'
   Plug 'morhetz/gruvbox'
 
 
@@ -75,9 +74,6 @@ else
   Plug 'justinmk/vim-syntax-extra'              | " Syntax for c,bison,flex
   Plug 'sheerun/vim-polyglot'                   | " Mega language support pack
   Plug 'vim-pandoc/vim-pandoc-syntax'           | " Pandoc syntax
-  if has('nvim-0.5')
-    " Plug 'nvim-treesitter/nvim-treesitter'
-  endif
 
 
   "
@@ -90,39 +86,40 @@ else
   " Plug 'easymotion/vim-easymotion'              | " More vim motions!
   Plug 'jiangmiao/auto-pairs'                   | " Add brackets automatically
   Plug 'junegunn/goyo.vim'                      | " Distraction-free writing in Vim
-  Plug 'junegunn/limelight.vim'                 | " Distraction-free mode
+  " Plug 'junegunn/limelight.vim'                 | " Distraction-free mode
   Plug 'junegunn/vim-peekaboo'                  | " Show register contents on /@
-  Plug 'kshenoy/vim-signature'                  | " Visualise and navigate marks in gutter
+  " Plug 'kshenoy/vim-signature'                  | " Visualise and navigate marks in gutter
   Plug 'liuchengxu/vim-which-key'               | " Show keybindings in a popup
-  Plug 'machakann/vim-highlightedyank'          | " Highlight yanked text
-  Plug 'mhinz/vim-signify'
-  Plug 'rhysd/clever-f.vim'                     | " Quick f,t vim motions
+  " Plug 'machakann/vim-highlightedyank'          | " Highlight yanked text
+  " Plug 'mhinz/vim-signify'
+  " Plug 'rhysd/clever-f.vim'                     | " Quick f,t vim motions
   Plug 'samoshkin/vim-mergetool'                | " use vim as mergetool
   Plug 'terryma/vim-expand-region'              | " Expand visually selected text regions
   Plug 'tpope/vim-surround'                     | " Change your surroundings
-  Plug 'udalov/kotlin-vim'
+  " Plug 'udalov/kotlin-vim'
   " Plug 'vim-pandoc/vim-pandoc',
   "       \ { 'for': 'markdown' }                 | " Pandoc integration
   Plug 'Yggdroot/indentLine'                    | " Indent guides
   " Plug 'wellle/context.vim', { 'for': 'rust' }
+  Plug 'Xuyuanp/scrollbar.nvim'
 
 
   "
   " Tools
   "
 
-  Plug 'junegunn/vim-easy-align'                | " Easily align text
-  " Plug 'liuchengxu/vista.vim'                   | " Displays tags in a window by scope
+  " Plug 'junegunn/vim-easy-align'                | " Easily align text
+  Plug 'liuchengxu/vista.vim'                   | " Displays tags in a window by scope
   Plug 'mbbill/undotree'                        | " Graphical undo history
   Plug 'tpope/vim-abolish'                      | " Easily search and substitute
   Plug 'tpope/vim-commentary'                   | " Awesome commenting
   Plug 'psliwka/vim-smoothie'                   | " Smooth scrolling
-  Plug 'samoshkin/vim-mergetool'                | " use vim as mergetool
-  Plug 'simnalamburt/vim-mundo'                 | " Another graphical undo history
-  Plug 'thinca/vim-template'                    | " Template file engine
+  " Plug 'samoshkin/vim-mergetool'                | " use vim as mergetool
+  " Plug 'simnalamburt/vim-mundo'                 | " Another graphical undo history
+  " Plug 'thinca/vim-template'                    | " Template file engine
   Plug 'tpope/vim-eunuch'                       | " Add unix commands to vim
   Plug 'tpope/vim-fugitive'                     | " Git wrapper
-  " " Plug 'tpope/vim-obsession'                    | " Continuously update session files
+  " Plug 'tpope/vim-obsession'                    | " Continuously update session files
   Plug 'tpope/vim-sleuth'                       | " Autodetect file spacing
   Plug 'vim-scripts/autoswap.vim'               | " Handle swap files intelligently
   Plug 'zefei/vim-wintabs'                      | " Manage buffers per window

@@ -26,7 +26,7 @@ let g:is_darwin = has('win32') || has('win64')
 let g:is_linux = has('unix') && !has('macunix')
 
 if has('vim_starting')
-  runtime general.vim
+  runtime settings.vim
 endif
 
 runtime! plugins.vim
@@ -43,7 +43,7 @@ else
 
   " load plugin configs
   let g:plug_configs = map(filter(copy(g:plugs_order), {_, val -> index(g:vim_ignore_configs_list, val) == -1}),
-        \ '"plugins.d/" . tolower(fnamemodify(v:val, ":r")) . ".vim"')
+        \ '"plugins.d/" . tolower(substitute(fnamemodify(v:val, ":r"), "\\.", "-", "")) . ".vim"')
   for s:plug in g:plug_configs
     exe 'runtime' s:plug
   endfor
@@ -52,3 +52,9 @@ endif
 if exists('*utils#abbr_command')
   call utils#abbr_command('rc', 'so $MYVIMRC') " use :rc to resource this file
 endif
+
+" load external init.lua file whilst lua is nightly
+
+if has('nvim-0.5')
+  lua require 'init-nightly'
+end
