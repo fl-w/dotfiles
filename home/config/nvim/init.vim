@@ -19,7 +19,7 @@
 "
 
 let $VIM_ROOT = expand('<sfile>:p:h')
-let $VIM_DATA_ROOT = expand(stdpath('data')) 
+let $VIM_DATA_ROOT = stdpath('data')
 
 let g:vim_ignore_configs_list = ['ale']
 let g:is_darwin = has('win32') || has('win64')

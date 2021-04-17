@@ -13,15 +13,22 @@ augroup END
 augroup vimrc
   au!
 
-  " au BufWritePre * call utils#trim_whitespace()                       " Remove trailing whitespace when saving
+  au BufWritePre * call utils#trim_whitespace()                       " Remove trailing whitespace when saving
+
   au BufWritePre *
         \ call utils#auto_mkdir(expand('<afile>:p:h'), v:cmdbang)     " auto create missing directories
-  " au InsertEnter * let b:icul = &cul | set nocul                      " Remove cursorline on insertmode
-  " au InsertLeave * if utils#boolexists('b:icul') | set cul | endif    " Replace prev cursorline
+
+  au InsertEnter * let b:icul = &cul | set nocul
+  au InsertLeave * if utils#boolexists('b:icul')
+        \| unlet b:icul | set cul | endif                              " Remove cursorline on insertmode
+
   au BufEnter *.txt if &buftype == 'help'
         \| nnoremap <buffer> q :q<cr> | if winnr('$') > 1 | wincmd T | endif | endif
-  au WinLeave * if &cursorline | let w:cur = 1 | setl nocursorline | endif
-  au WinEnter * if utils#boolexists('w:cur') | unlet w:cur | setl cursorline | endif
+
+  au BufReadPost * if line('$') > 20 | set foldlevel=1 | endif      " fold large files
+
+  au WinLeave * if &cursorline | let w:cur = 1 | setl cul | endif
+  au WinEnter * if utils#boolexists('w:cur') | unlet w:cur | setl nocul | endif
 augroup END
 
 " fun! s:on_focus_lost()

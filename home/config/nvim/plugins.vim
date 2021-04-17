@@ -34,11 +34,8 @@ else
   "
   " Autocomplete
   "
-  " Intellisense engine with lsp
-  Plug 'lervag/vimtex'
-  Plug 'neoclide/coc.nvim', 
+  Plug 'neoclide/coc.nvim',
     \ { 'branch': 'release' }
-    " \   'do': 'yarn install --frozen-lockfile' }
   " Intellisense engine with lsp
   Plug 'neoclide/coc-neco'                      | " Add vim completion to coc
   Plug 'Shougo/neco-vim', { 'for': 'vim' }      | " Vim completion source
@@ -52,6 +49,7 @@ else
   Plug 'drewtempelmeyer/palenight.vim'          | " awesome colorful theme for vim #1
   Plug 'owickstrom/vim-colors-paramount'        | " V. Dark colorscheme with purple accent
   Plug 'rakr/vim-one'                           | " Fantastic colors
+  Plug 'morhetz/gruvbox'
   Plug 'NLKNguyen/papercolor-theme'             | " Light theme with sane background
   Plug 'lifepillar/vim-gruvbox8'                | " Gruvbox theme for VIM
   " Plug 'jaredgorski/SpaceCamp'
@@ -62,15 +60,13 @@ else
   " Plug 'jdsimcoe/abstract.vim'
   " Plug 'glepnir/oceanic-material'
   " Plug 'mhartington/oceanic-next'
-  " Plug 'wadackel/vim-dogrun'
-  Plug 'morhetz/gruvbox'
 
 
   "
   " Syntax highlighting
   "
   Plug 'arzg/vim-rust-syntax-ext'               | " Extra syntax for rust
-  Plug 'harenome/vim-mipssyntax'                | " MIPS Syntax 
+  Plug 'harenome/vim-mipssyntax'                | " MIPS Syntax
   Plug 'justinmk/vim-syntax-extra'              | " Syntax for c,bison,flex
   Plug 'sheerun/vim-polyglot'                   | " Mega language support pack
   Plug 'vim-pandoc/vim-pandoc-syntax'           | " Pandoc syntax
@@ -80,46 +76,41 @@ else
   " Editor
   "
   Plug 'andymass/vim-matchup'
-  Plug 'antoinemadec/coc-fzf'                   | " FzF integration for coc.nvim
   Plug 'dhruvasagar/vim-table-mode',
         \ { 'for': 'markdown' }                 | " Easily create tables in vim
-  " Plug 'easymotion/vim-easymotion'              | " More vim motions!
   Plug 'jiangmiao/auto-pairs'                   | " Add brackets automatically
   Plug 'junegunn/goyo.vim'                      | " Distraction-free writing in Vim
   " Plug 'junegunn/limelight.vim'                 | " Distraction-free mode
   Plug 'junegunn/vim-peekaboo'                  | " Show register contents on /@
-  " Plug 'kshenoy/vim-signature'                  | " Visualise and navigate marks in gutter
+  Plug 'kshenoy/vim-signature'                  | " Visualise and navigate marks in gutter
   Plug 'liuchengxu/vim-which-key'               | " Show keybindings in a popup
-  " Plug 'machakann/vim-highlightedyank'          | " Highlight yanked text
-  " Plug 'mhinz/vim-signify'
-  " Plug 'rhysd/clever-f.vim'                     | " Quick f,t vim motions
+  Plug 'machakann/vim-highlightedyank'          | " Highlight yanked text
+  Plug 'psliwka/vim-smoothie'                   | " Smooth scrolling
+  Plug 'mhinz/vim-signify'
+  Plug 'rhysd/clever-f.vim'                     | " Quick f,t vim motions
   Plug 'samoshkin/vim-mergetool'                | " use vim as mergetool
-  Plug 'terryma/vim-expand-region'              | " Expand visually selected text regions
+  Plug 'Shougo/echodoc.vim'                     | " Print docs in echo area
+  " Plug 'terryma/vim-expand-region'              | " Expand visually selected text regions
   Plug 'tpope/vim-surround'                     | " Change your surroundings
-  " Plug 'udalov/kotlin-vim'
-  " Plug 'vim-pandoc/vim-pandoc',
-  "       \ { 'for': 'markdown' }                 | " Pandoc integration
+  Plug 'vim-pandoc/vim-pandoc',
+        \ { 'for': 'markdown' }                 | " Pandoc integration
   Plug 'Yggdroot/indentLine'                    | " Indent guides
-  " Plug 'wellle/context.vim', { 'for': 'rust' }
-  Plug 'Xuyuanp/scrollbar.nvim'
 
 
   "
   " Tools
   "
-
-  " Plug 'junegunn/vim-easy-align'                | " Easily align text
+  Plug 'pechorin/any-jump.vim'                  | " Jump to any definition and references
+  Plug 'junegunn/vim-easy-align'                | " Easily align text
   Plug 'liuchengxu/vista.vim'                   | " Displays tags in a window by scope
   Plug 'mbbill/undotree'                        | " Graphical undo history
   Plug 'tpope/vim-abolish'                      | " Easily search and substitute
   Plug 'tpope/vim-commentary'                   | " Awesome commenting
-  Plug 'psliwka/vim-smoothie'                   | " Smooth scrolling
   " Plug 'samoshkin/vim-mergetool'                | " use vim as mergetool
-  " Plug 'simnalamburt/vim-mundo'                 | " Another graphical undo history
-  " Plug 'thinca/vim-template'                    | " Template file engine
+  Plug 'thinca/vim-template'                    | " Template file engine
   Plug 'tpope/vim-eunuch'                       | " Add unix commands to vim
   Plug 'tpope/vim-fugitive'                     | " Git wrapper
-  " Plug 'tpope/vim-obsession'                    | " Continuously update session files
+  Plug 'tpope/vim-obsession'                    | " Continuously update session files
   Plug 'tpope/vim-sleuth'                       | " Autodetect file spacing
   Plug 'vim-scripts/autoswap.vim'               | " Handle swap files intelligently
   Plug 'zefei/vim-wintabs'                      | " Manage buffers per window
@@ -148,6 +139,7 @@ else
         \ 'dir': '~/.local/lib/fzf',
         \ 'do': './install --all' }
   Plug 'junegunn/fzf.vim'                       | " Fuzzy searching in vim
+  Plug 'antoinemadec/coc-fzf'                   | " FzF integration for coc.nvim
 
 endif
 call plug#end()

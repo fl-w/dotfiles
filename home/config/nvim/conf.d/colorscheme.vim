@@ -36,9 +36,9 @@ fu! colorscheme#set() abort
   hi! link MatchParen Keyword
   if &background == 'light' | return | endif
 
-  call utils#color#copy_hi_group('DiffAdd', 'SignifySignAdd')
-  call utils#color#copy_hi_group('DiffChange', 'SignifySignChange')
-  call utils#color#copy_hi_group('DiffRemove', 'SignifySignRemove')
+  " call utils#color#copy_hi_group('DiffAdd', 'SignifySignAdd')
+  " call utils#color#copy_hi_group('DiffChange', 'SignifySignChange')
+  " call utils#color#copy_hi_group('DiffRemove', 'SignifySignRemove')
   call utils#color#copy_hi_group('DiffAdd', 'GitGutterAdd')
   call utils#color#copy_hi_group('DiffChange', 'GitGutterChange')
   call utils#color#copy_hi_group('DiffRemove', 'GitGutterRemove')
