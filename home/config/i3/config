@@ -42,8 +42,8 @@ set $ws0 "0"
 font pango:mononoki-Regular Nerd Font 10
 
 for_window [class="^.*"] border pixel $border
-
 for_window [class   = ".*"] title_format "%title"
+
 title_align center
 
 # workspaces and monitors
@@ -76,7 +76,7 @@ workspace $ws0 gaps outer 60
 gaps inner $inner_gaps
 gaps outer $outer_gaps
 
-bindsym $mod+g gaps inner current toggle $inner_gaps; gaps outer current toggle $outer_gaps
+bindsym $mod+g gaps inner current toggle $inner_gaps; gaps outer current toggle $outer_gaps; exec polybar-msg cmd toggle
 
 # Press $mod+shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
 # Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace).
@@ -127,6 +127,7 @@ for_window [class   = "rofi"] floating enable sticky enable
 for_window [class   = "Pavucontrol"] floating enable, sticky enable
 for_window [class   = "minecraft-launcher"] floating enable
 for_window [class   = "zoom"] floating enable
+for_window [class   = "obinskit"] floating enable
 for_window [class    = "microsoft teams - preview"] floating enable
 for_window [instance = "floating"] floating enable
 
@@ -355,6 +356,7 @@ bindsym $mod+e layout toggle split
 #
 # startup {{{
 exec --no-startup-id start-pulseaudio-x11 & >/dev/null 2>&1
+exec --no-startup-id bluetooth-autoconnect & >/dev/null 2>&1
 exec --no-startup-id $scripts/x-close-no-focus "Pavucontrol" >/dev/null 2>&1
 
 # exec_always discord # auto startup
