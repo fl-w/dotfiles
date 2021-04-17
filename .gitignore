@@ -16,3 +16,9 @@
 
 # fish
 **/fish_variables
+
+# ignore bash history
+home/config/sh/bash_history
+
+# kitty themes
+home/config/kitty/themes/*.conf
