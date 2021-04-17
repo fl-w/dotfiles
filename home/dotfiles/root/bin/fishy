@@ -1,6 +1,0 @@
-#!/bin/bash
-# fihsy - fish login shell
-
-shopt -q login_shell && [ -x "$HOME/etc/sh/profile" ] && . "$HOME/etc/sh/profile"
-
-exec /usr/bin/fish "$@"
