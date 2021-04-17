@@ -1,0 +1,588 @@
+;;;;
+;;                    ████             █████
+;;                   ▒▒███            ▒▒███
+;; ████████   ██████  ▒███  █████ ████ ▒███████   ██████   ████████
+;;▒▒███▒▒███ ███▒▒███ ▒███ ▒▒███ ▒███  ▒███▒▒███ ▒▒▒▒▒███ ▒▒███▒▒███
+;; ▒███ ▒███▒███ ▒███ ▒███  ▒███ ▒███  ▒███ ▒███  ███████  ▒███ ▒▒▒
+;; ▒███ ▒███▒███ ▒███ ▒███  ▒███ ▒███  ▒███ ▒███ ███▒▒███  ▒███
+;; ▒███████ ▒▒██████  █████ ▒▒███████  ████████ ▒▒████████ █████
+;; ▒███▒▒▒   ▒▒▒▒▒▒  ▒▒▒▒▒   ▒▒▒▒▒███ ▒▒▒▒▒▒▒▒   ▒▒▒▒▒▒▒▒ ▒▒▒▒▒
+;; ▒███                      ███ ▒███
+;; █████                    ▒▒██████
+;;▒▒▒▒▒                      ▒▒▒▒▒▒
+;;
+;;;; @fl-w
+
+[global/wm]
+margin-bottom = 10
+margin-top = 1
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[theme/dark]
+;; Dark colors
+
+bg = ${xrdb:polybar.background:#1b1d1e}
+fg = ${xrdb:polybar.foreground:#f2f2f2}
+ac = ${xrdb:polybar.foreground:#7c8298}
+mf = ${xrdb:polybar.color1:#f2f2f2}
+
+
+[theme/light]
+;; Light colors
+bg = ${xrdb:polybar.foreground:#f1ddbb}
+fg = ${xrdb:polybar.background:#1b1d1e}
+ac = ${xrdb:polybar.color8:#7c8298}
+mf = ${self.bg}
+
+
+[colors]
+inherit = ${env:COLOR_THEME:theme/dark}
+[color]
+inherit = ${env:COLOR_THEME:theme/dark}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[base]
+enable-ipc = true
+
+monitor = ${env:MONITOR:}
+monitor-strict = true
+
+background = ${colors.bg}
+foreground = ${colors.fg}
+
+bottom = false
+fixed-center = true
+
+width = 10%
+height = 20
+
+; Fonts are defined using <font-name>;<vertical-offset>
+font-0 = "JetBrainsMono Nerd Font:style=Regular:size=8;2"
+font-1 = "icomoon\-feather:size=10;2"
+
+overline-size = 0
+overline-color = ${colors.ac}
+
+border-bottom-size = 0
+border-color = ${colors.fg}
+
+
+;; Bar Settings
+
+[bar/left]
+inherit = base colors 
+modules-left = workspaces 
+
+[bar/center]
+inherit = base colors 
+modules-center = workspaces 
+
+[bar/right]
+inherit = base colors 
+modules-center = workspaces 
+
+[bar/single]
+inherit = base
+
+; Number of spaces to add at the beginning/end of the bar
+;   padding={left,right}
+padding = 3%,2%
+width = 100%
+
+;; Modules
+; Number of spaces to add before/after each module
+module-margin-left = 1
+module-margin-right = 1
+
+;; Available modules
+;alsa backlight battery
+;bspwm cpu date
+;filesystem github i3
+;memory mpd wired-network
+;network pulseaudio temperature
+;keyboard title workspaces
+;checknetwork updates launcher powermenu menu
+;;
+
+modules-left = menu i3-mode title
+modules-center = workspaces 
+modules-right = filesystem cpu network updates date pulseaudio powermenu
+;;;;
+
+[module/alsa]
+type = internal/alsa
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <ramp-volume> <label-volume>
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+;format-muted = <label-muted>
+
+; Available tokens:
+;   %percentage% (default)
+label-volume = %percentage%%
+
+; Available tokens:
+;   %percentage% (default
+format-muted-prefix = 
+label-muted = " Muted"
+label-muted-foreground = ${color.ac}
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+
+; If defined, it will replace <ramp-volume> when
+; headphones are plugged in to `headphone_control_numid`
+; If undefined, <ramp-volume> will be used for both
+; Only applies if <ramp-volume> is used
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/cpu]
+type = internal/cpu
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 1
+
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+;;format = <label> <ramp-coreload>
+format = <label>
+format-prefix = 
+
+; Available tokens:
+;   %percentage% (default) - total cpu load averaged over all cores
+;   %percentage-sum% - Cumulative load on all cores
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+label = " %percentage%%"
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/date]
+type = internal/date
+
+; Seconds to sleep between updates
+interval = 1.0
+
+; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+;;date = %Y-%m-%d%
+
+; Optional time format
+time =  %I:%M %p
+
+; if `date-alt` or `time-alt` is defined, clicking
+; the module will toggle between formats
+;;date-alt = %A, %d %B %Y
+time-alt =  %Y-%m-%d%
+
+; Available tags:
+;   <label> (default)
+format = <label>
+
+; Available tokens:
+;   %date%
+;   %time%
+; Default: %date%
+label = %time%
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/filesystem]
+type = internal/fs
+
+; Mountpoints to display
+mount-0 = /
+;;mount-1 = /home
+;;mount-2 = /var
+
+; Seconds to sleep between updates
+; Default: 30
+interval = 10
+
+; Display fixed precision values
+; Default: false
+fixed-values = true
+
+; Spacing between entries
+; Default: 2
+;;spacing = 4
+
+; Available tags:
+;   <label-mounted> (default)
+;   <bar-free>
+;   <bar-used>
+;   <ramp-capacity>
+format-mounted = <label-mounted>
+format-mounted-prefix = 
+
+; Available tags:
+;   <label-unmounted> (default)
+format-unmounted = <label-unmounted>
+format-unmounted-prefix = 
+
+; Available tokens:
+;   %mountpoint%
+;   %type%
+;   %fsname%
+;   %percentage_free%
+;   %percentage_used%
+;   %total%
+;   %free%
+;   %used%
+; Default: %mountpoint% %percentage_free%%
+label-mounted = " %free%"
+
+; Available tokens:
+;   %mountpoint%
+; Default: %mountpoint% is not mounted
+label-unmounted = %mountpoint%: not mounted
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+;;[module/github]
+;;type = internal/github
+
+; Accessing an access token stored in file
+;;token = ${file:/path/to/file/containing/github/access.token}
+
+; Accessing an access token stored in an environment variable
+;;token = ${env:GITHUB_ACCESS_TOKEN}
+
+; Whether empty notifications should be displayed or not
+;;empty-notifications = false
+
+; Number of seconds in between requests
+;;interval = 10
+
+; Available tags:
+;   <label> (default)
+;;format = <label>
+
+; Available tokens:
+;   %notifications% (default)
+; Default: Notifications: %notifications%
+;;label = %notifications%
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/memory]
+type = internal/memory
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 3
+
+format = <label>
+format-prefix = 
+; Available tokens:
+;   %percentage_used% (default)
+;   %percentage_free%
+;   %gb_used%
+;   %gb_free%
+;   %gb_total%
+;   %mb_used%
+;   %mb_free%
+;   %mb_total%
+;   %percentage_swap_used%
+;   %percentage_swap_free%
+;   %mb_swap_total%
+;   %mb_swap_free%
+;   %mb_swap_used%
+;   %gb_swap_total%
+;   %gb_swap_free%
+;   %gb_swap_used%
+
+label = " %mb_used%"
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/network]
+type = internal/network
+interface = enp34s0
+
+; Seconds to sleep between updates
+interval = 1
+
+; Accumulate values from all interfaces
+accumulate-stats = true
+
+; Consider an `UNKNOWN` interface state as up.
+unknown-as-up = true
+
+; Available tags:
+;   <label-connected> (default)
+;   <ramp-signal>
+format-connected = <label-connected>
+
+; Available tags:
+;   <label-disconnected> (default)
+format-disconnected = <label-disconnected>
+
+; Available tags:
+;   <label-connected> (default)
+;   <label-packetloss>
+;   <animation-packetloss>
+;;format-packetloss = <animation-packetloss> <label-connected>
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %local_ip6% [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+; Default: %ifname% %local_ip%
+label-connected = "%upspeed:8%"
+;;label-connected-foreground = #eefafafa
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+; Default: (none)
+label-disconnected =  "Not Connected"
+;;label-disconnected-foreground = #66ffffff
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %local_ip6% [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+; Default: (none)
+;label-packetloss = %essid%
+;label-packetloss-foreground = #eefafafa
+
+; Only applies if <ramp-signal> is used
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+use-ui-max = false
+interval = 5
+
+format-volume = <ramp-volume> <label-volume>
+label-muted =  Muted
+label-muted-foreground = #667
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+
+click-right = pavucontrol &
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/keyboard]
+type = internal/xkeyboard
+
+; List of indicators to ignore
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+
+; Available tags:
+;   <label-layout> (default)
+;   <label-indicator> (default)
+format =  <label-layout> <label-indicator>
+;;format-spacing = 0
+
+; Available tokens:
+;   %layout%
+;   %name%
+;   %number%
+; Default: %layout%
+label-layout = %layout%
+;;label-layout-padding = 2
+;;label-layout-background = #bc99ed
+;;label-layout-foreground = #000
+
+; Available tokens:
+;   %name%
+; Default: %name%
+label-indicator = %name%
+;;label-indicator-padding = 2
+label-indicator-foreground = ${color.ac}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/title]
+type = internal/xwindow
+format = <label>
+label = %title%
+label-maxlen = 50
+
+label-empty = Arch Linux
+;;label-empty-foreground = #707880
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/workspaces]
+type = internal/xworkspaces
+; icon-[0-9]+ = <desktop-name>;<icon>
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
+icon-3 = 4;
+icon-4 = 5;
+icon-5 = 6;
+icon-6 = 7;ﭮ
+icon-7 = 8;
+icon-default = 
+
+format = <label-state>
+format-padding = 1
+
+label-active = %icon%
+label-active-foreground = ${color.mf}
+label-active-background = ${color.ac}
+
+label-occupied = %icon%
+label-occupied-underline = ${color.fg}
+
+label-urgent = %icon%
+label-urgent-background = ${color.bg}
+
+label-empty = %icon%
+label-empty-foreground = ${color.fg}
+
+label-active-padding = 1
+label-urgent-padding = 1
+label-occupied-padding = 1
+label-empty-padding = 1
+
+[module/checknetwork]
+type = custom/script
+
+exec = ~/.config/polybar/scripts/check-network
+tail = true
+interval = 5
+
+click-left = networkmanager_dmenu &
+click-middle = networkmanager_dmenu &
+click-right = networkmanager_dmenu &
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/updates]
+type = custom/script
+
+exec = ~/.config/polybar/scripts/updates
+tail = true
+interval = 5
+
+click-left = kitty --name floating -e "yay"
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/toggle-day]
+type = custom/script
+content = +
+
+; "content" has the same properties as "format-NAME"
+content-background = ${color.ac}
+content-foreground = ${color.mf}
+content-padding = 3
+
+
+click-left = toggle-day-mode
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/launcher]
+type = custom/text
+
+content = 
+content-background = ${color.ac}
+content-foreground = ${color.mf}
+content-padding = 3
+
+click-left = ~/.config/polybar/scripts/launcher
+click-right = ~/.config/polybar/scripts/launcher -f
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/powermenu]
+type = custom/text
+content = 
+
+; "content" has the same properties as "format-NAME"
+content-background = ${color.ac}
+content-foreground = ${color.mf}
+content-padding = 3
+
+click-left = powermenu
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/menu]
+type = custom/menu
+
+expand-right = true
+
+menu-0-0 = Menu
+menu-0-0-exec = app-launcher
+menu-0-1 = Files
+menu-0-1-exec = kitty fzf &
+menu-0-2 =  Terminal
+menu-0-2-exec = kitty &
+menu-0-3 =  Browser
+menu-0-3-exec = firefox &
+
+format-spacing = 1
+
+label-open = 
+label-close = 
+
+label-separator = |
+
+label-open-background = ${color.ac}
+label-open-foreground = ${color.mf}
+label-close-background = ${color.ac}
+label-close-foreground = ${color.mf}
+label-separator-foreground = ${color.ac}
+label-open-padding = 3
+label-close-padding = 3
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/i3-mode]
+type=internal/i3
+format = <label-mode>
+label-mode = %mode%
+label-mode-background = ${color.mf}
+label-mode-padding = 2
+module-margin-left=0
+; vim: set ft=dosini:
