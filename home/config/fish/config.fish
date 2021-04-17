@@ -7,7 +7,7 @@ fish_vi_key_bindings
 # Set ls colors
 set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
 
-set -g theme_prompt_symbol λ
+set -gx theme_prompt_symbol 🢂
 
 # Automatically install fundle (Warning: dangerous on bad connections)
 if not functions -q fundle

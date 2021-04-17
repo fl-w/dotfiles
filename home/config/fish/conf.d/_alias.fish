@@ -1,6 +1,6 @@
 # set LS_COLORS dxfxcxdxbxegedabagacad
 
-[ -f "$XDG_CONFIG_HOME/sh/alias" ] 
+[ -f "$XDG_CONFIG_HOME/sh/alias" ]
     and . "$XDG_CONFIG_HOME/sh/alias"
 
 
@@ -51,3 +51,8 @@ abbr ep 'nvim $conf/polybar'
 if has zzz; abbr ZZZ 'zzz -Z'; end
 
 if has kitty; alias icat 'kitty +kitten icat --align left'; end
+
+if has xclip
+    alias clip 'xclip -selection c'
+    alias clop 'xclip -selection clipboard -o'
+end
