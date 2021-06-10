@@ -1,4 +1,4 @@
-function _run_cmd 
+function _run_cmd
     if [ "$UID" = 0 ]
         command $argv
     else
@@ -6,7 +6,7 @@ function _run_cmd
     end
 end
 
-function sv --description 'wrapper function for sv to add (dis)/enable subcommand' 
+function sv --description 'wrapper function for sv to add (dis)/enable subcommand'
     if test (count $argv) -gt 0
         switch "$argv[1]"
             case 'enable'
@@ -21,7 +21,7 @@ function sv --description 'wrapper function for sv to add (dis)/enable subcomman
                         echo "sv-enable: symlinked /etc/runit/sv/$service -> /run/runit/service"
                         echo "           start the service with 'sv start $service'"
                     else
-                        echo "sv-enable: service not found in /etc/run/sv: $service"
+                        echo "sv-enable: service not found in /etc/runit/sv: $service"
                     end
                 end
             case '*'

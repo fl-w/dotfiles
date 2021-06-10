@@ -191,15 +191,14 @@ profiles:
     - _base
     - rofi
 
-  spaceship:
-    include:
-    - _base
-    - kitty
   4tlas:
     include:
     - i3
     - kitty
   rhea:
+    include:
+      - _base
+      - kitty
     dotfiles:
     - f_fishy
     - f_kautostart.sh
