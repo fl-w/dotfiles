@@ -1,77 +1,57 @@
 " colorscheme.vim
 "
 
-if has('termguicolors')
-  set termguicolors                                | " enable true colors
-endif
-
-if !has('gui_running')
-  set t_Co=256                                     | " support 256 colors
-endif
-
-if has('nvim')
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1                | " use 24-bit (true-color) mode in Neovim
-endif
-
-" Allow color schemes to do bright colors without forcing bold.
-if &t_Co == 8 && $TERM !~# '^Eterm'
-  set t_Co=16
-endif
-
-if has('syntax') && !exists('g:syntax_on')
-  syntax enable                                    | " enables syntax highlighting
-endif
-
-" set background=dark                                | " set background to be dark
-set synmaxcol=300                                  | " use syntax highlighting only for 300 columns
-
-fu! s:get_color_scheme()
-  return get(g:, 'colors_name', 'default')
+fu! colorscheme#togglebg() abort
+  let &background = ( &background ==# 'dark'? 'light' : 'dark' )
+  if exists('g:colors_name')
+    exe 'colorscheme' g:colors_name
+  endif
 endfu
 
 fu! colorscheme#set() abort
-  let l:color_scheme = s:get_color_scheme()
-
   hi MatchParen cterm=italic gui=italic
   hi! link MatchParen Keyword
-  if &background == 'light' | return | endif
 
-  " call utils#color#copy_hi_group('DiffAdd', 'SignifySignAdd')
-  " call utils#color#copy_hi_group('DiffChange', 'SignifySignChange')
-  " call utils#color#copy_hi_group('DiffRemove', 'SignifySignRemove')
-  call utils#color#copy_hi_group('DiffAdd', 'GitGutterAdd')
-  call utils#color#copy_hi_group('DiffChange', 'GitGutterChange')
-  call utils#color#copy_hi_group('DiffRemove', 'GitGutterRemove')
+  hi! def          Function cterm=bold    gui=bold
+  hi! def         Statement cterm=bold    gui=bold
 
-
-  hi                LineNr ctermbg=NONE  guibg=NONE                | " dont highlight line number
-  hi            SignColumn ctermbg=NONE  guibg=NONE                | " dont highlight sign column
-  hi                Normal ctermbg=NONE  guibg=NONE                | " stop theme from setting bg color
-  hi HighlightedyankRegion ctermbg=0     guibg=#13354A             | " change yank highlight color
-  " hi               Comment ctermfg=239   guifg=#36323d gui=italic  | " change comment color and set to italic
-  hi            StatusLine guifg=#4E4E4E guibg=bg      gui=italic  | " make statusline invisible
-  hi          StatusLineNC guifg=#2b2b30 guibg=bg      gui=italic  | " same with inactive statusline
-  hi         StatusLineINC guifg=#2b2b30 guibg=#181320 gui=italic  | " add background to statusline if has neighboring window below
-  hi           EndOfBuffer guifg=#1f1f31 guibg=bg                  | " make EndOfBuffer ('~' char) faint
-  " hi            CursorLine ctermfg=12    guibg=#181320 guifg=NONE  | " change the color of the cursor line to suit my chosen bg color
-  " hi          CursorLineNr guifg=#767676                           | " change the color of the cursor line to suit my chosen bg color
-  hi             VertSplit guifg=bg      guibg=bg      gui=NONE    | " dont highlight vertical split
-  hi            CursorLine guifg=NONE                              | " don't highlight current line
   hi        SignifySignAdd               guibg=bg                  | " dont add bacground to git diff signs
   hi     SignifySignChange               guibg=bg                  | " dont add bacground to git diff signs
   hi     SignifySignRemove               guibg=bg                  | " dont add bacground to git diff signs
   hi          GitGutterAdd               guibg=bg                  | " dont add bacground to git diff signs
   hi       GitGutterChange               guibg=bg                  | " dont add bacground to git diff signs
   hi       GitGutterRemove               guibg=bg                  | " dont add bacground to git diff signs
+
+  if &background == 'light' | return | endif
+
+  call utils#color#copy_hi_group('DiffAdd', 'SignifySignAdd')
+  call utils#color#copy_hi_group('DiffChange', 'SignifySignChange')
+  call utils#color#copy_hi_group('DiffRemove', 'SignifySignRemove')
+  " call utils#color#copy_hi_group('DiffAdd', 'GitGutterAdd')
+  " call utils#color#copy_hi_group('DiffChange', 'GitGutterChange')
+  " call utils#color#copy_hi_group('DiffRemove', 'GitGutterRemove')
+
+
+  hi                LineNr ctermbg=NONE  guibg=NONE                | " dont highlight line number
+  hi            SignColumn ctermbg=NONE  guibg=NONE                | " dont highlight sign column
+  hi                Normal ctermbg=NONE  guibg=NONE                | " stop theme from setting bg color
+  hi HighlightedyankRegion ctermbg=0     guibg=#13354A             | " change yank highlight color
+  hi            StatusLine guifg=#4E4E4E guibg=bg      gui=italic  | " make statusline invisible
+  hi          StatusLineNC guifg=#2b2b30 guibg=bg      gui=italic  | " same with inactive statusline
+  hi         StatusLineINC guifg=#2b2b30 guibg=#181320 gui=italic  | " add background to statusline if has neighboring window below
+  hi           EndOfBuffer guifg=#1f1f31 guibg=bg                  | " make EndOfBuffer ('~' char) faint
+  " hi               Comment ctermfg=239   guifg=#36323d gui=italic  | " change comment color and set to italic
+  " hi            CursorLine ctermfg=12    guibg=#181320 guifg=NONE  | " change the color of the cursor line to suit my chosen bg color
+  " hi          CursorLineNr guifg=#767676                           | " change the color of the cursor line to suit my chosen bg color
+  hi             VertSplit guifg=bg      guibg=bg      gui=NONE    | " dont highlight vertical split
+  hi            CursorLine guifg=NONE                              | " don't highlight current line
   hi            DiffChange ctermfg=203   guifg=#9FC267
-  hi              Function cterm=bold    gui=bold
-  hi             Statement cterm=bold    gui=bold
   hi                String                             gui=italic
 
   " tabline
   hi           TabLineFill guifg=#39373b guibg=bg gui=none
   call utils#color#copy_hi_group('Statement', 'TablineSel')
-  hi            TabLineSel guibg=#181320            gui=bold
+  hi            TabLineSel guibg=#a790d5            gui=bold
 
   " #181320 bg #847d91
 
@@ -95,7 +75,24 @@ augroup END
 
 if has('vim_starting')
   let _theme = getenv("_THEME")
-  exe 'set bg=' . (_theme != v:null ? _theme : 'dark')
+  let &background = (_theme != v:null ? _theme : 'dark')
+  if !exists('g:colors_name')
+    silent! colorscheme ayu
+  endif
 endif
+
+silent! nnoremap <silent> <unique> <F5> :call colorscheme#togglebg()<cr>
+silent! inoremap <silent> <unique> <F5> <ESC>:call colorscheme#togglebg()<cr>a
+silent! vnoremap <silent> <unique> <F5> <ESC>:call colorscheme#togglebg()<cr>gv
+
+set synmaxcol=300                                                                      | " use syntax highlighting only for 300 columns
+
+if has('termguicolors')                    | set termguicolors                 | endif | " enable true colors
+if has('nvim')                             | let $NVIM_TUI_ENABLE_TRUE_COLOR=1 | endif | " use 24-bit (true-color) mode in Neovim
+if has('syntax') && !exists('g:syntax_on') | syntax enable                     | endif | " enables syntax highlighting
+if !has('gui_running')                     | set t_Co=256                      | endif | " support 256 colors
+
+" Allow color schemes to do bright colors without forcing bold.
+if &t_Co == 8 && $TERM !~# '^Eterm'        | set t_Co=16                       | endif
 
 " vim: sw=2 sts=2 tw=0 fdm=marker

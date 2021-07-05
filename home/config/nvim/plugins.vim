@@ -4,22 +4,22 @@
 command! PI PlugInstall | q | " register command to plug install and quit
 
 " Install VimPlug if not present
-let s:data_site = $VIM_DATA_ROOT . '/site/autoload/plug.vim'
-if empty(glob(s:data_site))
+let s:autoload_site = $VIM_DATA_ROOT . '/site/autoload/plug.vim'
+if empty(glob(s:autoload_site))
   if executable('curl')
     echomsg 'Downloading and installing vim-plug.'
-    silent exe '!curl -fLo ' . s:data_site .
+    silent exe '!curl -fLo ' . s:autoload_site .
       \ ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   else
     echoerr 'curl is needed to install vim-plug and is not found in path, please install vim-plug manually.'
     finish
   endif
 endif
-unlet s:data_site
+unlet s:autoload_site
 
 " Plugin List
 "
-call plug#begin($VIM_DATA_ROOT. '/plugged')
+call plug#begin($VIM_DATA_ROOT. '/site/plugged')
 if exists('g:started_by_firenvim')
   Plug 'glacambre/firenvim', { 'do':
     \ { _ -> firenvim#install(0) } }            | " Use neovim client in browser
@@ -30,6 +30,7 @@ else
   "
 
   Plug 'camspiers/animate.vim'                  | " animation library
+  " Plug 'antoinemadec/FixCursorHold.nvim'        | " Fix CursorHold Performance in neovim (https://github.com/neovim/neovim/issues/12587)
 
   "
   " Autocomplete
@@ -39,27 +40,19 @@ else
   " Intellisense engine with lsp
   Plug 'neoclide/coc-neco'                      | " Add vim completion to coc
   Plug 'Shougo/neco-vim', { 'for': 'vim' }      | " Vim completion source
+  Plug 'lervag/vimtex'                          | " LaTeX support
 
 
   "
-  " Colorschemes (yes i know)
+  " Colorschemes (yes i know... its alot)
   "
   Plug 'ayu-theme/ayu-vim'                      | " Modern theme for modern VIMs
   Plug 'sjl/badwolf'                            | " clean theme for vim
   Plug 'drewtempelmeyer/palenight.vim'          | " awesome colorful theme for vim #1
   Plug 'owickstrom/vim-colors-paramount'        | " V. Dark colorscheme with purple accent
   Plug 'rakr/vim-one'                           | " Fantastic colors
-  Plug 'morhetz/gruvbox'
+  Plug 'morhetz/gruvbox'                        | " sometimes i like to hurt myself
   Plug 'NLKNguyen/papercolor-theme'             | " Light theme with sane background
-  Plug 'lifepillar/vim-gruvbox8'                | " Gruvbox theme for VIM
-  " Plug 'jaredgorski/SpaceCamp'
-  " Plug 'liuchengxu/space-vim-dark'
-  " Plug 'tyrannicaltoucan/vim-deep-space'
-  " Plug 'AlessandroYorba/Sierra'
-  " Plug 'junegunn/seoul256.vim'
-  " Plug 'jdsimcoe/abstract.vim'
-  " Plug 'glepnir/oceanic-material'
-  " Plug 'mhartington/oceanic-next'
 
 
   "
@@ -71,7 +64,6 @@ else
   Plug 'sheerun/vim-polyglot'                   | " Mega language support pack
   Plug 'vim-pandoc/vim-pandoc-syntax'           | " Pandoc syntax
 
-
   "
   " Editor
   "
@@ -80,17 +72,16 @@ else
         \ { 'for': 'markdown' }                 | " Easily create tables in vim
   Plug 'jiangmiao/auto-pairs'                   | " Add brackets automatically
   Plug 'junegunn/goyo.vim'                      | " Distraction-free writing in Vim
-  " Plug 'junegunn/limelight.vim'                 | " Distraction-free mode
+  Plug 'junegunn/limelight.vim'                 | " Distraction-free mode
   Plug 'junegunn/vim-peekaboo'                  | " Show register contents on /@
-  Plug 'kshenoy/vim-signature'                  | " Visualise and navigate marks in gutter
+  " Plug 'kshenoy/vim-signature'                  | " Visualise and navigate marks in gutter
   Plug 'liuchengxu/vim-which-key'               | " Show keybindings in a popup
   Plug 'machakann/vim-highlightedyank'          | " Highlight yanked text
-  Plug 'psliwka/vim-smoothie'                   | " Smooth scrolling
+  " Plug 'psliwka/vim-smoothie'                   | " Smooth scrolling
   Plug 'mhinz/vim-signify'
-  Plug 'rhysd/clever-f.vim'                     | " Quick f,t vim motions
+  " Plug 'rhysd/clever-f.vim'                     | " Quick f,t vim motions
   Plug 'samoshkin/vim-mergetool'                | " use vim as mergetool
-  Plug 'Shougo/echodoc.vim'                     | " Print docs in echo area
-  " Plug 'terryma/vim-expand-region'              | " Expand visually selected text regions
+  " Plug 'Shougo/echodoc.vim'                     | " Print docs in echo area
   Plug 'tpope/vim-surround'                     | " Change your surroundings
   Plug 'vim-pandoc/vim-pandoc',
         \ { 'for': 'markdown' }                 | " Pandoc integration
@@ -100,14 +91,14 @@ else
   "
   " Tools
   "
-  Plug 'pechorin/any-jump.vim'                  | " Jump to any definition and references
+  " Plug 'pechorin/any-jump.vim'                  | " Jump to any definition and references
   Plug 'junegunn/vim-easy-align'                | " Easily align text
   Plug 'liuchengxu/vista.vim'                   | " Displays tags in a window by scope
   Plug 'mbbill/undotree'                        | " Graphical undo history
   Plug 'tpope/vim-abolish'                      | " Easily search and substitute
   Plug 'tpope/vim-commentary'                   | " Awesome commenting
-  " Plug 'samoshkin/vim-mergetool'                | " use vim as mergetool
-  Plug 'thinca/vim-template'                    | " Template file engine
+  Plug 'samoshkin/vim-mergetool'                | " use vim as mergetool
+  " Plug 'thinca/vim-template'                    | " Template file engine
   Plug 'tpope/vim-eunuch'                       | " Add unix commands to vim
   Plug 'tpope/vim-fugitive'                     | " Git wrapper
   Plug 'tpope/vim-obsession'                    | " Continuously update session files
@@ -119,9 +110,9 @@ else
   "
   " Snippets
   "
-  Plug 'Shougo/neosnippet.vim'                  | " Snippets engine
-  Plug 'Shougo/neosnippet-snippets'             | " Snippets
-  Plug 'honza/vim-snippets'                     | " MOH Snippets
+  " Plug 'Shougo/neosnippet.vim'                  | " Snippets engine
+  " Plug 'Shougo/neosnippet-snippets'             | " Snippets
+  " Plug 'honza/vim-snippets'                     | " MOH Snippets
 
 
   "

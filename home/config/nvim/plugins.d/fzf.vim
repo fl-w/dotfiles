@@ -15,7 +15,7 @@ let g:fzf_height = 16
 " don't open files over the following buffers
 let g:_fzf_prevent_winbuf = ['fern', 'fugitive', 'vista']
 
-function fzf#__open(command) 
+function fzf#__open(command)
   let buf = expand('%')
   if winnr('$') > 1
     \ && len(filter(copy(g:_fzf_prevent_winbuf), "bufname('%') =~ v:val")) > 0
@@ -28,7 +28,7 @@ endf
 " Set fzf to floating layout
 let g:fzf_layout = {
       \ 'window': {
-      \   'width': 0.75,
+      \   'width': 0.95,
       \   'height': 0.65,
       \   'highlight': 'Comment',
       \   'yoffset': 0.25,

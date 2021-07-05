@@ -51,20 +51,28 @@ augroup END
 " au vimrc FocusGained *  call s:on_focus_enter()
 
 augroup auto_read
-    autocmd!
-    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
-                \ if mode() == 'n' && getcmdwintype() == '' | checktime | endif
-    autocmd FileChangedShellPost * echohl WarningMsg
-                \ | echo "File changed on disk. Buffer reloaded!" | echohl None
+  autocmd!
+  autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+        \ if mode() == 'n' && getcmdwintype() == '' | checktime | endif
+  autocmd FileChangedShellPost * echohl WarningMsg
+        \ | echo "File changed on disk. Buffer reloaded!" | echohl None
 augroup END
 
 " Return to last edit position when opening a file
 augroup resume_edit_position
-    autocmd!
-    autocmd BufReadPost *
+  autocmd!
+  autocmd BufReadPost *
         \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
         \ | execute "normal! g`\"zvzz"
         \ | endif
+augroup END
+
+augroup ft_settings
+  autocmd!
+  autocmd FileType rust colorscheme gruvbox | doautocmd ColorScheme gruvbox
+        \|  let b:AutoPairs = AutoPairsDefine({'\w\zs<': '>'}) " if press < after a word will generate the pair
+  autocmd FileType cmm setfiletype c
+        \| if exists(":CocDisable") | CocDisable | endif " custom options for my language
 augroup END
 
 " vim: sw=2 sts=2 tw=0 fdm=marker

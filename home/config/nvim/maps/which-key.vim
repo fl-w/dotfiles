@@ -1,9 +1,9 @@
 " which-key.vim configuration and keybinds
 "
 
-try 
+try
   call which_key#register('<Space>', 'g:which_key_map')
-catch 
+catch
   echohl WarningMsg | echo "WhichKey not loaded, skipping keymaps" | echohl NONE
   finish
 endtry
@@ -103,13 +103,13 @@ let g:which_key_map.l = {
       \ 'name' : '+lsp',
       \ '.' : [':CocConfig',                        'config'],
       \ ';' : ['<Plug>(coc-refactor)',              'refactor'],
-      \ 'a' : [':CocCommand actions.open',          'line action'],
+      \ 'a' : ['<Plug>(coc-codeaction-selected)w',  'line action'],
       \ 'A' : ['<Plug>(coc-codeaction-line)',       'alt line action'],
       \ 'b' : [':CocNext',                          'next action'],
       \ 'B' : [':CocPrev',                          'prev action'],
       \ 'c' : [':CocList commands',                 'commands'],
-      \ 'd' : [':CocFzfList diagnostics',              'diagnostics'],
-      \ 'D' : ['<Plug>(coc-definition)',            'definition'],
+      \ 'd' : ['<Plug>(coc-definition)',            'definition'],
+      \ 'D' : [':CocCommand actions.open',          'actions'],
       \ 'e' : [':CocFzfList extensions',               'extensions'],
       \ 'f' : ['<Plug>(coc-format)',                'format'],
       \ 'F' : ['<Plug>(coc-format-selected)',       'format selected'],

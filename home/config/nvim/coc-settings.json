@@ -48,7 +48,9 @@
   "rust-analyzer.cargo.loadOutDirsFromCheck": true,
   "rust-analyzer.debug.runtime": "vimspector",
   "rust-analyzer.diagnostics.disabled": [
-    "incorrect-ident-case"
+    "incorrect-ident-case",
+    "macro-error",
+    "unresolved-macro-call"
   ],
   "rust-analyzer.diagnostics.enableExperimental": true,
   "rust-analyzer.inlayHints.chainingHints": false,

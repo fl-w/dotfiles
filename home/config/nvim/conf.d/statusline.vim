@@ -3,6 +3,7 @@
 
 " if exists('g:loaded_statusline') || v:version < 700 |  finish | endif
 let g:loaded_statusline = 1
+finish
 
 let s:save_cpo = &cpo
 set cpo&vim

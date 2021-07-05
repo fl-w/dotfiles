@@ -53,8 +53,9 @@ if exists('*utils#abbr_command')
   call utils#abbr_command('rc', 'so $MYVIMRC') " use :rc to resource this file
 endif
 
-" load external init.lua file whilst lua is nightly
+" load external init.lua file whilst nvim is nightly
 
 if has('nvim-0.5')
+  finish " dont use lua stuff rn - treesitter too buggy
   lua require 'init-nightly'
 end

@@ -21,6 +21,7 @@ let g:coc_global_extensions = [
   \ "coc-rust-analyzer",
   \ "coc-clangd"       ,
   \ "coc-yank"         ,
+  \ "coc-diagnostic"   ,
   \ ]
 let g:auto_format_ft = [ 'rust' ]
 
@@ -110,7 +111,6 @@ nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
 nmap    <silent> gd <Plug>(coc-definition)
-nmap    <silent> gD <Plug>(coc-codeaction-selected)w
 nmap    <silent> gy <Plug>(coc-type-definition)
 nmap    <silent> gi <Plug>(coc-implementation)
 nmap    <silent> gr <Plug>(coc-references)
