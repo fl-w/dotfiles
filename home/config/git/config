@@ -1,30 +1,16 @@
 [user]
-	name = Fola
+	name = fl-w
 	email = 30976147+fl-w@users.noreply.github.com
-	sigingkey = 4C83FF3C3BEB57B4
+[credential]
+	helper = store
 [core]
-	editor = nvim
-	excludesfile = ~/.gitexcludes
 	autocrlf = input
+	page = nvim -R
 [color]
 	ui = true
+	pager = no
 [push]
 	default = simple
-[include]
-	path = ~/.gitconfig_local
-[merge]
-	tool = kitty
-[mergetool]
-	prompt = false
-	keepBackup = false
-[mergetool "vimdiff"]
-	cmd = nvim -d $BASE $LOCAL $REMOTE -c '$wincmd w' -c 'wincmd J'
-[mergetool "kitty"]
-	cmd = kitty +kitten diff $LOCAL $REMOTE
-[mergetool "code"]
- cmd = code --wait $MERGED
-[mergetool "nvim"]
-	cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
 [alias]
 	s           = status -sb
 	sw          = switch
@@ -40,26 +26,32 @@
 	r           = rebase
 	lg          = log --stat
 	d           = diff
-
 	undo-commit = reset HEAD~
 	uc          = reset HEAD~
-
 	unstage     = restore --staged
 	# log
 	l           = log --pretty=format:'%C(blue)%h%Creset %C(red)%G?%Creset %C(white)%s %C(yellow)(%cr) %C(cyan)%an%Creset - %C(magenta)%gd'
 	los         = log --graph --date=short --decorate
-
 	changes     = log --pretty=format:'[%C(blue)%h%Creset] %C(cyan)%an%Creset %C(yellow)%cr: %C(white)%s' --name-status
-
 	changelog   = log --pretty=format:' * %C(white)%s'
 	lof         = log --graph --pretty=format:'[%C(blue)%h%Creset] -%C(red bold)%d%Creset %C(cyan)%an%Creset %C(yellow)%cr: %C(white)%s' --abbrev-commit --date=relative
 	lol         = log --pretty=format:'[%C(blue)%h%Creset] %C(cyan)%an%Creset %C(yellow)%ar%Creset: %C(white)%s' --stat
 	squash      = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
 	conflicts   = diff --name-only --diff-filter=U
-
-[commit]
-	gpgsign = false
-[gpg]
-	program = gpg2
 [pull]
 	rebase = false
+[advice]
+	addEmptyPathspec = false
+[merge]
+	tool = kitty
+[mergetool]
+	prompt = false
+	keepBackup = false
+[mergetool "vimdiff"]
+	cmd = nvim -d $BASE $LOCAL $REMOTE -c '$wincmd w' -c 'wincmd J'
+[mergetool "kitty"]
+	cmd = kitty +kitten diff $LOCAL $REMOTE
+[mergetool "code"]
+ cmd = code --wait $MERGED
+[mergetool "nvim"]
+	cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
