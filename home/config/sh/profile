@@ -1,6 +1,6 @@
 # /.profile - sh/bash login script
 
-[ -x "$HOME/.env" ] && . ~/.env
+[ -f "$HOME/.env" ] && . ~/.env
 
 export \
   conf="${conf:-$HOME/etc}" \
@@ -8,8 +8,19 @@ export \
   opt="${opt:-$HOME/opt}"  \
   cache="${cache:-$HOME/usr/cache}"
 
+# Set XDG directories to custom dirs
+export \
+  XDG_DATA_HOME="$data"   \
+  XDG_CACHE_HOME="$cache" \
+  XDG_CONFIG_HOME="$conf"
+
+# Set env vars for other locations
+export \
+  BIN_DIR="${BIN_DIR:-$HOME/bin}"
+  SCR_DIR="${SCR_DIR:-$HOME/pics/scr}"
+
 # Make XDG directories
-for dir in "$cache" "$data" "$conf" "$opt"; do
+for dir in "$cache" "$data" "$conf" "$opt" "$BIN_DIR" "$SCR_DIR"; do
   test -d "$dir" || mkdir -m 0700 -p "$dir"
 done
 
@@ -25,11 +36,50 @@ move_sym "$HOME/.config" "$conf"
 move_sym "$HOME/.local/share" "$data"
 move_sym "$HOME/.cache" "$cache"
 
-# Set XDG directories to custom dirs
+# Declutter $HOME
 export \
-  XDG_DATA_HOME="$data"   \
-  XDG_CACHE_HOME="$cache" \
-  XDG_CONFIG_HOME="$conf"
+  N_PREFIX="$data/n" \
+  CARGO_HOME="$data/cargo" \
+  RUSTUP_HOME="$data/rustup" \
+  GOPATH="$cache/go"   \
+  TEXMFHOME="$data/texmf/" \
+  WEECHAT_HOME="$conf/weechat"  \
+  GTK2_RC_FILES="$conf/gtk-2.0/gtkrc-2.0" \
+  _FASD_DATA="$cache/fasd" \
+  LESSHISTFILE="$data/_lessht" \
+  HISTFILE="$cache/bash_history" \
+  NPM_CONFIG_USERCONFIG="$conf/npm/npmrc" \
+  ANDROID_SDK_HOME="$data/android" \
+  ANDROID_PREFS_ROOT="$data/android" \
+  GRADLE_USER_HOME="$data/gradle"
+
+add_path() { [[ -d "$1" ]] && PATH="$1:$PATH"; }
+
+# Prepend android-sdk & emulator to PATH
+if [ -d /opt/android-sdk ]; then
+  export ANDROID_HOME=/opt/android-sdk
+
+  add_path $ANDROID_HOME/tools
+  add_path $ANDROID_HOME/tools/bin
+
+  [ -d $ANDROID_HOME/emulator ] \
+    && add_path $ANDROID_HOME/emulator
+fi
+
+# Prepend Go bin dir to PATH
+add_path $GOPATH/bin
+
+# Prepend n directory to PATH
+add_path $N_PREFIX/bin
+
+# Prepend DART pub bin dir to PATH
+add_path $HOME/.pub-cache/bin
+
+# Prepend RUST cargo bin dir to PATH
+add_path $CARGO_HOME/bin
+
+# Add private bin to path
+add_path $BIN_DIR
 
 has() { type "$1" &>/dev/null; }
 
@@ -38,53 +88,21 @@ default() {
   for def in "$@"; do
     if has "$def"; then
       export "$name"="$def"
-      break
+      return
     fi
   done
 }
 
-# Set default editor
-[ -z "$EDITOR" ] && default EDITOR nvim nano vim vi
+# set default editor
+[ -z "$EDITOR" ] && default EDITOR nvim vim vi nano
 
 # set default browser (i switch between browsers on diff machines)
-default BROWSER \
-  firefox{,-developer-edition} brave-browser chromium
+[ -z "$BROWSER" ] && default BROWSER firefox{,-developer-edition} brave-browser chromium
 
-# Add private bin to path if it exists
-[ -x "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
+hide() { has $1 && [ -f "$2" ] && alias $1="$3 $2"; }
+hide yarn "$conf/npm/yarnrc" "yarn --use-yarnrc "
+hide mvn "$conf/maven/settings.xml" "mvn --global-settings"
 
-# Declutter $HOME
-export \
-  N_PREFIX="$data/n" \
-  CARGO_HOME="$data/cargo" \
-  RUSTUP_HOME="$data/rustup" \
-  GOPATH="$cache/go"   \
-  TEXMFHOME="$XDG_DATA_HOME/texmf/" \
-  WEECHAT_HOME="$conf/weechat"  \
-  GTK2_RC_FILES="$conf/gtk-2.0/gtkrc-2.0" \
-  _FASD_DATA="$cache/fasd" \
-  GNUPGHOME="$opt/apps/gpg"
-  # NPM_CONFIG_USERCONFIG="$conf/npm/npmrc" \
-
-# export \ 
-#   HISTFILE="$cache/sh/bash_history" \
-#   LESSHISTFILE="$null" \
-#   ERRFILE="$cache/session-errors"
-
-alias \
-  yarn="yarn --use-yarnrc $conf/npm/yarnrc"
-
-# set ls colors
-export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
-
-# # Symlink stubborn dirs
-# for dir in CONFIG CACHE; do
-#   dirl="$(echo ".$dir" | tr '[:upper:]' '[:lower:]')"
-#   dir=${dir}_HOME; dir=${!dir}
-#   if [[ -d "$HOME/$dirl" && ! -L "$HOME/$dirl" ]]; then 
-#     mv "$HOME/$dirl"/* $dir
-#     rm -r "$HOME/${dirl:?}"
-#     ln -s "${!dir}" "$HOME/$dirl"
-#   fi
-# done
-source "/home/fl-w/usr/cargo/env"
+if [ -f "$conf/sh/aliases" ]; then
+  . "$conf/sh/aliases"
+fi

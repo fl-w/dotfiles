@@ -8,9 +8,9 @@ end
 
 function sv --description 'wrapper function for sv to add (dis)/enable subcommand'
     if test (count $argv) -gt 0
+        set -l service "$argv[2]"
         switch "$argv[1]"
             case 'enable'
-                set -l service "$argv[2]"
                 if test -z $service
                     echo -e "usage: sv enable service ..."
                 else
@@ -22,6 +22,19 @@ function sv --description 'wrapper function for sv to add (dis)/enable subcomman
                         echo "           start the service with 'sv start $service'"
                     else
                         echo "sv-enable: service not found in /etc/runit/sv: $service"
+                    end
+                end
+            case 'disable'
+                if test -z $service
+                    echo -e "usage: sv disable service ..."
+                else
+                    if [ -L "/run/runit/service/$service" ]
+                         and  _run_cmd rm /run/runit/service/$service
+
+                        echo "sv-disable: removed symlink /run/runit/service/$service"
+                        echo "           stop the service with 'sv stop $service'"
+                    else
+                        echo "sv-disable: service not found in /run/runit/service: $service"
                     end
                 end
             case '*'

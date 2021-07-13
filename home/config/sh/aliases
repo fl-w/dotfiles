@@ -1,8 +1,21 @@
-# vim: set ft=sh
-
 alias cp="cp -i"                          # confirm before overwriting something
-alias df='df -h'                          # human-readable sizes
+alias df='df -mh'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias np='nano -w PKGBUILD'
 alias more=less
-# alias wget 'wget --no-hsts --hsts-file'
+alias quit=exit; alias ex=exit; alias q=exit
+alias cl=clear
+alias ll='ls -gaG'
+alias ls='ls -h --color=auto --group-directories-first'
+alias la='ls -lah $argv'
+alias su='su -m'
+alias grep='grep --color=auto'
+alias lsblk='lsblk -o name,mountpoint,label,size,uuid'
+alias wget='wget --no-hsts --hsts-file'
+
+if type xclip &>/dev/null; then
+    alias clip='xclip -selection c'
+    alias clop='xclip -selection clipboard -o'
+fi
+
+# vim: set ft=sh

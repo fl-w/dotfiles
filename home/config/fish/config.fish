@@ -1,13 +1,8 @@
-# Disable fish greeting
+# Set prompt options
+set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
+set -g theme_prompt_symbol '' # 🢂
 set -g fish_greeting ''
 
-# Open fish in vim-mode
-fish_vi_key_bindings
-
-# Set ls colors
-set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
-
-set -gx theme_prompt_symbol 🢂
 
 # Automatically install fundle (Warning: dangerous on bad connections)
 if not functions -q fundle
@@ -15,45 +10,12 @@ if not functions -q fundle
 end
 
 fundle plugin 'franciscolourenco/done'
-fundle plugin 'fl-w/ortega'
 fundle plugin 'jethrokuan/z'
-
+fundle plugin 'fl-w/ortega'
 fundle init
-
-function add_path --argument bin
-  [ -d $bin ]; and set --prepend PATH $bin
-end
-
-# Append Go bin dir to PATH
-add_path $GOPATH/bin
-
-# Append n directory to PATH
-add_path $N_PREFIX/bin 
-
-# Append bin dir to PATH
-add_path $HOME/bin
-
-# Append DART pub bin dir to PATH
-add_path $HOME/.pub-cache/bin
-
-# Append RUST cargo bin dir to PATH
-add_path $CARGO_HOME/bin
-
-# # Append the current directory to path
-add_path .
-
-# Append android-sdk & emulator to PATH
-[ -d /opt/android-sdk ]
-  and set -gx ANDROID_HOME /opt/android-sdk
-  and set PATH $ANDROID_HOME/tools:$ANDROID_HOME/tools/bin $PATH
-  and [ -d $ANDROID_HOME/emulator ]
-    and set PATH $ANDROID_HOME/emulator $PATH
 
 # Add xcursor path to env
 [ -d ~/.local/share/icons ]; and set -x XCURSOR_PATH ~/.local/share/icons
-
-# Setup kitty auto complete
-[ -f /usr/bin/kitty ]; and kitty + complete setup fish | source
 
 function _command --description "check if command is a command" --argument c
   command -v $c >/dev/null
@@ -84,8 +46,15 @@ if _command fzf
     and set -gx FZF_CTRL_T_COMMAND "$RG_DEFAULT_COMMAND 2>/dev/null"
 end
 
+# kitty completion
+_command kitty; and kitty + complete setup fish | source
+
 # pipenv completion
-command -v pipenv >/dev/null && eval (pipenv --completion)
+_command pipenv; and eval (pipenv --completion)
 
 # Pipr binding
 bind \ca run-pipr
+
+# Open fish in vim-mode
+fish_vi_key_bindings
+
