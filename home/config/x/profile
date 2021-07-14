@@ -1,7 +1,7 @@
 # /.xprofile - xorg login script
 
-has() { 
-    type "$1" >/dev/null 
+has() {
+    type "$1" >/dev/null
 }
 
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -12,10 +12,14 @@ if has xset; then
 fi
 
 # set dual monitor layout (TODO: make more advanced ?? 13/12/20 - i dont know what this means)
-if has xrandr; then 
+if has xrandr; then
     for sc in "$ROOT/xrandr/set-layout" "$ROOT/xrandr/aset-layout"; do
         [ -x $sc ] && $sc &
     done
 fi
 
-# start pulseaudio 
+if test -f "$ROOT/resources"; then
+    xrdb -merge "$ROOT/resources"
+fi
+
+# start pulseaudio

@@ -1,0 +1,3 @@
+<settings>
+    <localRepository>${user.home}/src/repo/m2</localRepository>
+</settings>

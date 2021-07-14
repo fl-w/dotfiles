@@ -1,7 +1,7 @@
 dynvariables:
-  d_conf: "echo ${XDG_CONFIG_HOME:-~/.config}"
-  d_data: "echo ${XDG_DATA_HOME:-~/.local/share}"
-  d_cache: "echo ${XDG_CACHE_HOME:-~/.cache}"
+  d_conf: echo ${XDG_CONFIG_HOME:-~/.config}
+  d_data: echo ${XDG_DATA_HOME:-~/.local/share}
+  d_cache: echo ${XDG_CACHE_HOME:-~/.cache}
 config:
   dotpath: home
   backup: true
@@ -10,17 +10,17 @@ config:
   keepdot: false
   showdiff: true
   link_dotfile_default: link
-  link_on_import: link
+  link_on_import: link_children
 actions:
   confirm: read {0} "[y/N]" -n 1 -r [[ $REPLY =~ ^[Yy]$ ]] && {1}
 dotfiles:
   d_nvim:
     src: config/nvim
-    dst: "{{@@ d_conf @@}}/nvim"
+    dst: '{{@@ d_conf @@}}/nvim'
     link: link_children
   d_zathura:
     src: config/zathura
-    dst: "{{@@ d_conf @@}}/zathura"
+    dst: '{{@@ d_conf @@}}/zathura'
     link: link_children
   d_wallpapers:
     src: ../wallpapers
@@ -28,75 +28,71 @@ dotfiles:
     link: link_children
   d_x:
     src: config/x
-    dst: "{{@@ d_conf @@}}/x"
+    dst: '{{@@ d_conf @@}}/x'
     link: link_children
   d_sh:
     src: config/sh
-    dst: "{{@@ d_conf @@}}/sh"
+    dst: '{{@@ d_conf @@}}/sh'
     link: link_children
   d_maven:
     src: config/maven
-    dst: "{{@@ d_conf @@}}/sh"
+    dst: '{{@@ d_conf @@}}/sh'
     link: link_children
   d_dunst:
     src: config/dunst
-    dst: "{{@@ d_conf @@}}/dunst"
+    dst: '{{@@ d_conf @@}}/dunst'
     link: link_children
   d_spicetify:
     src: config/spicetify
-    dst: "{{@@ d_conf @@}}/spicetify"
+    dst: '{{@@ d_conf @@}}/spicetify'
     link: link_children
   d_i3:
     src: config/i3
-    dst: "{{@@ d_conf @@}}/i3"
+    dst: '{{@@ d_conf @@}}/i3'
     link: link_children
   d_rofi:
     src: config/rofi
-    dst: "{{@@ d_conf @@}}/rofi"
+    dst: '{{@@ d_conf @@}}/rofi'
     link: link_children
   d_picom:
     src: config/picom
-    dst: "{{@@ d_conf @@}}/picom"
+    dst: '{{@@ d_conf @@}}/picom'
     link: link_children
   d_polybar:
     src: config/polybar
-    dst: "{{@@ d_conf @@}}/polybar"
+    dst: '{{@@ d_conf @@}}/polybar'
     link: link_children
   d_fish_shell:
     src: config/fish
-    dst: "{{@@ d_conf @@}}/fish"
+    dst: '{{@@ d_conf @@}}/fish'
     link: link_children
   d_fish_shell_omf:
     src: config/omf
-    dst: "{{@@ d_conf @@}}/omf"
+    dst: '{{@@ d_conf @@}}/omf'
     link: link_children
   d_flashfocus:
     src: config/flashfocus
-    dst: "{{@@ d_conf @@}}/flashfocus"
+    dst: '{{@@ d_conf @@}}/flashfocus'
     link: link_children
-  # d_firefox_themes:
-  #   src: config/firefox/
-  #   dst: ~/.mozilla/firefox/themes
-  #   link: link_children
   d_kitty:
     src: config/kitty/
-    dst: "{{@@ d_conf @@}}/kitty"
+    dst: '{{@@ d_conf @@}}/kitty'
     link: link_children
   f_firefox_tabpage:
     src: bin/run-tabpage
     dst: ~/bin/run-tabpage
   f_gitconfig:
-    src: gitconfig
-    dst: ~/.gitconfig
+    src: config/git/config
+    dst: '{{@@ d_conf @@}}/git/config'
   f_pywal_rofi_colorscheme:
     src: config/wal/colorschemes/dark/default.rasi
-    dst: "{{@@ d_conf @@}}/wal/colorschemes/dark/default.rasi"
+    dst: '{{@@ d_conf @@}}/wal/colorschemes/dark/default.rasi'
   f_pywal_rofi_template:
     src: config/wal/templates/colors-rofi-dark.rasi
-    dst: "{{@@ d_conf @@}}/wal/templates/colors-rofi-dark.rasi"
+    dst: '{{@@ d_conf @@}}/wal/templates/colors-rofi-dark.rasi'
   f_pywal_xresources_template:
     src: config/wal/templates/colors.Xresources
-    dst: "{{@@ d_conf @@}}/wal/templates/colors.Xresources"
+    dst: '{{@@ d_conf @@}}/wal/templates/colors.Xresources'
     actions:
     - confirm "Symlink generated pywal Xresources?" "ln -s {{@@ _dotfile_abs_dst @@}}
       ~/.Xresources"
@@ -141,7 +137,51 @@ dotfiles:
     src: bin/kautostart.sh
     dst: ~/bin/kautostart.sh
     chmod: '755'
+  d_applications:
+    src: applications
+    dst: '{{@@ d_data @@}}/applications'
+    link: link_children
+  f_user-dirs.dirs:
+    src: config/user-dirs.dirs
+    dst: '{{@@ d_conf @@}}/user-dirs.dirs'
+    link: link
+  d_gtk-3.0:
+    src: config/gtk-3.0
+    dst: '{{@@ d_conf @@}}/gtk-3.0'
+    link: link_children
+  f_pacman.conf:
+    src: ../root/etc/pacman.conf
+    dst: /etc/pacman.conf
+    link: nolink
+  d_root_bin:
+    src: ../root/bin
+    dst: /usr/bin
+    link: nolink
+  f_refind_conf:
+    src: ../root/efi/refind.conf
+    dst: /boot/efi/EFI/BOOT/refind.conf
+    link: nolink
+  d_refind_themes:
+    src: ../root/efi/themes
+    dst: /boot/efi/EFI/BOOT/themes
+    link: nolink
+  d_lightdm:
+    src: ../root/etc/lightdm
+    dst: /etc/lightdm
+    link: nolink
+  d_zzz:
+    src: ../root/etc/zzz.d
+    dst: /etc/zzz.d
+    link: nolink
 profiles:
+  root:
+    dotfiles:
+    - f_pacman.conf
+    - d_root_bin
+    - f_refind_conf
+    - d_refind_themes
+    - d_zzz
+    - d_lightdm
   bin:
     dotfiles:
     - f_lch
@@ -150,10 +190,10 @@ profiles:
   wallpapers:
     dotfiles:
     - d_wallpapers
-  firefox:
-    dotfiles:
-    - d_firefox_themes
-    - f_firefox_tabpage
+  # firefox:
+  #   dotfiles:
+  #   # - d_firefox_themes
+  #   - f_firefox_tabpage
   fish_shell:
     dotfiles:
     - d_fish_shell
@@ -172,14 +212,17 @@ profiles:
     - d_kitty
   _base:
     dotfiles:
+    - d_applications
     - f_gitconfig
     - d_sh
     - d_x
+    - f_user-dirs.dirs
+    - d_gtk-3.0
     include:
     - bin
     - neovim
     - wallpapers
-    - firefox
+    # - firefox
     - fish_shell
   i3:
     dotfiles:
@@ -205,8 +248,8 @@ profiles:
     - kitty
   rhea:
     include:
-      - _base
-      - kitty
+    - _base
+    - kitty
     dotfiles:
     - f_fishy
     - f_kautostart.sh
