@@ -1,26 +1,25 @@
 #!/usr/bin/env sh
 
-COLOR_RED='\033[0;31m'
-print_err() { local message=$1 && shift; printf "${COLOR_RED}ERROR:$COLOR_RESET $message\n" "$@"; }
-
-if [[ -z "$1" ]]; then
-  echo "Usage: $0 <conf>"
-  exit 1
+if [ $# -lt 1 ]; then
+    echo "Usage: `basename $0` <command to execute> [command options]"
+    exit 1
 fi
 
-search_in=("$HOME/." "${XDG_CONFIG_HOME:-$HOME/.config}/" "$HOME/.local/share/")
-find_dir() {
-  for dir in ${search_in[@]}; do
-    if [[ -d "$dir$1" ]]; then echo $dir$1; break; fi
-  done
-}
+if [[ $1 == --process=* ]]
+then
+    process=${1:10}
+    shift
+else
+    process=$1
+fi
 
-for app in "$@"; do
-  app_dir=$(find_dir "$app")
+# Terminate already running bar instances
+killall -q $process
 
-  [[ -z "$app_dir" ]] && print_err "no dir found for $app" && exit 1
-  [[ -z "$app_dir/launch.sh" ]] && print_err "no launch.sh found in $app_dir" && exit 1
+# Wait until the processes have been shut down
+while pgrep -u $UID -x $process >/dev/null; do sleep 1; done
 
-  echo "launching $app"
-  . $app_dir/launch.sh $@ >/dev/null 2>&1
-done
+echo "$@"
+
+$@ & >/dev/null 2>&1
+

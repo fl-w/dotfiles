@@ -359,18 +359,21 @@ bindsym $mod+e layout toggle split
 # ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝
 #
 # startup {{{
+
 exec --no-startup-id start-pulseaudio-x11 & >/dev/null 2>&1
-exec --no-startup-id bluetooth-autoconnect -d & >/dev/null 2>&1
 exec --no-startup-id $scripts/x-close-no-focus "Pavucontrol" >/dev/null 2>&1
+exec --no-startup-id bluetooth-autoconnect -d & >/dev/null 2>&1
 
-# exec_always discord # auto startup
 
-# notes: pywal needs to be installed as a system package otherwise run using bash
-# also pywal needs to be set before starting polybar
+# pywal needs to be set before starting polybar
 exec_always --no-startup-id $bin/swal -q n -b '#131315'
-exec_always --no-startup-id $bin/lch picom polybar dunst flashfocus
+exec_always --no-startup-id $bin/lch picom -b
+exec_always --no-startup-id $bin/lch flashfocus
+exec_always --no-startup-id $bin/lch --process=dunst $XDG_CONFIG_HOME/dunst/launch.sh
+exec_always --no-startup-id $bin/lch --process=polybar $XDG_CONFIG_HOME/polybar/launch.sh
+exec_always --no-startup-id spicetify apply
 exec_always --no-startup-id $scripts/i3-alternate-layout >/dev/null 2>&1
-# exec_always --no-startup-id spicetify apply
 #}}}
 
+exec_always --no-startup-id notify-send log: $I3_LOG_FILE
 # vim: sw=2 fdm=marker
