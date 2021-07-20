@@ -9,7 +9,7 @@
 #  \______| \______/        \______/ \__|  \__|\__|       \______/
 #
 #
-# gitihub.com/folws/dotfiles
+# @fl-w
 
 # Set variables {{{
 set $browser              $BROWSER
@@ -131,9 +131,9 @@ for_window [class   = "lxappearance"] floating enable
 for_window [class   = "obinskit"] floating enable
 for_window [class   = "microsoft teams - preview"] floating enable sticky enable
 for_window [class   = "JetBrains Toolbox"] floating enable sticky enable
+for_window [class   = "jetbrains-idea" title="win0"] floating enable
+for_window [class   = "jetbrains-idea" title="Welcome to IntelliJ IDEA"] floating enable
 for_window [instance = "floating"] floating enable
-
-assign [class  = "jetbrains-idea"] -> output primary
 
 # popups during fullscreen mode
 popup_during_fullscreen smart
@@ -362,7 +362,7 @@ bindsym $mod+e layout toggle split
 
 exec --no-startup-id start-pulseaudio-x11 & >/dev/null 2>&1
 exec --no-startup-id $scripts/x-close-no-focus "Pavucontrol" >/dev/null 2>&1
-exec --no-startup-id bluetooth-autoconnect -d & >/dev/null 2>&1
+exec --no-startup-id sleep 2 && bluetooth-autoconnect -d & >/dev/null 2>&1
 
 
 # pywal needs to be set before starting polybar
@@ -375,5 +375,4 @@ exec_always --no-startup-id spicetify apply
 exec_always --no-startup-id $scripts/i3-alternate-layout >/dev/null 2>&1
 #}}}
 
-exec_always --no-startup-id notify-send log: $I3_LOG_FILE
 # vim: sw=2 fdm=marker
