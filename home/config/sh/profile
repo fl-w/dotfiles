@@ -62,6 +62,8 @@ export \
   HISTFILE="$cache/bash_history" \
   NPM_CONFIG_USERCONFIG="$conf/npm/npmrc"
 
+# Add xcursor path to env (avoid ~/.icons)
+export XCURSOR_PATH="$data/icons"
 
 # Move java clutter
 export \
@@ -70,7 +72,6 @@ export \
   ANDROID_SDK_HOME="$data/android" \
   ANDROID_PREFS_ROOT="$data/android" \
   GRADLE_USER_HOME="$data/gradle"
-
 
 add_path() { [[ -d "$1" ]] && PATH="$1:$PATH"; }
 
