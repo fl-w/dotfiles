@@ -14,8 +14,10 @@ fundle plugin 'jethrokuan/z'
 fundle plugin 'fl-w/ortega'
 fundle init
 
+contains ~/.local/bin $fish_user_paths; or set -Up fish_user_paths ~/.local/bin
+
 # Add xcursor path to env
-[ -d ~/.local/share/icons ]; and set -x XCURSOR_PATH ~/.local/share/icons
+[ -d "$XDG_DATA_HOME/icons" ]; and set -x XCURSOR_PATH "$XDG_DATA_HOME/icons"
 
 function _command --description "check if command is a command" --argument c
   command -v $c >/dev/null
