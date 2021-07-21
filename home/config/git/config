@@ -1,57 +1,86 @@
 [user]
 	name = fl-w
 	email = 30976147+fl-w@users.noreply.github.com
-[credential]
-	helper = store
+[include]
+	path =  ~/opt/gitconfig.local
 [core]
+	editor = "nvr --remote-wait-silent"
 	autocrlf = input
-	page = nvim -R
+	pager = delta
 [color]
-	ui = true
-	pager = no
-[push]
-	default = simple
+  ui = auto
+  status = auto
+  diff = auto
+  branch = auto
+  showBranch = auto
+  interactive = auto
 [alias]
-	s           = status -sb
-	sw          = switch
-	b           = branch
-	c           = commit -v
-	a           = add
-	re          = restore
-	l           = pull
-	p           = push
-	f           = fetch
-	mt          = mergetool
-	m           = merge
-	r           = rebase
-	lg          = log --stat
-	d           = diff
-	undo-commit = reset HEAD~
-	uc          = reset HEAD~
-	unstage     = restore --staged
-	# log
-	l           = log --pretty=format:'%C(blue)%h%Creset %C(red)%G?%Creset %C(white)%s %C(yellow)(%cr) %C(cyan)%an%Creset - %C(magenta)%gd'
-	los         = log --graph --date=short --decorate
-	changes     = log --pretty=format:'[%C(blue)%h%Creset] %C(cyan)%an%Creset %C(yellow)%cr: %C(white)%s' --name-status
-	changelog   = log --pretty=format:' * %C(white)%s'
-	lof         = log --graph --pretty=format:'[%C(blue)%h%Creset] -%C(red bold)%d%Creset %C(cyan)%an%Creset %C(yellow)%cr: %C(white)%s' --abbrev-commit --date=relative
-	lol         = log --pretty=format:'[%C(blue)%h%Creset] %C(cyan)%an%Creset %C(yellow)%ar%Creset: %C(white)%s' --stat
-	squash      = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
-	conflicts   = diff --name-only --diff-filter=U
+	c         = commit
+	s         = status -sb
+	mt        = mergetool
+	undo      = reset --soft HEAD~
+	clear     = reset --hard HEAD
+	reset-up  = reset --hard $(git upstream)
+	unstage   = restore --staged
+	l         = log --pretty=format:'[%C(blue)%h%Creset] %C(cyan)%an%Creset %C(yellow)%cr: %C(white)%s' --name-status
+	la        = log --pretty=format:'[%C(blue)%h%Creset] %C(cyan)%an%Creset %C(yellow)%ar%Creset: %C(white)%s' --stat
+	ll        = log --reverse --pretty=format:'%C(blue)%h%Creset %C(red)%G?%Creset %C(white)%s %C(yellow)(%cr) %C(cyan)%an%Creset - %C(magenta)%gd'
+	lb        = log --graph --pretty=format:'[%C(blue)%h%Creset] -%C(red bold)%d%Creset %C(cyan)%an%Creset %C(yellow)%cr: %C(white)%s' --abbrev-commit --date=relative
+	squash    = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
+	conflicts = diff --name-only --diff-filter=U
+[color]
+	ui = auto
+	staus = auto
+	diff = auto
+	branch = auto
+	showBranch = auto
+[delta]
+	features = side-by-side line-numbers hope
+    syntax-theme = gruvbox-dark
+[delta "fl-w"]
+    commit-decoration-style = bold box ul "#34fd50"
+    dark = true
+    file-decoration-style = none
+    file-style = omit
+    hunk-header-decoration-style = "#00b494" box ul
+    hunk-header-file-style = "#999999"
+    hunk-header-line-number-style = bold "#03a4ff"
+    hunk-header-style = file syntax
+    line-numbers = true
+    line-numbers-left-style = black
+    line-numbers-minus-style = "#B10036"
+    line-numbers-plus-style = "#03a4ff"
+    line-numbers-right-style = black
+    line-numbers-zero-style = "#999999"
+    minus-emph-style = normal "#de004e"
+    minus-style = normal "#990017"
+    plus-emph-style = syntax "#03a4ff"
+    plus-style = syntax "#450eff"
+[interactive]
+	diffFilter = delta --color-only
+[format]
+	pretty = format:%C(yellow)%h %Cblue%>(15)%ad %Cgreen%<(15)%aN%Cred%d %Creset%s
 [pull]
 	rebase = false
+[push]
+	default = simple
+	followTags = true
+[diff]
+	colorMoved = default
+[fetch]
+	prune = true
+[rebase]
+	autoStash = true
+[status]
+	submoduleSummary = true
 [advice]
 	addEmptyPathspec = false
 [merge]
 	tool = kitty
 [mergetool]
-	prompt = false
-	keepBackup = false
+	prompt = true
+	keepBackup = true
 [mergetool "vimdiff"]
 	cmd = nvim -d $BASE $LOCAL $REMOTE -c '$wincmd w' -c 'wincmd J'
 [mergetool "kitty"]
 	cmd = kitty +kitten diff $LOCAL $REMOTE
-[mergetool "code"]
- cmd = code --wait $MERGED
-[mergetool "nvim"]
-	cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
