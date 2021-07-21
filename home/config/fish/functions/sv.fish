@@ -10,6 +10,12 @@ function sv --description 'wrapper function for sv to add (dis)/enable subcomman
     if test (count $argv) -gt 0
         set -l service "$argv[2]"
         switch "$argv[1]"
+            case 'list'
+                if command -q rsm
+                    _run_cmd rsm
+                else
+                    echo "sv-list: you need to install 'rsm' first"
+                end
             case 'enable'
                 if test -z $service
                     echo -e "usage: sv enable service ..."
