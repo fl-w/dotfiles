@@ -1,0 +1,6 @@
+--color always
+--theme gruvbox-dark
+--style=changes,snip,numbers
+--wrap never
+--italic-text=always
+--paging=never

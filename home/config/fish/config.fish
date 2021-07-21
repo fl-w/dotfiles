@@ -22,8 +22,8 @@ function _command --description "check if command is a command" --argument c
   return $fish_status
 end
 
-# Set default bat command
-_command bat; and set -g BAT_DEFAULT_COMMAND bat --color always --theme Dracula --style=header,changes --wrap never
+# replace cat with bat command
+_command bat; and alias cat bat
 
 # Set default ripgrep command
 _command rg; and set -g RG_DEFAULT_COMMAND "rg --files --hidden -g '!.git/**' -g '!target/' -g '!Cargo.{toml,lock}' --ignore -l"

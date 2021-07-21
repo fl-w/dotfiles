@@ -145,6 +145,10 @@ dotfiles:
     src: config/user-dirs.dirs
     dst: '{{@@ d_conf @@}}/user-dirs.dirs'
     link: link
+  d_bat:
+    src: config/bat
+    dst: '{{@@ d_conf @@}}/bat'
+    link: link_children
   d_gtk-3.0:
     src: config/gtk-3.0
     dst: '{{@@ d_conf @@}}/gtk-3.0'
@@ -218,6 +222,7 @@ profiles:
     - d_x
     - f_user-dirs.dirs
     - d_gtk-3.0
+    - d_bat
     include:
     - bin
     - neovim
