@@ -36,7 +36,7 @@ dotfiles:
     link: link_children
   d_maven:
     src: config/maven
-    dst: '{{@@ d_conf @@}}/sh'
+    dst: '{{@@ d_conf @@}}/maven'
     link: link_children
   d_dunst:
     src: config/dunst
@@ -105,9 +105,6 @@ dotfiles:
   f_rofi_launcher:
     src: bin/app-launcher
     dst: ~/bin/app-launcher
-  f_laun.ch:
-    src: bin/laun.sh
-    dst: ~/bin/laun.sh
   f_powermenu:
     src: bin/powermenu
     dst: ~/bin/powermenu
@@ -193,7 +190,6 @@ profiles:
   bin:
     dotfiles:
     - f_lch
-    - f_laun.ch
     - f_scr
   wallpapers:
     dotfiles:
@@ -226,7 +222,9 @@ profiles:
     - d_x
     - f_user-dirs.dirs
     - d_gtk-3.0
+    - d_maven
     - d_bat
+    - d_ripgrep
     include:
     - bin
     - neovim
