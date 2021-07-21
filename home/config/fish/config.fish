@@ -25,19 +25,18 @@ end
 # replace cat with bat command
 _command bat; and alias cat bat
 
-# Set default ripgrep command
-_command rg; and set -g RG_DEFAULT_COMMAND "rg --files --hidden -g '!.git/**' -g '!target/' -g '!Cargo.{toml,lock}' --ignore -l"
+# replace grep with ripgrep command
+_command rg; and alias grep rg
+
+function evoid -a p
+  command $p
+end
 
 # Set FZF to use rg
 if _command fzf
-  # Set fzf preview to use bat if available, otherwise cat
-  set -q BAT_DEFAULT_COMMAND
-    and set _CAT $BAT_DEFAULT_COMMAND; or set _CAT cat
-
-  set -g FZF_PREVIEW_COMMAND "$_CAT {} || head -n 60 {} || tree -a -C {}"
+  set -g FZF_PREVIEW_COMMAND "cat {} || head -n 60 {} || tree -a -C {}"
 
   # Set fzf to use preview in ctrl-t
-
   set -gx FZF_DEFAULT_OPTS --layout=default
   set -gx FZF_CTRL_T_OPTS $FZF_DEFAULT_OPTS --min-height 30 --preview-window down:60% --preview-window noborder --preview "'$FZF_PREVIEW_COMMAND 2>/dev/null'"
 

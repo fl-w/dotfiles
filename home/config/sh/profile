@@ -50,6 +50,7 @@ export \
   GOPATH="$cache/go"   \
   TEXMFHOME="$data/texmf/" \
   WEECHAT_HOME="$conf/weechat"  \
+  RIPGREP_CONFIG_PATH="$conf/rg/ripgreprc" \
   GNUPGHOME="$data/gpg" \
   SQLITE_HISTORY="$cache/sqlite_history" \
   USERXSESSION="$conf/x/xsession" \

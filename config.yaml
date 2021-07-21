@@ -149,6 +149,10 @@ dotfiles:
     src: config/bat
     dst: '{{@@ d_conf @@}}/bat'
     link: link_children
+  d_ripgrep:
+    src: config/rg
+    dst: '{{@@ d_conf @@}}/rg'
+    link: link_children
   d_gtk-3.0:
     src: config/gtk-3.0
     dst: '{{@@ d_conf @@}}/gtk-3.0'
