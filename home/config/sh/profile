@@ -65,7 +65,7 @@ export \
   TEXMFHOME="$data/texmf/" \
   WEECHAT_HOME="$conf/weechat"  \
   RIPGREP_CONFIG_PATH="$conf/rg/ripgreprc" \
-  GNUPGHOME="$data/gpg" \
+  GNUPGHOME="$opt/gpg" \
   SQLITE_HISTORY="$cache/sqlite_history" \
   USERXSESSION="$conf/x/xsession" \
   USERXSESSIONRC="$conf/x/xsessionrc" \
