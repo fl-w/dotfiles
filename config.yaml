@@ -6,7 +6,7 @@ config:
   dotpath: home
   backup: true
   create: true
-  banner: true
+  banner: false
   keepdot: false
   showdiff: true
   link_dotfile_default: link
