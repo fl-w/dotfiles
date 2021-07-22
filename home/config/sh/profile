@@ -54,7 +54,7 @@ move_sym "$HOME/.local/share" "$data"
 move_sym "$HOME/.cache" "$cache"
 move_sym "$HOME/.mozilla" "$opt/mozilla"
 move_sym "$HOME/.local" "$data/local"
-move_sym "$HOME/Download" "$XDG_DOWNLOAD_DIR"
+move_sym "$HOME/Downloads" "$XDG_DOWNLOAD_DIR"
 
 # Declutter $HOME (https://wiki.archlinux.org/title/XDG_Base_Directory)
 export \
