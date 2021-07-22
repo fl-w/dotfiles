@@ -214,6 +214,9 @@ profiles:
   kitty:
     dotfiles:
     - d_kitty
+  wallpapers:
+    dotfiles:
+    - wallpapers
   _base:
     dotfiles:
     - d_applications
@@ -228,9 +231,8 @@ profiles:
     include:
     - bin
     - neovim
-    - wallpapers
-    # - firefox
     - fish_shell
+    # - firefox
   i3:
     dotfiles:
     - d_i3
@@ -248,6 +250,7 @@ profiles:
     include:
     - _base
     - rofi
+    - wallpapers
 
   4tlas:
     include:
