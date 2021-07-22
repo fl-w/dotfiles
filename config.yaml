@@ -214,9 +214,6 @@ profiles:
   kitty:
     dotfiles:
     - d_kitty
-  wallpapers:
-    dotfiles:
-    - wallpapers
   _base:
     dotfiles:
     - d_applications
