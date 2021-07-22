@@ -19,19 +19,32 @@ export \
   XDG_CACHE_HOME="$cache" \
   XDG_CONFIG_HOME="$conf"
 
+# import XDG user dirs
+if [ -f $conf/user-dirs.dirs ]; then
+  . $conf/user-dirs.dirs
+fi
+
 # Make XDG directories
-for dir in "$cache" "$data" "$conf" "$opt" "$BIN_DIR" "$SCR_DIR"; do
-  test -d "$dir" || mkdir -m 0700 -p "$dir"
+for dir in \
+  "$cache" "$data" "$conf" "$opt" \
+  "$BIN_DIR" "$SCR_DIR" \
+  "$XDG_DOWNLOAD_DIR" "$XDG_DOCUMENTS_DIR" \
+  "$XDG_MUSIC_DIR" "$XDG_PICTURES_DIR" \
+  "$XDG_VIDEOS_DIR" "$XDG_DESKTOP_DIR" \
+  "$XDG_PUBLICSHARE_DIR" "$XDG_TEMPLATES_DIR" \
+do
+  test -z "$dir" -o -d "$dir" || mkdir -m 0700 -p "$dir"
 done
 
 # Move XDG directories and symlink for stubborn programs
 move_sym() {
   if [[ -d "$1" && ! -L "$1" ]]; then
     mkdir -p "$2"
+    mkdir -p "~/.old"
     (
       shopt -s dotglob;
       cp -r "$1"/* "$2";
-      mv "$1" "$1.old"
+      mv "$1" "~/.old/$1.old"
     )
     ln -sf "$2" "$1"
   fi
