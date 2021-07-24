@@ -10,6 +10,6 @@ for i in r8169 psmouse; do
     modprobe $i
 done
 
-# swap seems to keep growing after hibernation restore 
+# swap seems to keep growing after hibernation restore
 # so clear swap
-swapoff; swapon
+swapoff -a; swapon -a
