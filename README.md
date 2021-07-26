@@ -1,4 +1,4 @@
-# folws's dotfiles 🏠
+# fl-w's dotfiles 🏠
 
 
 > The current state of this repository is for backup only. Most scripts
