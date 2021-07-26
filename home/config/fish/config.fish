@@ -1,13 +1,18 @@
-# Automatically install fundle (Warning: dangerous on bad connections)
-if not functions -q fundle
-  eval (curl -sfL https://git.io/fundle-install)
+# fish init script
+# @fl-w
+
+# source bash profile
+function bsource -a file
+  test -x $file | bass source $file
 end
 
-fundle plugin 'franciscolourenco/done'
-fundle plugin 'jethrokuan/z'
-fundle plugin 'fl-w/ortega'
-fundle plugin 'oh-my-fish/plugin-await'
-fundle init
+if status --is-login
+  bsource /etc/profile
+  bsource ~/.env
+  bsource ~/.profile
+  set -q conf || set -l conf $HOME/.config
+  bsource $conf/sh/profile
+end
 
 contains ~/.local/bin $fish_user_paths
   or set -Up fish_user_paths ~/.local/bin
@@ -33,7 +38,7 @@ if _command fzf
      --min-height 30 \
      --preview-window down:60% \
      --preview-window noborder \
-     --preview "'$FZF_PREVIEW_COMMAND 2>/dev/null'"
+     --preview "'begin; $FZF_PREVIEW_COMMAND; end 2>/dev/null'"
 
   # set fzf to use ripgrep by default
   _command rg
@@ -49,6 +54,28 @@ _command pipenv; and eval (pipenv --completion)
 
 # Pipr binding
 _command pipr; and bind \ca run-pipr
+
+# Automatically install fundle (Warning: dangerous on bad connections)
+if not functions -q fundle
+  eval (curl -sfL https://git.io/fundle-install)
+end
+
+fundle plugin 'fl-w/ortega'
+fundle plugin 'franciscolourenco/done'
+fundle plugin 'jethrokuan/z'
+fundle plugin 'oh-my-fish/plugin-await'
+fundle plugin 'oh-my-fish/plugin-license'
+fundle plugin 'edc/bass'
+
+# auto install fundle plugins
+for plugin in (fundle list -s)
+  if not test -d (__fundle_plugins_dir)/$plugin
+    fundle install
+    break
+  end
+end
+
+fundle init
 
 # Set prompt options
 set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD

@@ -126,10 +126,6 @@ dotfiles:
   f_lch:
     src: bin/lch
     dst: ~/bin/lch
-  f_fishy:
-    src: dotfiles/root/bin/fishy
-    dst: /usr/bin/fishy
-    chmod: '755'
   f_kautostart.sh:
     src: bin/kautostart.sh
     dst: ~/bin/kautostart.sh
@@ -158,10 +154,6 @@ dotfiles:
     src: ../root/etc/pacman.conf
     dst: /etc/pacman.conf
     link: nolink
-  d_root_bin:
-    src: ../root/bin
-    dst: /usr/bin
-    link: nolink
   f_refind_conf:
     src: ../root/efi/refind.conf
     dst: /boot/efi/EFI/BOOT/refind.conf
@@ -182,7 +174,6 @@ profiles:
   root:
     dotfiles:
     - f_pacman.conf
-    - d_root_bin
     - f_refind_conf
     - d_refind_themes
     - d_zzz
@@ -258,5 +249,4 @@ profiles:
     - _base
     - kitty
     dotfiles:
-    - f_fishy
     - f_kautostart.sh
