@@ -11,7 +11,7 @@ export \
 # Set env vars for other locations
 export \
   BIN_DIR="${BIN_DIR:-$HOME/bin}"
-  SCR_DIR="${SCR_DIR:-$HOME/pics/scr}"
+  SCR_DIR="${SCR_DIR:-${XDG_PICTURES_DIR:-$HOME/media/pics}/scr}"
 
 # Set XDG directories to custom dirs
 export \
