@@ -5,20 +5,20 @@
 # .project-root
 **/.project-root
 
-# ssh files
-.ssh/**id_rsa**
-
 # private files
 .private/
 
 # virtual env
 .venv/
 
+# local env file
+home/env
+
 # fish
 **/fish_variables
 
 # ignore bash history
-home/config/sh/bash_history
+**/*_history
 
 # kitty themes
 home/config/kitty/themes/*.conf
