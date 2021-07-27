@@ -79,8 +79,12 @@ _command pipr; and bind \ca run-pipr
 # Set prompt options
 set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
 set -g theme_prompt_symbol '' # 🢂
-set -g fish_greeting ''
 
+if status --is-interactive && not test -z "$IS_WORK"
+  echo 'Hang in there! @fl-w'
+else
+  set -g fish_greeting ''
+end
 
 # finally open fish in vim-mode
 fish_vi_key_bindings

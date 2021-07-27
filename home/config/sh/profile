@@ -77,9 +77,6 @@ export \
   HISTFILE="$cache/bash_history" \
   NPM_CONFIG_USERCONFIG="$conf/npm/npmrc"
 
-# Add xcursor path to env (avoid ~/.icons)
-export XCURSOR_PATH="$data/icons"
-
 # Move java clutter
 export \
   _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$conf/java" \
@@ -87,6 +84,9 @@ export \
   ANDROID_SDK_HOME="$data/android" \
   ANDROID_PREFS_ROOT="$data/android" \
   GRADLE_USER_HOME="$data/gradle"
+
+# Add xcursor path to env (avoid ~/.icons)
+export XCURSOR_PATH="$data/icons"
 
 add_path() { [[ -d "$1" ]] && PATH="$1:$PATH"; }
 
@@ -138,6 +138,14 @@ default BROWSER firefox{,-developer-edition} brave-browser chromium
 if [ -f "$conf/sh/aliases" ]; then
   . "$conf/sh/aliases"
 fi
+
+# i never run ubuntu on personal machines
+(
+  . /etc/os-release
+  if [ $ID = ubuntu ]; then
+    export IS_WORK=$(hostname)
+  fi
+)
 
 void() { ( "$@" & ) >/dev/null 2>&1; }
 
