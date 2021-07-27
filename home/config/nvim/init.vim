@@ -1,4 +1,4 @@
-" vim: sw=2 sts=2 tw=0 fdm=marker
+" vim: sw=2 sts=2 tw=0
 "
 "    .o oOOOOOOOo                                            0OOOo
 "    Ob.OOOOOOOo  OOOo.      oOOo.                      .adOOOOOOO
@@ -21,9 +21,10 @@
 let $VIM_ROOT = expand('<sfile>:p:h')
 let $VIM_DATA_ROOT = stdpath('data')
 
-let g:vim_ignore_configs_list = ['ale']
 let g:is_darwin = has('win32') || has('win64')
 let g:is_linux = has('unix') && !has('macunix')
+let g:is_work = !empty($IS_WORK)
+let g:vim_ignore_configs = ['ale']
 
 if has('vim_starting')
   runtime settings.vim

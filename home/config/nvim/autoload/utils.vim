@@ -54,8 +54,10 @@ function! utils#project_root()
 endfunction
 
 function! utils#trim_whitespace()
-  " Trims trailing whitespace
-  """
+  if g:is_work
+    return
+  endif
+
   let l:save = winsaveview()
   %s/\s\+$//e
   call winrestview(l:save)
