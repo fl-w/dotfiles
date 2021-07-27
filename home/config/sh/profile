@@ -68,6 +68,7 @@ export \
   GNUPGHOME="$opt/gpg" \
   SQLITE_HISTORY="$cache/sqlite_history" \
   USERXSESSION="$conf/x/xsession" \
+  PASSWORD_STORE_DIR="$data/pass" \
   USERXSESSIONRC="$conf/x/xsessionrc" \
   VSCODE_PORTABLE="$data"/vscode \
   ERRFILE="$cache/xsession-errors" \
