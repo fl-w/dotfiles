@@ -43,8 +43,10 @@ else
   runtime! conf.d/*.vim
 
   " load plugin configs
-  let g:plug_configs = map(filter(copy(g:plugs_order), {_, val -> index(g:vim_ignore_configs_list, val) == -1}),
-        \ '"plugins.d/" . tolower(substitute(fnamemodify(v:val, ":r"), "\\.", "-", "")) . ".vim"')
+  let g:plug_configs = map(
+        \   filter( copy(g:plugs_order), { _, val -> index(g:vim_ignore_configs, val) == -1 } ),
+        \   '"plugins.d/" . tolower(substitute(fnamemodify(v:val, ":r"), "\\.", "-", "")) . ".vim"'
+        \)
   for s:plug in g:plug_configs
     exe 'runtime' s:plug
   endfor
