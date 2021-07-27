@@ -17,7 +17,7 @@ dotfiles:
   f_env:
     src: env
     dst: ~/.env
-    link: no_link
+    link: nolink
   d_nvim:
     src: config/nvim
     dst: '{{@@ d_conf @@}}/nvim'
