@@ -134,7 +134,7 @@ default() {
 default EDITOR nvim vim vi nano
 
 # set default browser (i switch between browsers on diff machines)
-default BROWSER firefox{,-developer-edition} brave-browser chromium
+default BROWSER firefox{-developer-edition,} brave-browser chromium
 
 if [ -f "$conf/sh/aliases" ]; then
   . "$conf/sh/aliases"
