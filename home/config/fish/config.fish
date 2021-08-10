@@ -81,7 +81,7 @@ set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
 set -g theme_prompt_symbol '' # 🢂
 
 if status --is-interactive && not test -z "$IS_WORK"
-  echo 'Hang in there! @fl-w'
+  set -g fish_greeting 'Hang in there! @fl-w'
 else
   set -g fish_greeting ''
 end
