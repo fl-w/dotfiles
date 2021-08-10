@@ -88,3 +88,6 @@ end
 
 # finally open fish in vim-mode
 fish_vi_key_bindings
+
+[ -f $__fish_config_dir/config.fish.local ]
+  and . $__fish_config_dir/config.fish.local
