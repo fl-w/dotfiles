@@ -16,6 +16,9 @@ home/env
 
 # fish
 **/fish_variables
+**/config.fish.local
+**/fish/conf.d/*
+**/functions/fzf_key_bindings.fish
 
 # ignore bash history
 **/*_history
