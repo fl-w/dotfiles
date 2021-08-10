@@ -1,0 +1,8 @@
+# local fish config
+./config.fish.local
+
+# auto run configs
+./conf.d/*
+
+# fzf bindings
+functions/fzf_key_bindings.fish
