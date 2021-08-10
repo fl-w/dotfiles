@@ -79,12 +79,13 @@ set nofoldenable                               | " disable folding by default
 set fillchars+=vert:\                          | " disable verticle split lines
 " set formatoptions&
 " set formatoptions+=B                           | " don't insert space when joining lines
-" set formatoptions+=j                           | " remove comment leader when joining lines
+set formatoptions+=j                           | " remove comment leader when joining lines
 " set formatoptions+=n                           | " auto insert comment on new line
 " set formatoptions+=m                           | " break long lines
-" set formatoptions+=r                           | " auto insert comment on new line
+set formatoptions+=r                           | " auto insert comment on new line in insert mode
+set formatoptions-=o                           | " don't auto insert comment on new line in norm
 " set cc=80                                      | " show linecolumn
-" set autochdir                                  | " change working directory to open file
+
 " ignore files when globbing
 set wildignore=*.o,*.obj,*~                    | " ignore object files
 set wildignore-=.*                             | " don't ignore hidden files

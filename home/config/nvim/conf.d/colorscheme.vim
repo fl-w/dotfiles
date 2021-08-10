@@ -91,6 +91,7 @@ if has('termguicolors')                    | set termguicolors                 |
 if has('nvim')                             | let $NVIM_TUI_ENABLE_TRUE_COLOR=1 | endif | " use 24-bit (true-color) mode in Neovim
 if has('syntax') && !exists('g:syntax_on') | syntax enable                     | endif | " enables syntax highlighting
 if !has('gui_running')                     | set t_Co=256                      | endif | " support 256 colors
+if !has('gui_running')                     | let &t_ut=''                      | endif | " support 256 colors
 
 " Allow color schemes to do bright colors without forcing bold.
 if &t_Co == 8 && $TERM !~# '^Eterm'        | set t_Co=16                       | endif
