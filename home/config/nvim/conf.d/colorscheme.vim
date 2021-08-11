@@ -77,7 +77,7 @@ if has('vim_starting')
   let _theme = getenv("_THEME")
   let &background = (_theme != v:null ? _theme : 'dark')
   if !exists('g:colors_name')
-    if &bg = 'dark'
+    if &bg == 'dark'
       silent! colorscheme ayu
     else
       silent! colorscheme PaperColor
