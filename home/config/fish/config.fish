@@ -22,35 +22,29 @@ for plugin in (fundle list -s)
 end
 
 fundle init
-# source bash profile
-function bsource -a file
-  test -x $file && bass source $file
-end
+
+dotenv ~/.env
 
 if status --is-login
-  bsource /etc/profile
-  bsource ~/.env
-  bsource ~/.profile
+  # source bash profile
   set -q conf || set -l conf $HOME/.config
-  bsource $conf/sh/profile
+  for profile in /etc/profile ~/.profile $conf/sh/profile
+    test -x $profile;
+      and bass source $profile
+  end
 end
 
 contains ~/.local/bin $fish_user_paths
   or set -Up fish_user_paths ~/.local/bin
 
-function _command --description "check if command is a command" --argument c
-  command -v $c >/dev/null
-  return $fish_status
-end
-
 # replace cat with bat command
-_command bat; and alias cat bat
+has bat; and alias cat bat
 
 # replace grep with ripgrep command
-_command rg; and alias grep rg
+has rg; and alias grep rg
 
 # Set FZF to use rg
-if _command fzf
+if has fzf
   set -g FZF_PREVIEW_COMMAND "cat {} || head -n 60 {} || tree -a -C {}"
 
   # Set fzf to use preview in ctrl-t
@@ -62,19 +56,19 @@ if _command fzf
      --preview "'begin; $FZF_PREVIEW_COMMAND; end 2>/dev/null'"
 
   # set fzf to use ripgrep by default
-  _command rg
+  has rg
     and set -gx FZF_DEFAULT_COMMAND rg --files --no-ignore-vcs --hidden #
     and set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND 2>/dev/null
 end
 
 # kitty completion
-_command kitty; and kitty + complete setup fish | source
+has kitty; and kitty + complete setup fish | source
 
 # pipenv completion
-_command pipenv; and eval (pipenv --completion)
+has pipenv; and eval (pipenv --completion)
 
 # Pipr binding
-_command pipr; and bind \ca run-pipr
+has pipr; and bind \ca run-pipr
 
 # Set prompt options
 set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
