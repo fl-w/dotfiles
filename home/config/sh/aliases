@@ -6,7 +6,7 @@ alias free='free -h'                      # human-readable sizes
 alias np='nano -w PKGBUILD'
 alias more=less
 alias quit=exit; alias ex=exit; alias q=exit
-alias cl=clear
+alias cl=clear; alias cll='clear && ls -al'
 alias ll='ls -gaG'
 alias ls='ls -h --color=auto --group-directories-first'
 alias la='ls -lah $argv'
@@ -20,9 +20,7 @@ alias yarn="yarn --use-yarnrc $conf/npm/yarnrc"
 alias sqlite3="sqlite3 -init $conf/sqlite3/sqliterc"
 alias mvn="mvn -gs $conf/maven/settings.xml"
 
-if type xclip &>/dev/null; then
-    alias clip='xclip -selection c'
-    alias clop='xclip -selection clipboard -o'
-fi
+alias clip='xclip -selection c'
+alias clop='xclip -selection clipboard -o'
 
 # vim: set ft=sh:

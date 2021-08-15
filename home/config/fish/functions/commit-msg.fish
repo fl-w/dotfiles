@@ -1,3 +1,5 @@
+function commit-msg
+  echo "\
 if you're not using et, fuck off
 Fucking templates.
 I made leetle mistake
@@ -26,7 +28,7 @@ happy monday _ bleh _
 Major fixup.
 Nobody had ever created a function like this one before.
 pgsql is more strict, increase the hackiness up to 11
-Revert "just testing, remember to revert"
+Revert 'just testing, remember to revert'
 Well, it's doing something.
 This is supposed to crash
 Herping the derp derp (silly scoping error)
@@ -61,7 +63,6 @@ removed tests since i can't make them green
 Useful text
 Reinventing the wheel. Again.
 pointless limitation
-Merge pull request #67 from Lazersmoke/fix-andys-shit Fix andys shit
 a few bits tried to escape, but we caught them
 fix tpyo
 Ugh. Bad rebase.
@@ -104,7 +105,7 @@ Removed code.
 Finished fondling.
 Nobody had ever created a function like this one before.
 NSA backdoor - ignore
- ¯\_(ツ)_/¯
+¯\_(ツ)_/¯
 Don’t even try to refactor it.
 Shovelling coal into the server...
 This is why git rebase is a horrible horrible thing.
@@ -204,7 +205,7 @@ Never gonna tell a lie and hurt you
 Yes, I was being sarcastic.
 bugger
 I'm hungry
-Peopleware Chapter 8: "You Never Get Anything Done around Here between 9 and 5."
+Peopleware Chapter 8: 'You Never Get Anything Done around Here between 9 and 5.'
 No changes after this point.
 ??! what the ...
 It only compiles every 3 tries... good luck.
@@ -238,7 +239,7 @@ Useful text
 PEBKAC
 Stuff
 Removed code.
-Peopleware Chapter 8: "You Never Get Anything Done around Here between 9 and 5."
+Peopleware Chapter 8: 'You Never Get Anything Done around Here between 9 and 5.'
 I am Root. We are Root.
 I am the greatest javascript developer in the world.
 speling is difikult
@@ -474,7 +475,7 @@ herpderp (redux)
 apparently i did something…
 first blush
 Some shit.
- ¯\_(ツ)_/¯
+¯\_(ツ)_/¯
 I CAN HAZ PYTHON, I CAN HAZ INDENTS
 another big bag of changes
 TODO: write meaningful commit message
@@ -507,7 +508,7 @@ Jonatha made me do it
 And if you ask me how I'm feeling
 i dunno, maybe this works
 stopped caring 18 commits ago
-Peopleware Chapter 8: "You Never Get Anything Done around Here between 9 and 5."
+Peopleware Chapter 8: 'You Never Get Anything Done around Here between 9 and 5.'
 Chuck Norris Emailed Me This Patch... I'm Not Going To Question It
 It Compiles! 50 Points For Gryffindor.
 No changes after this point.
@@ -583,12 +584,12 @@ Shovelling coal into the server...
 Feed. You. Stuff. No time.
 I'll explain this when I'm sober .. or revert it
 640K ought to be enough for anybody
-Revert "fuckup".
+Revert 'fuckup'.
 Commit committed....
 This is the last time we let Stephen commit ascii porn in the comments.
 I'm too foo for this bar
 SEXY RUSSIAN CODES WAITING FOR YOU TO CALL
-Revert "just testing, remember to revert"
+Revert 'just testing, remember to revert'
 Added translation.
 I'm just a grunt. Don't blame me for this awful PoS.
 It works on my computer
@@ -613,7 +614,7 @@ that's all folks
 One does not simply merge into master
 bla
 CHRIS, WE WENT OVER THIS. EXPANDTAB.
-Revert "just testing, remember to revert"
+Revert 'just testing, remember to revert'
 I had a cup of tea and now it's fixed
 It was the best of times, it was the worst of times
 Make that it works in 90% of the cases.  3:30.
@@ -685,7 +686,7 @@ Fixed Bug
 Too lazy to write descriptive message
 well crap.
 Whatever will be, will be 8{
-"Get that shit outta my master."
+'Get that shit outta my master.'
 doh.
 That's just how I roll
 I just wanna tell you how I'm feeling
@@ -725,10 +726,10 @@ TODO: write meaningful commit message
 I know, I know, this is not how I’m supposed to do it, but I can't think of something better.
 omg what have I done?
 Now it's all microservices, I hope the fad persists.
-Revert "just testing, remember to revert"
-"Get that shit outta my master."
+Revert 'just testing, remember to revert'
+'Get that shit outta my master.'
 Fix PC Load Letter Error
-Peopleware Chapter 8: "You Never Get Anything Done around Here between 9 and 5."
+Peopleware Chapter 8: 'You Never Get Anything Done around Here between 9 and 5.'
 Oh no
 fix /sigh
 doh.
@@ -802,7 +803,7 @@ I just evaluated random code in my console
 I honestly wish I could remember what was going on here...
 yo recipes
 making this thing actually usable.
-Peopleware Chapter 8: "You Never Get Anything Done around Here between 9 and 5."
+Peopleware Chapter 8: 'You Never Get Anything Done around Here between 9 and 5.'
 bumping poms
 Gross hack because Nate doesn't know how to code
 LAST time, Edy, /dev/urandom IS NOT a variable name generator...
@@ -880,7 +881,7 @@ It'd be nice if type errors caused the compiler to issue a type error
 Your commit is writing checks your merge can't cash.
 this should fix it
 doh.
-"Get that shit outta my master."
+'Get that shit outta my master.'
 The last time I tried this the monkey didn't survive. Let's hope it works better this time.
 fix
 debug line test
@@ -942,7 +943,7 @@ DEAL WITH IT
 I'm just a grunt. Don't blame me for this awful PoS.
 Shit code!
 tagging release w.t.f.
- ¯\_(ツ)_/¯
+¯\_(ツ)_/¯
 hey, look over there!
 Fixed a bug in NoteLineCount... not seriously...
 Fixed Bug
@@ -1012,7 +1013,7 @@ restored deleted entities just to be sure
 _
 Fixed a little bug...
 that coulda been bad
-Peopleware Chapter 8: "You Never Get Anything Done around Here between 9 and 5."
+Peopleware Chapter 8: 'You Never Get Anything Done around Here between 9 and 5.'
 bump to 0.0.3-dev:wq
 Low On Caffeine, Please Forgive Coding Style
 Useful text
@@ -1062,7 +1063,7 @@ This solves it.
 I know, I know, this is not how I’m supposed to do it, but I can't think of something better.
 derp, helper method rename
 Continued development...
-Revert "fuckup".
+Revert 'fuckup'.
 Please enter the commit message for your changes. Lines starting with '#' will be ignored, and an empty message aborts the commit.
 I hate this fucking language.
 whatthecommit.com’s server IP address could not be found.
@@ -1189,3 +1190,5 @@ Test commit. Please ignore
 To be honest, I do not quite remember everything I changed here today. But it is all good, I tell ya.
 Insert Commit Message Here
 Either Hot Shit or Total Bollocks
+" | shuf -n 1
+end

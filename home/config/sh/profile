@@ -147,7 +147,3 @@ fi
     export IS_WORK=$(hostname)
   fi
 )
-
-void() { ( "$@" & ) >/dev/null 2>&1; }
-
-# void sudo kbdrate -d 190 -r 60

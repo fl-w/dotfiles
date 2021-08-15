@@ -12,6 +12,4 @@ function kheme -a theme --description "set kitty theme"
     else
         kitty @ set-colors -a -c $conf/kitty/themes/$theme.conf
     end
-
-
 end

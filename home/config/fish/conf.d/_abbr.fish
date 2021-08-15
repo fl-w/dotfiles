@@ -1,8 +1,3 @@
-# set LS_COLORS dxfxcxdxbxegedabagacad
-
-[ -f "$XDG_CONFIG_HOME/sh/alias" ]
-    and . "$XDG_CONFIG_HOME/sh/alias"
-
 abbr ss 'sudo systemctl'
 abbr se 'sudoedit'
 
@@ -31,14 +26,7 @@ abbr home 'cd $HOME'
 abbr cx 'chmod +x'
 abbr 'c-x' 'chmod -x'
 
-
-abbr ei 'nvim $conf/i3'
-abbr ef 'nvim $conf/fish'
-abbr ek 'nvim $conf/kitty'
-abbr ev 'nvim $conf/nvim'
-abbr ep 'nvim $conf/polybar'
-
-if has zzz;
+if has zzz
     abbr zz sudo zzz
     abbr Z sudo zzz
     abbr zzr sudo zzz -R

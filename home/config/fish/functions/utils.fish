@@ -21,4 +21,3 @@ function serve
         python2 -m SimpleHTTPServer
     end
 end
-

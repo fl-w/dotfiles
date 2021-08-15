@@ -1,87 +1,83 @@
 # fish init script
 # @fl-w
 
-# Automatically install fundle (Warning: dangerous on bad connections)
-if not functions -q fundle
-  eval (curl -sfL https://git.io/fundle-install)
-end
-
-fundle plugin 'fl-w/ortega'
-fundle plugin 'franciscolourenco/done'
-fundle plugin 'jethrokuan/z'
-fundle plugin 'oh-my-fish/plugin-await'
-fundle plugin 'oh-my-fish/plugin-license'
-fundle plugin 'edc/bass'
-
-# auto install fundle plugins
-for plugin in (fundle list -s)
-  if not test -d (__fundle_plugins_dir)/$plugin
-    fundle install
-    break
-  end
-end
-
-fundle init
-
-dotenv ~/.env
+dotenv -qx ~/.env
 
 if status --is-login
-  # source bash profile
-  set -q conf || set -l conf $HOME/.config
-  for profile in /etc/profile ~/.profile $conf/sh/profile
-    test -x $profile;
-      and bass source $profile
+  # for now don't source /etc/profile - this is handled by lightdm
+  # look into this for future; for now this will break ssh login
+  # (which i don't do often)
+  source $__fish_config_dir/profile.fish
+end
+
+function add_path -a path
+  fish_add_path -P $path
+end
+
+# Prepend Go bin dir to PATH
+add_path $GOPATH/bin
+
+# Prepend n directory to PATH
+add_path $N_PREFIX/bin
+
+# Prepend DART pub bin dir to PATH
+add_path $HOME/.pub-cache/bin
+
+# Prepend RUST cargo bin dir to PATH
+add_path $CARGO_HOME/bin
+
+# Add private bin to path
+add_path $BIN_DIR; add_path ~/.local/bin
+
+# Prepend android-sdk & emulator to PATH
+set -x ANDROID_HOME $apps/android-sdk
+  and add_path $ANDROID_HOME/tools
+  and add_path $ANDROID_HOME/emulator
+  and add_path $ANDROID_HOME/tools/bin
+
+
+if status --is-interactive
+  test -f $conf/sh/aliases; and . $conf/sh/aliases
+
+  # Set FZF to use rg
+  if has fzf
+    set -g FZF_PREVIEW_COMMAND "cat {} || head -n 60 {} || tree -a -C {}"
+
+    # Set fzf to use preview in ctrl-t
+    set -gx FZF_DEFAULT_OPTS --layout=default
+    set -gx FZF_CTRL_T_OPTS $FZF_DEFAULT_OPTS \
+      --min-height 30 \
+      --preview-window down:60% \
+      --preview-window noborder \
+      --preview "begin; $FZF_PREVIEW_COMMAND; end 2>/dev/null"
+
+    # set fzf to use ripgrep by default
+    has rg
+      and set -gx FZF_DEFAULT_COMMAND rg --files --no-ignore-vcs --hidden #
+      and set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND 2>/dev/null
   end
+
+  # replace cat with bat command
+  has bat; and alias cat bat
+
+  # # replace grep with ripgrep command
+  # has rg; and alias grep rg
+
+  # kitty completion
+  has kitty; and kitty + complete setup fish | source
+
+  # set custom greeting when at work
+  set -q WORK_MACHINE
+  and set -g fish_greeting 'Hang in there! @fl-w'
+  or set -g fish_greeting ''
+
+  # Set prompt options
+  set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
+  set -g theme_prompt_symbol '🢂' # 🢂
+
+  # finally open fish in vim-mode
+  fish_vi_key_bindings
 end
-
-contains ~/.local/bin $fish_user_paths
-  or set -Up fish_user_paths ~/.local/bin
-
-# replace cat with bat command
-has bat; and alias cat bat
-
-# replace grep with ripgrep command
-has rg; and alias grep rg
-
-# Set FZF to use rg
-if has fzf
-  set -g FZF_PREVIEW_COMMAND "cat {} || head -n 60 {} || tree -a -C {}"
-
-  # Set fzf to use preview in ctrl-t
-  set -gx FZF_DEFAULT_OPTS --layout=default
-  set -gx FZF_CTRL_T_OPTS $FZF_DEFAULT_OPTS \
-     --min-height 30 \
-     --preview-window down:60% \
-     --preview-window noborder \
-     --preview "'begin; $FZF_PREVIEW_COMMAND; end 2>/dev/null'"
-
-  # set fzf to use ripgrep by default
-  has rg
-    and set -gx FZF_DEFAULT_COMMAND rg --files --no-ignore-vcs --hidden #
-    and set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND 2>/dev/null
-end
-
-# kitty completion
-has kitty; and kitty + complete setup fish | source
-
-# pipenv completion
-has pipenv; and eval (pipenv --completion)
-
-# Pipr binding
-has pipr; and bind \ca run-pipr
-
-# Set prompt options
-set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
-set -g theme_prompt_symbol '' # 🢂
-
-if status --is-interactive && not test -z "$IS_WORK"
-  set -g fish_greeting 'Hang in there! @fl-w'
-else
-  set -g fish_greeting ''
-end
-
-# finally open fish in vim-mode
-fish_vi_key_bindings
 
 [ -f $__fish_config_dir/config.fish.local ]
-  and . $__fish_config_dir/config.fish.local
+and . $__fish_config_dir/config.fish.local

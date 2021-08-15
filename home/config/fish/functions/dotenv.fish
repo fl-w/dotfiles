@@ -1,12 +1,28 @@
-function dotenv --description 'Load environment variables from .env file' -a envfile
-  set -q envfile[1]; or set envfile ".env"
+function dotenv --description 'Load environment variables from env file'
+  argparse 'q/quiet' 'x/export' -- $argv
 
-  if test -r $envfile
-    for i in (command cat $envfile)
-      if test (echo $i | sed -E 's/^[[:space:]]*(.).+$/\\1/g') != "#"
-        set arr (echo $i |tr = \n)
-        not test -z $arr[1]; and set -gx $arr[1] $arr[2]
+  set -q argv[1]
+    or set -a argv ".env"
+
+  for envfile in $argv
+    if not test -r $envfile
+      echo "Error: cannot read $envfile" 1>&2
+    else
+      for line in (command cat $envfile)
+        if test (echo $line | sed -E 's/^[[:space:]]*(.).+$/\\1/g') != "#"
+          set keyvalue (echo $line |tr = \n)
+
+          if not test -z $keyvalue[1]
+            # print key is quiet flag is not present
+            set -q _flag_quiet
+              or echo $keyvalue[1]
+            # declare parsed keyvalue pair
+            set -g $_flag_x $keyvalue[1] $keyvalue[2]
+          end
+
+        end
       end
     end
   end
+
 end
