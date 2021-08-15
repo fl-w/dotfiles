@@ -14,10 +14,6 @@ config:
 actions:
   confirm: read {0} "[y/N]" -n 1 -r [[ $REPLY =~ ^[Yy]$ ]] && {1}
 dotfiles:
-  f_env:
-    src: env
-    dst: ~/.env
-    link: nolink
   d_nvim:
     src: config/nvim
     dst: '{{@@ d_conf @@}}/nvim'
@@ -211,7 +207,6 @@ profiles:
     - d_kitty
   _base:
     dotfiles:
-    - f_env
     - d_applications
     - f_gitconfig
     - d_sh
