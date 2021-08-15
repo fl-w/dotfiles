@@ -14,12 +14,11 @@ set -q BIN_DIR; or set -x BIN_DIR $HOME/bin
 
 
 function move_sym -a from -a to
-  echo 'move syming'
   if [ -d "$from" ]
-    echo mkdir -p $to
-    echo cp -ru $from/{.,}* $to
-    echo mv $from $from.old
-    echo ln -sf $to $from
+    mkdir -p $to
+    cp -ru $from/{.,}* $to
+    mv $from $from.old # do i even need this?
+    ln -sf $to $from
   end
 end
 
@@ -45,12 +44,12 @@ default EDITOR nvim vim vi nano
 # set default browser (i switch between browsers on diff machines)
 default BROWSER firefox{-developer-edition,} brave-browser chromium
 
-# withdotenv /etc/os-release
-# i never run ubuntu on personal machines
-
+# TODO: something like withdotenv /etc/os-release
+# & auto erase the exported envs
 begin
   set -l envs (dotenv /etc/os-release)
 
+  # i never run ubuntu on personal machines
   if [ $ID = ubuntu ]
     set -gx WORK_MACHINE=(hostname)
   end
