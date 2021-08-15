@@ -1,7 +1,7 @@
 XDG_DOWNLOAD_DIR="$HOME/dl"
 XDG_DOCUMENTS_DIR="$HOME/docs"
 XDG_MUSIC_DIR="$HOME/media/music"
-XDG_PICTURES_DIR="$HOME/media/pics"
+XDG_PICTURES_DIR="$HOME/pics"
 XDG_VIDEOS_DIR="$HOME/media/vids"
 XDG_DESKTOP_DIR="$HOME/var/desktop"
 XDG_PUBLICSHARE_DIR="$HOME/var/public"
