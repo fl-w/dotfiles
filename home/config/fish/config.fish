@@ -79,5 +79,7 @@ if status --is-interactive
   fish_vi_key_bindings
 end
 
-[ -f $__fish_config_dir/config.fish.local ]
-and . $__fish_config_dir/config.fish.local
+
+for file in $__fish_config_dir/config.fish.local $apps/config.fish.local ~/.fish.local
+  [ -f $file -a -r $file ]; and source $file
+end

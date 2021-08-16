@@ -14,9 +14,9 @@ set -q BIN_DIR; or set -x BIN_DIR $HOME/bin
 
 
 function move_sym -a from -a to
-  if [ -d "$from" ]
+  if [ -d "$from" -a ! -L "$from" ]
     mkdir -p $to
-    cp -ru $from/{.,}* $to
+    cp -ru $from/{.,}* $to/
     mv $from $from.old # do i even need this?
     ln -sf $to $from
   end
@@ -102,7 +102,7 @@ set -gx LESSHISTFILE /dev/null
 # set -gx LESS_TERMCAP_ue $'\e[0m'        # reset underline
 
 function void
-  $argv & &>/dev/null
+  $argv >/dev/null
 end
 
-void sudo kbdrate -d 190 -r 60
+# void sudo kbdrate -d 190 -r 60
