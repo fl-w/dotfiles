@@ -18,20 +18,18 @@
 "    .                  .     OP"          : o     .
 "
 
-let $VIM_ROOT = expand('<sfile>:p:h')
 let $VIM_DATA_ROOT = stdpath('data')
 
 let g:is_darwin = has('win32') || has('win64')
 let g:is_linux = has('unix') && !has('macunix')
-let g:is_work = !empty($IS_WORK)
+let g:is_work = !empty($WORK_MACHINE)
 let g:vim_ignore_configs = ['ale']
 
 if has('vim_starting')
   runtime settings.vim
 endif
 
-runtime! plugins.vim
-runtime! maps/*.vim
+runtime maps/keys.vim
 
 if exists('g:started_by_firenvim') && g:started_by_firenvim
   runtime clients/firenvim.vim " firenvim specific configuration
@@ -39,8 +37,15 @@ if exists('g:started_by_firenvim') && g:started_by_firenvim
 elseif exists('g:vscode')
   runtime clients/vscode.vim   " vscode specific configuration
 
+let $VIM_ROOT = expand('<sfile>:p:h')
 else
-  runtime! conf.d/*.vim
+  runtime plugins.vim
+
+  runtime conf.d/events.vim
+  runtime conf.d/abbr.vim
+  runtime conf.d/colorscheme.vim
+
+  runtime maps/which-key.vim
 
   " load plugin configs
   let g:plug_configs = map(
@@ -57,8 +62,6 @@ if exists('*utils#abbr_command')
 endif
 
 " load external init.lua file whilst nvim is nightly
-
 if has('nvim-0.5')
-  finish " dont use lua stuff rn - treesitter too buggy
-  lua require 'init-nightly'
+  runtime lua/init-nightly.lua
 end
