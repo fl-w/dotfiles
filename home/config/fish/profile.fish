@@ -51,7 +51,7 @@ begin
 
   # i never run ubuntu on personal machines
   if [ $ID = ubuntu ]
-    set -gx WORK_MACHINE=(hostname)
+    set -gx WORK_MACHINE (hostname)
   end
 
   # delete os-release vars when done
