@@ -32,6 +32,9 @@
       ]
     }
   },
+  "java.jdt.ls.vmargs": "-javaagent:/home/fola/opt/repo/m2/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar",
+  "java.format.settings.url": "/home/fola/etc/coc/extensions/node_modules/google.java/eclipse-java-google-style.xml",
+  "java.format.settings.profile": "Google",
   "list.indicator": ">",
   "list.selectedSignText": " ",
   "list.alignColumns": true,

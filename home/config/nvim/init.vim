@@ -18,6 +18,7 @@
 "    .                  .     OP"          : o     .
 "
 
+let $VIM_ROOT = expand('<sfile>:h')
 let $VIM_DATA_ROOT = stdpath('data')
 
 let g:is_darwin = has('win32') || has('win64')
@@ -36,6 +37,9 @@ if exists('g:started_by_firenvim') && g:started_by_firenvim
 
 elseif exists('g:vscode')
   runtime clients/vscode.vim   " vscode specific configuration
+
+elseif exists('g:ideavim')
+  runtime clients/idea.vim     " intellij idea specific configuration
 
 let $VIM_ROOT = expand('<sfile>:p:h')
 else

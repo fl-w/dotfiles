@@ -12,8 +12,10 @@ if exists('*utils#abbr_command')
   call utils#abbr_command('coc', 'CocConfig')  " Use coc to open coc config
 endif
 
-let g:coc_snippet_next = '<tab>'
-let g:coc_global_extensions = [
+let g:auto_format_ft          = [ 'rs', 'vim' ]
+let g:auto_organize_import_ft = [ 'java' ]
+let g:coc_snippet_next        = '<tab>'
+let g:coc_global_extensions   = [
   \ "coc-syntax"       ,
   \ "coc-snippets"     ,
   \ "coc-lists"        ,
@@ -23,7 +25,6 @@ let g:coc_global_extensions = [
   \ "coc-yank"         ,
   \ "coc-diagnostic"   ,
   \ ]
-let g:auto_format_ft = [ 'rust' ]
 
 if utils#is_plug_loaded('fzf')
   let g:vista_default_executive = 'coc'
@@ -54,7 +55,11 @@ augroup coc_autocomplete
   au User CocJumpPlaceholder silent call <sid>show_signature_help()
 
   " Format prior to save
-  au BufWritePre *.{rs,vim,json} call CocAction('format')
+  exe "au BufWritePre *.{" . join(g:auto_format_ft, ",") . "} call CocAction('format')"
+
+  " Organise imports prior to save
+  exe "au BufWritePre *.{" . join(g:auto_organize_import_ft, ",") . "} call CocAction('runCommand', 'editor.action.organizeImport')"
+
 
   " close the preview window when completion is done.
   au CompleteDone * if pumvisible() == 0 | silent! pclose | endif
