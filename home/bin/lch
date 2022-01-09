@@ -1,12 +1,11 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 if [ $# -lt 1 ]; then
     echo "Usage: `basename $0` <command to execute> [command options]"
     exit 1
 fi
 
-if [[ $1 == --process=* ]]
-then
+if [[ $1 == --process=* ]]; then
     process=${1:10}
     shift
 else
@@ -22,4 +21,3 @@ while pgrep -u $UID -x $process >/dev/null; do sleep 1; done
 echo "$@"
 
 $@ & >/dev/null 2>&1
-
