@@ -1,7 +1,7 @@
 set -q conf; or set conf $HOME/etc
 set -q data; or set data $HOME/usr
 set -q cache; or set cache $HOME/usr/cache
-set -q apps; or set apps $HOME/opt
+set -q opts; or set opts $HOME/opt
 
 # Set XDG directories to custom dirs
 set -x XDG_CONFIG_HOME $conf

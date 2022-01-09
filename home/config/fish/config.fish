@@ -53,7 +53,7 @@ if status --is-interactive
 
     # set fzf to use ripgrep by default
     has rg
-      and set -gx FZF_DEFAULT_COMMAND rg --files --no-ignore-vcs --hidden #
+      and set -gx FZF_DEFAULT_COMMAND rg --files
       and set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND 2>/dev/null
   end
 
@@ -79,7 +79,8 @@ if status --is-interactive
   fish_vi_key_bindings
 end
 
+ssh_agent_init &>/dev/null
 
-for file in $__fish_config_dir/config.fish.local $apps/config.fish.local ~/.fish.local
+for file in $__fish_config_dir/config.fish.local $opt/config.fish.local ~/.fish.local
   [ -f $file -a -r $file ]; and source $file
 end
