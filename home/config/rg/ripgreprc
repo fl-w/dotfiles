@@ -1,6 +1,5 @@
+# Search hidden files and directories
 --hidden
---ignore
--l
 
 # Don't let ripgrep vomit really long lines to my terminal, and show a preview.
 --max-columns=150
@@ -11,13 +10,8 @@
 web:*.{html,css,js}*
 
 # Using glob patterns to include/exclude files or folders
---glob=!git/*
-
-# or
---glob
-!git/*
-!Cargo.toml
-!target/
+--glob=!.git/*
+--glob=!Cargo.lock
 
 # Set the colors.
 --colors=line:none
@@ -26,4 +20,5 @@ web:*.{html,css,js}*
 # Because who cares about case!?
 --smart-case
 
-
+# Follow symlinks 
+--follow

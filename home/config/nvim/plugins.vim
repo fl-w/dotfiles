@@ -65,6 +65,8 @@ else
   Plug 'vim-pandoc/vim-pandoc-syntax',
         \ { 'for': 'pandoc' }                   | " Pandoc syntax
   Plug 'elkowar/yuck.vim', { 'for': 'yuck' }    | " Yuck syntax
+  Plug 'uiiaoo/java-syntax.vim', 
+        \ { 'for': 'java' }
 
   "
   " Editor

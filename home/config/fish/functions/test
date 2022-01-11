@@ -1,0 +1,1 @@
+cat <(python -c 'print "A"*7 + "\0" + "A"*8 + "A"*4') - | ./a.out

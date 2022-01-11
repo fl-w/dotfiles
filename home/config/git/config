@@ -1,5 +1,3 @@
-[include]
-	path =  ~/opt/gitconfig.local
 [core]
 	editor = "nvr --remote-wait-silent"
 	autocrlf = input
@@ -32,7 +30,7 @@
 	branch = auto
 	showBranch = auto
 [delta]
-	features = side-by-side line-numbers hope
+	features = line-numbers hope
     syntax-theme = gruvbox-dark
 [delta "fl-w"]
     commit-decoration-style = bold box ul "#34fd50"
@@ -81,3 +79,6 @@
 	cmd = nvim -d $BASE $LOCAL $REMOTE -c '$wincmd w' -c 'wincmd J'
 [mergetool "kitty"]
 	cmd = kitty +kitten diff $LOCAL $REMOTE
+[include]
+	path =  ~/opt/gitconfig.local
+

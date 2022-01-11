@@ -17,7 +17,7 @@ function dotenv --description 'Load environment variables from env file'
             set -q _flag_quiet
               or echo $keyvalue[1]
             # declare parsed keyvalue pair
-            set -g $_flag_x $keyvalue[1] $keyvalue[2]
+            eval set -g $_flag_x $keyvalue[1] $keyvalue[2]
           end
 
         end

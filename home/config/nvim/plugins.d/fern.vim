@@ -14,7 +14,7 @@ let g:fern#disable_default_mappings          = 1
 let g:fern#drawer_keep                       = 1
 let g:fern#disable_drawer_auto_resize        = 1
 let g:fern#renderer                          = "devicons"
-let g:fern#drawer_width                      = 23
+let g:fern#drawer_width                      = 40
 
 " start fern on vim enter if is directory
 let g:fern_vimstart = v:true

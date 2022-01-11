@@ -27,3 +27,6 @@ home/env
 
 # kitty themes
 home/config/kitty/themes/*.conf
+
+# ctags
+tags{,.*}

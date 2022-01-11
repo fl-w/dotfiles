@@ -50,6 +50,10 @@ dotfiles:
     src: config/i3
     dst: '{{@@ d_conf @@}}/i3'
     link: link_children
+  d_sway:
+    src: config/sway
+    dst: '{{@@ d_conf @@}}/sway'
+    link: link_children
   d_rofi:
     src: config/rofi
     dst: '{{@@ d_conf @@}}/rofi'
@@ -221,6 +225,12 @@ profiles:
     - neovim
     - fish_shell
     # - firefox
+  sway:
+    dotfiles:
+      - d_sway
+      - d_swaylock
+    include:
+      - i3
   i3:
     dotfiles:
     - d_i3
