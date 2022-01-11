@@ -1,7 +1,7 @@
 # fish init script
 # @fl-w
 
-dotenv -qx ~/.env
+dotenv -x ~/.env
 
 if status --is-login
   # for now don't source /etc/profile - this is handled by lightdm
