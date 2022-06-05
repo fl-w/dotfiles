@@ -25,7 +25,7 @@ end
 move_sym "$HOME/.config" "$conf"
 move_sym "$HOME/.local/share" "$data"
 move_sym "$HOME/.cache" "$cache"
-move_sym "$HOME/.mozilla" "$apps/mozilla"
+move_sym "$HOME/.mozilla" "$opts/mozilla"
 move_sym "$HOME/.local" "$data/local"
 # move_sym "$HOME/Downloads" "$XDG_DOWNLOAD_DIR"
 
@@ -59,14 +59,14 @@ begin
 end
 
 # Declutter $HOME (https://wiki.archlinux.org/title/XDG_Base_Directory)
-set -gx N_PREFIX "$apps/tj-n"
-set -gx CARGO_HOME "$apps/cargo"
+set -gx N_PREFIX "$opts/tj-n"
+set -gx CARGO_HOME "$opts/cargo"
 set -gx RUSTUP_HOME "$cache/rustup"
 set -gx GOPATH "$cache/go"
 set -gx TEXMFHOME "$data/texmf/"
 set -gx WEECHAT_HOME "$conf/weechat"
 set -gx RIPGREP_CONFIG_PATH "$conf/rg/ripgreprc"
-set -gx GNUPGHOME "$apps/gpg"
+set -gx GNUPGHOME "$opts/gpg"
 set -gx SQLITE_HISTORY "$cache/sqlite_history"
 set -gx USERXSESSION "$conf/x/xsession"
 set -gx PASSWORD_STORE_DIR "$data/pass"

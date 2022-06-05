@@ -45,9 +45,11 @@ let $VIM_ROOT = expand('<sfile>:p:h')
 else
   runtime plugins.vim
 
+  runtime conf.d/kitty.vim
   runtime conf.d/events.vim
   runtime conf.d/abbr.vim
   runtime conf.d/colorscheme.vim
+  runtime conf.d/statusline.vim
 
   runtime maps/which-key.vim
 

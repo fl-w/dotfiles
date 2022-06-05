@@ -1,6 +1,16 @@
 " colorscheme.vim
 "
 
+let s:preferred_themes = #{
+      \ dark: [ 'ayu', 'gruvbox' ],
+      \ light: [ 'inspired-github' ],
+    \ }
+
+fu! colorscheme#refresh_theme() abort 
+  " set color scheme based on background
+  exe 'silent! colorscheme ' .. s:preferred_themes[&bg][0]
+endfu
+
 fu! colorscheme#togglebg() abort
   let &background = ( &background ==# 'dark'? 'light' : 'dark' )
   if exists('g:colors_name')
@@ -74,15 +84,7 @@ augroup colorscheme_detect
 augroup END
 
 if has('vim_starting')
-  let _theme = getenv("_THEME")
-  let &background = (_theme != v:null ? _theme : 'dark')
-  if !exists('g:colors_name')
-    if &bg == 'dark'
-      silent! colorscheme ayu
-    else
-      silent! colorscheme PaperColor
-    endif
-  endif
+  call colorscheme#refresh_theme()
 endif
 
 silent! nnoremap <silent> <unique> <F5> :call colorscheme#togglebg()<cr>

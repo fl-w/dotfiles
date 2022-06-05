@@ -365,15 +365,17 @@ bindsym $mod+e layout toggle split
 #
 # startup {{{
 
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec --no-startup-id sleep 2 && bluetooth-autoconnect -d >/dev/null 2>&1
 exec --no-startup-id $scripts/autotiling >/dev/null 2>&1
 exec --no-startup-id wl-paste -t text --watch clipman store --no-persist
 exec --no-startup-id nm-applet >/dev/null 2>&1
+exec --no-startup-id swaymsg 'workspace '$ws1 '; exec ~/.local/bin/kitty'
 exec --no-startup-id swaymsg 'workspace '$ws7 '; exec /usr/bin/slack'
 exec --no-startup-id swaymsg 'workspace '$ws5 '; exec /usr/bin/firefox-developer-edition'
 
-exec_always --no-startup-id lch kanshi
-exec_always --no-startup-id mako
+exec_always --no-startup-id lch kanshi -d
+exec_always --no-startup-id lch mako
 
 output * bg `find $wallpapers | shuf -n 1 | tee ~/usr/cache/wallpaper` fill
 
