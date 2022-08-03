@@ -13,6 +13,7 @@ abbr h history
 abbr gs git s
 abbr gp git push
 abbr gd git diff
+abbr gca git commit --amend --no-edit
 abbr gb git branch
 
 abbr cd.. 'cd ..'

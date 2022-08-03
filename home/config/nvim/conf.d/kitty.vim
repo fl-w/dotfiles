@@ -20,9 +20,12 @@ fu! kitty#get_colors() abort
   return l:colors
 endfu
 
+fu! kitty#refresh_bg() 
+  let kitty_bg = get(kitty#get_colors(), 'background')
+  let &bg = utils#color#is_dark(kitty_bg) ? 'dark' : 'light'
+endfu
 
-let kitty_bg = get(kitty#get_colors(), 'background')
-let &bg = (utils#color#is_dark(kitty_bg) ? 'dark' : 'light')
+call kitty#refresh_bg()
 
 let &cpo=s:save_cpo
 unlet s:save_cpo

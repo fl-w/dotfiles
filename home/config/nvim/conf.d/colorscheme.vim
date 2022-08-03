@@ -2,20 +2,28 @@
 "
 
 let s:preferred_themes = #{
-      \ dark: [ 'ayu', 'gruvbox' ],
+      \ dark: [ 'gruvbox', 'ayu' ],
       \ light: [ 'inspired-github' ],
     \ }
 
-fu! colorscheme#refresh_theme() abort 
+fu! colorscheme#has_theme(name)
+  let pat = 'colors/'.a:name.'.vim'
+  return !empty(globpath(&rtp, pat))
+endfu
+
+fu! colorscheme#refresh() abort 
   " set color scheme based on background
-  exe 'silent! colorscheme ' .. s:preferred_themes[&bg][0]
+  for theme in s:preferred_themes[&background]
+    if colorscheme#has_theme(theme)
+      exe 'silent! colorscheme ' .. theme
+      break
+    endif
+  endfor
 endfu
 
 fu! colorscheme#togglebg() abort
   let &background = ( &background ==# 'dark'? 'light' : 'dark' )
-  if exists('g:colors_name')
-    exe 'colorscheme' g:colors_name
-  endif
+  call colorscheme#refresh()
 endfu
 
 fu! colorscheme#set() abort
@@ -37,9 +45,6 @@ fu! colorscheme#set() abort
   call utils#color#copy_hi_group('DiffAdd', 'SignifySignAdd')
   call utils#color#copy_hi_group('DiffChange', 'SignifySignChange')
   call utils#color#copy_hi_group('DiffRemove', 'SignifySignRemove')
-  " call utils#color#copy_hi_group('DiffAdd', 'GitGutterAdd')
-  " call utils#color#copy_hi_group('DiffChange', 'GitGutterChange')
-  " call utils#color#copy_hi_group('DiffRemove', 'GitGutterRemove')
 
 
   hi                LineNr ctermbg=NONE  guibg=NONE                | " dont highlight line number
@@ -78,18 +83,22 @@ augroup colorscheme_detect
   au!
   au BufRead,BufNewFile *.conf setf dosini                        | " syntax highlighting for .conf
   au BufRead,BufNewFile *.rasi setf css                           | " syntax highlighting for .rasi
+  au OptionSet          bg     call colorscheme#refresh()         | " refresh colorscheme on background change 
   au ColorScheme        *      call colorscheme#set()             | " set colors on color scheme change
   au BufEnter           *      syntax sync fromstart              | " accurate syntax highlighting
   au FileType           json   syntax match Comment +\/\/.\+$+    | " allow comments in json files
 augroup END
 
 if has('vim_starting')
-  call colorscheme#refresh_theme()
+  call colorscheme#refresh()
 endif
 
-silent! nnoremap <silent> <unique> <F5> :call colorscheme#togglebg()<cr>
-silent! inoremap <silent> <unique> <F5> <ESC>:call colorscheme#togglebg()<cr>a
-silent! vnoremap <silent> <unique> <F5> <ESC>:call colorscheme#togglebg()<cr>gv
+silent! nnoremap <silent> <unique> <F5> :call colorscheme#refresh()<cr>
+silent! inoremap <silent> <unique> <F5> <ESC>:call colorscheme#refresh()<cr>a
+silent! vnoremap <silent> <unique> <F5> <ESC>:call colorscheme#refresh()<cr>gv
+silent! nnoremap <silent> <unique> <F9> :call colorscheme#togglebg()<cr>
+silent! inoremap <silent> <unique> <F9> <ESC>:call colorscheme#togglebg()<cr>a
+silent! vnoremap <silent> <unique> <F9> <ESC>:call colorscheme#togglebg()<cr>gv
 
 set synmaxcol=300                                                                      | " use syntax highlighting only for 300 columns
 

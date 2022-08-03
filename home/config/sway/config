@@ -24,8 +24,8 @@ set $border               none
 set $mod                  Mod4
 set $alt_mod              Mod1
 
-set $primary_monitor      DP-3
-set $secondary_monitor    DP-2
+set $primary_monitor      DP-2
+set $secondary_monitor    DP-3
 
 # Define names for default workspaces for which we configure key bindings later on.
 set $ws1 "1"
@@ -141,12 +141,13 @@ for_window [window_role = "dialog"] floating enable
 for_window [window_type = "dialog"] floating enable
 
 # Jetbrains popup float fixes
-for_window [class   = "JetBrains Toolbox"] floating enable sticky enable
-for_window [class   = "jetbrains-idea" title="win0"] floating enable
-for_window [class   = "jetbrains-idea" title="Go to Line/Column"] floating enable
-for_window [class   = "jetbrains-idea" title="Rename"] floating enable
-for_window [class   = "jetbrains-idea" title="Open Project"] floating enable
-for_window [class   = "jetbrains-idea" title="Welcome to IntelliJ IDEA"] floating enable
+for_window [class       = "JetBrains Toolbox"] floating enable sticky enable
+for_window [class       = "jetbrains-idea" title="win0"] floating enable
+for_window [class       = "jetbrains-idea" title="Go to Line/Column"] floating enable
+for_window [class       = "jetbrains-idea" title="Rename"] floating enable
+for_window [class       = "jetbrains-idea" title="Open Project"] floating enable
+for_window [class       = "jetbrains-idea" title="Welcome to IntelliJ IDEA"] floating enable
+for_window [window_role = "PictureInPicture"] floating enable, sticky enable, border pixel 1
 
 # popups during fullscreen mode
 popup_during_fullscreen smart
@@ -210,6 +211,10 @@ bindsym shift+Print exec $bin/scr -s
 
 # dots
 bindsym $mod+period exec $term --name floating -e fish -c "dots"
+
+# brightness
+bindsym --locked XF86MonBrightnessUp   exec light -T 1.4
+bindsym --locked XF86MonBrightnessDown exec light -T 0.72
 
 #
 # Workspace Navigation
@@ -297,13 +302,16 @@ bindsym $alt_mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # Shortcut for audio control
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
-bindsym XF86AudioMicMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+bindsym --locked XF86AudioMicMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
-bindsym XF86MonBrightnessUp exec brightnessctl set +5% # increase screen brightness
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%- # decrease screen brightness
+# brightness
+# bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5% # increase screen brightness
+# bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%- # decrease screen brightness
+
+# music
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioNext exec playerctl next

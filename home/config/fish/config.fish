@@ -59,6 +59,10 @@ if status --is-interactive
   # replace cat with bat command
   has bat; and alias cat bat
 
+  has jenv; 
+    and jenv init - --no-rehash | source
+    # and jenv rehash 2>/dev/null &
+
   # # replace grep with ripgrep command
   # has rg; and alias grep rg
 
