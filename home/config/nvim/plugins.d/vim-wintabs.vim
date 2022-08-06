@@ -42,7 +42,7 @@ fun! s:on_colorscheme()
   hi! link WintabsActive Statement
 
   hi! link WintabsInactive Wintabs
-  hi! link Wintabs StatusLine
+  hi! link Wintabs LineNr
   hi! link WintabsEmpty WintabsActive
 endf
 

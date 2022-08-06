@@ -13,7 +13,7 @@ if exists('*utils#abbr_command')
 endif
 
 let g:auto_format_ft          = [ 'rs', 'vim' ]
-let g:auto_organize_import_ft = [ 'java' ]
+let g:auto_organize_import_ft = [ ]
 let g:coc_snippet_next        = '<tab>'
 let g:coc_global_extensions   = [
   \ "coc-syntax"       ,

@@ -50,9 +50,10 @@ else
   Plug 'ayu-theme/ayu-vim'                      | " Modern theme for modern VIMs
   Plug 'sjl/badwolf'                            | " Bright + clean theme for vim
   Plug 'morhetz/gruvbox'                        | " sometimes i like to hurt myself
-  Plug 'lifepillar/vim-gruvbox8'
-  Plug 'NLKNguyen/papercolor-theme'             | " Light theme with sane background
-
+  Plug 'lifepillar/vim-gruvbox8'                | " alternative ways to hurt myself
+  Plug 'sonph/onehalf', { 'rtp': 'vim' }
+  Plug 'cormacrelf/vim-colors-github'
+  Plug 'mvpopuk/inspired-github.vim'
 
   "
   " Syntax highlighting
@@ -86,6 +87,7 @@ else
   Plug 'vim-pandoc/vim-pandoc',
         \ { 'for': 'markdown' }                 | " Pandoc integration
   Plug 'Yggdroot/indentLine'                    | " Indent guides
+  Plug 'vim-test/vim-test'                      | " Test runner
 
 
   "
@@ -101,6 +103,7 @@ else
   Plug 'vim-scripts/autoswap.vim'               | " Handle swap files intelligently
   Plug 'zefei/vim-wintabs'                      | " Manage buffers per window
   Plug 'tweekmonster/startuptime.vim'
+  Plug 'tpope/vim-fugitive'                     | " Git tool
 
 
   "
@@ -123,7 +126,7 @@ else
   " Search
   "
   Plug 'junegunn/fzf', {
-        \ 'dir': '$data/lib/fzf',
+        \ 'dir': (exists('$data') ? '$data' : '~/.local/share') . '/lib/fzf',
         \ 'do': './install --bin' }
   Plug 'junegunn/fzf.vim'                       | " Fuzzy searching in vim
   Plug 'antoinemadec/coc-fzf'                   | " FzF integration for coc.nvim

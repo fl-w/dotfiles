@@ -228,7 +228,6 @@ profiles:
   sway:
     dotfiles:
       - d_sway
-      - d_swaylock
     include:
       - i3
   i3:

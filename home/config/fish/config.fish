@@ -48,17 +48,20 @@ if status --is-interactive
     set -gx FZF_CTRL_T_OPTS $FZF_DEFAULT_OPTS \
       --min-height 30 \
       --preview-window down:60% \
-      --preview-window noborder \
-      --preview "begin; $FZF_PREVIEW_COMMAND; end 2>/dev/null"
+      --preview-window noborder
 
     # set fzf to use ripgrep by default
     has rg
       and set -gx FZF_DEFAULT_COMMAND rg --files
-      and set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND 2>/dev/null
+      and set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND" 2>/dev/null
   end
 
   # replace cat with bat command
   has bat; and alias cat bat
+
+  has jenv; 
+    and jenv init - --no-rehash | source
+    # and jenv rehash 2>/dev/null &
 
   # # replace grep with ripgrep command
   # has rg; and alias grep rg
