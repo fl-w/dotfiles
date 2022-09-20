@@ -1,1 +1,1 @@
-fzf_key_bindings
+has fzf_key_bindings; and fzf_key_bindings
