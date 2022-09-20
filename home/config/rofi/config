@@ -16,7 +16,7 @@ rofi.theme:                  themes/main
 
 rofi.me-select-entry:        MouseSecondary
 rofi.me-accept-entry:        MousePrimary
-rofi.kb-mode-next:           Shift+Right,Tab
+rofi.kb-mode-next:           Shift+Right
 rofi.kb-mode-previous:       Shift+Left,ISO_Left_Tab
 rofi.kb-row-tab:             Control+Tab
 rofi.kb-row-up:              Up,Control+p,Control+ISO_Left_Tab

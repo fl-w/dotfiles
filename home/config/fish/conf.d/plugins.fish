@@ -8,7 +8,7 @@ fundle plugin 'jethrokuan/z'
 fundle plugin 'franciscolourenco/done'
 fundle plugin 'oh-my-fish/plugin-await'
 fundle plugin 'oh-my-fish/plugin-license'
-# fundle plugin 'oh-my-fish/plugin-grc'
+fundle plugin 'oh-my-fish/plugin-grc'
 
 
 # auto install fundle plugins
