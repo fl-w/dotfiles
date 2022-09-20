@@ -11,6 +11,7 @@
   interactive = auto
 [alias]
 	c         = commit
+	ch        = checkout
 	s         = status -sb
 	mt        = mergetool
 	undo      = reset --soft HEAD~
