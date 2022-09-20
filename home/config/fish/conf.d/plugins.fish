@@ -4,11 +4,12 @@ if not functions -q fundle
 end
 
 fundle plugin 'fl-w/ortega'
-fundle plugin 'franciscolourenco/done'
 fundle plugin 'jethrokuan/z'
+fundle plugin 'franciscolourenco/done'
 fundle plugin 'oh-my-fish/plugin-await'
 fundle plugin 'oh-my-fish/plugin-license'
-# fundle plugin 'edc/bass'
+# fundle plugin 'oh-my-fish/plugin-grc'
+
 
 # auto install fundle plugins
 for plugin in (fundle list -s)

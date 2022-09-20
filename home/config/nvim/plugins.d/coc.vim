@@ -3,8 +3,8 @@
 
 set nobackup
 set nowritebackup
-set pumheight=15
-set completeopt-=preview
+" set pumheight=15
+" set completeopt-=preview
 
 if exists('*utils#abbr_command')
   call utils#abbr_command('ci', 'CocInstall')  " Use ci to install coc extention
@@ -66,12 +66,10 @@ augroup coc_autocomplete
 augroup END
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif coc#rpc#ready()
+ if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
   else
-    execute '!' . &keywordprg . " " . expand('<cword>')
+    call feedkeys('K', 'in')
   endif
 endfunction
 
@@ -84,16 +82,14 @@ function! s:check_back_space() abort
 endfunction
 
 function! s:tab_complete() abort
+  if coc#pum#visible()
+    return coc#_select_confirm()
+  endif
+
   if coc#expandableOrJumpable()
-    " uses coc-snippet to check neosnippet/ultisnips/etc
     return "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>"
   endif
-  if pumvisible()
-    " complete_info()["selected"] gives index of selected completion
-    return exists('*complete_info') ?
-          \ complete_info()["selected"] == "-1" ? "\<c-n>\<c-y>" : "\<c-y>"
-          \ : "\<c-y>"
-  endif
+
   return s:check_back_space() ? "\<tab>" : coc#refresh()
 endfunction
 
@@ -102,9 +98,16 @@ endfunction
 " if no completion selected: auto completes the first item on list
 " otherwise: selects the selected completion
 inoremap <silent> <expr>   <TAB> <sid>tab_complete()
-inoremap <silent> <expr> <S-TAB> pumvisible() ? "\<c-n>" : "\<c-h>"
-inoremap <silent> <expr>    <CR> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>\<c-r>=coc#on_enter()\<cr>"
+inoremap <silent> <expr>    <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " inoremap <silent> <expr>   <ESC> pumvisible() ? "\<c-e>" : "\<esc>"
+
+" use ctrl+space to trigger completion
+if has('nvim')
+  inoremap <silent> <expr> <c-space> coc#refresh()
+else
+  inoremap <silent> <expr>     <c-@> coc#refresh()
+endif
+
 
 " Use `[e` and `]e` to navigate diagnostics
 nmap    <silent> [e <Plug>(coc-diagnostic-prev)

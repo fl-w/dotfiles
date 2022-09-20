@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ $# -lt 1 ]; then
-    echo "Usage: `basename $0` <command to execute> [command options]"
+    echo "Usage: $(basename "$0") <command to execute> [command options]"
     exit 1
 fi
 
@@ -13,11 +13,9 @@ else
 fi
 
 # Terminate already running bar instances
-killall -q $process
+pkill -u "$USER" "$process"
 
 # Wait until the processes have been shut down
-while pgrep -u $UID -x $process >/dev/null; do sleep 1; done
+while pgrep -u $UID -x "$process" >/dev/null; do sleep 1; done
 
-echo "$@"
-
-$@ & >/dev/null 2>&1
+("$@" &>/dev/null 2>&1) &

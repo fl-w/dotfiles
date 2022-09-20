@@ -13,8 +13,7 @@
   element-padding:   15px;
   button-padding:    9px 10px;
 
-  /* uncomment below to show a bar below the inputbar */
-  /* inputbar-border: 0 0 2px; */
+  inputbar-border: 0 0 0px;
 }
 
 #window {

@@ -1,27 +1,31 @@
 #!/usr/bin/env sh
 
-# scrot "$@" ~/Pictures/Screenshots/Screenshot_%Y%m%d_%H%M%S.png -e 'notify-send "Screenshot saved as $n"'
-
 
 : "${SCR_DIR:=$HOME/pics/scr}"
 : "${SCR_PREFIX:=scr}"
 
-tmp=`mktemp --suffix .png`
-trap "rm $tmp 2>/dev/null" EXIT
+scr() {
+  scr_file="$1"
 
-set -o pipefail
-maim -u $tmp "$@" 2> /dev/null | xclip -selection clipboard -t image/png || { notify-send "failed to take screenshot"; exit 1; }
+  shift
+  case "$XDG_SESSION_TYPE" in
+    'x11')
+      maim -o -u "$scr_file" "$@" 2> /dev/null \
+        && ( xclip -selection clipboard -t image/png "$scr_file" & )
+      ;;
+     *)
+       return 1
+      ;;
+  esac
 
-while true; do
-  scr_name="$(rofi -dmenu -width 20 -height 6 -p "name screenshot" -mesg "$err")"
-  if [[ $? != 0 ]]; then exit 1; fi
+}
 
-  scr_name="${scr_name:-"${SCR_PREFIX}_$(date +%y%m%d_%H%M%S)"}.png"
-  if test -f $SCR_DIR/$scr_name; then err="There is a screenshot with that name already";
-  else
-    mkdir -p $SCR_DIR
-    mv $tmp $SCR_DIR/$scr_name && echo $SCR_DIR/$scr_name && \
-      notify-send "scr saved as $SCR_DIR/$scr_name"
-    break
-  fi
-done
+mkdir -p "$SCR_DIR"
+scr_file="$SCR_DIR/${SCR_PREFIX}_$(date +%y%m%d_%H%M%S).png"
+
+if scr "$scr_file" "$@"; then
+  notify-send "scr saved as $scr_file"
+else
+  notify-send "failed to take screenshot"
+  exit 1
+fi

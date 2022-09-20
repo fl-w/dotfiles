@@ -10,7 +10,7 @@ VERBOSE=0
 
 : "${COLOR_BG:=#06070a}"
 : "${ALPHA:=55}"
-: "${WALLPAPERS:=$HOME/.wallpapers}"
+: "${WALLPAPERS:=$HOME/opt/wallpapers}"
 
 # colors
 CLEAR='\033[0m'

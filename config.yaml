@@ -11,6 +11,7 @@ config:
   showdiff: true
   link_dotfile_default: link
   link_on_import: link_children
+  minversion: 1.11.0
 actions:
   confirm: read {0} "[y/N]" -n 1 -r [[ $REPLY =~ ^[Yy]$ ]] && {1}
 dotfiles:
@@ -24,7 +25,7 @@ dotfiles:
     link: link_children
   d_wallpapers:
     src: ../wallpapers
-    dst: ~/.wallpapers
+    dst: ~/opt/wallpapers
     link: link_children
   d_x:
     src: config/x
@@ -141,7 +142,7 @@ dotfiles:
   f_user-dirs.dirs:
     src: config/user-dirs.dirs
     dst: '{{@@ d_conf @@}}/user-dirs.dirs'
-    link: link
+    link: absolute
   d_bat:
     src: config/bat
     dst: '{{@@ d_conf @@}}/bat'
@@ -227,9 +228,9 @@ profiles:
     # - firefox
   sway:
     dotfiles:
-      - d_sway
+    - d_sway
     include:
-      - i3
+    - i3
   i3:
     dotfiles:
     - d_i3

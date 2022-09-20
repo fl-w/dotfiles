@@ -7,8 +7,7 @@
 }
 
 #window {
-  fixed-columns: true;
-  width:    926px;
+  width:    726px;
   children: [ listview ];
 }
 #listview {

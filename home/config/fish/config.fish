@@ -41,10 +41,10 @@ if status --is-interactive
 
   # Set FZF to use rg
   if has fzf
-    set -g FZF_PREVIEW_COMMAND "cat {} || head -n 60 {} || tree -a -C {}"
+    set -gx FZF_PREVIEW_COMMAND "bat {} || cat {} || tree -a -C {}"
 
     # Set fzf to use preview in ctrl-t
-    set -gx FZF_DEFAULT_OPTS --layout=default
+    set -gx FZF_DEFAULT_OPTS --layout=reverse --inline-info
     set -gx FZF_CTRL_T_OPTS $FZF_DEFAULT_OPTS \
       --min-height 30 \
       --preview-window down:60% \

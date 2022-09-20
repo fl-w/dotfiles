@@ -23,8 +23,8 @@ set $border               0
 set $mod                  Mod4
 set $alt_mod              Mod1
 
-set $primary_monitor      DP-1
-set $secondary_monitor    HDMI-1
+set $primary_monitor      DisplayPort-1
+set $secondary_monitor    HDMI-A-0
 
 # Define names for default workspaces for which we configure key bindings later on.
 set $ws1 "1"
@@ -129,10 +129,15 @@ for_window [class   = "minecraft-launcher"] floating enable
 for_window [class   = "zoom"] floating enable
 for_window [class   = "lxappearance"] floating enable
 for_window [class   = "obinskit"] floating enable
+for_window [class   = "virt-manager"] floating enable
 for_window [class   = "microsoft teams - preview"] floating enable sticky enable
 for_window [class   = "JetBrains Toolbox"] floating enable sticky enable
 for_window [class   = "jetbrains-idea" title="win0"] floating enable
 for_window [class   = "jetbrains-idea" title="Welcome to IntelliJ IDEA"] floating enable
+for_window [class   = "openrgb"] floating enable
+for_window [class   = "python3.10"] floating enable
+for_window [class   = "Steam"] floating enable
+for_window [class   = "steam_app_1172470"] floating enable
 for_window [instance = "floating"] floating enable
 
 # popups during fullscreen mode
@@ -181,7 +186,8 @@ bindsym $mod+button1 floating toggle
 
 # Terminal default
 bindsym $mod+Return exec $term
-# bindsym $alt_mod+Return exec $term --name floating
+bindsym $mod+shift+Return exec $term --name floating
+bindsym $alt_mod exec $term --name floating
 
 # Browser default
 bindsym $mod+b exec $browser
@@ -207,8 +213,8 @@ bindsym $mod+shift+p exec $bin/powermenu -with-hint
 bindsym $mod+semicolon exec $bin/lockscreen
 
 # Screenshot
-bindsym Print exec $bin/scr
-bindsym shift+Print exec $bin/scr -s
+bindsym Print exec $bin/scr -s
+bindsym shift+Print exec $bin/scr
 
 # dots
 bindsym $mod+period exec $term --name floating -e fish -c "dots"
@@ -360,19 +366,21 @@ bindsym $mod+e layout toggle split
 #
 # startup {{{
 
-exec --no-startup-id start-pulseaudio-x11 & >/dev/null 2>&1
+exec --no-startup-id lch pipewire && lch pipewire-pulse && lch wireplumber
 exec --no-startup-id $scripts/x-close-no-focus "Pavucontrol" >/dev/null 2>&1
 exec --no-startup-id sleep 2 && bluetooth-autoconnect -d & >/dev/null 2>&1
+exec --no-startup-id gamemoded -d >/dev/null 2>&1
 
 
 # pywal needs to be set before starting polybar
-exec_always --no-startup-id $bin/swal -q n -b '#131315'
-exec_always --no-startup-id $bin/lch picom -b
-exec_always --no-startup-id $bin/lch flashfocus
-exec_always --no-startup-id $bin/lch --process=dunst $XDG_CONFIG_HOME/dunst/launch.sh
-exec_always --no-startup-id $bin/lch --process=polybar $XDG_CONFIG_HOME/polybar/launch.sh
-exec_always --no-startup-id spicetify apply
 exec_always --no-startup-id $scripts/i3-alternate-layout >/dev/null 2>&1
+exec_always --no-startup-id $bin/swal -q n -b '#131315'
+# exec_always --no-startup-id $bin/lch picom -b
+# exec_always --no-startup-id $bin/lch flashfocus
+# exec_always --no-startup-id $bin/lch replay-sorcery
+exec_always --no-startup-id $bin/lch --process=dunst $XDG_CONFIG_HOME/dunst/launch.sh
+exec_always --no-startup-id ~/etc/polybar/launch.sh --docky
+exec_always --no-startup-id spicetify apply
 #}}}
 
 # vim: sw=2 fdm=marker

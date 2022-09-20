@@ -4,17 +4,17 @@
 
 echo "Running X session wrapper" > ~/hmm
 
-c="${$XDG_CONFIG_HOME:-$HOME/.config}"
+c="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 # Launch D-BUS
-[ "$DBUS_SESSION_BUS_ADDRESS" ] 
-    || exec dbus-launch --exit-with-session "$c/x/initrc" "$@" 
+[ "$DBUS_SESSION_BUS_ADDRESS" ] \
+    || exec dbus-launch --exit-with-session "$c/x/initrc" "$@" \
     || exit
 
 # Choose session command
 [ "$1" ] || set -- i3
-case $1 in 
-    i3|bspwm|xmonad) 
+case $1 in
+    i3|bspwm|xmonad)
 	swp # start sh*tty wallpaper setter
 	;;
     kde)     set -- startplasma-x11 ;;
@@ -22,7 +22,6 @@ case $1 in
     *)  lch sxhkd picom dunst ;;
 esac
 
-exec "$wm"
 # Load profile
 for file in "/etc/profile" "$HOME/.profile" "$c/shell/profile" "/etc/xprofile" "$HOME/.xprofile" "$c/x/xprofile" ; do
     if [ -f "$file" ]; then
@@ -39,10 +38,5 @@ for file in "/etc/X11/Xresources" "$HOME/.Xresources" "$c/x/resources"; do
     fi
 done
 
-# Run user scripts
-xset r rate 190 60
-
-xrandr.sh
-
-echo "X init wrapper complete, running session $@" > ~/done
+echo "X init wrapper complete, running session " "$@" > ~/done
 exec "$@"

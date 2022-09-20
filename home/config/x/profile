@@ -22,4 +22,6 @@ if test -f "$ROOT/resources"; then
     xrdb -merge "$ROOT/resources"
 fi
 
-# start pulseaudio
+# if has replay-sorcery; then
+#     sleep 5 && replay-sorcery
+# fi

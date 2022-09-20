@@ -31,7 +31,7 @@ if has zzz
     abbr zz sudo zzz
     abbr Z sudo zzz
     abbr zzr sudo zzz -R
-    abbr ZZZ zzz -Z
+    abbr ZZZ sudo zzz -Z
 end
 
 if has kitty; alias icat 'kitty +kitten icat --align left'; end

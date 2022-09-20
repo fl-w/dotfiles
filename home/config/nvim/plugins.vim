@@ -51,9 +51,11 @@ else
   Plug 'sjl/badwolf'                            | " Bright + clean theme for vim
   Plug 'morhetz/gruvbox'                        | " sometimes i like to hurt myself
   Plug 'lifepillar/vim-gruvbox8'                | " alternative ways to hurt myself
-  Plug 'sonph/onehalf', { 'rtp': 'vim' }
   Plug 'cormacrelf/vim-colors-github'
   Plug 'mvpopuk/inspired-github.vim'
+  Plug 'NLKNguyen/papercolor-theme'             | " Light theme with sane background
+  Plug 'mvanderkamp/cocoa.vim'
+  Plug 'adigitoleo/vim-mellow'
 
   "
   " Syntax highlighting
@@ -66,7 +68,7 @@ else
   Plug 'vim-pandoc/vim-pandoc-syntax',
         \ { 'for': 'pandoc' }                   | " Pandoc syntax
   Plug 'elkowar/yuck.vim', { 'for': 'yuck' }    | " Yuck syntax
-  Plug 'uiiaoo/java-syntax.vim', 
+  Plug 'uiiaoo/java-syntax.vim',
         \ { 'for': 'java' }
 
   "
@@ -146,6 +148,7 @@ if has('vim_starting')
   augroup vimrc_plug_install
     au!
     exe 'au SourcePost' s:self 'call plugins#install_missing()'
+    exe 'au BufWritePost' s:self 'source' s:self
   augroup END
 
   call utils#abbr_command('pi', 'PlugInstall')

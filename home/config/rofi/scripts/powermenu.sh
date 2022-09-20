@@ -1,28 +1,28 @@
 #!/bin/sh
 
 theme=themes/powermenu
-if [ $# -ne 0 -a "$1" = "-with-hint" ]
+if [ $# -ne 0 ] && [ "$1" = "-with-hint" ]
 then
-   options=" Lock| Logout| Shutdown| Reboot| Hibernate"
+   options=" Hibernate|ﰇ Reboot| Shutdown| Logout| Lock"
    theme="$theme-text"
 else
-   options="||||"
+   options="|ﰇ|||"
 fi
 
 case "$(rofi -sep '|' -dmenu -i -p 'Power' -theme $theme <<< "$options")" in
-*Lock|)
+*Lock|)
     ~/.local/bin/lockscreen
     ;;
-*Logout|)
+*Logout||)
     i3-msg exit
     ;;
-*Shutdown|)
-   shutdown now
+*Shutdown|)
+   loginctl poweroff
     ;;
-*Reboot|)
-    reboot
+*Reboot|ﰇ)
+    loginctl reboot
     ;;
 *Hibernate|)
-    systemctl hibernate
+    loginctl hibernate
     ;;
 esac

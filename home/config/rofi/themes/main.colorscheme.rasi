@@ -10,7 +10,7 @@
 
   /* normal colors */
   normal-foreground:           @foreground;
-  normal-background:           @backround;
+  normal-background:           @background;
   selected-normal-background:  @accent;
   selected-normal-foreground:  @complement;
 
