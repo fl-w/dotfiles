@@ -1,4 +1,0 @@
-package fasd
-package foreign-env
-theme default
-theme https://github.com/folws/ortega

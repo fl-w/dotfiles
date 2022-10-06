@@ -75,10 +75,6 @@ dotfiles:
     src: config/fish
     dst: '{{@@ d_conf @@}}/fish'
     link: link_children
-  d_fish_shell_omf:
-    src: config/omf
-    dst: '{{@@ d_conf @@}}/omf'
-    link: link_children
   d_flashfocus:
     src: config/flashfocus
     dst: '{{@@ d_conf @@}}/flashfocus'
@@ -201,7 +197,6 @@ profiles:
   fish_shell:
     dotfiles:
     - d_fish_shell
-    - d_fish_shell_omf
   rofi:
     dotfiles:
     - d_rofi
