@@ -1,7 +1,7 @@
 set -q conf; or set conf $HOME/etc
 set -q data; or set data $HOME/usr
 set -q cache; or set cache $HOME/usr/cache
-set -q opts; or set opts $HOME/opt
+set -q apps; or set apps $HOME/opt
 
 # Set XDG directories to custom dirs
 set -x XDG_CONFIG_HOME $conf
@@ -17,15 +17,14 @@ function move_sym -a from -a to
   if [ -d "$from" -a ! -L "$from" ]
     mkdir -p $to
     cp -ru $from/{.,}* $to/
-    mv $from $from.old # do i even need this?
-    ln -sf $to $from
+    rm -r $from; and ln -sf $to $from
   end
 end
 
 move_sym "$HOME/.config" "$conf"
 move_sym "$HOME/.local/share" "$data"
 move_sym "$HOME/.cache" "$cache"
-move_sym "$HOME/.mozilla" "$opts/mozilla"
+move_sym "$HOME/.mozilla" "$apps/mozilla"
 move_sym "$HOME/.local" "$data/local"
 # move_sym "$HOME/Downloads" "$XDG_DOWNLOAD_DIR"
 
@@ -59,14 +58,16 @@ begin
 end
 
 # Declutter $HOME (https://wiki.archlinux.org/title/XDG_Base_Directory)
-set -gx N_PREFIX "$opts/tj-n"
-set -gx CARGO_HOME "$opts/cargo"
+set -gx N_PREFIX "$apps/tj-n"
+set -gx CARGO_HOME "$apps/cargo"
+set -gx PYENV_ROOT "$apps/pyenv"
+set -gx NVM_DIR "$apps/nvm"
+set -gx GNUPGHOME "$apps/gpg"
 set -gx RUSTUP_HOME "$cache/rustup"
 set -gx GOPATH "$cache/go"
 set -gx TEXMFHOME "$data/texmf/"
 set -gx WEECHAT_HOME "$conf/weechat"
 set -gx RIPGREP_CONFIG_PATH "$conf/rg/ripgreprc"
-set -gx GNUPGHOME "$opts/gpg"
 set -gx SQLITE_HISTORY "$cache/sqlite_history"
 set -gx USERXSESSION "$conf/x/xsession"
 set -gx PASSWORD_STORE_DIR "$data/pass"
@@ -92,17 +93,6 @@ set -gx XCURSOR_PATH "$data/icons"
 # prevent less from storing history
 set -gx LESSHISTFILE /dev/null
 
-# # add colors to less
-# set -gx LESS_TERMCAP_mb $'\e[1;31m'     # begin bold
-# set -gx LESS_TERMCAP_md $'\e[1;33m'     # begin blink
-# set -gx LESS_TERMCAP_so $'\e[01;44;37m' # begin reverse video
-# set -gx LESS_TERMCAP_us $'\e[01;37m'    # begin underline
-# set -gx LESS_TERMCAP_me $'\e[0m'        # reset bold/blink
-# set -gx LESS_TERMCAP_se $'\e[0m'        # reset reverse video
-# set -gx LESS_TERMCAP_ue $'\e[0m'        # reset underline
-
 function void
   $argv >/dev/null
 end
-
-# void sudo kbdrate -d 190 -r 60

@@ -216,12 +216,8 @@ profiles:
     - d_kitty
   _base:
     dotfiles:
-    - d_applications
     - f_gitconfig
     - d_sh
-    - d_x
-    - f_user-dirs.dirs
-    - d_gtk-3.0
     - d_maven
     - d_bat
     - d_ripgrep
@@ -229,7 +225,13 @@ profiles:
     - bin
     - neovim
     - fish_shell
-    # - firefox
+  linux:
+    dotfiles:
+    - d_applications
+    - d_x
+    - f_user-dirs.dirs
+    - d_gtk-3.0
+
   sway:
     dotfiles:
     - d_sway
@@ -250,7 +252,7 @@ profiles:
     - f_lockscreen
     - f_powermenu
     include:
-    - _base
+    - linux
     - rofi
     - wallpapers
 

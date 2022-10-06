@@ -1,7 +1,7 @@
 # fish init script
 # @fl-w
 
-dotenv -x ~/.env
+test -f ~/.env; and dotenv -x ~/.env
 
 if status --is-login
   # for now don't source /etc/profile - this is handled by lightdm
@@ -59,7 +59,7 @@ if status --is-interactive
   # replace cat with bat command
   has bat; and alias cat bat
 
-  has jenv; 
+  has jenv;
     and jenv init - --no-rehash | source
     # and jenv rehash 2>/dev/null &
 
@@ -68,11 +68,6 @@ if status --is-interactive
 
   # kitty completion
   has kitty; and kitty + complete setup fish | source
-
-  # set custom greeting when at work
-  set -q WORK_MACHINE
-  and set -g fish_greeting 'Hang in there! @fl-w'
-  or set -g fish_greeting ''
 
   # Set prompt options
   set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
