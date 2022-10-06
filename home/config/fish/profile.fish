@@ -15,8 +15,12 @@ set -q BIN_DIR; or set -x BIN_DIR $HOME/bin
 
 function move_sym -a from -a to
   if [ -d "$from" -a ! -L "$from" ]
+    echo "move symlink $from --> $to"
     mkdir -p $to
-    cp -ru $from/{.,}* $to/
+    has rsync
+      and rsync --update --progress --recursive $from/{.,}* $to/
+      or cp -fru $from/{.,}* $to/
+
     rm -r $from; and ln -sf $to $from
   end
 end
