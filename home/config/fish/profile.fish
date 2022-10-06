@@ -43,19 +43,6 @@ default EDITOR nvim vim vi nano
 # set default browser (i switch between browsers on diff machines)
 default BROWSER firefox{-developer-edition,} brave-browser chromium
 
-# TODO: something like withdotenv /etc/os-release
-# & auto erase the exported envs
-begin
-  set -l envs (dotenv /etc/os-release)
-
-  # i never run ubuntu on personal machines
-  if [ $ID = ubuntu ]
-    set -gx WORK_MACHINE (hostname)
-  end
-
-  # delete os-release vars when done
-  for env in $envs; set -e $env; end
-end
 
 # Declutter $HOME (https://wiki.archlinux.org/title/XDG_Base_Directory)
 set -gx N_PREFIX "$apps/tj-n"
