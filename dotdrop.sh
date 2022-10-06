@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 type python3 > /dev/null || { echo "Executable \"python3\" not in PATH or installed, aborting." && exit 1; }
 
