@@ -19,7 +19,7 @@ home/env
 
 # fish
 **/fish_variables
-**/fish/conf.d/*
+**/fish/functions/fundle.fish
 **/functions/fzf_key_bindings.fish
 
 # ignore bash history
@@ -27,6 +27,7 @@ home/env
 
 # kitty themes
 home/config/kitty/themes/*.conf
+
 
 # ctags
 tags{,.*}
