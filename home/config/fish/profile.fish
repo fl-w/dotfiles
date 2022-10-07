@@ -48,6 +48,8 @@ default EDITOR nvim vim vi nano
 default BROWSER firefox{-developer-edition,} brave-browser chromium
 
 
+set -gx PLATFORM (uname | string lower)
+
 # Declutter $HOME (https://wiki.archlinux.org/title/XDG_Base_Directory)
 set -gx N_PREFIX "$apps/tj-n"
 set -gx CARGO_HOME "$apps/cargo"

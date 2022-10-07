@@ -1,4 +1,4 @@
-# /.aliases - helpful bash aliases
+# /.aliases - helpful shell aliases
 
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -mh'                         # human-readable sizes
@@ -8,11 +8,12 @@ alias more=less
 alias quit=exit; alias ex=exit; alias q=exit
 alias cl=clear; alias cll='clear && ls -al'
 alias ll='ls -gaG'
-alias ls='ls -h --color=auto --group-directories-first'
-alias la='ls -lah $argv'
+alias ls='ls -hG --color=auto'
+alias la='ls -lahG'
 alias su='su -m'
 alias grep='grep --color=auto'
 alias lsblk='lsblk -o name,mountpoint,label,size,uuid'
+alias ..='cd ..'
 
 # Declutter $HOME
 alias wget="wget --hsts-file $cache/_wget-hsts"
@@ -20,7 +21,12 @@ alias yarn="yarn --use-yarnrc $conf/npm/yarnrc"
 alias sqlite3="sqlite3 -init $conf/sqlite3/sqliterc"
 alias mvn="mvn -gs $conf/maven/settings.xml"
 
-alias clip='xclip -selection c'
-alias clop='xclip -selection clipboard -o'
+type xclip &>/dev/null \
+    && alias clip='xclip -selection c' \
+    && alias clop='xclip -selection clipboard -o'
+
+type pbcopy &>/dev/null \
+    && alias clip='pbcopy' \
+    && alias clop='pbpaste'
 
 # vim: set ft=sh:
