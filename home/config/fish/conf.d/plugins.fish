@@ -20,3 +20,8 @@ for plugin in (fundle list -s)
 end
 
 fundle init
+
+not set -q __plugins_nvm_install
+  and echo 'running _nvm_install'
+  and _nvm_install
+  and set -U __plugins_nvm_install 1
