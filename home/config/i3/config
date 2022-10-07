@@ -202,8 +202,8 @@ bindsym $mod+shift+space exec $bin/app-launcher -v modes --show drun --window --
 
 # Window switch menu
 bindsym $mod+backslash exec rofi -show window
-bindsym $alt_mod+Tab exec rofi -show window
-bindsym $alt_mod+shift+tab exec rofi -show window
+# bindsym $alt_mod+Tab exec rofi -show window
+# bindsym $alt_mod+shift+tab exec rofi -show window
 
 # Power menu
 bindsym $mod+p exec $bin/powermenu
@@ -381,6 +381,7 @@ exec_always --no-startup-id $bin/swal -q n -b '#131315'
 exec_always --no-startup-id $bin/lch --process=dunst $XDG_CONFIG_HOME/dunst/launch.sh
 exec_always --no-startup-id ~/etc/polybar/launch.sh --docky
 exec_always --no-startup-id spicetify apply
+exec_always --no-startup-id discord
 #}}}
 
 # vim: sw=2 fdm=marker
