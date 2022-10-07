@@ -59,13 +59,6 @@ if status --is-interactive
   # replace cat with bat command
   has bat; and alias cat bat
 
-  has jenv;
-    and jenv init - --no-rehash | source
-    # and jenv rehash 2>/dev/null &
-
-  # # replace grep with ripgrep command
-  # has rg; and alias grep rg
-
   # kitty completion
   has kitty; and kitty + complete setup fish | source
 
@@ -77,8 +70,14 @@ if status --is-interactive
   fish_vi_key_bindings
 end
 
-ssh_agent_init &>/dev/null
-
-for file in $__fish_config_dir/config.fish.local $opt/config.fish.local ~/.fish.local
+for file in $__fish_config_dir/config.fish.local $apps/config.fish.local ~/.fish.local
   [ -f $file -a -r $file ]; and source $file
 end
+
+ssh_agent_init &>/dev/null
+
+has jenv;
+  and jenv init - | source
+
+has pyenv;
+  and pyenv init - | source
