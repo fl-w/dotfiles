@@ -15,7 +15,7 @@ fundle plugin 'jorgebucaran/nvm.fish'
 for plugin in (fundle list -s)
   if not test -d (__fundle_plugins_dir)/$plugin
     fundle install
-    break
+    return
   end
 end
 
