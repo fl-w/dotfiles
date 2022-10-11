@@ -14,6 +14,9 @@ function add_path -a path
   fish_add_path -P $path
 end
 
+# Prepend pyenv bin dir to PATH
+add_path $PYENV_ROOT/bin
+
 # Prepend Go bin dir to PATH
 add_path $GOPATH/bin
 
