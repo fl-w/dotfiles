@@ -11,7 +11,7 @@ let g:loaded_kitty = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
-fu! kitty#get_colors() abort 
+fu! kitty#get_colors() abort
   let l:colors = {}
   let l:kitty_colors = systemlist('kitty @ --to $KITTY_LISTEN_ON get-colors')
   for val in map(kitty_colors, {_, val -> split(val)})
@@ -20,14 +20,14 @@ fu! kitty#get_colors() abort
   return l:colors
 endfu
 
-fu! kitty#refresh_bg() 
+fu! kitty#refresh_bg()
   let kitty_bg = get(kitty#get_colors(), 'background')
   let &bg = utils#color#is_dark(kitty_bg) ? 'dark' : 'light'
 endfu
 
-call kitty#refresh_bg()
-
 let &cpo=s:save_cpo
 unlet s:save_cpo
+
+call kitty#refresh_bg()
 
 " vim: sw=2 sts=2 tw=0 fdm=marker
