@@ -1,0 +1,24 @@
+#!/usr/bin/env fish
+
+function chbg_kitty --argument mode
+    kitty @ set-colors -a -c $conf/kitty/themes/$mode.conf
+        or return 1
+end
+
+function chbg_nvr --argument mode
+    has nvr
+        and nvr --serverlist | xargs -P12 -I'{}' nvr -s --nostart --servername '{}' -c "set bg=$mode | call colorscheme#refresh()"
+        or echo 'neovim-remote required to update neovim colors\n\t\tpip install neovim-remote'
+end
+
+function chbg --argument mode
+    not set -q mode
+        or not string length -q -- "$mode"
+        and set mode 'light'
+
+    echo $mode
+    chbg_kitty $mode
+    chbg_nvr $mode
+end
+
+chbg $argv[1]

@@ -122,6 +122,9 @@ dotfiles:
   f_post-hibernate:
     src: bin/post-hibernate.sh
     dst: ~/bin/post-hibernate.sh
+  f_chbg:
+    src: bin/chbg
+    dst: ~/bin/chbg
   f_scr:
     src: bin/scr
     dst: ~/bin/scr
@@ -187,6 +190,7 @@ profiles:
     dotfiles:
     - f_lch
     - f_scr
+    - f_chbg
   wallpapers:
     dotfiles:
     - d_wallpapers

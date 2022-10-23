@@ -37,8 +37,7 @@ else
   " Autocomplete
   "
   Plug 'neoclide/coc.nvim',
-    \ { 'branch': 'release' }
-  " Intellisense engine with lsp
+    \ { 'branch': 'release' }                   | " Intellisense engine with lsp
   Plug 'neoclide/coc-neco',{ 'for': 'vim' }     | " Add vim completion to coc
   Plug 'Shougo/neco-vim', { 'for': 'vim' }      | " Vim completion source
   Plug 'lervag/vimtex', { 'for': 'tex'}         | " LaTeX support
@@ -63,13 +62,11 @@ else
   Plug 'arzg/vim-rust-syntax-ext',
         \ { 'for': 'rust'}                      | " Extra syntax for rust
   Plug 'dag/vim-fish', { 'for': 'fish' }        | " Glorious fish syntax
-  Plug 'harenome/vim-mipssyntax',
-        \ { 'for': 'mips' }                     | " MIPS Syntax
+  Plug 'fladson/vim-kitty',
+        \ { 'for': 'kitty' }                    | " MIPS Syntax
   Plug 'vim-pandoc/vim-pandoc-syntax',
         \ { 'for': 'pandoc' }                   | " Pandoc syntax
   Plug 'elkowar/yuck.vim', { 'for': 'yuck' }    | " Yuck syntax
-  Plug 'uiiaoo/java-syntax.vim',
-        \ { 'for': 'java' }
 
   "
   " Editor
@@ -78,12 +75,9 @@ else
   Plug 'dhruvasagar/vim-table-mode',
         \ { 'for': 'markdown' }                 | " Easily create tables in vim
   Plug 'jiangmiao/auto-pairs'                   | " Add brackets automatically
-  "Plug 'junegunn/vim-peekaboo'                  | " Show register contents on /@
-  "Plug 'kshenoy/vim-signature'                  | " Visualise and navigate marks in gutter
   Plug 'liuchengxu/vim-which-key'               | " Show keybindings in a popup
   Plug 'machakann/vim-highlightedyank'          | " Highlight yanked text
   Plug 'psliwka/vim-smoothie'                   | " Smooth scrolling
-  " Plug 'mhinz/vim-signify'
   Plug 'rhysd/clever-f.vim'                     | " Quick f,t vim motions
   Plug 'tpope/vim-surround'                     | " Change your surroundings
   Plug 'vim-pandoc/vim-pandoc',
@@ -95,10 +89,7 @@ else
   "
   " Tools
   "
-  " Plug 'pechorin/any-jump.vim'                  | " Jump to any definition and references
   Plug 'junegunn/vim-easy-align'                | " Easily align text
-  " Plug 'liuchengxu/vista.vim'                   | " Displays tags in a window by scope
-  " Plug 'mbbill/undotree'                        | " Graphical undo history
   Plug 'tpope/vim-abolish'                      | " Easily search and substitute
   Plug 'tpope/vim-commentary'                   | " Awesome commenting
   Plug 'tpope/vim-sleuth'                       | " Autodetect file spacing
