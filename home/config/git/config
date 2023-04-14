@@ -1,37 +1,42 @@
+; Git configuration (user): ~/etc/git/config 
+; @fl-w
+
+[include]
+    path =  ~/opt/gitconfig.local
+[user]
+    name  = fl-w.
+    email = 30976147+fl-w@users.noreply.github.com
+[commit]
+	gpgsign = true
 [core]
-	editor = "nvr --remote-wait-silent"
-	autocrlf = input
-	pager = delta
+    editor = nvim
+    autocrlf = input
+    pager = delta
 [color]
-  ui = auto
-  status = auto
-  diff = auto
-  branch = auto
-  showBranch = auto
-  interactive = auto
+    ui = auto
+    status = auto
+    diff = auto
+    branch = auto
+    showBranch = auto
+    interactive = auto
 [alias]
-	c         = commit
-	ch        = checkout
-	s         = status -sb
-	mt        = mergetool
-	undo      = reset --soft HEAD~
-	clear     = reset --hard HEAD
-	reset-up  = reset --hard $(git upstream)
-	unstage   = restore --staged
-	l         = log --pretty=format:'[%C(blue)%h%Creset] %C(cyan)%an%Creset %C(yellow)%cr: %C(white)%s' --name-status
-	lg        = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
-	la        = log --pretty=format:'[%C(blue)%h%Creset] %C(cyan)%an%Creset %C(yellow)%ar%Creset: %C(white)%s' --stat
-	ll        = log --reverse --pretty=format:'%C(blue)%h%Creset %C(red)%G?%Creset %C(white)%s %C(yellow)(%cr) %C(cyan)%an%Creset - %C(magenta)%gd'
-	squash    = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
-	conflicts = diff --name-only --diff-filter=U
-[color]
-	ui = auto
-	staus = auto
-	diff = auto
-	branch = auto
-	showBranch = auto
+    a         = add
+    c         = commit
+    ch        = checkout
+    s         = status -sb
+    mt        = mergetool
+    undo      = reset --soft HEAD~
+    clear     = reset --hard HEAD
+    reset-up  = reset --hard $(git upstream)
+    unstage   = restore --staged
+    l         = log --pretty=format:'[%C(blue)%h%Creset] %C(cyan)%an%Creset %C(yellow)%cr: %C(white)%s' --name-status
+    lg        = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+    la        = log --pretty=format:'[%C(blue)%h%Creset] %C(cyan)%an%Creset %C(yellow)%ar%Creset: %C(white)%s' --stat
+    ll        = log --reverse --pretty=format:'%C(blue)%h%Creset %C(red)%G?%Creset %C(normal)%s %C(yellow)(%cr) %C(cyan)%an%Creset - %C(magenta)%gd'
+    squash    = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
+    conflicts = diff --name-only --diff-filter=U
 [delta]
-	features = line-numbers hope
+    features = line-numbers hope
     syntax-theme = gruvbox-dark
 [delta "fl-w"]
     commit-decoration-style = bold box ul "#34fd50"
@@ -53,33 +58,34 @@
     plus-emph-style = syntax "#03a4ff"
     plus-style = syntax "#450eff"
 [interactive]
-	diffFilter = delta --color-only
+    ; diffFilter = delta --color-only
 [format]
-	pretty = format:%C(yellow)%h %Cblue%>(15)%ad %Cgreen%<(15)%aN%Cred%d %Creset%s
+    pretty = format:%C(yellow)%h %Cblue%>(15)%ad %Cgreen%<(15)%aN%Cred%d %Creset%s
 [pull]
-	rebase = false
+    rebase = false
 [push]
-	default = simple
-	followTags = true
+    default = simple
+    followTags = true
+    autoSetupRemote = true
 [diff]
-	colorMoved = default
+    colorMoved = default
 [fetch]
-	prune = true
+    prune = true
 [rebase]
-	autoStash = true
+    autoStash = true
 [status]
-	submoduleSummary = true
+    submoduleSummary = true
 [advice]
-	addEmptyPathspec = false
+    addEmptyPathspec = false
 [merge]
-	tool = kitty
+    tool = kitty
 [mergetool]
-	prompt = true
-	keepBackup = true
+    prompt = true
+    keepBackup = true
 [mergetool "vimdiff"]
-	cmd = nvim -d $BASE $LOCAL $REMOTE -c '$wincmd w' -c 'wincmd J'
+    cmd = nvim -d $BASE $LOCAL $REMOTE -c '$wincmd w' -c 'wincmd J'
 [mergetool "kitty"]
-	cmd = kitty +kitten diff $LOCAL $REMOTE
-[include]
-	path =  ~/opt/gitconfig.local
+    cmd = kitty +kitten diff $LOCAL $REMOTE
 
+
+; vim: ft=.gitconfig sw=2 tw=0
