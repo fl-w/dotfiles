@@ -11,6 +11,7 @@
   "diagnostic.infoSign": "",
   "diagnostic.hintSign": " ",
   "diagnostic.virtualText": true,
+  "suggest.selection": "first",
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
@@ -61,8 +62,6 @@
   "rust-analyzer.procMacro.enable": true,
   "session.saveOnVimLeave": false,
   "signature.target": "float",
-  "suggest.echodocSupport": true,
-  "suggest.floatEnable": true,
   "snippets.priority": 85,
   "snippets.ultisnips.enable": false,
   "suggest.noselect": false,

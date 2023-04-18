@@ -15,6 +15,7 @@ if empty(glob(s:autoload_site))
     finish
   endif
 endif
+exe 'source' s:autoload_site
 unlet s:autoload_site
 
 " Plugin List
@@ -29,16 +30,11 @@ else
   " Core
   "
   Plug 'camspiers/animate.vim'                  | " animation library
-  Plug 'antoinemadec/FixCursorHold.nvim'        | " Fix CursorHold Performance in neovim (https://github.com/neovim/neovim/issues/12587)
-  Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
 
   "
   " Autocomplete
   "
-  Plug 'neoclide/coc.nvim',
-    \ { 'branch': 'release' }                   | " Intellisense engine with lsp
-  Plug 'neoclide/coc-neco',{ 'for': 'vim' }     | " Add vim completion to coc
   Plug 'Shougo/neco-vim', { 'for': 'vim' }      | " Vim completion source
   Plug 'lervag/vimtex', { 'for': 'tex'}         | " LaTeX support
 
@@ -76,15 +72,12 @@ else
   Plug 'dhruvasagar/vim-table-mode',
         \ { 'for': 'markdown' }                 | " Easily create tables in vim
   Plug 'jiangmiao/auto-pairs'                   | " Add brackets automatically
-  Plug 'liuchengxu/vim-which-key'               | " Show keybindings in a popup
-  Plug 'machakann/vim-highlightedyank'          | " Highlight yanked text
   Plug 'psliwka/vim-smoothie'                   | " Smooth scrolling
   Plug 'rhysd/clever-f.vim'                     | " Quick f,t vim motions
   Plug 'tpope/vim-surround'                     | " Change your surroundings
   Plug 'vim-pandoc/vim-pandoc',
         \ { 'for': 'markdown' }                 | " Pandoc integration
   Plug 'Yggdroot/indentLine'                    | " Indent guides
-  Plug 'vim-test/vim-test'                      | " Test runner
 
 
   "
@@ -112,8 +105,8 @@ else
   " File explorer
   "
   Plug 'lambdalisue/fern.vim'
-  Plug 'ryanoasis/vim-devicons'                 | " Add file icons to plugins
-  Plug 'lambdalisue/fern-renderer-devicons.vim' | " Add file icons to fern
+  Plug 'lambdalisue/nerdfont.vim'               | " Add file icons to plugins
+  Plug 'lambdalisue/fern-renderer-nerdfont.vim' | " Add file icons to fern
 
 
   "
@@ -123,7 +116,6 @@ else
         \ 'dir': (exists('$data') ? '$data' : '~/.local/share') . '/lib/fzf',
         \ 'do': './install --bin' }
   Plug 'junegunn/fzf.vim'                       | " Fuzzy searching in vim
-  Plug 'antoinemadec/coc-fzf'                   | " FzF integration for coc.nvim
 
 endif
 call plug#end()
@@ -149,5 +141,14 @@ if has('vim_starting')
   call utils#abbr_command('ps', 'PlugStatus')
   call utils#abbr_command('pc', 'PlugClean')
 endif
+
+" load plugin configs
+let g:plug_configs = map(
+      \   filter( copy(g:plugs_order), { _, val -> index(g:vim_ignore_configs, val) == -1 } ),
+      \   '"plugins.d/" . tolower(substitute(fnamemodify(v:val, ":r"), "\\.", "-", "")) . ".vim"'
+      \)
+for s:plug in g:plug_configs
+  exe 'runtime' s:plug
+endfor
 
 " vim: sw=2 sts=2 tw=0 fdm=marker

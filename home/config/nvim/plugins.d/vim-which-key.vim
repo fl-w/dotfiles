@@ -8,7 +8,6 @@ catch
   finish
 endtry
 
-
 " todo
 highlight default link WhichKey          Function
 highlight default link WhichKeySeperator DiffAdded
@@ -101,16 +100,11 @@ let g:which_key_map.g = {
 " l is for language server protocol
 let g:which_key_map.l = {
       \ 'name' : '+lsp',
-      \ '.' : [':CocConfig',                        'config'],
-      \ ';' : ['<Plug>(coc-refactor)',              'refactor'],
+      \ '.' : [':e $VIM_ROOT/lua/plugins/lspconfig.lua',                        'config'],
       \ 'a' : ['<Plug>(coc-codeaction-selected)w',  'line action'],
       \ 'A' : ['<Plug>(coc-codeaction-line)',       'alt line action'],
-      \ 'b' : [':CocNext',                          'next action'],
-      \ 'B' : [':CocPrev',                          'prev action'],
-      \ 'c' : [':CocList commands',                 'commands'],
       \ 'd' : ['<Plug>(coc-definition)',            'definition'],
       \ 'D' : [':CocCommand actions.open',          'actions'],
-      \ 'e' : [':CocFzfList extensions',               'extensions'],
       \ 'f' : ['<Plug>(coc-format)',                'format'],
       \ 'F' : ['<Plug>(coc-format-selected)',       'format selected'],
       \ 'h' : ['<Plug>(coc-float-hide)',            'hide'],
@@ -166,9 +160,5 @@ let g:which_key_map.w = {
       \ 'v' : ['<C-W>v',     'split-window-below']    ,
       \ '?' : ['Windows',    'fzf-window']            ,
       \ }
-
-""" vim-smoothie
-" silent! nmap <unique> <S-j>      <Plug>(SmoothieDownwards)
-" silent! nmap <unique> <S-k>      <Plug>(SmoothieUpwards)
 
 " vim: sw=2 sts=2 tw=0 fdm=marker

@@ -13,7 +13,7 @@ let g:fern#default_hidden                    = 1
 let g:fern#disable_default_mappings          = 1
 let g:fern#drawer_keep                       = 1
 let g:fern#disable_drawer_auto_resize        = 1
-let g:fern#renderer                          = "devicons"
+let g:fern#renderer                          = "nerdfont"
 let g:fern#drawer_width                      = 40
 
 " start fern on vim enter if is directory
@@ -26,7 +26,8 @@ augroup fern_ftdetect
   au!
 
   " replace netrw with fern to open directory
-  autocmd BufEnter * ++nested call <SID>hijack_netrw()
+  autocmd BufEnter * ++nested call <SID>hijack_directory()
+  autocmd VimEnter * call s:suppress_netrw()
 
   " set drawer colors on color scheme change
   autocmd ColorScheme * call <SID>set_colors()
@@ -41,16 +42,31 @@ augroup fern_ftdetect
         \| nnoremap <buffer> q :q!<cr>
 augroup END
 
-fu! s:hijack_netrw()
-  let path = fnameescape(expand('%:p'))
-  if isdirectory(path)
-    bwipeout %
-    exe 'cd' path
-    if !has('vim_starting') || g:fern_vimstart
-      Fern .
-    endif
+function! s:suppress_netrw() abort
+  if exists('#FileExplorer')
+    autocmd! FileExplorer *
   endif
-endfu
+endfunction
+
+function! s:hijack_directory() abort
+  let path = s:expand('%:p')
+  if !isdirectory(path)
+    return
+  endif
+
+  let bufnr = bufnr()
+  execute printf('keepjumps keepalt Fern %s', fnameescape(path))
+  execute printf('silent! bwipeout %d', bufnr)
+  execute printf('cd %s', fnameescape(path))
+endfunction
+
+function! s:expand(expr) abort
+  try
+    return fern#util#expand(a:expr)
+  catch /^Vim\%((\a\+)\)\=:E117:/
+    return expand(a:expr)
+  endtry
+endfunction
 
 fu! fern#get_status_string() abort
   return 'fern'

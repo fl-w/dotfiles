@@ -55,11 +55,10 @@ augroup coc_autocomplete
   au User CocJumpPlaceholder silent call <sid>show_signature_help()
 
   " Format prior to save
-  exe "au BufWritePre *.{" . join(g:auto_format_ft, ",") . "} silent call CocAction('format')"
+  exe "au BufWritePre *.{" . join(g:auto_format_ft, ",") . "} silent! call CocAction('format')"
 
   " Organise imports prior to save
-  exe "au BufWritePre *.{" . join(g:auto_organize_import_ft, ",") . "} silent call CocAction('runCommand', 'editor.action.organizeImport')"
-
+  exe "au BufWritePre *.{" . join(g:auto_organize_import_ft, ",") . "} silent! call CocAction('runCommand', 'editor.action.organizeImport')"
 
   " close the preview window when completion is done.
   au CompleteDone * if pumvisible() == 0 | silent! pclose | endif
@@ -83,7 +82,7 @@ endfunction
 
 function! s:tab_complete() abort
   if coc#pum#visible()
-    return coc#_select_confirm()
+    return coc#pum#next(1)
   endif
 
   if coc#expandableOrJumpable()
@@ -97,7 +96,9 @@ endfunction
 " on selection, completions are expanded if snippet
 " if no completion selected: auto completes the first item on list
 " otherwise: selects the selected completion
+
 inoremap <silent> <expr>   <TAB> <sid>tab_complete()
+inoremap <silent> <expr> <S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<s-tab>"
 inoremap <silent> <expr>    <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " inoremap <silent> <expr>   <ESC> pumvisible() ? "\<c-e>" : "\<esc>"
 

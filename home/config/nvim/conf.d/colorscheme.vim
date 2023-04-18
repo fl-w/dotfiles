@@ -11,7 +11,7 @@ fu! colorscheme#has_theme(name)
   return !empty(globpath(&rtp, pat))
 endfu
 
-fu! colorscheme#refresh() abort 
+fu! colorscheme#refresh() abort
   " set color scheme based on background
   for theme in s:preferred_themes[&background]
     if colorscheme#has_theme(theme)
@@ -71,7 +71,7 @@ fu! colorscheme#set() abort
   " #181320 bg #847d91
 
   hi          Pmenu ctermfg=243 ctermbg=237  guifg=#767676 guibg=#0B0712
-  hi       PmenuSel ctermfg=140 ctermbg=237  guifg=#8569B3 guibg=#0B0712 gui=bold
+  " hi       PmenuSel ctermfg=140 ctermbg=237  guifg=#8569B3 guibg=#0B0712 gui=bold
   hi      PmenuSbar ctermfg=28  ctermbg=233  guifg=#c269fe guibg=#303030
   hi     PmenuThumb ctermfg=160 ctermbg=97   guifg=#ff2c4b guibg=#875faf
   hi          Error ctermfg=204 ctermbg=NONE guifg=#ff3333 guibg=NONE    gui=none
@@ -83,7 +83,7 @@ augroup colorscheme_detect
   au!
   au BufRead,BufNewFile *.conf setf dosini                        | " syntax highlighting for .conf
   au BufRead,BufNewFile *.rasi setf css                           | " syntax highlighting for .rasi
-  au OptionSet          bg     call colorscheme#refresh()         | " refresh colorscheme on background change 
+  au OptionSet          bg     call colorscheme#refresh()         | " refresh colorscheme on background change
   au ColorScheme        *      call colorscheme#set()             | " set colors on color scheme change
   au BufEnter           *      syntax sync fromstart              | " accurate syntax highlighting
   au FileType           json   syntax match Comment +\/\/.\+$+    | " allow comments in json files
