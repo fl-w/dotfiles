@@ -13,22 +13,22 @@ augroup END
 augroup vimrc
   au!
 
-  au BufWritePre * call utils#trim_whitespace()                       " Remove trailing whitespace when saving
+  au BufWritePre * call utils#trim_whitespace()                       " remove trailing whitespace when saving
 
   au BufWritePre *
         \ call utils#auto_mkdir(expand('<afile>:p:h'), v:cmdbang)     " auto create missing directories
 
   au InsertEnter * let b:icul = &cul | set nocul
   au InsertLeave * if utils#boolexists('b:icul')
-        \| unlet b:icul | set cul | endif                              " Remove cursorline on insertmode
+        \| unlet b:icul | set cul | endif                             " Remove cursorline on insertmode
 
   au BufEnter *.txt if &buftype == 'help'
         \| nnoremap <buffer> q :q<cr> | if winnr('$') > 1 | wincmd T | endif | endif
 
-  au WinLeave * if &cursorline | let w:cur = 1 | setl nocul | endif
-  au WinEnter * if utils#boolexists('w:cur') | unlet w:cur | setl cul | endif
+  au BufReadPost * if line('$') > 40 | set foldlevel=1 | endif      " fold large files
 
-  au BufReadPost * if line('$') > 20 | set foldlevel=1 | endif      " fold large files
+  au WinLeave * if &cursorline | let w:cur = 1 | setl cul | endif
+  au WinEnter * if utils#boolexists('w:cur') | unlet w:cur | setl nocul | endif
 augroup END
 
 " fun! s:on_focus_lost()
@@ -70,7 +70,9 @@ augroup END
 augroup ft_settings
   autocmd!
   autocmd FileType rust colorscheme gruvbox | doautocmd ColorScheme gruvbox
-        \|  let b:AutoPairs = AutoPairsDefine({'\w\zs<': '>'}) " if press < after a word will generate the pair
+        \|  if exists("*AutoPairsDefine")
+          \| let b:AutoPairs = AutoPairsDefine({'\w\zs<': '>'}) " if press < after a word will generate the pair
+        \|endif
   autocmd FileType cmm setfiletype c
         \| if exists(":CocDisable") | CocDisable | endif " custom options for my language
 augroup END

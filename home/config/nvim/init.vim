@@ -26,11 +26,9 @@ let g:is_linux = has('unix') && !has('macunix')
 let g:is_work = !empty($WORK_MACHINE)
 let g:vim_ignore_configs = ['ale']
 
-if has('vim_starting')
-  runtime settings.vim
-endif
-
+runtime settings.vim
 runtime maps/keys.vim
+runtime plugins.vim
 
 if exists('g:started_by_firenvim') && g:started_by_firenvim
   runtime clients/firenvim.vim " firenvim specific configuration
@@ -41,26 +39,12 @@ elseif exists('g:vscode')
 elseif exists('g:ideavim')
   runtime clients/idea.vim     " intellij idea specific configuration
 
-let $VIM_ROOT = expand('<sfile>:p:h')
 else
-  runtime plugins.vim
-
   runtime conf.d/kitty.vim
   runtime conf.d/events.vim
   runtime conf.d/abbr.vim
   runtime conf.d/colorscheme.vim
   runtime conf.d/statusline.vim
-
-  runtime maps/which-key.vim
-
-  " load plugin configs
-  let g:plug_configs = map(
-        \   filter( copy(g:plugs_order), { _, val -> index(g:vim_ignore_configs, val) == -1 } ),
-        \   '"plugins.d/" . tolower(substitute(fnamemodify(v:val, ":r"), "\\.", "-", "")) . ".vim"'
-        \)
-  for s:plug in g:plug_configs
-    exe 'runtime' s:plug
-  endfor
 endif
 
 if exists('*utils#abbr_command')
