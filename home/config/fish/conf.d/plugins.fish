@@ -9,7 +9,7 @@ fundle plugin 'franciscolourenco/done'
 fundle plugin 'oh-my-fish/plugin-await'
 fundle plugin 'oh-my-fish/plugin-license'
 fundle plugin 'jorgebucaran/nvm.fish'
-
+fundle plugin 'nakulj/auto-venv'
 
 # auto install fundle plugins
 for plugin in (fundle list -s)

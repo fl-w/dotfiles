@@ -14,16 +14,30 @@ function _bt_reconnect
     end
 
     for uuid in (bluetoothctl devices | cut -f2 -d' ')
+        echo $uuid
         __reconnect $uuid &
     end
 end
 
+
 function _bt_connect
-    bluetoothctl $argv
+    if test (count $argv) -eq 0
+        set -l dev (bluetoothctl devices | cut -f2 -d' ')
+        if ! test (count $dev) -eq 0
+            _bt_connect $dev
+        end
+    else
+        for uuid in $argv
+            bluetoothctl connect $uuid &
+        end
+        wait
+    end
 end
 
 function bt --wraps=bluetoothctl
     switch $argv[1]
+        case 'con*'
+            _bt_connect
         case 'rec*'
             _bt_reconnect
         case 'dev*'

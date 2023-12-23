@@ -1,7 +1,7 @@
-set -q conf; or set conf $HOME/etc
-set -q data; or set data $HOME/usr
-set -q cache; or set cache $HOME/usr/cache
-set -q apps; or set apps $HOME/opt
+set -q conf;  or set -x conf $HOME/etc
+set -q data;  or set -x data $HOME/usr
+set -q cache; or set -x cache $HOME/usr/cache
+set -q apps;  or set -x apps $HOME/opt
 
 # Set XDG directories to custom dirs
 set -x XDG_CONFIG_HOME $conf
@@ -43,7 +43,7 @@ function default -a name
 end
 
 # set default editor
-default EDITOR nvim vim vi nano
+default EDITOR /usr/bin/nvim /usr/bin/vim /usr/bin/vi /usr/bin/nano
 
 # set default browser (i switch between browsers on diff machines)
 default BROWSER firefox{-developer-edition,} brave-browser chromium
@@ -72,7 +72,10 @@ set -gx GTK2_RC_FILES "$conf/gtk-2.0/gtkrc-2.0"
 set -gx _FASD_DATA "$cache/fasd"
 set -gx LESSHISTFILE "$cache/_lessht"
 set -gx HISTFILE "$cache/bash_history"
+set -gx PNPM_HOME "/home/fl-w/usr/pnpm"
 set -gx NPM_CONFIG_USERCONFIG "$conf/npm/npmrc"
+set -gx USER_SVDIR "$data/runit/runsvdir/"
+set -gx USER_FLDIR "$data/runit/sv/"
 
 # Move java clutter
 set -gx _JAVA_OPTIONS "-Djava.util.prefs.userRoot=$conf/java"

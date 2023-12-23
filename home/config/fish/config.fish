@@ -23,6 +23,9 @@ add_path $GOPATH/bin
 # Prepend n directory to PATH
 add_path $N_PREFIX/bin
 
+# Prepend PNPM directory to PATH
+add_path $PNPM_HOME
+
 # Prepend DART pub bin dir to PATH
 add_path $HOME/.pub-cache/bin
 
@@ -33,11 +36,13 @@ add_path $CARGO_HOME/bin
 add_path $BIN_DIR; add_path ~/.local/bin
 
 # Prepend android-sdk & emulator to PATH
-set -x ANDROID_HOME $apps/android-sdk
-  and add_path $ANDROID_HOME/tools
-  and add_path $ANDROID_HOME/emulator
-  and add_path $ANDROID_HOME/tools/bin
-
+set -x ANDROID_HOME /opt/android-sdk
+  and begin
+    add_path $ANDROID_HOME/tools;
+    add_path $ANDROID_HOME/emulator
+    add_path $ANDROID_HOME/platform-tools
+    add_path $ANDROID_HOME/tools/bin
+  end
 
 if status --is-interactive
   test -f $conf/sh/aliases; and . $conf/sh/aliases
@@ -67,7 +72,7 @@ if status --is-interactive
 
   # Set prompt options
   set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
-  set -g theme_prompt_symbol '🢂' # 🢂
+  set -q theme_prompt_symbol; or set -g theme_prompt_symbol '🢂' # 🢂
 
   # finally open fish in vim-mode
   fish_vi_key_bindings
@@ -77,10 +82,8 @@ for file in $__fish_config_dir/config.fish.local $apps/config.fish.local ~/.fish
   [ -f $file -a -r $file ]; and source $file
 end
 
-ssh_agent_init &>/dev/null
-
-has jenv;
-  and jenv init - | source
-
 has pyenv;
   and pyenv init - | source
+
+has ssh_agent_init
+  and ssh_agent_init &>/dev/null

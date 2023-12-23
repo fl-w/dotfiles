@@ -22,3 +22,8 @@ function dotenv --description 'Load environment variables from env file'
     end
   end
 end
+
+function __check_dotenv --on-variable PWD --description 'run dotenv on directory change'
+  status --is-command-substitution; and return
+  dotenv -x -v 2>/dev/null
+end
