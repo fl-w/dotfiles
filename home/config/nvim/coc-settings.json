@@ -3,7 +3,7 @@
   "coc.source.buffer.priority": 80,
   "coc.source.neco.priority": 100,
   "coc.source.syntax.priority": 60,
-  "codeLens.enable": true,
+  "codeLens.enable": false,
   "diagnostic.errorSign": "",
   "diagnostic.checkCurrentLine": true,
   "diagnostic.enableHighlightLineNumber": true,
@@ -56,6 +56,7 @@
     "macro-error",
     "unresolved-macro-call"
   ],
+  "rust-analyzer.lens.enable": false,
   "rust-analyzer.diagnostics.enableExperimental": true,
   "rust-analyzer.inlayHints.chainingHints": false,
   "rust-analyzer.hoverActions.linksInHover": true,

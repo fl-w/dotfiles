@@ -35,6 +35,8 @@ else
   "
   " Autocomplete
   "
+  Plug 'neoclide/coc.nvim',
+    \ { 'branch': 'release' }                   | " Intellisense engine with lsp
   Plug 'Shougo/neco-vim', { 'for': 'vim' }      | " Vim completion source
   Plug 'lervag/vimtex', { 'for': 'tex'}         | " LaTeX support
 
@@ -63,6 +65,7 @@ else
   Plug 'vim-pandoc/vim-pandoc-syntax',
         \ { 'for': 'pandoc' }                   | " Pandoc syntax
   Plug 'elkowar/yuck.vim', { 'for': 'yuck' }    | " Yuck syntax
+  Plug 'peitalin/vim-jsx-typescript', {'for': 'tsx'}
 
   "
   " Editor
@@ -72,6 +75,7 @@ else
         \ { 'for': 'markdown' }                 | " Easily create tables in vim
   Plug 'jiangmiao/auto-pairs'                   | " Add brackets automatically
   Plug 'psliwka/vim-smoothie'                   | " Smooth scrolling
+  Plug 'liuchengxu/vim-which-key'               | " Show keybindings in a popup
   Plug 'rhysd/clever-f.vim'                     | " Quick f,t vim motions
   Plug 'tpope/vim-surround'                     | " Change your surroundings
   Plug 'vim-pandoc/vim-pandoc',
@@ -88,8 +92,7 @@ else
   Plug 'tpope/vim-sleuth'                       | " Autodetect file spacing
   Plug 'vim-scripts/autoswap.vim'               | " Handle swap files intelligently
   Plug 'zefei/vim-wintabs'                      | " Manage buffers per window
-  Plug 'tweekmonster/startuptime.vim'
-  Plug 'tpope/vim-fugitive'                     | " Git tool
+  Plug 'tweekmonster/startuptime.vim'           | " Profile vim startup
 
 
   "
