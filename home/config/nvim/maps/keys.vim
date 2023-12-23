@@ -94,13 +94,9 @@ endif
 noremap <c-p>   viw"0p
 noremap <c-P>   vaW"0p
 
-" Use {,shift}+tab to navigate tabs
-" nnoremap <silent>   <tab> :tabnext<CR>
-" nnoremap <silent> <s-tab> :tabprevious<CR>
-
 " Use (left/right) to navigate buffers
-" nnoremap <silent> <Right> :bnext<CR>
-" nnoremap <silent> <Left>  :bprevious<CR>
+nnoremap <silent> <Right> :bnext<CR>
+nnoremap <silent> <Left>  :bprevious<CR>
 
 " Navigate lines quickly
 nnoremap L $
@@ -112,10 +108,6 @@ vnoremap < <gv
 
 " Paste in visual mode without losing clipboard content
 vnoremap p "_dP
-
-" Map Shif+j,k to highlight and scroll down/up
-" noremap <expr> <s-k> mode() != visualmode() ? 'V' : 'k'
-" noremap <expr> <s-j> mode() != visualmode() ? 'V' : 'j'
 
 noremap <silent><leader>y "*y
 noremap <silent><leader>p "*p

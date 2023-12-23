@@ -1,14 +1,14 @@
 " color functions
 
-fu! utils#color#rgb(color) 
+fu! utils#color#rgb(color)
   let hex = substitute(a:color, '^#', '', '')
   let rgb = #{r: 0, g: 0, b: 0}
   if len(hex) <= 3
     let hex = join(map(split(hex), {_, c -> c .. c}), '')
   endif
-  let rgb.r = str2nr(hex[:1], 16) 
-  let rgb.g = str2nr(hex[2:3], 16) 
-  let rgb.b = str2nr(hex[4:6], 16)  
+  let rgb.r = str2nr(hex[:1], 16)
+  let rgb.g = str2nr(hex[2:3], 16)
+  let rgb.b = str2nr(hex[4:6], 16)
   return rgb
 endfu
 
@@ -40,12 +40,5 @@ fun! utils#color#copy_hi_group(group, to)
   endfor
   exe printf('hi %s ctermfg=%s ctermbg=%s guifg=%s guibg=%s', a:to, ctermbg, ctermfg, guifg, guibg)
 endf
-
-function! utils#color#has_colorscheme(name) abort
-  " check if a colorscheme exists
-  " inspired by https://stackoverflow.com/a/5703164/6064933.
-  let l:pat = 'colors/' . a:name . '.vim'
-  return !empty(globpath(&runtimepath, l:pat))
-endfunction
 
 " vim: sw=2 sts=2 tw=0 fdm=marker
