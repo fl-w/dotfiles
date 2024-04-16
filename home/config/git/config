@@ -4,10 +4,14 @@
 [include]
     path =  ~/opt/gitconfig.local
 [user]
-    name  = fl-w.
+    name  = fl-w
     email = 30976147+fl-w@users.noreply.github.com
+	signingkey = 1FF0C279CA45EAE3
 [commit]
 	gpgsign = true
+[init]
+	defaultBranch = main
+
 [core]
     editor = nvim
     autocrlf = input

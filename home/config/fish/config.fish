@@ -72,7 +72,7 @@ if status --is-interactive
 
   # Set prompt options
   set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
-  set -q theme_prompt_symbol; or set -g theme_prompt_symbol '🢂' # 🢂
+  set -q theme_prompt_symbol; or set -g theme_prompt_symbol '🢂' # ►  🢂
 
   # finally open fish in vim-mode
   fish_vi_key_bindings

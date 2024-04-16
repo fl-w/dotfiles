@@ -9,13 +9,13 @@ if [[ $1 == --process=* ]]; then
     process=${1:10}
     shift
 else
-    process=$1
+    process=`basename $1`
 fi
 
 # Terminate already running bar instances
-pkill -u "$USER" "$process"
+pkill -u "$USER" -x -f "$process"
 
 # Wait until the processes have been shut down
-while pgrep -u $UID -x "$process" >/dev/null; do sleep 1; done
+while pgrep -u $UID -x -f "$process" >/dev/null; do sleep 1; done
 
 ("$@" &>/dev/null 2>&1) &

@@ -5,7 +5,7 @@ end
 
 fundle plugin 'fl-w/ortega'
 fundle plugin 'jethrokuan/z'
-fundle plugin 'franciscolourenco/done'
+# fundle plugin 'franciscolourenco/done'
 fundle plugin 'oh-my-fish/plugin-await'
 fundle plugin 'oh-my-fish/plugin-license'
 fundle plugin 'jorgebucaran/nvm.fish'

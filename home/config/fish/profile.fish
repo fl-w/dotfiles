@@ -1,7 +1,7 @@
-set -q conf;  or set -x conf $HOME/etc
-set -q data;  or set -x data $HOME/usr
-set -q cache; or set -x cache $HOME/usr/cache
-set -q apps;  or set -x apps $HOME/opt
+set -q conf;  or set -gx conf  $HOME/etc
+set -q data;  or set -gx data  $HOME/usr
+set -q cache; or set -gx cache $HOME/usr/cache
+set -q apps;  or set -gx apps  $HOME/opt
 
 # Set XDG directories to custom dirs
 set -x XDG_CONFIG_HOME $conf
@@ -78,7 +78,7 @@ set -gx USER_SVDIR "$data/runit/runsvdir/"
 set -gx USER_FLDIR "$data/runit/sv/"
 
 # Move java clutter
-set -gx _JAVA_OPTIONS "-Djava.util.prefs.userRoot=$conf/java"
+set -gx _SILENT_JAVA_OPTIONS "-Djava.util.prefs.userRoot=$conf/java"
 set -gx MAVEN_CONFIG "--global-settings $conf/maven/settings.xml"
 set -gx ANDROID_SDK_HOME "$data/android"
 set -gx ANDROID_PREFS_ROOT "$data/android"
@@ -93,3 +93,5 @@ set -gx LESSHISTFILE /dev/null
 function void
   $argv >/dev/null
 end
+
+alias java="java $_SILENT_JAVA_OPTIONS"

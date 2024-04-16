@@ -1,11 +1,12 @@
 function dotenv --description 'Load environment variables from env file'
-  argparse 'v/verbose' 'x/export' -- $argv
+  argparse 'v/verbose' 'x/export' 'q/quiet' -- $argv
 
   set -q argv[1]; or set -a argv ".env"
 
   for envfile in $argv
     if not test -r $envfile
-      echo "Error: cannot read $envfile" 1>&2
+      set -q _flag_quiet
+        and echo "Error: cannot read $envfile" 1>&2
       return 1
     else
       for line in (command cat $envfile)
@@ -23,7 +24,7 @@ function dotenv --description 'Load environment variables from env file'
   end
 end
 
-function __check_dotenv --on-variable PWD --description 'run dotenv on directory change'
+function __auto_source_dotenv --on-variable PWD --description 'Source .env file on directory change'
   status --is-command-substitution; and return
-  dotenv -x -v 2>/dev/null
+  dotenv -x
 end
