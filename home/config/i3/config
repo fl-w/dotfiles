@@ -124,7 +124,6 @@ focus_follows_mouse no
 
 # applications in floating (+ sticky) mode
 for_window [class   = "rofi"] floating enable sticky enable
-for_window [class   = "Pavucontrol"] floating enable, sticky enable
 for_window [class   = "minecraft-launcher"] floating enable
 for_window [class   = "zoom"] floating enable
 for_window [class   = "lxappearance"] floating enable
@@ -135,9 +134,11 @@ for_window [class   = "JetBrains Toolbox"] floating enable sticky enable
 for_window [class   = "jetbrains-idea" title="win0"] floating enable
 for_window [class   = "jetbrains-idea" title="Welcome to IntelliJ IDEA"] floating enable
 for_window [class   = "openrgb"] floating enable
-for_window [class   = "python3.10"] floating enable
-for_window [class   = "Steam"] floating enable
+for_window [class   = "bottles"] floating enable
+for_window [class   = "steam"] floating enable
+for_window [title   = "Steam Big Picture Mode"] fullscreen enable
 for_window [class   = "steam_app_1172470"] floating enable
+for_window [class  = "pavucontrol"] floating enable, sticky enable, resize set width 40 ppt height 30 ppt
 for_window [instance = "floating"] floating enable
 
 # popups during fullscreen mode
@@ -309,6 +310,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #i
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
+# reconnect bluetooth
+bindsym Prior exec --no-startup-id fish -c 'notify-send "Connecting bluetooth devices $(bt dev)" && bt rec & bt connect'
+
 
 # Move certain apps to specific workspaces
 # 1 Files
@@ -366,22 +370,28 @@ bindsym $mod+e layout toggle split
 #
 # startup {{{
 
-exec --no-startup-id lch pipewire && lch pipewire-pulse && lch wireplumber
 exec --no-startup-id $scripts/x-close-no-focus "Pavucontrol" >/dev/null 2>&1
 exec --no-startup-id sleep 2 && bluetooth-autoconnect -d & >/dev/null 2>&1
 exec --no-startup-id gamemoded -d >/dev/null 2>&1
+exec --no-startup-id /usr/bin/lxqt-policykit-agent -d >/dev/null 2>&1
+exec --no-startup-id $scripts/swayfader.py >/dev/null 2>&1
+exec --no-startup-id sleep 2 && lch pipewire && lch pipewire-pulse && lch wireplumber
+exec --no-startup-id runsvdir ~/usr/runit/runsvdir
+exec autotiling
+exec mako
 
-
-# pywal needs to be set before starting polybar
-exec_always --no-startup-id $scripts/i3-alternate-layout >/dev/null 2>&1
+exec_always --no-startup-id discord-screenaudio
+exec_always --no-startup-id lch waybar
+exec_always --no-startup-id lch picom -b
+exec_always --no-startup-id lch kanshi
 exec_always --no-startup-id $bin/swal -q n -b '#131315'
+# exec_always --no-startup-id swaymsg output "*" bg $(find ~/opt/dotfiles/wallpapers -type f | shuf -n1) fill
 # exec_always --no-startup-id $bin/lch picom -b
 # exec_always --no-startup-id $bin/lch flashfocus
 # exec_always --no-startup-id $bin/lch replay-sorcery
 exec_always --no-startup-id $bin/lch --process=dunst $XDG_CONFIG_HOME/dunst/launch.sh
 exec_always --no-startup-id ~/etc/polybar/launch.sh --docky
 exec_always --no-startup-id spicetify apply
-exec_always --no-startup-id discord
 #}}}
 
 # vim: sw=2 fdm=marker

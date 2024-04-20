@@ -3,12 +3,13 @@
 
 if type xrandr &>/dev/null; then
     outputs=$(xrandr | grep -i connected | grep -v discon | cut -f1 -d' ' | tr '\n' ',' | sed 's/,$/\n/')
+    echo "$outputs"
 
     case "$outputs" in
         DisplayPort-1,HDMI-A-0)
             xrandr \
             --output HDMI-A-0 --mode 2560x1440 --pos 0x0 --rotate left \
-            --output DisplayPort-1 --primary --mode 2560x1440 --pos 1440x560 --rotate normal --rate 300
+            --output DisplayPort-1 --primary --mode 2560x1440 --pos 1440x560 --rotate normal --rate 300 --primary
             echo "Monitor layout set to 2560x1440 (vert) & 2560x1440 (horizontal) "
             ;;
         DisplayPort-1)
@@ -16,16 +17,16 @@ if type xrandr &>/dev/null; then
             --output DisplayPort-1 --primary --mode 2560x1440 --pos 1440x560 --rotate normal --rate 300
             echo "Monitor layout set to 2560x1440 (horizontal)"
             ;;
-        DP-2)
+        DisplayPort-2)
             xrandr \
-            --output DP-2 --primary --mode 2560x1440 --pos 0x240 --rotate normal \
-            --output HDMI-1 --off --output DP-1 --off --output DP-3 --off --output DVI-D-1 --off
+            --output DisplayPort-2 --primary --mode 2560x1440 --pos 0x240 --rotate normal \
+            --output HDMI-A-0 --off --output DisplayPort-1 --off --output DisplayPort-3 --off --output DVI-D-1 --off
             echo "Monitor layout set to 2560x1440 (horizontal)"
             ;;
-        HDMI-1)
+        HDMI-A-0)
             xrandr \
-            --output HDMI-1 --mode 1920x1080 --pos 2560x0 --rotate left \
-            --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DVI-D-1 --off
+            --output HDMI-A-0 --mode 1920x1080 --pos 2560x0 --rotate left \
+            --output DisplayPort-1 --off --output DisplayPort-2 --off --output DisplayPort-3 --off --output DVI-D-1 --off
             echo "Monitor layout set to 1920x1080 (vert)"
             ;;
         *)
