@@ -12,7 +12,7 @@ if exists('*utils#abbr_command')
   call utils#abbr_command('coc', 'CocConfig')  " Use coc to open coc config
 endif
 
-let g:auto_format_ft          = [ 'rs', 'vim' ]
+let g:auto_format_ft          = [ 'rs' ]
 let g:auto_organize_import_ft = [ ]
 let g:coc_snippet_next        = '<tab>'
 let g:coc_global_extensions   = [
@@ -55,10 +55,10 @@ augroup coc_autocomplete
   au User CocJumpPlaceholder silent call <sid>show_signature_help()
 
   " Format prior to save
-  exe "au BufWritePre *.{" . join(g:auto_format_ft, ",") . "} call CocAction('format')"
+  exe "au BufWritePre *.{" . join(g:auto_format_ft, ",") . "} silent call CocAction('format')"
 
   " Organise imports prior to save
-  exe "au BufWritePre *.{" . join(g:auto_organize_import_ft, ",") . "} call CocAction('runCommand', 'editor.action.organizeImport')"
+  exe "au BufWritePre *.{" . join(g:auto_organize_import_ft, ",") . "} silent call CocAction('runCommand', 'editor.action.organizeImport')"
 
 
   " close the preview window when completion is done.

@@ -48,10 +48,6 @@ fu! s:hijack_netrw()
     exe 'cd' path
     if !has('vim_starting') || g:fern_vimstart
       Fern .
-      " try
-      "   call fern#toggle_drawer(path)
-      " catch
-      " endtry
     endif
   endif
 endfu
@@ -141,7 +137,6 @@ function! s:fern_init() abort
   nmap <buffer> H    <Plug>(fern-action-leave)
   nmap <buffer> <LeftMouse> <LeftMouse>^w
   nmap <buffer> <2-LeftMouse> <Plug>(fern-expand-or-collapse)
-  nnoremap <silent><buffer><expr> <Tab> <SID>fern_toggle_zoom()
   nmap <buffer> d <Plug>(fern-action-remove)
   nmap <buffer> D <Plug>(fern-action-remove)
   nmap <buffer> r <Plug>(fern-action-rename)
