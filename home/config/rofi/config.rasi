@@ -1,0 +1,23 @@
+@theme "themes/main"
+
+configuration {
+	modi: "combi,ssh,window";
+	bw: 2;
+	fixed-num-lines: false;
+	terminal: "kitty";
+	sorting-method: "fzf";
+	combi-modi: "drun,run";
+	hide-scrollbar: true;
+	combi-hide-mode-prefix: true;
+	display-window: "缾";
+	display-ssh: "";
+	display-drun: "";
+	display-combi: "";
+	kb-mode-next: "Shift+Right";
+	kb-mode-previous: "Shift+Left";
+	kb-row-up: "Up,Control+p,Control+ISO_Left_Tab";
+	kb-row-tab: "Control+Tab";
+	kb-cancel: "Escape,Alt+F1,Alt+F2";
+	me-select-entry: "MouseSecondary";
+	me-accept-entry: "MousePrimary";
+}
