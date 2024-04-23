@@ -76,7 +76,9 @@ set -gx PNPM_HOME "/home/fl-w/usr/pnpm"
 set -gx NPM_CONFIG_USERCONFIG "$conf/npm/npmrc"
 set -gx USER_SVDIR "$data/runit/runsvdir/"
 set -gx USER_FLDIR "$data/runit/sv/"
-
+set -gx KUBECONFIG "$conf/kube" 
+set -gx KUBECACHEDIR "$cache/kube"
+set -gx MINIKUBE_HOME "$data/minikube"
 # Move java clutter
 set -gx _SILENT_JAVA_OPTIONS "-Djava.util.prefs.userRoot=$conf/java"
 set -gx MAVEN_CONFIG "--global-settings $conf/maven/settings.xml"
@@ -93,5 +95,3 @@ set -gx LESSHISTFILE /dev/null
 function void
   $argv >/dev/null
 end
-
-alias java="java $_SILENT_JAVA_OPTIONS"

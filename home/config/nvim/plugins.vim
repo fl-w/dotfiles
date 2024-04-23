@@ -67,6 +67,7 @@ else
   Plug 'vim-pandoc/vim-pandoc-syntax',
         \ { 'for': 'pandoc' }                   | " Pandoc syntax
   Plug 'elkowar/yuck.vim', { 'for': 'yuck' }    | " Yuck syntax
+  Plug 'hashivim/vim-terraform'                 | " Terraform syntax
 
   "
   " Editor

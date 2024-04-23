@@ -87,3 +87,6 @@ has pyenv;
 
 has ssh_agent_init
   and ssh_agent_init &>/dev/null
+
+has java 
+  and alias java="java $_SILENT_JAVA_OPTIONS"
