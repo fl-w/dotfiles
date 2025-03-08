@@ -5,11 +5,28 @@ if not loaded then
 end
 
 treesitter.setup {
-  ensure_installed = 'maintained',
-  indent = { enable = true },
+  ensure_installed = {
+    "bash",
+    "html",
+    -- "javascript",
+    "json",
+    "lua",
+    "markdown",
+    "markdown_inline",
+    "python",
+    "kotlin",
+    "query",
+    "regex",
+    "rust",
+    "tsx",
+    "typescript",
+    "vim",
+    "yaml",
+  },
+  indent = { enable = false },
   highlight = {
-    enable = true,
-    use_languagetree = true
+    enable = false,
+    use_languagetree = false
   },
   incremental_selection = {
     enable = true,

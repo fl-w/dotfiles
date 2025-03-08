@@ -35,3 +35,7 @@ if has zzz
 end
 
 if has kitty; alias icat 'kitty +kitten icat --align left'; end
+
+if has docker
+    abbr ds docker ps
+end

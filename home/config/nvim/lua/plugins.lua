@@ -24,11 +24,7 @@ if not status_ok then
   return
 end
 
-<<<<<<< Updated upstream
-require('lazy').setup({
-=======
 lazy.setup({
->>>>>>> Stashed changes
   performance = {
     rtp = {
       reset = false, -- don't reset the runtime path to allow vim-plug plugins.
@@ -56,8 +52,17 @@ lazy.setup({
     {
       "glepnir/lspsaga.nvim",
       event = "LspAttach",
-      config = function()
-        require("lspsaga").setup{}
+      opts = {},
+      -- config = function()
+      --   require("lspsaga").setup{}
+      -- end
+    },
+
+    {
+      "nvim-treesitter/nvim-treesitter",
+      build = ":TSUpdate",
+      config = function ()
+        require('plugins.treesitter')
       end
     },
 
@@ -65,9 +70,10 @@ lazy.setup({
     {
       'j-hui/fidget.nvim',
       tag = 'legacy',
-      config = function()
-        require('fidget').setup()
-      end
+      opts = {},
+      -- config = function()
+      --   require('fidget').setup()
+      -- end
     },
 
     { "ray-x/lsp_signature.nvim", config = { hint_prefix = "🧸 " } },
@@ -128,14 +134,14 @@ lazy.setup({
       build = "make install_jsregexp"
     },
 
-    -- Autopair
-    {
-      'windwp/nvim-autopairs',
-      event = 'InsertEnter',
-      config = function()
-        require('nvim-autopairs').setup{}
-      end
-    },
+    -- -- Autopair | TODO: make this work with COC-nvim
+    -- {
+    --   'windwp/nvim-autopairs',
+    --   event = 'InsertEnter',
+    --   setup = {
+    --     map_cr = true
+    --   }
+    -- },
 
     {
       "folke/which-key.nvim",

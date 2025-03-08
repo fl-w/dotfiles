@@ -35,6 +35,7 @@ else
   "
   " Autocomplete
   "
+  Plug 'github/copilot.vim'                     | " AI autocomplete with github copilot
   Plug 'neoclide/coc.nvim',
     \ { 'branch': 'release' }                   | " Intellisense engine with lsp
   Plug 'Shougo/neco-vim', { 'for': 'vim' }      | " Vim completion source
@@ -67,6 +68,7 @@ else
   Plug 'elkowar/yuck.vim', { 'for': 'yuck' }    | " Yuck syntax
   Plug 'hashivim/vim-terraform'                 | " Terraform syntax
   Plug 'peitalin/vim-jsx-typescript'            | " JSX|TSX syntax
+  Plug 'udalov/kotlin-vim', { 'for': 'kt'}       | " Kotlin syntax
 
   "
   " Editor

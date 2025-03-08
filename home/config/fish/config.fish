@@ -83,10 +83,10 @@ for file in $__fish_config_dir/config.fish.local $apps/config.fish.local ~/.fish
 end
 
 has pyenv;
-  and pyenv init - | source
+  and pyenv init - fish | source
 
 has ssh_agent_init
   and ssh_agent_init &>/dev/null
 
-has java 
+has java
   and alias java="java $_SILENT_JAVA_OPTIONS"

@@ -11,18 +11,11 @@ function M.setup()
 
   wk.register({
     [' '] = 'write file if modified',
-<<<<<<< Updated upstream
 
-    q = { ':quit<cr>',   'close buffer' },
-    Q = { ':quit<cr>',   'close window' },
-    e = { ':File<cr>',   'edit files' },
-    d = { ':Drawer<cr>', 'toggle file drawer' },
-=======
     q = { ':WintabsClose<cr>', 'close buffer' },
     Q = { ':quit<cr>',         'close window' },
     e = { ':File<cr>',         'edit files' },
     d = { ':Drawer<cr>',       'toggle file drawer' },
->>>>>>> Stashed changes
 
     -- . is for vimrc
     ['.'] = {
