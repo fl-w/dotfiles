@@ -1,0 +1,134 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "project_panel": {
+    "hide_hidden": true,
+    "default_width": 240,
+    "dock": "right",
+    "entry_spacing": "comfortable", // Vertical spacing (comfortable, standard)
+    "file_icons": false,
+    "folder_icons": true,
+    "indent_size": 15, // default 20
+    "scrollbar": {
+      "show": "never",
+    },
+    "show_diagnostics": "errors",
+    "indent_guides": {
+      "show": "always",
+    },
+  },
+  "edit_predictions": {
+    "mode": "eager",
+  },
+  "disable_ai": false,
+  "agent": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4",
+    },
+    "model_parameters": [],
+    "enable_feedback": false,
+  },
+  "restore_on_startup": "none",
+  "redact_private_values": true,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "Ayu Light",
+    "dark": "Ayu Dark",
+  },
+  "features": {
+    "edit_prediction_provider": "copilot",
+  },
+  "snippet_sort_order": "bottom",
+  "show_completions_on_input": true,
+  "show_completion_documentation": true,
+  "auto_signature_help": true,
+
+  // Whether to show the signature help after completion or a bracket pair inserted.
+  // If `auto_signature_help` is enabled, this setting will be treated as enabled also.
+  "show_signature_help_after_edits": false,
+
+  "title_bar": {
+    "show_branch_icon": false,
+    "show_branch_name": true,
+    "show_project_items": false,
+    "show_onboarding_banner": false,
+    "show_user_picture": false,
+    "show_sign_in": false,
+    "show_menus": false,
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": true,
+      "delay_ms": 0,
+      "min_column": 0,
+      "padding": 7,
+      "show_commit_summary": true,
+    },
+    "hunk_style": "staged_hollow",
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": false,
+  },
+  "scrollbar": {
+    "show": "auto",
+    "cursors": true,
+    "git_diff": false,
+    "selected_symbol": false,
+  },
+  "max_tabs": 10,
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false,
+    "show_tab_bar_buttons": false,
+  },
+  "tabs": {
+    "git_status": false,
+    "close_position": "right",
+    "show_close_button": "hover",
+    "file_icons": false,
+    "show_diagnostics": "all",
+  },
+  "status_bar": {
+    "active_language_button": false,
+    "cursor_position_button": false,
+    "line_endings_button": false,
+  },
+  "global_lsp_settings": {
+    "button": true,
+  },
+  "collaboration_panel": {
+    "button": false,
+  },
+  "notification_panel": {
+    "button": false,
+  },
+  "file_finder": {
+    "file_icons": false,
+    "include_ignored": "smart",
+  },
+  "git_panel": {
+    "button": false,
+  },
+  "debugger": {
+    "dock": "bottom",
+    "button": true,
+  },
+  "outline_panel": {
+    "button": false,
+  },
+}
