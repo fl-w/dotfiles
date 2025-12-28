@@ -74,6 +74,11 @@ if status --is-interactive
   set -gx LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
   set -q theme_prompt_symbol; or set -g theme_prompt_symbol '🢂' # ►  🢂
 
+  # setup block cursor for insert mode
+  set fish_cursor_insert      block      blink
+  set fish_cursor_replace_one underscore blink
+  set fish_cursor_visual      block
+
   # finally open fish in vim-mode
   fish_vi_key_bindings
 end
@@ -90,3 +95,6 @@ has ssh_agent_init
 
 has java 
   and alias java="java $_SILENT_JAVA_OPTIONS"
+
+has mise
+  and mise activate fish | source

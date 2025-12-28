@@ -93,3 +93,7 @@
 
 
 ; vim: ft=.gitconfig sw=2 tw=0
+[tag]
+	gpgSign = true
+[gpg]
+	format = ssh

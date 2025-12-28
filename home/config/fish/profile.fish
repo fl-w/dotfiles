@@ -72,7 +72,7 @@ set -gx GTK2_RC_FILES "$conf/gtk-2.0/gtkrc-2.0"
 set -gx _FASD_DATA "$cache/fasd"
 set -gx LESSHISTFILE "$cache/_lessht"
 set -gx HISTFILE "$cache/bash_history"
-set -gx PNPM_HOME "/home/fl-w/usr/pnpm"
+set -gx PNPM_HOME "$data/pnpm"
 set -gx NPM_CONFIG_USERCONFIG "$conf/npm/npmrc"
 set -gx USER_SVDIR "$data/runit/runsvdir/"
 set -gx USER_FLDIR "$data/runit/sv/"
@@ -91,6 +91,9 @@ set -gx XCURSOR_PATH "$data/icons"
 
 # prevent less from storing history
 set -gx LESSHISTFILE /dev/null
+
+# allow external python packages in google-cloud-sdk
+set -gx CLOUDSDK_PYTHON_SITEPACKAGES 1
 
 function void
   $argv >/dev/null

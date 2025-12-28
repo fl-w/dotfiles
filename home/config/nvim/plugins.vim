@@ -41,6 +41,7 @@ else
   Plug 'neoclide/coc-neco',{ 'for': 'vim' }     | " Add vim completion to coc
   Plug 'Shougo/neco-vim', { 'for': 'vim' }      | " Vim completion source
   Plug 'lervag/vimtex', { 'for': 'tex'}         | " LaTeX support
+  Plug 'github/copilot.vim'                     | " Github CoPilot, AI auto complete
 
 
   "
