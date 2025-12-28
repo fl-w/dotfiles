@@ -1,0 +1,8 @@
+[tools]
+cargo = "latest"
+gradle = "9"
+java = "21"
+node = "22"
+pnpm = "latest"
+python = "latest"
+rust = "latest"

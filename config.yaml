@@ -99,8 +99,8 @@ dotfiles:
     src: config/wal/templates/colors.Xresources
     dst: '{{@@ d_conf @@}}/wal/templates/colors.Xresources'
     actions:
-    - confirm "Symlink generated pywal Xresources?" "ln -s {{@@ _dotfile_abs_dst @@}}
-      ~/.Xresources"
+    - confirm "Symlink generated pywal Xresources?" "ln -s {{@@ _dotfile_abs_dst
+      @@}} ~/.Xresources"
   f_deskopen:
     src: bin/deskopen
     dst: ~/bin/deskopen
@@ -178,6 +178,17 @@ dotfiles:
     src: ../root/etc/zzz.d
     dst: /etc/zzz.d
     link: nolink
+  f_karabiner.json:
+    src: config/karabiner/karabiner.json
+    dst: '{{@@ d_conf @@}}/karabiner/karabiner.json'
+    chmod: '600'
+  f_mise_config.toml:
+    src: config/mise/config.toml
+    dst: '{{@@ d_conf @@}}/mise/config.toml'
+  d_zed:
+    src: config/zed
+    dst: '{{@@ d_conf @@}}/zed'
+    link: link_children
 profiles:
   root:
     dotfiles:
@@ -220,6 +231,8 @@ profiles:
     - d_maven
     - d_bat
     - d_ripgrep
+    - f_mise_config.toml
+    - d_zed
     include:
     - bin
     - neovim
@@ -265,3 +278,9 @@ profiles:
     - kitty
     dotfiles:
     - f_kautostart.sh
+  macos:
+    include:
+    - _base
+    - kitty
+    dotfiles:
+    - f_karabiner.json
