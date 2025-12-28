@@ -24,6 +24,7 @@
     showBranch = auto
     interactive = auto
 [alias]
+    rebase-main = "!git fetch origin main && git rebase origin/main"
     a         = add
     c         = commit
     ch        = checkout
