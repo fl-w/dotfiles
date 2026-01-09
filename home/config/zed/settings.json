@@ -129,6 +129,40 @@
     "button": true,
   },
   "outline_panel": {
-    "button": false,
+    "button": false
   },
+  "auto_install_extensions": {
+    "toml": true,
+    "kotlin": true
+  },
+  "node": {
+    "path": "~/usr/mise/shims/node",
+    "npm_path": "~/usr/mise/shims/npm"
+  },
+  "languages": {
+    "JSONC": {
+      "formatter": {
+        "external": {
+          "command": "/home/fola/usr/pnpm/prettierd",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
+    "TypeScript": {
+      "formatter": {
+        "external": {
+          "command": "/home/fola/usr/pnpm/prettierd",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    },
+    "TSX": {
+      "formatter": {
+        "external": {
+          "command": "/home/fola/usr/pnpm/prettierd",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    }
+  }
 }

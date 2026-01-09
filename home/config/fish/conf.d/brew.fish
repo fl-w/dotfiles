@@ -1,3 +1,7 @@
+if not type -q brew
+    return
+end
+
 if test -d (brew --prefix)"/share/fish/completions"
     set -p fish_complete_path (brew --prefix)/share/fish/completions
 end
