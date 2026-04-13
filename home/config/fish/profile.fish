@@ -56,6 +56,7 @@ set -gx N_PREFIX "$apps/tj-n"
 set -gx CARGO_HOME "$apps/cargo"
 set -gx PYENV_ROOT "$apps/pyenv"
 set -gx NVM_DIR "$apps/nvm"
+set -gx NODE_REPL_HISTORY "$XDG_DATA_HOME/node_repl_history"
 set -gx GNUPGHOME "$apps/gpg"
 set -gx RUSTUP_HOME "$cache/rustup"
 set -gx GOPATH "$cache/go"
@@ -80,11 +81,12 @@ set -gx KUBECONFIG "$conf/kube"
 set -gx KUBECACHEDIR "$cache/kube"
 set -gx MINIKUBE_HOME "$data/minikube"
 # Move java clutter
-set -gx _SILENT_JAVA_OPTIONS "-Djava.util.prefs.userRoot=$conf/java"
+set -gx _JAVA_OPTIONS "-Djava.util.prefs.userRoot=$conf/java"
 set -gx MAVEN_CONFIG "--global-settings $conf/maven/settings.xml"
 set -gx ANDROID_SDK_HOME "$data/android"
 set -gx ANDROID_PREFS_ROOT "$data/android"
 set -gx GRADLE_USER_HOME "$data/gradle"
+set -gx DOCKER_CONFIG "$XDG_CONFIG_HOME"/docker
 
 # Add xcursor path to env (avoid ~/.icons)
 set -gx XCURSOR_PATH "$data/icons"
